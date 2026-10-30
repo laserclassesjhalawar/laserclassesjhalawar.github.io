@@ -3,131 +3,119 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- TITLE: Google search me yahi dikhega. Apna coaching ka naam daalo -->
+<!-- TITLE: Google search में यही दिखेगा -->
 <title>Laser Classes | राजस्थान की प्रतियोगी परीक्षाओं की तैयारी</title>
-<meta name="description" content="RAS, पटवारी, SI, VDO, REET, BSTC, PTET और 4th Grade की संपूर्ण तैयारी। छोटे बैच, नियमित टेस्ट, डाउट क्लास।">
+<meta name="description" content="RAS, CET, पटवारी, SI, VDO, REET, BSTC, PTET और 4th Grade की संपूर्ण तैयारी। 3 दिन की फ्री डेमो क्लास, नियमित OMR टेस्ट और डाउट क्लास।">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ===== RANG (colors) - yahan se poori site ka look badal jayega ===== */
+/* ===== RANG (colors) ===== */
 :root {
-  --paper: #f4f7ff;      /* page ka background */
-  --rule: #c9d6ff;       /* copy ki neeli lines */
-  --margin: #e8344e;     /* copy ka laal margin */
-  --ink: #0f1f66;        /* gehra neela text */
-  --soft: #3d4a7a;       /* halka text */
-  --mark: #ffd23f;
-  --accent: #e85d04;      /* narangi rang (stats ke number) */      /* highlighter peela */
+  --paper: #f4f7ff;      /* page background */
+  --rule: #c9d6ff;       /* light blue border */
+  --margin: #e8344e;     /* red accent line */
+  --ink: #0f1f66;        /* deep blue text */
+  --soft: #3d4a7a;       /* secondary text */
+  --mark: #ffd23f;       /* highlighter yellow */
+  --accent: #e85d04;     /* orange numbers */
   --head: "Baloo 2", "Noto Sans Devanagari", system-ui, sans-serif;
   --body: "Hind", "Noto Sans Devanagari", system-ui, sans-serif;
 }
+
 * { box-sizing: border-box; margin: 0; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
 body { background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.7 var(--body); }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
 
-/* Poora page copy ke margin jaisa: left me laal line */
+/* Page Margin Container */
 .page { max-width: 62rem; margin: 0 auto; padding: 0 1.25rem 0 1.5rem; border-left: 2px solid var(--margin); }
 @media (min-width: 62rem) { .page { padding-left: 3rem; } }
 
 h1, h2, h3 { font-family: var(--head); line-height: 1.2; color: var(--ink); }
 h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 1rem; }
+h2::after { content: ""; display: block; width: 3rem; height: 4px; margin-top: .45rem; background: var(--margin); }
 section { padding: 3rem 0 1rem; }
 
 /* ===== Header ===== */
-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 0; }
+header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 0; flex-wrap: wrap; }
 .logo { font: 800 1.35rem var(--head); text-decoration: none; }
-.btn { display: inline-block; padding: .65rem 1.25rem; border: 2px solid var(--ink); border-radius: 6px; font-weight: 600; text-decoration: none; background: var(--ink); color: #fff; }
+nav { order: 3; width: 100%; display: flex; gap: .25rem 1.1rem; overflow-x: auto; white-space: nowrap; padding-bottom: .4rem; }
+nav a { text-decoration: none; font-weight: 600; padding: .25rem 0; border-bottom: 2px solid transparent; }
+nav a:hover { border-bottom-color: var(--margin); }
+@media (min-width: 48rem) { nav { order: 0; width: auto; padding: 0; } }
+
+.btn { display: inline-flex; align-items: center; gap: .5rem; padding: .65rem 1.25rem; border: 2px solid var(--ink); border-radius: 6px; font-weight: 600; text-decoration: none; background: var(--ink); color: #fff; }
 .btn.alt { background: transparent; color: var(--ink); }
+.btn.hl { background: var(--mark); color: var(--ink); border-color: var(--mark); }
 .btn:hover { background: var(--mark); color: var(--ink); }
+.ic { width: 1.35rem; height: 1.35rem; flex: none; }
 
 /* ===== Hero ===== */
-.hero { padding: 3.5rem 0 3rem; background-image: repeating-linear-gradient(to bottom, transparent 0 35px, var(--rule) 35px 36px); }
-.tag { display: inline-block; background: var(--mark); padding: .1rem .7rem; font-weight: 600; margin-bottom: 1rem; }
-h1 { font-size: clamp(2.1rem, 6vw, 3.6rem); font-weight: 800; max-width: 16ch; }
-.hero p { max-width: 34rem; margin: 1rem 0 1.5rem; color: var(--soft); background: var(--paper); display: inline-block; }
+.hero { margin-top: .5rem; padding: 3rem 1.25rem 2.5rem; background-color: var(--ink); background-image: repeating-linear-gradient(to bottom, transparent 0 35px, rgba(255,255,255,.08) 35px 36px); }
+.hero h1 { color: #fff; font-size: clamp(2.1rem, 6vw, 3.6rem); font-weight: 800; max-width: 18ch; }
+.hero p { display: block; margin: 1rem 0 1.5rem; color: #dbe4ff; max-width: 36rem; }
+.tag { display: inline-block; background: var(--mark); color: var(--ink); padding: .2rem .8rem; font-weight: 700; border-radius: 4px; margin-bottom: 1rem; }
 .hero .buttons { display: flex; flex-wrap: wrap; gap: .75rem; }
+.hero .btn.hl { background: var(--mark); border-color: var(--mark); color: var(--ink); }
+.hero .btn.hl:hover { background: #fff; border-color: #fff; }
+.hero .btn.wa-hero { background: #25d366; border-color: #25d366; color: #fff; }
+.hero .btn.wa-hero:hover { background: #1eb956; border-color: #1eb956; }
 
-/* ===== Courses: copy ki lines jaisi list ===== */
+/* ===== Stats ===== */
+.stats { display: flex; flex-wrap: wrap; gap: 1rem 3rem; padding: 1.25rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-top: 1.5rem; }
+.stats dt { font: 800 1.8rem var(--head); line-height: 1.1; color: var(--accent); }
+.stats dd { margin: 0; color: var(--soft); }
+
+/* ===== Courses ===== */
 .lines { list-style: none; padding: 0; border-top: 1px solid var(--rule); }
 .lines li { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .25rem 1rem; padding: .9rem 0; border-bottom: 1px solid var(--rule); }
 .lines strong { font: 600 1.15rem var(--head); }
 .lines span { color: var(--soft); }
 
-/* ===== Batch table ===== */
-.scroll { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; min-width: 30rem; }
-th, td { text-align: left; padding: .7rem .75rem .7rem 0; border-bottom: 1px solid var(--rule); }
-th { font: 600 1rem var(--head); border-bottom: 2px solid var(--ink); }
-
-/* ===== Why us ===== */
-.why { list-style: none; padding: 0; display: grid; gap: .6rem; }
+/* ===== Why Us ===== */
+.why { list-style: none; padding: 0; display: grid; gap: .7rem; }
 .why li { padding-left: 1.6rem; position: relative; }
-.why li::before { content: "✓"; position: absolute; left: 0; color: var(--margin); font-weight: 700; }
+.why li::before { content: "✓"; position: absolute; left: 0; color: var(--margin); font-weight: 700; font-size: 1.1rem; }
 
-/* ===== Photos: teachers, gallery, toppers ===== */
-img { display: block; width: 100%; height: auto; background: var(--rule); object-fit: cover; }
-/* Photos ek line me side-side, apne aap slide hoti hain (haath se swipe bhi kar sakte ho) */
+/* ===== Horizontal Sliders (Teachers, Gallery, Results) ===== */
+img { display: block; width: 100%; height: auto; background: var(--rule); object-fit: cover; border-radius: 4px; }
 .people, .gallery { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .75rem; scrollbar-width: thin; }
 .people > *, .gallery > * { scroll-snap-align: start; flex: 0 0 auto; }
-/* PHOTO KA SIZE: width yahan se chota-bada karo */
-.people > * { width: 8.5rem; }
+.people > * { width: 9rem; }
 .people img { aspect-ratio: 4 / 5; }
 .people figcaption { padding-top: .5rem; line-height: 1.4; }
 .people strong { display: block; font: 600 1.05rem var(--head); }
-.people span { color: var(--soft); font-size: .9rem; }
-.gallery > * { width: 12rem; }
+.people span { color: var(--soft); font-size: .88rem; }
+.gallery > * { width: 13rem; }
 .gallery img { aspect-ratio: 4 / 3; }
-/* LAPTOP / bade screen par photos thodi badi */
 @media (min-width: 48rem) {
   .people > * { width: 11rem; }
   .gallery > * { width: 17rem; }
 }
-.note { color: var(--soft); max-width: 36rem; margin-bottom: 1.25rem; }
-.map { width: 100%; height: 18rem; border: 1px solid var(--rule); margin-top: 1.25rem; }
+.note { color: var(--soft); max-width: 38rem; margin-bottom: 1.25rem; }
 
-/* ===== Menu, stats, FAQ, WhatsApp button ===== */
-header { flex-wrap: wrap; }
-nav { order: 3; width: 100%; display: flex; gap: .25rem 1.1rem; overflow-x: auto; white-space: nowrap; padding-bottom: .4rem; }
-nav a { text-decoration: none; font-weight: 600; padding: .25rem 0; border-bottom: 2px solid transparent; }
-nav a:hover { border-bottom-color: var(--margin); }
-@media (min-width: 48rem) { nav { order: 0; width: auto; padding: 0; } }
-.btn.hl { background: var(--mark); color: var(--ink); }
-.btn.hl:hover { background: #fff; }
-.stats { display: flex; flex-wrap: wrap; gap: 1rem 3rem; padding: 1.25rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-top: 1rem; }
-.stats dt { font: 800 1.8rem var(--head); line-height: 1.1; }
-.stats dd { margin: 0; color: var(--soft); }
+/* ===== FAQ ===== */
 details { border-bottom: 1px solid var(--rule); padding: .85rem 0; }
 details:first-of-type { border-top: 1px solid var(--rule); }
 summary { cursor: pointer; font: 600 1.1rem var(--head); }
 details p { padding-top: .5rem; color: var(--soft); }
-.wa { position: fixed; right: 1rem; bottom: 1rem; z-index: 10; background: #fff; color: var(--ink); border: 2px solid #25d366; font-weight: 600; text-decoration: none; padding: .7rem 1.15rem; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
-.wa:hover { background: #e9fff1; }
-html { scroll-padding-top: 1rem; }
 
-/* ===== Naya look: neela hero, icons ===== */
-h2::after { content: ""; display: block; width: 3rem; height: 4px; margin-top: .45rem; background: var(--margin); }
-.hero { margin-top: .5rem; padding: 3rem 1.25rem 2.5rem; background-color: var(--ink); background-image: repeating-linear-gradient(to bottom, transparent 0 35px, rgba(255,255,255,.08) 35px 36px); }
-.hero h1 { color: #fff; }
-.hero p { display: block; background: none; color: #dbe4ff; }
-.hero .btn { background: #fff; color: var(--ink); border-color: #fff; }
-.hero .btn.hl { background: var(--mark); border-color: var(--mark); }
-.hero .btn.alt { background: transparent; color: #fff; }
-.hero .btn:hover { background: var(--mark); border-color: var(--mark); color: var(--ink); }
-.stats dt { color: var(--accent); }
-.btn, .wa { display: inline-flex; align-items: center; gap: .5rem; }
-.ic { width: 1.35rem; height: 1.35rem; flex: none; }
-
-/* ===== Contact ===== */
+/* ===== Contact & Map ===== */
 .contact p { margin-bottom: .4rem; }
 .contact .buttons { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; }
+.map { width: 100%; height: 18rem; border: 1px solid var(--rule); margin-top: 1.25rem; border-radius: 6px; }
+
+/* ===== Footer & Floating WhatsApp ===== */
 footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
+.wa { position: fixed; right: 1rem; bottom: 1rem; z-index: 10; background: #fff; color: var(--ink); border: 2px solid #25d366; font-weight: 600; text-decoration: none; padding: .7rem 1.15rem; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.wa:hover { background: #e9fff1; }
 </style>
 </head>
 <body>
-<!-- ICONS: Play Store, YouTube, Instagram, WhatsApp ke logo (ek baar yahan, baaki jagah use hote hain) -->
+
+<!-- ICONS SYMBOLS -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#feda75"/><stop offset=".4" stop-color="#fa7e1e"/><stop offset=".7" stop-color="#d62976"/><stop offset="1" stop-color="#4f5bd5"/></linearGradient></defs>
   <symbol id="i-wa" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#25d366"/><path d="M12 5.5a6.5 6.5 0 0 0-5.6 9.8l-.9 3.2 3.3-.9A6.5 6.5 0 1 0 12 5.5z" fill="none" stroke="#fff" stroke-width="1.6"/><path d="M9.6 9.2c.2-.4.5-.4.7-.3l.6 1.3c.1.2 0 .4-.1.5l-.4.5c.5 1 1.3 1.8 2.3 2.3l.5-.4c.2-.1.4-.2.6-.1l1.3.6c.2.1.2.4 0 .8-.3.7-1.2 1.1-2 .9-2.2-.6-4-2.4-4.5-4.6-.1-.6.1-1.2.5-1.5z" fill="#fff"/></symbol>
@@ -135,191 +123,196 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
   <symbol id="i-yt" viewBox="0 0 24 24"><rect x="1" y="4.5" width="22" height="15" rx="4.5" fill="#f00"/><path d="M10 8.7v6.6l5.6-3.3z" fill="#fff"/></symbol>
   <symbol id="i-gp" viewBox="0 0 24 24"><path d="M4 3v18l8.5-9z" fill="#00c3ff"/><path d="M4 3l8.5 9 3.9-2.3z" fill="#00f076"/><path d="M4 21l8.5-9 3.9 2.3z" fill="#ff3a44"/><path d="M16.4 9.7L20.5 12l-4.1 2.3-3.9-2.3z" fill="#ffd500"/></symbol>
 </svg>
+
 <div class="page">
 
   <header>
-    <!-- Coaching ka naam -->
     <a class="logo" href="#">Laser Classes</a>
-    <!-- MENU: har link niche ke kisi section par jata hai. Naya link jodna ho to ek <a> line copy karo -->
     <nav aria-label="मेन्यू">
       <a href="#courses">कोर्स</a>
+      <a href="#why">विशेषताएं</a>
+      <a href="#results">सफलता</a>
       <a href="#teachers">शिक्षक</a>
       <a href="#gallery">गैलरी</a>
       <a href="#faq">सवाल-जवाब</a>
       <a href="#contact">संपर्क</a>
     </nav>
-    <a class="btn hl" href="https://play.google.com/store/apps/details?id=com.hkfywo.mrblyu" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-gp"/></svg>ऐप डाउनलोड करें</a>
-  </header>
-
-  <main>
-    <section class="hero">
-  <span class="tag">🔥 नया बैच प्रारंभ: 1 अप्रैल से | सीमित सीटें</span>
-  
-  <h1>राजस्थान की प्रतियोगी परीक्षाओं में अपनी सफलता सुनिश्चित करें</h1>
-  
-  <p>RAS, CET, REET, पटवारी और पुलिस भर्ती की सर्वश्रेष्ठ तैयारी। अनुभवी फैकल्टी, हर रविवार OMR टेस्ट और व्यक्तिगत मार्गदर्शन के साथ।</p>
-  
-  <div class="buttons">
-    <!-- Primary CTA: ऐप डाउनलोड -->
     <a class="btn hl" href="https://play.google.com/store/apps/details?id=com.hkfywo.mrblyu" target="_blank" rel="noopener">
       <svg class="ic" aria-hidden="true"><use href="#i-gp"/></svg>ऐप डाउनलोड करें
     </a>
-    
-    <!-- Secondary CTA: WhatsApp संपर्क -->
-    <a class="btn" href="https://walink.me/6s0veo" target="_blank" rel="noopener">
-      <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp पर जानकारी लें
-    </a>
-  </div>
-</section>
+  </header>
 
-    <!-- STATS: yahan sirf asli number daalo -->
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <span class="tag">🔥 नया बैच प्रारंभ | 3 दिन की फ्री डेमो क्लास उपलब्ध</span>
+      <h1>राजस्थान की प्रतियोगी परीक्षाओं में अपनी सफलता सुनिश्चित करें</h1>
+      <p>CET, BSTC, REET, पटवारी और पुलिस भर्ती की सर्वश्रेष्ठ तैयारी। अनुभवी फैकल्टी, हर रविवार OMR टेस्ट और व्यक्तिगत मार्गदर्शन के साथ।</p>
+      <div class="buttons">
+        <a class="btn hl" href="https://play.google.com/store/apps/details?id=com.hkfywo.mrblyu" target="_blank" rel="noopener">
+          <svg class="ic" aria-hidden="true"><use href="#i-gp"/></svg>ऐप डाउनलोड करें
+        </a>
+        <a class="btn wa-hero" href="https://walink.me/6s0veo" target="_blank" rel="noopener">
+          <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp पर जानकारी लें
+        </a>
+      </div>
+    </section>
+
+    <!-- STATS -->
     <dl class="stats">
-      <div><dt>00+</dt><dd>चयनित विद्यार्थी</dd></div>
-      <div><dt>00</dt><dd>साल का अनुभव</dd></div>
-      <div><dt>00+</dt><dd>विद्यार्थी हमारे साथ</dd></div>
+      <div><dt>30+</dt><dd>छात्र प्रति बैच (सीमित सीटें)</dd></div>
+      <div><dt>50+</dt><dd>फुल लेंथ OMR टेस्ट आयोजित</dd></div>
+      <div><dt>100%</dt><dd>नवीनतम सिलेबस आधारित नोट्स</dd></div>
+      <div><dt>1 to 1</dt><dd>व्यक्तिगत डाउट समाधान</dd></div>
     </dl>
 
-    <section id="app">
-      <h2>हमारा ऐप</h2>
-      <p class="note">मॉक टेस्ट और विषय-वार पढ़ाई, घर बैठे। कोर्स ऐप में देखें और वहीं से जुड़ें।</p>
-      <a class="btn hl" href="https://play.google.com/store/apps/details?id=com.hkfywo.mrblyu" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-gp"/></svg>Google Play से डाउनलोड करें</a>
-    </section>
-
+    <!-- COURSES -->
     <section id="courses">
-      <h2>हमारे कोर्स</h2>
-      <!-- Naya course jodne ke liye ek <li>...</li> block copy-paste karo -->
-<ul class="lines">
-  <li>
-    <strong>RAS (फाउंडेशन बैच)</strong>
-    <span>Prelims + Mains संपूर्ण तैयारी</span>
-  </li>
-  <li>
-    <strong>CET · पटवारी · SI · VDO</strong>
-    <span>राजस्थान प्रशासनिक एवं अधीनस्थ सेवाएं</span>
-  </li>
-  <li>
-    <strong>REET · शिक्षक ग्रेड 1, 2, 3</strong>
-    <span>BSTC एवं PTET प्रवेश परीक्षा विशेष</span>
-  </li>
-  <li>
-    <strong>राजस्थान पुलिस एवं 4th Grade</strong>
-    <span>नवीनतम सिलेबस अनुसार संपूर्ण तैयारी</span>
-  </li>
-</ul>    </section>
+      <h2>हमारे प्रमुख कोर्स</h2>
+      <ul class="lines">
+        <li>
+          <strong>BSTC एवं PTET प्रवेश परीक्षा विशेष</strong>
+          <span>टॉप रैंक और कॉलेज चयन की मजबूत तैयारी</span>
+        </li>
+        <li>
+          <strong>CET · पटवारी · SI · VDO</strong>
+          <span>राजस्थान प्रशासनिक एवं अधीनस्थ सेवाएं</span>
+        </li>
+        <li>
+          <strong>REET · शिक्षक ग्रेड 1, 2, 3</strong>
+          <span>विषयवार गहन अध्ययन एवं टेस्ट सीरीज</span>
+        </li>
+        <li>
+          <strong>राजस्थान पुलिस एवं 4th Grade</strong>
+          <span>नवीनतम सिलेबस अनुसार संपूर्ण तैयारी</span>
+        </li>
+        <li>
+          <strong>RAS (फाउंडेशन बैच)</strong>
+          <span>Prelims + Mains संपूर्ण गाइडेंस</span>
+        </li>
+      </ul>
+    </section>
 
-  <!--  <section id="batches">
-      <h2>बैच का समय</h2>
-      <div class="scroll">
-        <table>
-          <thead><tr><th>बैच</th><th>परीक्षा</th><th>समय</th><th>दिन</th></tr></thead>
-          <tbody>
-            <tr><td>सुबह</td><td>RAS</td><td>7:00 – 10:00 AM</td><td>सोम – शनि</td></tr>
-            <tr><td>दोपहर</td><td>पटवारी · SI · VDO</td><td>12:00 – 3:00 PM</td><td>सोम – शनि</td></tr>
-            <tr><td>शाम</td><td>REET · BSTC · PTET</td><td>4:00 – 7:00 PM</td><td>सोम – शनि</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section> -->
-
+    <!-- WHY CHOOSE US -->
     <section id="why">
-  <h2>हमें ही क्यों चुनें?</h2>
-  <ul class="why">
-    <li>झालावाड़ का एकमात्र हाइब्रिड संस्थान (ऑनलाइन + ऑफलाइन क्लासेज)</li>
-    <li>अनुभवी विषय-विशेषज्ञों द्वारा अध्यापन और व्यक्तिगत मार्गदर्शन</li>
-    <li>हर रविवार OMR शीट पर टेस्ट — बिल्कुल परीक्षा जैसा माहौल</li>
-    <li>क्लास में रिजल्ट की समीक्षा और परफॉर्मेंस एनालिसिस</li>
-    <li>अपडेटेड प्रिंटेड नोट्स और टॉपिक-वाइज़ टेस्ट सीरीज</li>
-    <li>डाउट क्लास में सवाल पूछने की पूरी आज़ादी</li>
-    <li>अभिभावकों को नियमित प्रगति रिपोर्ट (Student Progress Report)</li>
-  </ul>
-</section>
-
-    <!-- PHOTOS: sab photos 'images' naam ke folder me rakho (index.html ke bagal me).
-         Photo ka naam wahi rakhna jo src me likha hai, ya src badal do. -->
-    <section id="teachers">
-      <h2>हमारे शिक्षक</h2>
-      <!-- Naya teacher jodne ke liye ek <figure>...</figure> copy-paste karo -->
-      <div class="people">
-        <figure>
-          <img src="images/teacher1.jpg" alt="शिक्षक 1" width="400" height="500" loading="lazy">
-          <figcaption><strong>शिक्षक का नाम</strong><span>राजस्थान GK · 10 साल का अनुभव</span></figcaption>
-        </figure>
-        <figure>
-          <img src="images/teacher2.jpg" alt="शिक्षक 2" width="400" height="500" loading="lazy">
-          <figcaption><strong>शिक्षक का नाम</strong><span>इतिहास · 8 साल का अनुभव</span></figcaption>
-        </figure>
-        <figure>
-          <img src="images/teacher3.jpg" alt="शिक्षक 3" width="400" height="500" loading="lazy">
-          <figcaption><strong>शिक्षक का नाम</strong><span>गणित और रीज़निंग · 12 साल का अनुभव</span></figcaption>
-        </figure>
-      </div>
+      <h2>हमें ही क्यों चुनें?</h2>
+      <ul class="why">
+        <li>झालावाड़ का एकमात्र हाइब्रिड संस्थान (ऑफलाइन क्लास + ऑनलाइन ऐप सपोर्ट)</li>
+        <li>3 दिन की निःशुल्क डेमो क्लास — पहले देखें, समझें, फिर तय करें</li>
+        <li>अनुभवी विषय-विशेषज्ञों द्वारा अध्यापन और व्यक्तिगत मार्गदर्शन</li>
+        <li>हर रविवार OMR शीट पर टेस्ट — बिल्कुल परीक्षा जैसा माहौल</li>
+        <li>क्लास में रिजल्ट की समीक्षा और परफॉर्मेंस एनालिसिस</li>
+        <li>अपडेटेड प्रिंटेड नोट्स और टॉपिक-वाइज़ टेस्ट सीरीज</li>
+        <li>डाउट क्लास में सवाल पूछने की पूरी आज़ादी</li>
+        <li>अभिभावकों को नियमित प्रगति रिपोर्ट (Student Progress Report)</li>
+      </ul>
     </section>
 
-    <section id="gallery">
-      <h2>हमारी कोचिंग</h2>
-      <p class="note">क्लासरूम, लाइब्रेरी और टेस्ट के दिन की तस्वीरें।</p>
-      <div class="gallery">
-        <img src="images/class1.jpg" alt="क्लासरूम" width="800" height="600" loading="lazy">
-        <img src="images/class2.jpg" alt="लाइब्रेरी" width="800" height="600" loading="lazy">
-        <img src="images/class3.jpg" alt="टेस्ट का दिन" width="800" height="600" loading="lazy">
-      </div>
-    </section>
-
+    <!-- RESULTS (BSTC & Exams) -->
     <section id="results">
-      <h2>हमारे बच्चों की सफलता</h2>
-      <!-- Sirf asli results daalo, saal aur exam ke saath -->
-      <p class="note">पिछले साल के हमारे विद्यार्थी।</p>
+      <h2>हमारे चयनित होनहार विद्यार्थी</h2>
+      <p class="note">BSTC एवं प्रतियोगी परीक्षाओं में Laser Classes के चमकते सितारे:</p>
       <div class="people">
         <figure>
           <img src="images/student1.jpg" alt="विद्यार्थी 1" width="400" height="500" loading="lazy">
-          <figcaption><strong>विद्यार्थी का नाम</strong><span>RAS · चयन का वर्ष</span></figcaption>
+          <figcaption><strong>विद्यार्थी का नाम</strong><span>BSTC 2026 · कॉलेज आवंटित</span></figcaption>
         </figure>
         <figure>
           <img src="images/student2.jpg" alt="विद्यार्थी 2" width="400" height="500" loading="lazy">
-          <figcaption><strong>विद्यार्थी का नाम</strong><span>पटवारी भर्ती · चयनित</span></figcaption>
+          <figcaption><strong>विद्यार्थी का नाम</strong><span>BSTC 2026 · चयनित</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/student3.jpg" alt="विद्यार्थी 3" width="400" height="500" loading="lazy">
+          <figcaption><strong>विद्यार्थी का नाम</strong><span>प्रतियोगी परीक्षा · चयनित</span></figcaption>
         </figure>
       </div>
     </section>
 
-    <section id="youtube">
-      <h2>फ्री क्लासेस और टिप्स</h2>
-      <p class="note">परीक्षा की रणनीति और फ्री सेशन हमारे YouTube चैनल पर देखें।</p>
-      <!-- Video seedha site par chalani ho: YouTube video > Share > Embed se iframe copy karke yahan paste karo -->
-      <a class="btn alt" href="https://youtube.com/@laserclasses" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-yt"/></svg>YouTube चैनल खोलें</a>
+    <!-- TEACHERS -->
+    <section id="teachers">
+      <h2>हमारे शिक्षक</h2>
+      <div class="people">
+        <figure>
+          <img src="images/teacher1.jpg" alt="शिक्षक 1" width="400" height="500" loading="lazy">
+          <figcaption><strong>शिक्षक का नाम</strong><span>राजस्थान GK विशेषज्ञ</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/teacher2.jpg" alt="शिक्षक 2" width="400" height="500" loading="lazy">
+          <figcaption><strong>शिक्षक का नाम</strong><span>हिंदी एवं शिक्षण अभिरुचि</span></figcaption>
+        </figure>
+        <figure>
+          <img src="images/teacher3.jpg" alt="शिक्षक 3" width="400" height="500" loading="lazy">
+          <figcaption><strong>शिक्षक का नाम</strong><span>रीज़निंग एवं गणित</span></figcaption>
+        </figure>
+      </div>
     </section>
 
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2>हमारी कोचिंग का माहौल</h2>
+      <p class="note">क्लासरूम, लाइब्रेरी और रविवार OMR टेस्ट के दौरान की तस्वीरें।</p>
+      <div class="gallery">
+        <img src="images/class1.jpg" alt="क्लासरूम" width="800" height="600" loading="lazy">
+        <img src="images/class2.jpg" alt="लाइब्रेरी" width="800" height="600" loading="lazy">
+        <img src="images/class3.jpg" alt="रविवार OMR टेस्ट" width="800" height="600" loading="lazy">
+      </div>
+    </section>
+
+    <!-- FAQ -->
     <section id="faq">
       <h2>अक्सर पूछे जाने वाले सवाल</h2>
-      <!-- Naya सवाल: ek <details>...</details> block copy-paste karo -->
-      <details><summary>एडमिशन कैसे लें?</summary><p>कॉल या WhatsApp करें, या सीधे हमारे ऑफ़िस आएँ। एडमिशन की पूरी जानकारी वहीं मिल जाएगी।</p></details>
-      <details><summary>नया बैच कब शुरू होता है?</summary><p>बैच की ताज़ा तारीख़ के लिए हमें कॉल करें या Instagram देखें।</p></details>
-      <details><summary>क्या ऑनलाइन पढ़ाई और टेस्ट मिलते हैं?</summary><p>हाँ, हमारे ऐप पर मॉक टेस्ट और विषय-वार पढ़ाई उपलब्ध है।</p></details>
-      <details><summary>फीस कितनी है?</summary><p>फीस कोर्स के हिसाब से अलग है। सही जानकारी के लिए WhatsApp या कॉल करें।</p></details>
+      <details>
+        <summary>क्या मैं एडमिशन से पहले डेमो क्लास ले सकता हूँ?</summary>
+        <p>हाँ, आप सीधे संस्थान आकर 3 दिन की फ्री डेमो क्लास ले सकते हैं और पढ़ाने का तरीका परख सकते हैं।</p>
+      </details>
+      <details>
+        <summary>एडमिशन कैसे लें?</summary>
+        <p>आप कॉल या WhatsApp कर सकते हैं, या सीधे हमारे ऑफ़िस पधार सकते हैं। एडमिशन प्रक्रिया बहुत सरल है।</p>
+      </details>
+      <details>
+        <summary>क्या ऑनलाइन पढ़ाई और टेस्ट सीरीज उपलब्ध है?</summary>
+        <p>हाँ, हमारे मोबाइल ऐप पर ऑनलाइन मॉक टेस्ट और संपूर्ण स्टडी मटेरियल उपलब्ध है।</p>
+      </details>
+      <details>
+        <summary>फीस और किस्तों (Installment) की क्या सुविधा है?</summary>
+        <p>कोर्स के अनुसार उचित फीस रखी गई है। विस्तृत जानकारी के लिए आप हमें WhatsApp या कॉल कर सकते हैं।</p>
+      </details>
     </section>
 
+    <!-- CONTACT -->
     <section id="contact" class="contact">
       <h2>संपर्क करें</h2>
-      <p><strong>पता:</strong>  यूनियन बैंक के सामने तांगा अड्डा मंगलपुरा , झालावाड़ , राजस्थान</p>
+      <p><strong>पता:</strong> यूनियन बैंक के सामने तांगा अड्डा मंगलपुरा, झालावाड़, राजस्थान</p>
       <p><strong>फ़ोन:</strong> <a href="tel:+918875472511">88754 72511</a> · <a href="tel:+919252120834">92521 20834</a></p>
-      <p><strong>ऑफ़िस समय:</strong> सुबह 9 से शाम 7 बजे (रविवार बंद)</p>
+      <p><strong>ऑफ़िस समय:</strong> सुबह 9 से शाम 7 बजे (रविवार: केवल टेस्ट एवं डाउट सत्र)</p>
+      
       <div class="buttons">
-        <a class="btn" href="https://walink.me/6s0veo"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp करें</a>
-        <!-- Google Maps me apna address kholo, Share > Link copy karke yahan daalo -->
-        <a class="btn alt" href="https://maps.app.goo.gl/fHx7DEpm4M8mp63F8">Google Maps पर देखें</a>
-        <a class="btn alt" href="https://www.instagram.com/laser_classes_jhalawar" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-ig"/></svg>Instagram पर फ़ॉलो करें</a>
-        <a class="btn alt" href="https://youtube.com/@laserclasses" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-yt"/></svg>YouTube चैनल देखें</a>
+        <a class="btn" href="https://walink.me/6s0veo" target="_blank" rel="noopener">
+          <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp करें
+        </a>
+        <a class="btn alt" href="https://youtube.com/@laserclasses" target="_blank" rel="noopener">
+          <svg class="ic" aria-hidden="true"><use href="#i-yt"/></svg>YouTube चैनल देखें
+        </a>
+        <a class="btn alt" href="https://www.instagram.com/laser_classes_jhalawar" target="_blank" rel="noopener">
+          <svg class="ic" aria-hidden="true"><use href="#i-ig"/></svg>Instagram देखें
+        </a>
+        <a class="btn alt" href="https://maps.app.goo.gl/fHx7DEpm4M8mp63F8" target="_blank" rel="noopener">Google Maps पर देखें</a>
       </div>
-      <!-- MAP: Google Maps me apni coaching kholo > Share > Embed a map > HTML copy karo,
-           aur uska src="..." wala link yahan src me daalo. Tab tak ye line hata sakte ho. -->
-      <iframe class="map" title="कोचिंग का नक्शा" loading="lazy" src="https://www.google.com/maps?q=Laserclassesjhalawar,+Jhalawar&output=embed"></iframe>
+      
+      <iframe class="map" title="Laser Classes Map" loading="lazy" src="https://www.google.com/maps?q=Laserclassesjhalawar,+Jhalawar&output=embed"></iframe>
     </section>
   </main>
 
-  <footer>© 2026 Laser Classes। सर्वाधिकार सुरक्षित।</footer>
+  <footer>© 2026 Laser Classes, Jhalawar। सर्वाधिकार सुरक्षित।</footer>
 </div>
-<a class="wa" href="https://walink.me/6s0veo" aria-label="WhatsApp पर बात करें"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a class="wa" href="https://walink.me/6s0veo" target="_blank" rel="noopener" aria-label="WhatsApp पर बात करें">
+  <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp
+</a>
+
 <script>
-/* Photos apne aap slide hoti hain. Speed badalni ho to 2500 (milliseconds) change karo. */
+/* Photos auto-scroll logic */
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
   document.querySelectorAll(".people, .gallery").forEach(function (row) {
