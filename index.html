@@ -8,12 +8,10 @@
 
 <!-- TITLE: Google search me yahi dikhega -->
 <title>Laser Classes Jhalawar | राजस्थान की प्रतियोगी परीक्षाओं की तैयारी</title>
-  <link rel="icon" href="favicon.png">
-<meta name="description" content="RAS, CET, पटवारी, SI, VDO, REET, BSTC, PTET और 4th Grade की संपूर्ण तैयारी। 3 दिन की फ्री डेमो क्लास, नियमित OMR टेस्ट और डाउट क्लास।">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
-  <!-- Google Site Name Structured Data -->
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Google ko site ka naam batane ke liye (search result me "GitHub" ki jagah ye naam dikhe) -->
+<meta property="og:site_name" content="Laser Classes Jhalawar">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -23,6 +21,10 @@
   "url": "https://laserclassesjhalawar.github.io/"
 }
 </script>
+<meta name="description" content="RAS, CET, पटवारी, SI, VDO, REET, BSTC, PTET और 4th Grade की संपूर्ण तैयारी। 3 दिन की फ्री डेमो क्लास, नियमित OMR टेस्ट और डाउट क्लास।">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Hind:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 /* ===== RANG (colors) ===== */
 :root {
@@ -135,7 +137,82 @@ details p { padding-top: .5rem; color: var(--soft); }
 footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
 .wa { position: fixed; right: 1rem; bottom: 1rem; z-index: 10; background: #fff; color: var(--ink); border: 2px solid #25d366; font-weight: 600; text-decoration: none; padding: .7rem 1.15rem; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
 .wa:hover { background: #e9fff1; }
+
+/* ===== ANIMATION: glow buttons, laser beam, scroll reveal ===== */
+@keyframes glowY { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,210,63,.55); } 50% { box-shadow: 0 0 18px 6px rgba(255,210,63,.55); } }
+@keyframes glowG { 0%, 100% { box-shadow: 0 2px 8px rgba(0,0,0,.25), 0 0 0 0 rgba(37,211,102,.5); } 50% { box-shadow: 0 2px 8px rgba(0,0,0,.25), 0 0 18px 6px rgba(37,211,102,.5); } }
+.btn.hl { animation: glowY 2.4s ease-in-out infinite; }   /* glow ki speed: 2.4s badlo */
+.hero .btn.wa-hero, .wa { animation: glowG 2.4s ease-in-out infinite; }
+
+/* Laser beam: neele hero me chamakti line upar se neeche aati-jaati hai */
+@keyframes laser { 0% { top: 0; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
+.hero { position: relative; overflow: hidden; }
+.hero > * { position: relative; z-index: 1; }
+.hero::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; pointer-events: none;
+  background: linear-gradient(90deg, transparent, #4b4bff 20%, #9fd0ff 50%, #ff3b5c 80%, transparent);
+  box-shadow: 0 0 14px 4px rgba(120,160,255,.65), 0 0 36px 10px rgba(75,75,255,.3);
+  animation: laser 5s ease-in-out infinite; }   /* laser ki speed: 5s badlo */
+
+/* Scroll animation: section neeche se halka upar uthkar aata hai (JS class lagati hai) */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn.hl, .hero .btn.wa-hero, .wa { animation: none; }
+  .hero::after { display: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ===== Mobile Call + WhatsApp bar ===== */
+.callbar { display: none; }
+@media (max-width: 47.99rem) {
+  .callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: grid; grid-template-columns: 1fr 1fr; background: #fff; border-top: 1px solid var(--rule); box-shadow: 0 -2px 10px rgba(0,0,0,.12); padding-bottom: env(safe-area-inset-bottom); }
+  .callbar a { display: flex; align-items: center; justify-content: center; gap: .5rem; padding: .85rem .5rem; font-weight: 700; text-decoration: none; }
+  .cb-call { background: var(--ink); color: #fff; }
+  .cb-wa { background: #25d366; color: #073b1c; }
+  .wa { display: none; }
+  body { padding-bottom: 3.4rem; }
+}
+
+/* ===== Latest Updates (notice board) ===== */
+.notices { list-style: none; padding: 0; border-top: 1px solid var(--rule); max-height: 20rem; overflow-y: auto; }
+.notices li { display: flex; gap: .8rem; align-items: baseline; padding: .8rem 0; border-bottom: 1px solid var(--rule); }
+.notices .badge { flex: none; background: var(--margin); color: #fff; font-weight: 700; font-size: .8rem; padding: .1rem .55rem; border-radius: 4px; }
+.notices a { font-weight: 600; }
+
+/* ===== Mobile: contact buttons 2-2 ek line me ===== */
+@media (max-width: 47.99rem) {
+  .contact .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+  .contact .buttons .btn { justify-content: center; text-align: center; padding: .65rem .4rem; font-size: .95rem; }
+}
 </style>
+<!-- Local business ki jaankari Google ke liye -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["EducationalOrganization", "LocalBusiness"],
+  "name": "Laser Classes Jhalawar",
+  "url": "https://laserclassesjhalawar.github.io/",
+  "telephone": ["+91-8875472511", "+91-9252120834"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "यूनियन बैंक के सामने, तांगा अड्डा, मंगलपुरा",
+    "addressLocality": "झालावाड़",
+    "addressRegion": "राजस्थान",
+    "addressCountry": "IN"
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "09:00",
+    "closes": "19:00"
+  },
+  "sameAs": [
+    "https://www.instagram.com/laser_classes_jhalawar",
+    "https://youtube.com/@laserclasses"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -151,7 +228,7 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
 <div class="page">
 
   <header>
-<a class="logo" href="#" style="display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none;">
+    <a class="logo" href="#" style="display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none;">
   <img src="favicon.png" alt="Laser Classes Logo" style="width: 36px; height: 36px; object-fit: contain; border-radius: 6px; background: none;">
   <span>Laser Classes</span>
 </a>
@@ -192,7 +269,8 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
       <div><dt>100%</dt><dd>नवीनतम सिलेबस आधारित नोट्स</dd></div>
       <div><dt>1 to 1</dt><dd>व्यक्तिगत डाउट समाधान</dd></div>
     </dl>
-<!-- UPCOMING BATCH ALERT BOX -->
+
+    <!-- UPCOMING BATCH ALERT BOX -->
 <section id="upcoming-batches" style="background: #ffffff; border: 2px dashed var(--rule); border-radius: 12px; padding: 1.25rem 1.5rem; margin: 1.5rem 0; box-shadow: 0 4px 14px rgba(15, 31, 102, 0.05);">
   <span class="tag" style="margin-bottom: 0.5rem;">📢 New Batch Alert</span>
   <h3 style="font-size: 1.35rem; margin: 0.4rem 0 0.3rem; color: var(--ink);">BSTC, CET एवं REET के नए बैच प्रारंभ!</h3>
@@ -200,6 +278,17 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
     सुबह और शाम दोनों पारियों में नए बैच संचालित हैं। सीटें सीमित हैं, अपनी सुविधानुसार समय और डेमो क्लास की जानकारी के लिए सीधे ऑफ़िस पधारें या हमारे नंबर पर संपर्क करें।
   </p>
 </section>
+
+    <!-- LATEST UPDATES: naya update jodna ho to ek <li>...</li> line copy-paste karo (sabse upar rakho) -->
+    <section id="updates">
+      <h2>ताज़ा अपडेट</h2>
+      <ul class="notices">
+        <li><span class="badge">NEW</span><span>3 दिन की फ्री डेमो क्लास उपलब्ध है। आज ही संपर्क करें।</span></li>
+        <li><span class="badge">टेस्ट</span><span>हर रविवार OMR टेस्ट। समय के लिए हमें कॉल करें।</span></li>
+        <li><span class="badge">डाउट</span><span>डाउट क्लास में सवाल पूछने की पूरी आज़ादी, विषय-विशेषज्ञ शिक्षकों के साथ।</span></li>
+      </ul>
+    </section>
+
     <!-- COURSES -->
     <section id="courses">
       <h2>हमारे प्रमुख कोर्स</h2>
@@ -267,166 +356,8 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
       <h2>हमारे शिक्षक</h2>
       <div class="people">
         <figure>
-          <img src="images/teacher1.jpeg" alt="शिक्षक 1" width="400" height="500" loading="lazy">
+          <img src="images/teacher1.jpeg" alt="मनीष कुलारिया" width="400" height="500" loading="lazy">
           <figcaption><strong>मनीष कुलारिया</strong><span>सामान्य हिन्दी</span></figcaption>
         </figure>
         <figure>
-          <img src="images/teacher2.png" alt="शिक्षक 2" width="400" height="500" loading="lazy">
-          <figcaption><strong>आर. एस. सिसोदिया </strong><span>सविधान एवं राज्यव्यवस्था</span></figcaption>
-        </figure>
-        <figure>
-          <img src="images/teacher3.png" alt="शिक्षक 3" width="400" height="500" loading="lazy">
-          <figcaption><strong>लोकेश गुर्जर</strong><span>रीज़निंग एवं गणित</span></figcaption>
-        </figure>
-        <figure>
-          <img src="images/teacher4.jpeg" alt="शिक्षक 3" width="400" height="500" loading="lazy">
-          <figcaption><strong>नविन सुमन</strong><span>राजस्थान इतिहास</span></figcaption>
-        </figure>
-        <figure>
-          <img src="images/teacher5.png" alt="शिक्षक 3" width="400" height="500" loading="lazy">
-          <figcaption><strong>मनोज मेरोठा</strong><span>राजस्थान भूगोल</span></figcaption>
-        </figure>
-        <figure>
-          <img src="images/teacher6.png" alt="शिक्षक 3" width="400" height="500" loading="lazy">
-          <figcaption><strong>हरिओम सुमन</strong><span>राजस्थान कला और संस्कृति</span></figcaption>
-        </figure>
-         <figure>
-          <img src="images/teacher7.png" alt="शिक्षक 3" width="400" height="500" loading="lazy">
-          <figcaption><strong>दुर्गालाल राठोर</strong><span>संस्कृत </span></figcaption>
-        </figure>
-         <figure>
-          <img src="images/teacher8.jpeg" alt="शिक्षक 3" width="400" height="500" loading="lazy">
-          <figcaption><strong>सुष्मिता मेम</strong><span>भारत का भूगोल</span></figcaption>
-        </figure>
-         <figure>
-          <img src="images/teacher9.png" alt="शिक्षक 3" width="400" height="500" loading="lazy">
-          <figcaption><strong>भानूप्रताप सिह </strong><span>कंप्यूटर</span></figcaption>
-        </figure>
-        <figure>
-          <img src="images/teacher.jpeg" alt="शिक्षक 3" width="400" height="500" loading="lazy">
-          <figcaption><strong>लखन राठोर</strong><span>विज्ञानं</span></figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery">
-      <h2>हमारी कोचिंग का माहौल</h2>
-      <p class="note">क्लासरूम, लाइब्रेरी और रविवार OMR टेस्ट के दौरान की तस्वीरें।</p>
-      <div class="gallery">
-        <img src="images/class1.jpg" alt="क्लासरूम" width="800" height="600" loading="lazy">
-        <img src="images/class2.jpg" alt="लाइब्रेरी" width="800" height="600" loading="lazy">
-        <img src="images/class3.jpg" alt="रविवार OMR टेस्ट" width="800" height="600" loading="lazy">
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq">
-      <h2>अक्सर पूछे जाने वाले सवाल</h2>
-      <details>
-        <summary>क्या मैं एडमिशन से पहले डेमो क्लास ले सकता हूँ?</summary>
-        <p>हाँ, आप सीधे संस्थान आकर 3 दिन की फ्री डेमो क्लास ले सकते हैं और पढ़ाने का तरीका परख सकते हैं।</p>
-      </details>
-      <details>
-        <summary>एडमिशन कैसे लें?</summary>
-        <p>आप कॉल या WhatsApp कर सकते हैं, या सीधे हमारे ऑफ़िस पधार सकते हैं। एडमिशन प्रक्रिया बहुत सरल है।</p>
-      </details>
-      <details>
-        <summary>क्या ऑनलाइन पढ़ाई और टेस्ट सीरीज उपलब्ध है?</summary>
-        <p>हाँ, हमारे मोबाइल ऐप पर ऑनलाइन मॉक टेस्ट और संपूर्ण स्टडी मटेरियल उपलब्ध है।</p>
-      </details>
-      <details>
-        <summary>फीस और किस्तों (Installment) की क्या सुविधा है?</summary>
-        <p>कोर्स के अनुसार उचित फीस रखी गई है। विस्तृत जानकारी के लिए आप हमें WhatsApp या कॉल कर सकते हैं।</p>
-      </details>
-    </section>
-
-<section id="youtube">
-  <h2>एडमिशन से पहले ज़रूर देखें</h2>
-  <span class="tag">📢 एडमिशन लेने से पहले यह 2 मिनट का वीडियो ज़रूर देखें</span>
-  <div class="videos" style="max-width: 40rem;">
-    <iframe src="https://www.youtube.com/embed/ubxNAV6s-Jg" title="Laser Classes: एडमिशन से पहले देखें" loading="lazy" allowfullscreen></iframe>
-  </div>
-</section>
-
-    <!-- LATEST FROM YOUTUBE -->
-    <section id="videos">
-      <span class="tag">▶ LATEST FROM YOUTUBE</span>
-      <h2>हमारे लेटेस्ट फ्री सेशन देखें</h2>
-      <p class="note">फ्री डेमो क्लास, मैराथन सेशन और परीक्षा की रणनीति के वीडियो।</p>
-      <div class="vgrid">
-        <button class="vcard" data-id="c3p4831C6gw" aria-label="वीडियो चलाएँ"></button>
-        <button class="vcard" data-id="aVXnDNnw-Kw" aria-label="वीडियो चलाएँ"></button>
-        <button class="vcard" data-id="EomB4qEBmtg" aria-label="वीडियो चलाएँ"></button>
-        <button class="vcard" data-id="6U1fhY6Mcpw" aria-label="वीडियो चलाएँ"></button>
-        <button class="vcard" data-id="XRhjnQ1kENQ" aria-label="वीडियो चलाएँ"></button>
-      </div>
-    </section>
-    
-    <!-- CONTACT -->
-    <section id="contact" class="contact">
-      <h2>संपर्क करें</h2>
-      <p><strong>पता:</strong> यूनियन बैंक के सामने तांगा अड्डा मंगलपुरा, झालावाड़, राजस्थान</p>
-      <p><strong>फ़ोन:</strong> <a href="tel:+918875472511">88754 72511</a> · <a href="tel:+919252120834">92521 20834</a></p>
-      <p><strong>ऑफ़िस समय:</strong> सुबह 9 से शाम 7 बजे (रविवार: केवल टेस्ट एवं डाउट सत्र)</p>
-      
-      <div class="buttons">
-        <a class="btn" href="https://walink.me/6s0veo" target="_blank" rel="noopener">
-          <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp करें
-        </a>
-        <a class="btn alt" href="https://youtube.com/@laserclasses" target="_blank" rel="noopener">
-          <svg class="ic" aria-hidden="true"><use href="#i-yt"/></svg>YouTube चैनल देखें
-        </a>
-        <a class="btn alt" href="https://www.instagram.com/laser_classes_jhalawar" target="_blank" rel="noopener">
-          <svg class="ic" aria-hidden="true"><use href="#i-ig"/></svg>Instagram देखें
-        </a>
-        <a class="btn alt" href="https://maps.app.goo.gl/fHx7DEpm4M8mp63F8" target="_blank" rel="noopener">Google Maps पर देखें</a>
-      </div>
-      
-      <iframe class="map" title="Laser Classes Map" loading="lazy" src="https://www.google.com/maps?q=Laserclassesjhalawar,+Jhalawar&output=embed"></iframe>
-    </section>
-  </main>
-
-  <footer>© 2026 Laser Classes, Jhalawar। सर्वाधिकार सुरक्षित।</footer>
-</div>
-
-<!-- FLOATING WHATSAPP BUTTON -->
-<a class="wa" href="https://walink.me/6s0veo" target="_blank" rel="noopener" aria-label="WhatsApp पर बात करें">
-  <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp
-</a>
-
-<script>
-/* Photos auto-scroll logic */
-(function () {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  document.querySelectorAll(".people, .gallery").forEach(function (row) {
-    var pausedUntil = 0;
-    function pause(ms) { pausedUntil = Date.now() + ms; }
-    ["mouseenter", "touchstart", "focusin", "wheel"].forEach(function (ev) {
-      row.addEventListener(ev, function () { pause(6000); }, { passive: true });
-    });
-    setInterval(function () {
-      if (Date.now() < pausedUntil || !row.firstElementChild) return;
-      var gap = parseFloat(getComputedStyle(row).columnGap) || 0;
-      var step = row.firstElementChild.getBoundingClientRect().width + gap;
-      if (row.scrollLeft + row.clientWidth >= row.scrollWidth - 4) {
-        row.scrollTo({ left: 0, behavior: "smooth" });
-      } else {
-        row.scrollBy({ left: step, behavior: "smooth" });
-      }
-    }, 2500);
-  });
-})();
-</script>
-<script>
-/* YouTube videos: thumbnail par click karte hi video wahin play hoti hai */
-document.querySelectorAll(".vcard").forEach(function (c) {
-  c.style.backgroundImage = "url(https://img.youtube.com/vi/" + c.dataset.id + "/hqdefault.jpg)";
-  c.addEventListener("click", function () {
-    c.classList.add("on");
-    c.innerHTML = '<iframe src="https://www.youtube.com/embed/' + c.dataset.id + '?autoplay=1" title="Laser Classes video" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
-  }, { once: true });
-});
-</script>
-</body>
-</html>
+          <img src="images/teacher2.png" alt="आर. एस. सिसोदिया" width="400" height="
