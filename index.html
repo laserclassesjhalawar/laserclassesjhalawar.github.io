@@ -80,7 +80,9 @@ nav a:hover { border-bottom-color: var(--margin); }
 .hero .btn.wa-hero:hover { background: #1eb956; border-color: #1eb956; }
 
 /* ===== Stats ===== */
-.stats { display: flex; flex-wrap: wrap; gap: 1rem 3rem; padding: 1.25rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-top: 1.5rem; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 1rem; padding: 1.25rem 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-top: 1.5rem; }
+.stats dd { font-size: .95rem; line-height: 1.4; }
+@media (min-width: 48rem) { .stats { display: flex; flex-wrap: wrap; gap: 1rem 3rem; } .stats dd { font-size: 1rem; } }
 .stats dt { font: 800 1.8rem var(--head); line-height: 1.1; color: var(--accent); }
 .stats dd { margin: 0; color: var(--soft); }
 
@@ -121,7 +123,17 @@ details p { padding-top: .5rem; color: var(--soft); }
 /* ===== YouTube videos (admission video + latest sessions) ===== */
 .videos { margin-bottom: 1.25rem; }
 .videos iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; background: #000; border-radius: 6px; }
-.vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)); gap: 1rem; }
+/* Videos: chhote cards, 2 row, side me slide. Card ka size: 11rem (mobile) / 14rem (laptop) badlo */
+.vgrid { display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: 11rem; gap: .75rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .75rem; scrollbar-width: thin; }
+.vgrid > * { scroll-snap-align: start; width: 100%; }
+@media (min-width: 48rem) { .vgrid { grid-auto-columns: 14rem; } }
+
+/* Video popup (click karne par badi video) */
+.vmodal { position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,.85); display: grid; place-items: center; padding: 1rem; }
+.vmodal[hidden] { display: none; }
+.vbox { width: min(100%, 56rem); aspect-ratio: 16 / 9; }
+.vbox iframe { width: 100%; height: 100%; border: 0; border-radius: 8px; }
+.vclose { position: absolute; top: .75rem; right: .75rem; width: 2.6rem; height: 2.6rem; border: 0; border-radius: 50%; background: #fff; color: var(--ink); font-size: 1.2rem; cursor: pointer; }
 .vcard { position: relative; aspect-ratio: 16 / 9; border: 0; padding: 0; cursor: pointer; background: #000 center / cover no-repeat; border-radius: 8px; overflow: hidden; }
 .vcard::after { content: "▶"; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 3.4rem; height: 2.4rem; display: grid; place-items: center; background: #f00; color: #fff; border-radius: .7rem; font-size: 1.1rem; }
 .vcard:hover::after { background: #c00; }
@@ -376,7 +388,7 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
           <figcaption><strong>मनोज मेरोठा</strong><span>राजस्थान भूगोल</span></figcaption>
         </figure>
         <figure>
-          <img src="images/teacher6.png" alt="हरिओम सुमन" width="400" height="500" loading="lazy">
+          <img src="images/teacher6.jpeg" alt="हरिओम सुमन" width="400" height="500" loading="lazy">
           <figcaption><strong>हरिओम सुमन</strong><span>राजस्थान कला और संस्कृति</span></figcaption>
         </figure>
          <figure>
@@ -479,6 +491,12 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
   <a class="cb-wa" href="https://walink.me/6s0veo" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
 </div>
 
+<!-- VIDEO POPUP -->
+<div id="vmodal" class="vmodal" hidden>
+  <button class="vclose" aria-label="बंद करें">✕</button>
+  <div class="vbox"></div>
+</div>
+
 <!-- FLOATING WHATSAPP BUTTON -->
 <a class="wa" href="https://walink.me/6s0veo" target="_blank" rel="noopener" aria-label="WhatsApp पर बात करें">
   <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp
@@ -488,7 +506,7 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
 /* Photos auto-scroll logic */
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  document.querySelectorAll(".people, .gallery").forEach(function (row) {
+  document.querySelectorAll(".people, .gallery, .vgrid").forEach(function (row) {
     var pausedUntil = 0;
     function pause(ms) { pausedUntil = Date.now() + ms; }
     ["mouseenter", "touchstart", "focusin", "wheel"].forEach(function (ev) {
@@ -508,14 +526,20 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
 })();
 </script>
 <script>
-/* YouTube videos: thumbnail par click karte hi video wahin play hoti hai */
-document.querySelectorAll(".vcard").forEach(function (c) {
-  c.style.backgroundImage = "url(https://img.youtube.com/vi/" + c.dataset.id + "/hqdefault.jpg)";
-  c.addEventListener("click", function () {
-    c.classList.add("on");
-    c.innerHTML = '<iframe src="https://www.youtube.com/embed/' + c.dataset.id + '?autoplay=1" title="Laser Classes video" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
-  }, { once: true });
-});
+/* YouTube videos: thumbnail par click karne par badi video popup me chalti hai */
+(function () {
+  var modal = document.getElementById("vmodal"), box = modal.querySelector(".vbox");
+  function close() { modal.hidden = true; box.innerHTML = ""; }
+  document.querySelectorAll(".vcard").forEach(function (c) {
+    c.style.backgroundImage = "url(https://img.youtube.com/vi/" + c.dataset.id + "/hqdefault.jpg)";
+    c.addEventListener("click", function () {
+      box.innerHTML = '<iframe src="https://www.youtube.com/embed/' + c.dataset.id + '?autoplay=1" title="Laser Classes video" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>';
+      modal.hidden = false;
+    });
+  });
+  modal.addEventListener("click", function (e) { if (e.target === modal || e.target.classList.contains("vclose")) close(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+})();
 </script>
 <script>
 /* Scroll animation + stats counter (phone me "reduce motion" on ho to ye band rahega) */
