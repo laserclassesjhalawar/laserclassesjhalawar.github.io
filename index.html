@@ -797,8 +797,40 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
     </div>
 
     <!-- REET Folder -->
-    <div class="fcontent" id="folder-reet" style="display: grid; gap: 0.65rem;">
-      <a class="btn alt" href="pdf/reet/syllabus.pdf" target="_blank" rel="noopener">📄 REET सिलेबस PDF</a>
+    <div class="fcontent" id="folder-reet" style="display: none; gap: 0.65rem;">
+      <!-- Main REET Menu (Default view inside REET) -->
+      <div id="reet-main-menu" style="display: grid; gap: 0.75rem;">
+        <a class="btn alt" href="pdf/reet/level2-mains-syllabus.pdf" target="_blank" rel="noopener" style="padding: 0.8rem 1.2rem; font-size: 1.05rem;">📄 REET Level 2 Mains Syllabus</a>
+        <a class="btn alt" href="pdf/reet/level2-pre-syllabus.pdf" target="_blank" rel="noopener" style="padding: 0.8rem 1.2rem; font-size: 1.05rem;">📄 REET Level 2 Pre Syllabus</a>
+        <a class="btn alt" href="pdf/reet/level1-mains-syllabus.pdf" target="_blank" rel="noopener" style="padding: 0.8rem 1.2rem; font-size: 1.05rem;">📄 REET Level 1st Mains Syllabus</a>
+        <a class="btn alt" href="pdf/reet/level1-pre-syllabus.pdf" target="_blank" rel="noopener" style="padding: 0.8rem 1.2rem; font-size: 1.05rem;">📄 REET Level 1st Pre Syllabus</a>
+        
+        <button type="button" class="btn hl" id="openReetTests" style="justify-content: space-between; padding: 0.8rem 1.2rem; font-size: 1.05rem;">
+          <span>📁 REET टेस्ट पेपर फोल्डर (15 टेस्ट)</span>
+          <span>▶</span>
+        </button>
+      </div>
+
+      <!-- REET Test Sub-Folder (1 to 15 Tests) -->
+      <div id="reet-test-list" style="display: none; gap: 0.65rem; max-height: 18rem; overflow-y: auto; padding-right: 0.3rem;">
+        <button type="button" class="btn alt" id="backToReetMain" style="font-size: 0.9rem; padding: 0.4rem 0.9rem; width: fit-content; margin-bottom: 0.25rem;">← पीछे जाएं</button>
+        
+        <a class="btn alt" href="pdf/reet/test/paper1.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 1</a>
+        <a class="btn alt" href="pdf/reet/test/paper2.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 2</a>
+        <a class="btn alt" href="pdf/reet/test/paper3.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 3</a>
+        <a class="btn alt" href="pdf/reet/test/paper4.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 4</a>
+        <a class="btn alt" href="pdf/reet/test/paper5.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 5</a>
+        <a class="btn alt" href="pdf/reet/test/paper6.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 6</a>
+        <a class="btn alt" href="pdf/reet/test/paper7.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 7</a>
+        <a class="btn alt" href="pdf/reet/test/paper8.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 8</a>
+        <a class="btn alt" href="pdf/reet/test/paper9.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 9</a>
+        <a class="btn alt" href="pdf/reet/test/paper10.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 10</a>
+        <a class="btn alt" href="pdf/reet/test/paper11.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 11</a>
+        <a class="btn alt" href="pdf/reet/test/paper12.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 12</a>
+        <a class="btn alt" href="pdf/reet/test/paper13.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 13</a>
+        <a class="btn alt" href="pdf/reet/test/paper14.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 14</a>
+        <a class="btn alt" href="pdf/reet/test/paper15.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 REET मॉडल टेस्ट पेपर 15</a>
+      </div>
     </div>
 
     <!-- BSTC Folder -->
@@ -1056,44 +1088,31 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
   });
 })();
 </script>
-  <script>
-/* BSTC Test Sub-folder toggle logic */
+<script>
+/* All Courses Test Sub-folder toggle logic */
 (function() {
-  var openTestsBtn = document.getElementById("openBstcTests");
-  var bstcMain = document.getElementById("bstc-main-menu");
-  var bstcTests = document.getElementById("bstc-test-list");
-  var backBtn = document.getElementById("backToBstcMain");
+  function setupToggle(btnId, mainId, listId, backId) {
+    var openBtn = document.getElementById(btnId);
+    var mainDiv = document.getElementById(mainId);
+    var listDiv = document.getElementById(listId);
+    var backBtn = document.getElementById(backId);
 
-  if (openTestsBtn && bstcMain && bstcTests && backBtn) {
-    openTestsBtn.addEventListener("click", function() {
-      bstcMain.style.display = "none";
-      bstcTests.style.display = "grid";
-    });
-    backBtn.addEventListener("click", function() {
-      bstcTests.style.display = "none";
-      bstcMain.style.display = "grid";
-    });
+    if (openBtn && mainDiv && listDiv && backBtn) {
+      openBtn.addEventListener("click", function() {
+        mainDiv.style.display = "none";
+        listDiv.style.display = "grid";
+      });
+      backBtn.addEventListener("click", function() {
+        listDiv.style.display = "none";
+        mainDiv.style.display = "grid";
+      });
+    }
   }
-})();
-</script>
-  <script>
-/* CET Test Sub-folder toggle logic */
-(function() {
-  var openTestsBtn = document.getElementById("openCetTests");
-  var cetMain = document.getElementById("cet-main-menu");
-  var cetTests = document.getElementById("cet-test-list");
-  var backBtn = document.getElementById("backToCetMain");
 
-  if (openTestsBtn && cetMain && cetTests && backBtn) {
-    openTestsBtn.addEventListener("click", function() {
-      cetMain.style.display = "none";
-      cetTests.style.display = "grid";
-    });
-    backBtn.addEventListener("click", function() {
-      cetTests.style.display = "none";
-      cetMain.style.display = "grid";
-    });
-  }
+  // CET, BSTC और REET तीनों के लिए एक साथ सेट कर दिया
+  setupToggle("openCetTests", "cet-main-menu", "cet-test-list", "backToCetMain");
+  setupToggle("openBstcTests", "bstc-main-menu", "bstc-test-list", "backToBstcMain");
+  setupToggle("openReetTests", "reet-main-menu", "reet-test-list", "backToReetMain");
 })();
 </script>
 </body>
