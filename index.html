@@ -9,6 +9,10 @@
 <!-- TITLE: Google search me yahi dikhega -->
 <title>Laser Classes Jhalawar | राजस्थान की प्रतियोगी परीक्षाओं की तैयारी</title>
 <link rel="icon" type="image/png" href="favicon.png">
+<!-- PWA: phone me "Add to Home Screen" karne par app jaisa icon/naam dikhega -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta name="theme-color" content="#0f1f66">
 
 <!-- Google ko site ka naam batane ke liye (search result me "GitHub" ki jagah ye naam dikhe) -->
 <meta property="og:site_name" content="Laser Classes Jhalawar">
@@ -17,7 +21,7 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Laser Classes Jhalawar",
-  "alternateName": ["Laser Classes", "Laser Classes झालावाड़"],
+  "alternateName": ["Laser Classes", "Laser Classes झालावाड़", "laserclassesjhalawar.github.io"],
   "url": "https://laserclassesjhalawar.github.io/"
 }
 </script>
@@ -50,30 +54,121 @@ a { color: inherit; }
 @media (min-width: 62rem) { .page { padding-left: 3rem; } }
 
 h1, h2, h3 { font-family: var(--head); line-height: 1.2; color: var(--ink); }
-h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 1rem; }
-h2::after { content: ""; display: block; width: 3rem; height: 4px; margin-top: .45rem; background: var(--margin); }
+
+/* ===== Heading ke peeche liquid glass panel ===== */
+h2 {
+  display: inline-flex; align-items: center;
+  font-size: 1.5rem; font-weight: 800; margin-bottom: 1.2rem;
+  padding: .55rem 1.1rem; border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.18));
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.55);
+  box-shadow: 0 1px 1px rgba(255,255,255,.6) inset, 0 -6px 10px rgba(0,0,0,.06) inset, 0 6px 16px rgba(15,31,102,.14);
+}
+h2::after { content: none; }
+@media (min-width: 48rem) { h2 { font-size: 1.7rem; } }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  h2, .tag, .logo, nav a { background: #fff; box-shadow: none; }
+}
 section { padding: 3rem 0 1rem; }
 
 /* ===== Header ===== */
 header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1rem 0; flex-wrap: wrap; }
-.logo { font: 800 1.35rem var(--head); text-decoration: none; }
-nav { order: 3; width: 100%; display: flex; gap: .25rem 1.1rem; overflow-x: auto; white-space: nowrap; padding-bottom: .4rem; }
-nav a { text-decoration: none; font-weight: 600; padding: .25rem 0; border-bottom: 2px solid transparent; }
-nav a:hover { border-bottom-color: var(--margin); }
+.logo {
+  font: 800 1.45rem var(--head); text-decoration: none; color: var(--ink); letter-spacing: .03em;
+  padding: .4rem .95rem .4rem .5rem; border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.18));
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.55);
+  box-shadow: 0 1px 1px rgba(255,255,255,.6) inset, 0 -6px 10px rgba(0,0,0,.06) inset, 0 6px 16px rgba(15,31,102,.14);
+}
+nav { order: 3; width: 100%; display: flex; gap: .5rem; overflow-x: auto; white-space: nowrap; padding-bottom: .4rem; }
+nav a {
+  display: inline-flex; align-items: center; text-decoration: none; font-weight: 600; color: var(--ink);
+  padding: .45rem 1rem; border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255,255,255,.5), rgba(255,255,255,.15));
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.5);
+  box-shadow: 0 1px 1px rgba(255,255,255,.55) inset, 0 4px 10px rgba(15,31,102,.1);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+nav a:hover { box-shadow: 0 1px 1px rgba(255,255,255,.65) inset, 0 6px 14px rgba(15,31,102,.18); }
+nav a:active { transform: scale(.96); }
 @media (min-width: 48rem) { nav { order: 0; width: auto; padding: 0; } }
 
-.btn { display: inline-flex; align-items: center; gap: .5rem; padding: .65rem 1.25rem; border: 2px solid var(--ink); border-radius: 6px; font-weight: 600; text-decoration: none; background: var(--ink); color: #fff; }
-.btn.alt { background: transparent; color: var(--ink); }
-.btn.hl { background: var(--mark); color: var(--ink); border-color: var(--mark); }
-.btn:hover { background: var(--mark); color: var(--ink); }
+/* Sticky header */
+header#siteHeader { position: sticky; top: 0; z-index: 25; background: var(--paper); transition: padding .25s ease; }
+header#siteHeader.scrolled { padding: .5rem 0; }
+header#siteHeader.scrolled .logo { font-size: 1.2rem; padding: .3rem .8rem .3rem .4rem; }
+header#siteHeader.scrolled .logo img { width: 28px; height: 28px; }
+
+/* ===== LIQUID GLASS buttons ===== */
+.btn {
+  position: relative; display: inline-flex; align-items: center; gap: .5rem;
+  padding: .7rem 1.35rem; border-radius: 999px; font-weight: 600; text-decoration: none;
+  color: var(--ink); isolation: isolate; overflow: hidden;
+  background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.18));
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.55);
+  box-shadow: 0 1px 1px rgba(255,255,255,.6) inset, 0 -6px 10px rgba(0,0,0,.08) inset, 0 6px 16px rgba(15,31,102,.18);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn::before { content: ""; position: absolute; inset: 0; border-radius: inherit; z-index: -1;
+  background: radial-gradient(120% 140% at 15% 0%, rgba(255,255,255,.65), transparent 55%); }
+.btn:active { transform: scale(.97); }
+.btn.alt { color: var(--ink); background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.08)); }
+.btn.hl { color: var(--ink); background: linear-gradient(180deg, rgba(255,226,120,.75), rgba(255,210,63,.45));
+  border-color: rgba(255,255,255,.65); }
+.btn:hover { box-shadow: 0 1px 1px rgba(255,255,255,.7) inset, 0 -6px 10px rgba(0,0,0,.08) inset, 0 10px 22px rgba(15,31,102,.26); }
+.hero .btn { color: #fff; background: linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,255,255,.06));
+  border-color: rgba(255,255,255,.35); }
+.hero .btn.hl { color: var(--ink); background: linear-gradient(180deg, rgba(255,226,120,.8), rgba(255,210,63,.5)); }
+.hero .btn.wa-hero { color: #fff; background: linear-gradient(180deg, rgba(37,211,102,.75), rgba(30,185,86,.55)); }
+.hero .tag { color: #fff; background: linear-gradient(180deg, rgba(255,255,255,.3), rgba(255,255,255,.08)); border-color: rgba(255,255,255,.4); }
+.hero-wave { display: block; width: 100%; height: 1.6rem; margin-top: 1.5rem; }
+.hero-wave path { fill: var(--paper); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .btn, .hero .btn { background: var(--ink); color: #fff; }
+  .btn.alt { background: transparent; color: var(--ink); }
+}
 .ic { width: 1.35rem; height: 1.35rem; flex: none; }
+
+/* ===== Attention banner ===== */
+.attn-banner {
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  padding: .55rem 2.2rem .55rem 1rem; margin-bottom: .5rem; border-radius: 10px; position: relative;
+  background: linear-gradient(90deg, var(--margin), var(--accent));
+  color: #fff; font-weight: 700; text-align: center; overflow: hidden;
+  animation: attnPulse 2.4s ease-in-out infinite;
+}
+@keyframes attnPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); } 50% { box-shadow: 0 0 16px 2px rgba(0,0,0,.15); } }
+.attn-banner span { display: none; font-size: .92rem; }
+.attn-banner span.show { display: inline; }
+.attn-close { position: absolute; right: .5rem; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.25); border: none; color: #fff; width: 1.5rem; height: 1.5rem; border-radius: 50%; cursor: pointer; font-size: .85rem; line-height: 1; }
+.attn-close:hover { background: rgba(255,255,255,.4); }
+@media (prefers-reduced-motion: reduce) { .attn-banner { animation: none; } }
 
 /* ===== Hero ===== */
 .hero { margin-top: .5rem; padding: 3rem 1.25rem 2.5rem; background-color: var(--ink); background-image: repeating-linear-gradient(to bottom, transparent 0 35px, rgba(255,255,255,.08) 35px 36px); }
 .hero h1 { color: #fff; font-size: clamp(2.1rem, 6vw, 3.6rem); font-weight: 800; max-width: 18ch; }
 .hero p { display: block; margin: 1rem 0 1.5rem; color: #dbe4ff; max-width: 36rem; }
-.tag { display: inline-block; background: var(--mark); color: var(--ink); padding: .2rem .8rem; font-weight: 700; border-radius: 4px; margin-bottom: 1rem; }
-.hero .buttons { display: flex; flex-wrap: wrap; gap: .75rem; }
+.tag {
+  display: inline-flex; align-items: center; gap: .4rem; color: var(--ink);
+  padding: .4rem 1rem; font-weight: 700; border-radius: 999px; margin-bottom: 1rem;
+  background: linear-gradient(180deg, rgba(255,226,120,.78), rgba(255,210,63,.5));
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255,255,255,.55);
+  box-shadow: 0 1px 1px rgba(255,255,255,.6) inset, 0 -6px 10px rgba(0,0,0,.06) inset, 0 6px 16px rgba(15,31,102,.14);
+}
+.hero .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+.hero .buttons .btn { justify-content: center; text-align: center; padding: .62rem .5rem; font-size: .92rem; white-space: nowrap; }
+.hero .buttons .ic { width: 1.1rem; height: 1.1rem; }
+@media (min-width: 30rem) { .hero .buttons .btn { font-size: 1rem; padding: .7rem 1.1rem; } .hero .buttons .ic { width: 1.35rem; height: 1.35rem; } }
 .hero .btn.hl { background: var(--mark); border-color: var(--mark); color: var(--ink); }
 .hero .btn.hl:hover { background: #fff; border-color: #fff; }
 .hero .btn.wa-hero { background: #25d366; border-color: #25d366; color: #fff; }
@@ -92,6 +187,37 @@ nav a:hover { border-bottom-color: var(--margin); }
 .lines strong { font: 600 1.15rem var(--head); }
 .lines span { color: var(--soft); }
 
+/* Course cards */
+.course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 1rem; }
+.course-card {
+  display: flex; flex-direction: column; gap: .3rem; padding: 1.1rem 1.2rem; border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.2));
+  -webkit-backdrop-filter: blur(12px) saturate(150%); backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(255,255,255,.5);
+  box-shadow: 0 1px 1px rgba(255,255,255,.6) inset, 0 6px 16px rgba(15,31,102,.1);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.course-card:hover { transform: translateY(-4px); box-shadow: 0 1px 1px rgba(255,255,255,.65) inset, 0 12px 22px rgba(15,31,102,.18); }
+.course-icon { font-size: 1.6rem; }
+.course-card strong { font: 600 1.1rem var(--head); }
+.course-card span:not(.course-icon) { color: var(--soft); font-size: .92rem; }
+
+/* Admission steps */
+.steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr)); gap: 1rem; counter-reset: step; }
+.step {
+  display: flex; flex-direction: column; gap: .3rem; padding: 1.1rem 1rem; border-radius: 14px; text-align: center; align-items: center;
+  background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.2));
+  -webkit-backdrop-filter: blur(12px) saturate(150%); backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(255,255,255,.5);
+  box-shadow: 0 1px 1px rgba(255,255,255,.6) inset, 0 6px 16px rgba(15,31,102,.1);
+}
+.step-no {
+  width: 2.2rem; height: 2.2rem; display: grid; place-items: center; border-radius: 50%; font-weight: 800;
+  background: var(--ink); color: #fff;
+}
+.step strong { font: 600 1.05rem var(--head); }
+.step span:not(.step-no) { color: var(--soft); font-size: .9rem; }
+
 /* ===== Why Us ===== */
 .why { list-style: none; padding: 0; display: grid; gap: .7rem; }
 .why li { padding-left: 1.6rem; position: relative; }
@@ -104,10 +230,49 @@ img { display: block; width: 100%; height: auto; background: var(--rule); object
 .people > * { width: 9rem; }
 .people img { aspect-ratio: 4 / 5; }
 .people figcaption { padding-top: .5rem; line-height: 1.4; }
+.people figure { position: relative; transition: transform .2s ease; }
+.people figure:hover { transform: translateY(-5px); }
+.badge-selected { position: absolute; top: .4rem; left: .4rem; z-index: 2; background: #16a34a; color: #fff; font-size: .72rem; font-weight: 700; padding: .15rem .5rem; border-radius: 999px; box-shadow: 0 2px 6px rgba(0,0,0,.25); }
 .people strong { display: block; font: 600 1.05rem var(--head); }
 .people span { color: var(--soft); font-size: .88rem; }
 .gallery > * { width: 13rem; }
+.people.two-row { display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: 7rem; gap: .7rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .75rem; scrollbar-width: thin; }
+.people.two-row > * { scroll-snap-align: start; width: 100%; }
+@media (min-width: 48rem) { .people.two-row { grid-auto-columns: 9rem; } }
 .gallery img { aspect-ratio: 4 / 3; }
+.gallery img.zoomable { cursor: zoom-in; transition: transform .2s ease; }
+.gallery img.zoomable:hover { transform: scale(1.03); }
+
+/* Student reviews */
+.rating-chip { display: inline-flex; align-items: center; font-weight: 700; text-decoration: none; color: var(--ink);
+  padding: .3rem .8rem; border-radius: 999px; background: linear-gradient(180deg, rgba(255,226,120,.78), rgba(255,210,63,.5));
+  border: 1px solid rgba(255,255,255,.55); }
+.review-grid.two-row {
+  display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: 13rem;
+  gap: .7rem; margin-top: .5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .75rem; scrollbar-width: thin;
+}
+.review-grid.two-row > * { scroll-snap-align: start; width: 100%; }
+@media (min-width: 42rem) { .review-grid.two-row { grid-auto-columns: 16rem; } }
+.review-card {
+  padding: .8rem .85rem; border-radius: 14px; transition: transform .2s ease;
+  background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.2));
+  -webkit-backdrop-filter: blur(12px) saturate(150%); backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(255,255,255,.5);
+  box-shadow: 0 1px 1px rgba(255,255,255,.6) inset, 0 6px 16px rgba(15,31,102,.1);
+}
+.review-card:hover { transform: translateY(-4px); }
+.review-card p {
+  margin-bottom: .5rem; font-style: italic; font-size: .78rem; line-height: 1.5;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden;
+}
+.review-card strong { display: block; font: 600 .82rem var(--head); }
+.review-card span { color: var(--soft); font-size: .72rem; }
+@media (min-width: 42rem) {
+  .review-card { padding: 1.1rem 1.2rem; }
+  .review-card p { font-size: .95rem; line-height: 1.6; -webkit-line-clamp: 4; }
+  .review-card strong { font-size: .95rem; }
+  .review-card span { font-size: .85rem; }
+}
 @media (min-width: 48rem) {
   .people > * { width: 11rem; }
   .gallery > * { width: 17rem; }
@@ -120,15 +285,14 @@ details:first-of-type { border-top: 1px solid var(--rule); }
 summary { cursor: pointer; font: 600 1.1rem var(--head); }
 details p { padding-top: .5rem; color: var(--soft); }
 
-/* ===== YouTube videos (admission video + latest sessions) ===== */
+/* ===== YouTube videos ===== */
 .videos { margin-bottom: 1.25rem; }
 .videos iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; background: #000; border-radius: 6px; }
-/* Videos: chhote cards, 2 row, side me slide. Card ka size: 11rem (mobile) / 14rem (laptop) badlo */
 .vgrid { display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: 11rem; gap: .75rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .75rem; scrollbar-width: thin; }
 .vgrid > * { scroll-snap-align: start; width: 100%; }
 @media (min-width: 48rem) { .vgrid { grid-auto-columns: 14rem; } }
 
-/* Video popup (click karne par badi video) */
+/* Video popup */
 .vmodal { position: fixed; inset: 0; z-index: 50; background: rgba(0,0,0,.85); display: grid; place-items: center; padding: 1rem; }
 .vmodal[hidden] { display: none; }
 .vbox { width: min(100%, 56rem); aspect-ratio: 16 / 9; }
@@ -147,25 +311,23 @@ details p { padding-top: .5rem; color: var(--soft); }
 
 /* ===== Footer & Floating WhatsApp ===== */
 footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
-.wa { position: fixed; right: 1rem; bottom: 1rem; z-index: 10; background: #fff; color: var(--ink); border: 2px solid #25d366; font-weight: 600; text-decoration: none; padding: .7rem 1.15rem; border-radius: 999px; box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.wa { position: fixed; right: 1rem; bottom: 1rem; z-index: 10; background: rgba(255,255,255,.6); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); color: var(--ink); border: 1px solid rgba(37,211,102,.6); font-weight: 600; text-decoration: none; padding: .7rem 1.15rem; border-radius: 999px; box-shadow: 0 1px 1px rgba(255,255,255,.6) inset, 0 6px 16px rgba(0,0,0,.2); }
 .wa:hover { background: #e9fff1; }
 
-/* ===== ANIMATION: glow buttons, laser beam, scroll reveal ===== */
+/* ===== ANIMATION ===== */
 @keyframes glowY { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,210,63,.55); } 50% { box-shadow: 0 0 18px 6px rgba(255,210,63,.55); } }
 @keyframes glowG { 0%, 100% { box-shadow: 0 2px 8px rgba(0,0,0,.25), 0 0 0 0 rgba(37,211,102,.5); } 50% { box-shadow: 0 2px 8px rgba(0,0,0,.25), 0 0 18px 6px rgba(37,211,102,.5); } }
-.btn.hl { animation: glowY 2.4s ease-in-out infinite; }   /* glow ki speed: 2.4s badlo */
+.btn.hl { animation: glowY 2.4s ease-in-out infinite; }
 .hero .btn.wa-hero, .wa { animation: glowG 2.4s ease-in-out infinite; }
 
-/* Laser beam: neele hero me chamakti line upar se neeche aati-jaati hai */
 @keyframes laser { 0% { top: 0; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
 .hero { position: relative; overflow: hidden; }
 .hero > * { position: relative; z-index: 1; }
 .hero::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 3px; pointer-events: none;
   background: linear-gradient(90deg, transparent, #4b4bff 20%, #9fd0ff 50%, #ff3b5c 80%, transparent);
   box-shadow: 0 0 14px 4px rgba(120,160,255,.65), 0 0 36px 10px rgba(75,75,255,.3);
-  animation: laser 5s ease-in-out infinite; }   /* laser ki speed: 5s badlo */
+  animation: laser 5s ease-in-out infinite; }
 
-/* Scroll animation: section neeche se halka upar uthkar aata hai (JS class lagati hai) */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.in { opacity: 1; transform: none; }
 
@@ -180,19 +342,19 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
 @media (max-width: 47.99rem) {
   .callbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 20; display: grid; grid-template-columns: 1fr 1fr; background: #fff; border-top: 1px solid var(--rule); box-shadow: 0 -2px 10px rgba(0,0,0,.12); padding-bottom: env(safe-area-inset-bottom); }
   .callbar a { display: flex; align-items: center; justify-content: center; gap: .5rem; padding: .85rem .5rem; font-weight: 700; text-decoration: none; }
-  .cb-call { background: var(--ink); color: #fff; }
-  .cb-wa { background: #25d366; color: #073b1c; }
+  .cb-call { background: linear-gradient(180deg, rgba(15,31,102,.9), rgba(15,31,102,.75)); color: #fff; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+  .cb-wa { background: linear-gradient(180deg, rgba(37,211,102,.9), rgba(30,185,86,.75)); color: #073b1c; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
   .wa { display: none; }
   body { padding-bottom: 3.4rem; }
 }
 
-/* ===== Latest Updates (notice board) ===== */
+/* ===== Latest Updates ===== */
 .notices { list-style: none; padding: 0; border-top: 1px solid var(--rule); max-height: 20rem; overflow-y: auto; }
 .notices li { display: flex; gap: .8rem; align-items: baseline; padding: .8rem 0; border-bottom: 1px solid var(--rule); }
 .notices .badge { flex: none; background: var(--margin); color: #fff; font-weight: 700; font-size: .8rem; padding: .1rem .55rem; border-radius: 4px; }
 .notices a { font-weight: 600; }
 
-/* ===== Mobile: contact buttons 2-2 ek line me ===== */
+/* ===== Mobile: contact buttons ===== */
 @media (max-width: 47.99rem) {
   .contact .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
   .contact .buttons .btn { justify-content: center; text-align: center; padding: .65rem .4rem; font-size: .95rem; }
@@ -205,6 +367,28 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
   "@type": ["EducationalOrganization", "LocalBusiness"],
   "name": "Laser Classes Jhalawar",
   "url": "https://laserclassesjhalawar.github.io/",
+  "founder": {
+    "@type": "Person",
+    "name": "Manish Sir",
+    "alternateName": "Manish Kulariya"
+  },
+  "employee": [
+    {
+      "@type": "Person",
+      "name": "Manish Sir",
+      "jobTitle": "Founder & Hindi Faculty"
+    },
+    {
+      "@type": "Person",
+      "name": "Hariom Sir",
+      "jobTitle": "Art & Culture Faculty"
+    },
+    {
+      "@type": "Person",
+      "name": "Bhupendra Sir",
+      "jobTitle": "Computer Faculty & Technical Management"
+    }
+  ],
   "telephone": ["+91-8875472511", "+91-9252120834"],
   "address": {
     "@type": "PostalAddress",
@@ -239,24 +423,30 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
 
 <div class="page">
 
-  <header>
+  <header id="siteHeader">
     <a class="logo" href="#" style="display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none;">
   <img src="favicon.png" alt="Laser Classes Logo" style="width: 36px; height: 36px; object-fit: contain; border-radius: 6px; background: none;">
   <span>Laser Classes</span>
 </a>
-    <nav aria-label="मेन्यू">
+    <nav aria-label="मेन्यू" id="siteNav">
       <a href="#courses">कोर्स</a>
       <a href="#why">विशेषताएं</a>
       <a href="#results">सफलता</a>
       <a href="#teachers">शिक्षक</a>
       <a href="#gallery">गैलरी</a>
+      <a href="#reviews">रिव्यू</a>
       <a href="#faq">सवाल-जवाब</a>
       <a href="#contact">संपर्क</a>
     </nav>
-    <a class="btn hl" href="https://play.google.com/store/apps/details?id=com.hkfywo.mrblyu" target="_blank" rel="noopener">
-      <svg class="ic" aria-hidden="true"><use href="#i-gp"/></svg>ऐप डाउनलोड करें
-    </a>
   </header>
+
+  <!-- ATTENTION BANNER -->
+  <div id="attnBanner" class="attn-banner">
+    <span class="show">📞 आज ही कॉल करें — 3 दिन की फ्री डेमो क्लास!</span>
+    <span>🪑 सीमित सीटें, अभी एडमिशन लें</span>
+    <span>🗓️ नया बैच जल्द शुरू हो रहा है</span>
+    <button class="attn-close" aria-label="बंद करें">✕</button>
+  </div>
 
   <main>
     <!-- HERO SECTION -->
@@ -272,6 +462,10 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
           <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp पर जानकारी लें
         </a>
       </div>
+      <!-- Wavy divider -->
+      <svg class="hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,30 C 240,60 480,0 720,20 C 960,40 1200,10 1440,30 L1440,60 L0,60 Z"></path>
+      </svg>
     </section>
 
     <!-- STATS -->
@@ -291,7 +485,7 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
   </p>
 </section>
 
-    <!-- LATEST UPDATES: naya update jodna ho to ek <li>...</li> line copy-paste karo (sabse upar rakho) -->
+    <!-- LATEST UPDATES -->
     <section id="updates">
       <h2>ताज़ा अपडेट</h2>
       <ul class="notices">
@@ -304,28 +498,45 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
     <!-- COURSES -->
     <section id="courses">
       <h2>हमारे प्रमुख कोर्स</h2>
-      <ul class="lines">
-        <li>
+      <div class="course-grid">
+        <div class="course-card">
+          <span class="course-icon">🎓</span>
           <strong>BSTC एवं PTET प्रवेश परीक्षा विशेष</strong>
           <span>टॉप रैंक और कॉलेज चयन की मजबूत तैयारी</span>
-        </li>
-        <li>
+        </div>
+        <div class="course-card">
+          <span class="course-icon">📋</span>
           <strong>CET · पटवारी · SI · VDO</strong>
           <span>राजस्थान प्रशासनिक एवं अधीनस्थ सेवाएं</span>
-        </li>
-        <li>
+        </div>
+        <div class="course-card">
+          <span class="course-icon">📚</span>
           <strong>REET · शिक्षक ग्रेड 1, 2, 3</strong>
           <span>विषयवार गहन अध्ययन एवं टेस्ट सीरीज</span>
-        </li>
-        <li>
+        </div>
+        <div class="course-card">
+          <span class="course-icon">🛡️</span>
           <strong>राजस्थान पुलिस एवं 4th Grade</strong>
           <span>नवीनतम सिलेबस अनुसार संपूर्ण तैयारी</span>
-        </li>
-        <li>
+        </div>
+        <div class="course-card">
+          <span class="course-icon">🏛️</span>
           <strong>RAS (फाउंडेशन बैच)</strong>
           <span>Prelims + Mains संपूर्ण गाइडेंस</span>
-        </li>
-      </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMISSION STEPS -->
+    <section id="admission">
+      <h2>एडमिशन कैसे लें</h2>
+      <p class="note">सिर्फ़ 4 आसान स्टेप, बस इतना करना है:</p>
+      <div class="steps">
+        <div class="step"><span class="step-no">1</span><strong>कॉल या WhatsApp करें</strong><span>हमें नंबर पर संपर्क करें</span></div>
+        <div class="step"><span class="step-no">2</span><strong>फ्री डेमो क्लास लें</strong><span>3 दिन खुद पढ़ाई का तरीका देखें</span></div>
+        <div class="step"><span class="step-no">3</span><strong>फीस जमा करें</strong><span>ऑफ़िस आकर एडमिशन पक्का करें</span></div>
+        <div class="step"><span class="step-no">4</span><strong>बैच जॉइन करें</strong><span>क्लास, टेस्ट और ऐप शुरू</span></div>
+      </div>
     </section>
 
     <!-- WHY CHOOSE US -->
@@ -343,41 +554,23 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
       </ul>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq">
-      <h2>अक्सर पूछे जाने वाले सवाल</h2>
-      <details>
-        <summary>क्या मैं एडमिशन से पहले डेमो क्लास ले सकता हूँ?</summary>
-        <p>हाँ, आप सीधे संस्थान आकर 3 दिन की फ्री डेमो क्लास ले सकते हैं और पढ़ाने का तरीका परख सकते हैं।</p>
-      </details>
-      <details>
-        <summary>एडमिशन कैसे लें?</summary>
-        <p>आप कॉल या WhatsApp कर सकते हैं, या सीधे हमारे ऑफ़िस पधार सकते हैं। एडमिशन प्रक्रिया बहुत सरल है।</p>
-      </details>
-      <details>
-        <summary>क्या ऑनलाइन पढ़ाई और टेस्ट सीरीज उपलब्ध है?</summary>
-        <p>हाँ, हमारे मोबाइल ऐप पर ऑनलाइन मॉक टेस्ट और संपूर्ण स्टडी मटेरियल उपलब्ध है।</p>
-      </details>
-      <details>
-        <summary>फीस और किस्तों (Installment) की क्या सुविधा है?</summary>
-        <p>कोर्स के अनुसार उचित फीस रखी गई है। विस्तृत जानकारी के लिए आप हमें WhatsApp या कॉल कर सकते हैं।</p>
-      </details>
-    </section>
-    
     <!-- RESULTS (BSTC & Exams) -->
     <section id="results">
       <h2>हमारे चयनित होनहार विद्यार्थी</h2>
       <p class="note">BSTC एवं प्रतियोगी परीक्षाओं में Laser Classes के चमकते सितारे:</p>
       <div class="people">
         <figure>
+          <span class="badge-selected">✓ चयनित</span>
           <img src="images/student1.jpg" alt="विद्यार्थी 1" width="400" height="500" loading="lazy">
           <figcaption><strong>विद्यार्थी का नाम</strong><span>BSTC 2026 · कॉलेज आवंटित</span></figcaption>
         </figure>
         <figure>
+          <span class="badge-selected">✓ चयनित</span>
           <img src="images/student2.jpg" alt="विद्यार्थी 2" width="400" height="500" loading="lazy">
           <figcaption><strong>विद्यार्थी का नाम</strong><span>BSTC 2026 · चयनित</span></figcaption>
         </figure>
         <figure>
+          <span class="badge-selected">✓ चयनित</span>
           <img src="images/student3.jpg" alt="विद्यार्थी 3" width="400" height="500" loading="lazy">
           <figcaption><strong>विद्यार्थी का नाम</strong><span>प्रतियोगी परीक्षा · चयनित</span></figcaption>
         </figure>
@@ -387,7 +580,7 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
     <!-- TEACHERS -->
     <section id="teachers">
       <h2>हमारे शिक्षक</h2>
-      <div class="people">
+      <div class="people two-row">
         <figure>
           <img src="images/teacher1.jpeg" alt="मनीष कुलारिया" width="400" height="500" loading="lazy">
           <figcaption><strong>मनीष कुलारिया</strong><span>सामान्य हिन्दी</span></figcaption>
@@ -431,19 +624,81 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
       </div>
     </section>
 
+    <!-- STUDENT REVIEWS -->
+    <section id="reviews">
+      <h2>विद्यार्थियों की राय</h2>
+      <p class="note">
+        हमारे Google पेज पर जाकर और रिव्यू पढ़ें —
+        <a href="https://maps.app.goo.gl/fHx7DEpm4M8mp63F8" target="_blank" rel="noopener" class="rating-chip">⭐ Google रेटिंग देखें</a>
+      </p>
+      <div class="review-grid two-row">
+        <div class="review-card">
+          <p>“Laser Classes me padhai ka tarika bahut clear hai. Teachers har doubt patiently solve karte hain, aur weekly OMR test se exam ka real feel mil jata hai.”</p>
+          <strong>— Rakesh Lodha</strong><span>RAS बैच</span>
+        </div>
+        <div class="review-card">
+          <p>“Pehle self-study me bahut confuse hoti thi, yaha aane ke baad syllabus ek dum clear ho gaya. Notes bhi updated milte hain, revision aasan ho gaya.”</p>
+          <strong>— Yachana Gupta</strong><span>REET बैच</span>
+        </div>
+        <div class="review-card">
+          <p>“Sir log motivate bhi karte rehte hain, sirf padhai hi nahi. Fees bhi affordable hai aur result-oriented teaching hai.”</p>
+          <strong>— Dev Gurjar</strong><span>पटवारी बैच</span>
+        </div>
+        <div class="review-card">
+          <p>“Reasoning aur Maths jo pehle mushkil lagti thi, ab step-by-step samajh aati hai. Doubt class me jitni baar pucho, utni baar samjhaya jata hai.”</p>
+          <strong>— Mohit Kumar</strong><span>CET बैच</span>
+        </div>
+        <div class="review-card">
+          <p>“App me mock test dene se exam ka pressure kam feel hota hai. Rajasthan GK ke notes bahut helpful hain, sab kuch ek jagah mil jata hai.”</p>
+          <strong>— Rahul Rathore</strong><span>SI/VDO बैच</span>
+        </div>
+        <div class="review-card">
+          <p>“Pehle batch choti hoti thi to personal attention milta tha, har galti turant pakad ke batate hain. Environment bhi padhai wala hi rehta hai.”</p>
+          <strong>— Tanmay Gautam</strong><span>4th Grade बैच</span>
+        </div>
+        <div class="review-card">
+          <p>“Teachers ka experience saaf dikhta hai padhane me, mushkil topic bhi aasan lagne lagta hai. Printed notes se revision me bahut time bachta hai.”</p>
+          <strong>— Aayushi Verma</strong><span>BSTC बैच</span>
+        </div>
+        <div class="review-card">
+          <p>“Yaha ka mahaul bahut positive hai, Sunday test ke baad result discuss karte hain to apni kami pata chal jati hai. Fees bhi genuine hai.”</p>
+          <strong>— Muskan Sharma</strong><span>REET बैच</span>
+        </div>
+      </div>
+    </section>
+
     <!-- GALLERY -->
     <section id="gallery">
       <h2>हमारी कोचिंग का माहौल</h2>
       <p class="note">क्लासरूम, लाइब्रेरी और रविवार OMR टेस्ट के दौरान की तस्वीरें।</p>
       <div class="gallery">
-        <img src="images/class1.jpeg" alt=" " width="800" height="600" loading="lazy">
-        <img src="images/class2.jpeg" alt="" width="800" height="600" loading="lazy">
-        <img src="images/class3.jpeg" alt=" " width="800" height="600" loading="lazy">
-        <img src="images/class4.png" alt="" width="800" height="600" loading="lazy">
-       <img src="images/class5.jpeg" alt="" width="800" height="600" loading="lazy">
-
-
+        <img class="zoomable" src="images/class1.jpeg" alt="क्लासरूम" width="800" height="600" loading="lazy">
+        <img class="zoomable" src="images/class2.jpeg" alt="लाइब्रेरी" width="800" height="600" loading="lazy">
+        <img class="zoomable" src="images/class3.jpeg" alt="रविवार OMR टेस्ट" width="800" height="600" loading="lazy">
+        <img class="zoomable" src="images/class4.png" alt="कोचिंग कैंपस" width="800" height="600" loading="lazy">
+        <img class="zoomable" src="images/class5.jpeg" alt="टेस्ट सेशन" width="800" height="600" loading="lazy">
       </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2>अक्सर पूछे जाने वाले सवाल</h2>
+      <details>
+        <summary>क्या मैं एडमिशन से पहले डेमो क्लास ले सकता हूँ?</summary>
+        <p>हाँ, आप सीधे संस्थान आकर 3 दिन की फ्री डेमो क्लास ले सकते हैं और पढ़ाने का तरीका परख सकते हैं।</p>
+      </details>
+      <details>
+        <summary>एडमिशन कैसे लें?</summary>
+        <p>आप कॉल या WhatsApp कर सकते हैं, या सीधे हमारे ऑफ़िस पधार सकते हैं। एडमिशन प्रक्रिया बहुत सरल है।</p>
+      </details>
+      <details>
+        <summary>क्या ऑनलाइन पढ़ाई और टेस्ट सीरीज उपलब्ध है?</summary>
+        <p>हाँ, हमारे मोबाइल ऐप पर ऑनलाइन मॉक टेस्ट और संपूर्ण स्टडी मटेरियल उपलब्ध है।</p>
+      </details>
+      <details>
+        <summary>फीस और किस्तों (Installment) की क्या सुविधा है?</summary>
+        <p>कोर्स के अनुसार उचित फीस रखी गई है। विस्तृत जानकारी के लिए आप हमें WhatsApp या कॉल कर सकते हैं।</p>
+      </details>
     </section>
 
 <section id="youtube">
@@ -504,16 +759,70 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
   <div class="vbox"></div>
 </div>
 
+<!-- IMAGE LIGHTBOX -->
+<div id="imodal" class="vmodal" hidden>
+  <button class="vclose" aria-label="बंद करें">✕</button>
+  <img id="ibig" src="" alt="" style="max-width:100%; max-height:90vh; border-radius:8px;">
+</div>
+
 <!-- FLOATING WHATSAPP BUTTON -->
 <a class="wa" href="https://walink.me/6s0veo" target="_blank" rel="noopener" aria-label="WhatsApp पर बात करें">
   <svg class="ic" aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp
 </a>
 
 <script>
+/* Attention banner */
+(function () {
+  var banner = document.getElementById("attnBanner");
+  if (!banner) return;
+  var today = new Date().toISOString().slice(0, 10);
+  if (localStorage.getItem("attnBannerClosed") === today) { banner.remove(); return; }
+  var spans = banner.querySelectorAll("span"), i = 0;
+  if (spans.length > 1 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    setInterval(function () {
+      spans[i].classList.remove("show");
+      i = (i + 1) % spans.length;
+      spans[i].classList.add("show");
+    }, 3500);
+  }
+  var closeBtn = banner.querySelector(".attn-close");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function () {
+      localStorage.setItem("attnBannerClosed", today);
+      banner.remove();
+    });
+  }
+})();
+
+/* Scroll par chhota header */
+(function () {
+  var header = document.getElementById("siteHeader");
+  if (header) {
+    window.addEventListener("scroll", function () {
+      header.classList.toggle("scrolled", window.scrollY > 40);
+    }, { passive: true });
+  }
+})();
+
+/* Gallery lightbox */
+(function () {
+  var modal = document.getElementById("imodal");
+  if (!modal) return;
+  var big = document.getElementById("ibig");
+  function close() { modal.hidden = true; big.src = ""; }
+  document.querySelectorAll(".gallery img.zoomable").forEach(function (img) {
+    img.addEventListener("click", function () {
+      big.src = img.src; big.alt = img.alt; modal.hidden = false;
+    });
+  });
+  modal.addEventListener("click", function (e) { if (e.target === modal || e.target.classList.contains("vclose")) close(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+})();
+
 /* Photos auto-scroll logic */
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  document.querySelectorAll(".people, .gallery, .vgrid").forEach(function (row) {
+  document.querySelectorAll(".people, .gallery, .vgrid, .review-grid").forEach(function (row) {
     var pausedUntil = 0;
     function pause(ms) { pausedUntil = Date.now() + ms; }
     ["mouseenter", "touchstart", "focusin", "wheel"].forEach(function (ev) {
@@ -533,7 +842,7 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
 })();
 </script>
 <script>
-/* YouTube videos: thumbnail par click karne par badi video popup me chalti hai */
+/* YouTube videos popup */
 (function () {
   var modal = document.getElementById("vmodal"), box = modal.querySelector(".vbox");
   function close() { modal.hidden = true; box.innerHTML = ""; }
@@ -549,7 +858,7 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
 })();
 </script>
 <script>
-/* Scroll animation + stats counter (phone me "reduce motion" on ho to ye band rahega) */
+/* Scroll animation + stats counter */
 (function () {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
 
@@ -560,6 +869,24 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
     });
   }, { threshold: 0.12 });
   items.forEach(function (el) { el.classList.add("reveal"); rev.observe(el); });
+
+  function spark(el) {
+    for (var i = 0; i < 6; i++) {
+      var s = document.createElement("span");
+      s.textContent = "✦";
+      s.style.cssText = "position:absolute;left:50%;top:0;color:var(--mark);font-size:.9rem;pointer-events:none;transition:transform .6s ease, opacity .6s ease;opacity:1;";
+      el.style.position = "relative";
+      el.appendChild(s);
+      var ang = (i / 6) * Math.PI * 2, dist = 22 + Math.random() * 10;
+      requestAnimationFrame(function (s, ang, dist) {
+        return function () {
+          s.style.transform = "translate(" + (Math.cos(ang) * dist) + "px," + (Math.sin(ang) * dist - 10) + "px) scale(.3)";
+          s.style.opacity = "0";
+        };
+      }(s, ang, dist));
+      setTimeout(function (s) { s.remove(); }.bind(null, s), 650);
+    }
+  }
 
   document.querySelectorAll(".stats dt").forEach(function (dt) {
     var m = dt.textContent.trim().match(/^(\d+)([+%]?)$/);
@@ -574,7 +901,8 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
         (function tick(now) {
           var p = Math.min((now - t0) / dur, 1);
           dt.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
-          if (p < 1) requestAnimationFrame(tick);
+          if (p < 1) { requestAnimationFrame(tick); }
+          else { spark(dt); }
         })(t0);
       });
     }, { threshold: 0.5 });
