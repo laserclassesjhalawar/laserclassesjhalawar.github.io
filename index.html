@@ -43,7 +43,7 @@
   --body: "Hind", "Noto Sans Devanagari", system-ui, sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; }
+- { box-sizing: border-box; margin: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
 body { background: var(--paper); color: var(--ink); font: 400 1.0625rem/1.7 var(--body); }
 a { color: inherit; }
@@ -673,7 +673,7 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
           <strong>— Tanmay Gautam</strong><span>4th Grade बैच</span>
         </div>
         <div class="review-card">
-          <p>“Teachers ka experience saaf dikhta hai padhane me, mushkil topic bhi aasan lagne lagta hai. Printed notes se revision me bahut time bachta hai.”</p>
+          <p>“Teachers का experience saaf dikhta है padhane me, mushkil topic bhi aasan lagne lagta है. Printed notes से revision में बहुत time bachta है.”</p>
           <strong>— Aayushi Verma</strong><span>BSTC बैच</span>
         </div>
         <div class="review-card">
@@ -864,7 +864,7 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
         <a class="btn alt" href="pdf/bstc/test/paper14.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 14</a>
         <a class="btn alt" href="pdf/bstc/test/paper15.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 15</a>
       </div>
-    </div>>
+    </div>
 
     <!-- CET Folder -->
     <div class="fcontent" id="folder-cet" style="display: none; gap: 0.65rem;">
@@ -872,7 +872,7 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
       <div id="cet-main-menu" style="display: grid; gap: 0.65rem;">
         <a class="btn alt" href="pdf/cet/syllabus.pdf" target="_blank" rel="noopener">📄 CET सिलेबस PDF</a>
         <button type="button" class="btn hl" id="openCetTests" style="justify-content: space-between;">
-          <span>📁 टेस्ट पेपर फोल्डर (15 टेस्ट)</span>
+          <span>📁 테스트 पेपर फोल्डर (15 टेस्ट)</span>
           <span>▶</span>
         </button>
       </div>
@@ -964,6 +964,8 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
         <a class="btn alt" href="pdf/rj-police/test/paper15.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 15</a>
       </div>
     </div>
+  </div>
+</div>
 
 <!-- FLOATING WHATSAPP BUTTON -->
 <a class="wa" href="https://walink.me/6s0veo" target="_blank" rel="noopener" aria-label="WhatsApp पर बात करें">
@@ -1163,12 +1165,13 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
     }
   }
 
-  // CET, BSTC और REET तीनों के लिए एक साथ सेट कर दिया
+  // सभी पांचों कोर्स के लिए सही टॉगल सेटअप
   setupToggle("openCetTests", "cet-main-menu", "cet-test-list", "backToCetMain");
   setupToggle("openBstcTests", "bstc-main-menu", "bstc-test-list", "backToBstcMain");
   setupToggle("openReetTests", "reet-main-menu", "reet-test-list", "backToReetMain");
-setupToggle("openRjPoliceTests", "rj-police-main-menu", "rj-police-test-list", "backToRjPoliceMain");})();
-setupToggle("openVdoTests", "vdo-main-menu", "vdo-test-list", "backToVdoMain");
+  setupToggle("openRjPoliceTests", "rj-police-main-menu", "rj-police-test-list", "backToRjPoliceMain");
+  setupToggle("openVdoTests", "vdo-main-menu", "vdo-test-list", "backToVdoMain");
+})();
 </script>
 </body>
 </html>
