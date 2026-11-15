@@ -101,9 +101,7 @@ nav a:active { transform: scale(.96); }
 
 /* Sticky header */
 header#siteHeader { position: sticky; top: 0; z-index: 25; background: var(--paper); transition: padding .25s ease; }
-header#siteHeader.scrolled { padding: .5rem 0; }
-header#siteHeader.scrolled .logo { font-size: 1.2rem; padding: .3rem .8rem .3rem .4rem; }
-header#siteHeader.scrolled .logo img { width: 28px; height: 28px; }
+header#siteHeader.scrolled { box-shadow: 0 4px 14px rgba(15, 31, 102, 0.08); }
 
 /* ===== LIQUID GLASS buttons ===== */
 .btn {
@@ -165,7 +163,8 @@ header#siteHeader.scrolled .logo img { width: 28px; height: 28px; }
   border: 1px solid rgba(255,255,255,.55);
   box-shadow: 0 1px 1px rgba(255,255,255,.6) inset, 0 -6px 10px rgba(0,0,0,.06) inset, 0 6px 16px rgba(15,31,102,.14);
 }
-.hero .buttons { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+.hero .buttons { display: grid; grid-template-columns: 1fr; gap: .65rem; }
+@media (min-width: 30rem) { .hero .buttons { grid-template-columns: 1fr 1fr; } }
 .hero .buttons .btn { justify-content: center; text-align: center; padding: .62rem .5rem; font-size: .92rem; white-space: nowrap; }
 .hero .buttons .ic { width: 1.1rem; height: 1.1rem; }
 @media (min-width: 30rem) { .hero .buttons .btn { font-size: 1rem; padding: .7rem 1.1rem; } .hero .buttons .ic { width: 1.35rem; height: 1.35rem; } }
