@@ -144,7 +144,7 @@ header#siteHeader.scrolled { box-shadow: 0 4px 14px rgba(15, 31, 102, 0.08); }
 .attn-close:hover { background: rgba(255,255,255,.4); }
 
 /* ===== Free notes promo card ===== */
-.promo { padding: 0; margin: .75rem 1rem; }
+.promo { padding: 0; margin: 1.5rem 0 .5rem; }
 .promo-box { background: linear-gradient(135deg, rgba(255,226,120,0.85), rgba(255,210,63,0.6)); border: 2px solid var(--mark); border-radius: 14px; padding: 1rem; text-align: center; box-shadow: 0 6px 18px rgba(15,31,102,0.1); max-width: 62rem; margin: 0 auto; }
 .promo-box .tag { margin-bottom: .4rem; background: var(--ink); color: #fff; font-size: .8rem; padding: .25rem .7rem; }
 .promo-box h3 { font-size: 1.15rem; margin-bottom: .3rem; }
@@ -186,9 +186,14 @@ header#siteHeader.scrolled { box-shadow: 0 4px 14px rgba(15, 31, 102, 0.08); }
 @media (min-width: 48rem) { .stats { display: flex; flex-wrap: wrap; gap: 1rem 3rem; } .stats dd { font-size: 1rem; } }
 
 /* ===== Courses ===== */
-.course-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(13rem, 100%), 1fr)); gap: 1rem; }
+.course-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem; }
+.course-grid .course-card:last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (min-width: 42rem) {
+  .course-grid { grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr)); gap: 1rem; }
+  .course-grid .course-card:last-child:nth-child(odd) { grid-column: auto; }
+}
 .course-card {
-  display: flex; flex-direction: column; gap: .3rem; padding: 1.1rem 1.2rem; border-radius: 14px;
+  display: flex; flex-direction: column; gap: .3rem; padding: .85rem .8rem; border-radius: 14px;
   background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.2));
   -webkit-backdrop-filter: blur(12px) saturate(150%); backdrop-filter: blur(12px) saturate(150%);
   border: 1px solid rgba(255,255,255,.5);
@@ -197,8 +202,9 @@ header#siteHeader.scrolled { box-shadow: 0 4px 14px rgba(15, 31, 102, 0.08); }
 }
 .course-card:hover { transform: translateY(-4px); box-shadow: 0 1px 1px rgba(255,255,255,.65) inset, 0 12px 22px rgba(15,31,102,.18); }
 .course-icon { font-size: 1.6rem; }
-.course-card strong { font: 600 1.1rem/1.4 var(--head); }
-.course-card span:not(.course-icon) { color: var(--soft); font-size: .92rem; }
+.course-card strong { font: 600 .95rem/1.4 var(--head); }
+.course-card span:not(.course-icon) { color: var(--soft); font-size: .8rem; line-height: 1.45; }
+@media (min-width: 42rem) { .course-card { padding: 1.1rem 1.2rem; } .course-card strong { font-size: 1.1rem; } .course-card span:not(.course-icon) { font-size: .92rem; } }
 
 /* Admission steps */
 .steps { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
@@ -356,11 +362,6 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
   body { padding-bottom: calc(3.6rem + env(safe-area-inset-bottom)); }
 }
 
-/* ===== Updates ===== */
-.notices { list-style: none; padding: 0; border-top: 1px solid var(--rule); max-height: 20rem; overflow-y: auto; }
-.notices li { display: flex; gap: .8rem; align-items: baseline; padding: .8rem 0; border-bottom: 1px solid var(--rule); }
-.notices .badge { flex: none; background: var(--margin); color: #fff; font-weight: 700; font-size: .8rem; padding: .1rem .55rem; border-radius: 4px; }
-
 /* ===== Upcoming batch ===== */
 .batch-box { background: #fff; border: 2px dashed var(--rule); border-radius: 12px; padding: 1.1rem 1.1rem; margin: 1.5rem 0; box-shadow: 0 4px 14px rgba(15,31,102,.05); }
 .batch-box h3 { font-size: 1.25rem; margin: .4rem 0 .3rem; }
@@ -421,25 +422,16 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
   <nav aria-label="मेन्यू" id="siteNav">
     <a href="#" class="openNotesBtn notes-link">📂 नोट्स / PDF</a>
     <a href="#courses">कोर्स</a>
-    <a href="#why">विशेषताएं</a>
     <a href="#results">सफलता</a>
     <a href="#teachers">शिक्षक</a>
+    <a href="#why">विशेषताएं</a>
+    <a href="#admission">एडमिशन</a>
     <a href="#gallery">गैलरी</a>
     <a href="#reviews">रिव्यू</a>
     <a href="#faq">सवाल-जवाब</a>
     <a href="#contact">संपर्क</a>
   </nav>
 </header>
-
-<!-- FREE NOTES CARD -->
-<section class="promo">
-  <div class="promo-box">
-    <span class="tag">🎓 विद्यार्थियों के लिए विशेष सौगात</span>
-    <h3>फ्री नोट्स, सिलेबस एवं 15 मॉडल टेस्ट पेपर</h3>
-    <p>REET, BSTC, CET, VDO और राजस्थान पुलिस के सभी विषयों के संपूर्ण सिलेबस और 15 फुल-लेंथ मॉडल टेस्ट पेपर यहाँ से बिल्कुल फ्री डाउनलोड करें।</p>
-    <button type="button" class="openNotesBtn btn hl">📂 सभी टेस्ट पेपर नोट्स और सिलेबस देखें</button>
-  </div>
-</section>
 
 <div class="page">
 
@@ -485,16 +477,6 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
       <p>सुबह और शाम दोनों पारियों में नए बैच संचालित हैं। सीटें सीमित हैं, अपनी सुविधानुसार समय और डेमो क्लास की जानकारी के लिए सीधे ऑफ़िस पधारें या हमारे नंबर पर संपर्क करें।</p>
     </section>
 
-    <!-- UPDATES -->
-    <section id="updates">
-      <h2>ताज़ा अपडेट</h2>
-      <ul class="notices">
-        <li><span class="badge">NEW</span><span>3 दिन की फ्री डेमो क्लास उपलब्ध है। आज ही संपर्क करें।</span></li>
-        <li><span class="badge">टेस्ट</span><span>हर रविवार OMR टेस्ट। समय के लिए हमें कॉल करें।</span></li>
-        <li><span class="badge">डाउट</span><span>डाउट क्लास में सवाल पूछने की पूरी आज़ादी, विषय-विशेषज्ञ शिक्षकों के साथ।</span></li>
-      </ul>
-    </section>
-
     <!-- COURSES -->
     <section id="courses">
       <h2>हमारे प्रमुख कोर्स</h2>
@@ -507,32 +489,15 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
       </div>
     </section>
 
-    <!-- ADMISSION -->
-    <section id="admission">
-      <h2>एडमिशन कैसे लें</h2>
-      <p class="note">सिर्फ़ 4 आसान स्टेप, बस इतना करना है:</p>
-      <div class="steps">
-        <div class="step"><span class="step-no">1</span><strong>कॉल या WhatsApp करें</strong><span>हमें नंबर पर संपर्क करें</span></div>
-        <div class="step"><span class="step-no">2</span><strong>फ्री डेमो क्लास लें</strong><span>3 दिन खुद पढ़ाई का तरीका देखें</span></div>
-        <div class="step"><span class="step-no">3</span><strong>फीस जमा करें</strong><span>ऑफ़िस आकर एडमिशन पक्का करें</span></div>
-        <div class="step"><span class="step-no">4</span><strong>बैच जॉइन करें</strong><span>क्लास, टेस्ट और ऐप शुरू</span></div>
-      </div>
-    </section>
-
-    <!-- WHY US -->
-    <section id="why">
-      <h2>हमें ही क्यों चुनें?</h2>
-      <ul class="why">
-        <li>झालावाड़ का एकमात्र हाइब्रिड संस्थान (ऑफलाइन क्लास + ऑनलाइन ऐप सपोर्ट)</li>
-        <li>3 दिन की निःशुल्क डेमो क्लास — पहले देखें, समझें, फिर तय करें</li>
-        <li>अनुभवी विषय-विशेषज्ञों द्वारा अध्यापन और व्यक्तिगत मार्गदर्शन</li>
-        <li>हर रविवार OMR शीट पर टेस्ट — बिल्कुल परीक्षा जैसा माहौल</li>
-        <li>क्लास में रिजल्ट की समीक्षा और परफॉर्मेंस एनालिसिस</li>
-        <li>अपडेटेड प्रिंटेड नोट्स और टॉपिक-वाइज़ टेस्ट सीरीज</li>
-        <li>डाउट क्लास में सवाल पूछने की पूरी आज़ादी</li>
-        <li>अभिभावकों को नियमित प्रगति रिपोर्ट (Student Progress Report)</li>
-      </ul>
-    </section>
+    <!-- FREE NOTES CARD -->
+<section class="promo">
+  <div class="promo-box">
+    <span class="tag">🎓 विद्यार्थियों के लिए विशेष सौगात</span>
+    <h3>फ्री नोट्स, सिलेबस एवं 15 मॉडल टेस्ट पेपर</h3>
+    <p>REET, BSTC, CET, VDO और राजस्थान पुलिस के सभी विषयों के संपूर्ण सिलेबस और 15 फुल-लेंथ मॉडल टेस्ट पेपर यहाँ से बिल्कुल फ्री डाउनलोड करें।</p>
+    <button type="button" class="openNotesBtn btn hl">📂 सभी टेस्ट पेपर नोट्स और सिलेबस देखें</button>
+  </div>
+</section>
 
     <!-- RESULTS -->
     <section id="results">
@@ -564,6 +529,46 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
       </div>
     </section>
 
+    <!-- WHY US -->
+    <section id="why">
+      <h2>हमें ही क्यों चुनें?</h2>
+      <ul class="why">
+        <li>झालावाड़ का एकमात्र हाइब्रिड संस्थान (ऑफलाइन क्लास + ऑनलाइन ऐप सपोर्ट)</li>
+        <li>3 दिन की निःशुल्क डेमो क्लास — पहले देखें, समझें, फिर तय करें</li>
+        <li>अनुभवी विषय-विशेषज्ञों द्वारा अध्यापन और व्यक्तिगत मार्गदर्शन</li>
+        <li>हर रविवार OMR शीट पर टेस्ट — बिल्कुल परीक्षा जैसा माहौल</li>
+        <li>क्लास में रिजल्ट की समीक्षा और परफॉर्मेंस एनालिसिस</li>
+        <li>अपडेटेड प्रिंटेड नोट्स और टॉपिक-वाइज़ टेस्ट सीरीज</li>
+        <li>डाउट क्लास में सवाल पूछने की पूरी आज़ादी</li>
+        <li>अभिभावकों को नियमित प्रगति रिपोर्ट (Student Progress Report)</li>
+      </ul>
+    </section>
+
+    <!-- ADMISSION -->
+    <section id="admission">
+      <h2>एडमिशन कैसे लें</h2>
+      <p class="note">सिर्फ़ 4 आसान स्टेप, बस इतना करना है:</p>
+      <div class="steps">
+        <div class="step"><span class="step-no">1</span><strong>कॉल या WhatsApp करें</strong><span>हमें नंबर पर संपर्क करें</span></div>
+        <div class="step"><span class="step-no">2</span><strong>फ्री डेमो क्लास लें</strong><span>3 दिन खुद पढ़ाई का तरीका देखें</span></div>
+        <div class="step"><span class="step-no">3</span><strong>फीस जमा करें</strong><span>ऑफ़िस आकर एडमिशन पक्का करें</span></div>
+        <div class="step"><span class="step-no">4</span><strong>बैच जॉइन करें</strong><span>क्लास, टेस्ट और ऐप शुरू</span></div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <h2>हमारी कोचिंग का माहौल</h2>
+      <p class="note">क्लासरूम, लाइब्रेरी और रविवार OMR टेस्ट के दौरान की तस्वीरें।</p>
+      <div class="gallery">
+        <img class="zoomable" src="images/class1.jpeg" alt="क्लासरूम" width="800" height="600" loading="lazy">
+        <img class="zoomable" src="images/class2.jpeg" alt="लाइब्रेरी" width="800" height="600" loading="lazy">
+        <img class="zoomable" src="images/class3.jpeg" alt="रविवार OMR टेस्ट" width="800" height="600" loading="lazy">
+        <img class="zoomable" src="images/class4.png" alt="कोचिंग कैंपस" width="800" height="600" loading="lazy">
+        <img class="zoomable" src="images/class5.jpeg" alt="टेस्ट सेशन" width="800" height="600" loading="lazy">
+      </div>
+    </section>
+
     <!-- REVIEWS -->
     <section id="reviews">
       <h2>विद्यार्थियों की राय</h2>
@@ -581,28 +586,6 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
         <div class="review-card"><p>“Teachers का experience saaf dikhta है padhane me, mushkil topic भी aasan lagne lagta है. Printed notes से revision में बहुत time bachta है.”</p><strong>— Aayushi Verma</strong><span>BSTC बैच</span></div>
         <div class="review-card"><p>“Yaha ka mahaul bahut positive है, Sunday test के बाद result discuss karte hain to apni kami pata chal jati है. Fees भी genuine hai.”</p><strong>— Muskan Sharma</strong><span>REET बैच</span></div>
       </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery">
-      <h2>हमारी कोचिंग का माहौल</h2>
-      <p class="note">क्लासरूम, लाइब्रेरी और रविवार OMR टेस्ट के दौरान की तस्वीरें।</p>
-      <div class="gallery">
-        <img class="zoomable" src="images/class1.jpeg" alt="क्लासरूम" width="800" height="600" loading="lazy">
-        <img class="zoomable" src="images/class2.jpeg" alt="लाइब्रेरी" width="800" height="600" loading="lazy">
-        <img class="zoomable" src="images/class3.jpeg" alt="रविवार OMR टेस्ट" width="800" height="600" loading="lazy">
-        <img class="zoomable" src="images/class4.png" alt="कोचिंग कैंपस" width="800" height="600" loading="lazy">
-        <img class="zoomable" src="images/class5.jpeg" alt="टेस्ट सेशन" width="800" height="600" loading="lazy">
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section id="faq">
-      <h2>अक्सर पूछे जाने वाले सवाल</h2>
-      <details><summary>क्या मैं एडमिशन से पहले डेमो क्लास ले सकता हूँ?</summary><p>हाँ, आप सीधे संस्थान आकर 3 दिन की फ्री डेमो क्लास ले सकते हैं और पढ़ाने का तरीका परख सकते हैं।</p></details>
-      <details><summary>एडमिशन कैसे लें?</summary><p>आप कॉल या WhatsApp कर सकते हैं, या सीधे हमारे ऑफ़िस पधार सकते हैं। एडमिशन प्रक्रिया बहुत सरल है।</p></details>
-      <details><summary>क्या ऑनलाइन पढ़ाई और टेस्ट सीरीज उपलब्ध है?</summary><p>हाँ, हमारे मोबाइल ऐप पर ऑनलाइन मॉक टेस्ट और संपूर्ण स्टडी मटेरियल उपलब्ध है।</p></details>
-      <details><summary>फीस और किस्तों (Installment) की क्या सुविधा है?</summary><p>कोर्स के अनुसार उचित फीस रखी गई है। विस्तृत जानकारी के लिए आप हमें WhatsApp या कॉल कर सकते हैं।</p></details>
     </section>
 
     <!-- YOUTUBE: main video -->
@@ -629,6 +612,15 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
         <button class="vcard" data-id="OtsidnF-tEg" aria-label="वीडियो चलाएँ"></button>
         <button class="vcard" data-id="LNJ6CQjElkw" aria-label="वीडियो चलाएँ"></button>
       </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <h2>अक्सर पूछे जाने वाले सवाल</h2>
+      <details><summary>क्या मैं एडमिशन से पहले डेमो क्लास ले सकता हूँ?</summary><p>हाँ, आप सीधे संस्थान आकर 3 दिन की फ्री डेमो क्लास ले सकते हैं और पढ़ाने का तरीका परख सकते हैं।</p></details>
+      <details><summary>एडमिशन कैसे लें?</summary><p>आप कॉल या WhatsApp कर सकते हैं, या सीधे हमारे ऑफ़िस पधार सकते हैं। एडमिशन प्रक्रिया बहुत सरल है।</p></details>
+      <details><summary>क्या ऑनलाइन पढ़ाई और टेस्ट सीरीज उपलब्ध है?</summary><p>हाँ, हमारे मोबाइल ऐप पर ऑनलाइन मॉक टेस्ट और संपूर्ण स्टडी मटेरियल उपलब्ध है।</p></details>
+      <details><summary>फीस और किस्तों (Installment) की क्या सुविधा है?</summary><p>कोर्स के अनुसार उचित फीस रखी गई है। विस्तृत जानकारी के लिए आप हमें WhatsApp या कॉल कर सकते हैं।</p></details>
     </section>
 
     <!-- CONTACT -->
