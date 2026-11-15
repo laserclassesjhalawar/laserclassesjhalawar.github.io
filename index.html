@@ -784,7 +784,7 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
 <!-- NOTES & SYLLABUS FOLDER POPUP (5 COURSES) -->
 <div id="notesModal" class="vmodal" hidden>
   <button class="vclose" aria-label="बंद करें">✕</button>
-  <div style="background: var(--paper); color: var(--ink); width: min(100%, 34rem); padding: 1.5rem; border-radius: 16px; border: 1px solid var(--rule); box-shadow: 0 12px 30px rgba(0,0,0,0.3);">
+  <div style="background: var(--paper); color: var(--ink); width: min(100%, 44rem); padding: 2rem; min-height: 24rem; border-radius: 16px; border: 1px solid var(--rule); box-shadow: 0 12px 30px rgba(0,0,0,0.3);">
     <h3 style="font-size: 1.4rem; margin-bottom: 0.75rem;">📂 कोर्स चुनें (PDF डाउनलोड)</h3>
     
     <!-- 5 Folder Tabs -->
@@ -803,8 +803,36 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
 
     <!-- BSTC Folder -->
     <div class="fcontent" id="folder-bstc" style="display: none; gap: 0.65rem;">
-      <a class="btn alt" href="pdf/bstc/syllabus.pdf" target="_blank" rel="noopener">📄 BSTC सिलेबस PDF</a>
-    </div>
+      <!-- Main BSTC Menu (Default view inside BSTC) -->
+      <div id="bstc-main-menu" style="display: grid; gap: 0.75rem;">
+        <a class="btn alt" href="pdf/bstc/syllabus.pdf" target="_blank" rel="noopener" style="padding: 0.8rem 1.2rem; font-size: 1.05rem;">📄 BSTC सिलेबस PDF</a>
+        <button type="button" class="btn hl" id="openBstcTests" style="justify-content: space-between; padding: 0.8rem 1.2rem; font-size: 1.05rem;">
+          <span>📁 टेस्ट पेपर फोल्डर (15 टेस्ट)</span>
+          <span>▶</span>
+        </button>
+      </div>
+
+      <!-- BSTC Test Sub-Folder (1 to 15 Tests) -->
+      <div id="bstc-test-list" style="display: none; gap: 0.65rem; max-height: 18rem; overflow-y: auto; padding-right: 0.3rem;">
+        <button type="button" class="btn alt" id="backToBstcMain" style="font-size: 0.9rem; padding: 0.4rem 0.9rem; width: fit-content; margin-bottom: 0.25rem;">← पीछे जाएं</button>
+        
+        <a class="btn alt" href="pdf/bstc/test/paper1.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 1</a>
+        <a class="btn alt" href="pdf/bstc/test/paper2.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 2</a>
+        <a class="btn alt" href="pdf/bstc/test/paper3.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 3</a>
+        <a class="btn alt" href="pdf/bstc/test/paper4.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 4</a>
+        <a class="btn alt" href="pdf/bstc/test/paper5.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 5</a>
+        <a class="btn alt" href="pdf/bstc/test/paper6.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 6</a>
+        <a class="btn alt" href="pdf/bstc/test/paper7.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 7</a>
+        <a class="btn alt" href="pdf/bstc/test/paper8.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 8</a>
+        <a class="btn alt" href="pdf/bstc/test/paper9.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 9</a>
+        <a class="btn alt" href="pdf/bstc/test/paper10.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 10</a>
+        <a class="btn alt" href="pdf/bstc/test/paper11.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 11</a>
+        <a class="btn alt" href="pdf/bstc/test/paper12.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 12</a>
+        <a class="btn alt" href="pdf/bstc/test/paper13.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 13</a>
+        <a class="btn alt" href="pdf/bstc/test/paper14.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 14</a>
+        <a class="btn alt" href="pdf/bstc/test/paper15.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 BSTC मॉडल टेस्ट पेपर 15</a>
+      </div>
+    </div>>
 
     <!-- CET Folder -->
     <div class="fcontent" id="folder-cet" style="display: none; gap: 0.65rem;">
@@ -1026,6 +1054,26 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
     }, { threshold: 0.5 });
     io.observe(dt);
   });
+})();
+</script>
+  <script>
+/* BSTC Test Sub-folder toggle logic */
+(function() {
+  var openTestsBtn = document.getElementById("openBstcTests");
+  var bstcMain = document.getElementById("bstc-main-menu");
+  var bstcTests = document.getElementById("bstc-test-list");
+  var backBtn = document.getElementById("backToBstcMain");
+
+  if (openTestsBtn && bstcMain && bstcTests && backBtn) {
+    openTestsBtn.addEventListener("click", function() {
+      bstcMain.style.display = "none";
+      bstcTests.style.display = "grid";
+    });
+    backBtn.addEventListener("click", function() {
+      bstcTests.style.display = "none";
+      bstcMain.style.display = "grid";
+    });
+  }
 })();
 </script>
   <script>
