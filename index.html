@@ -899,17 +899,71 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
       </div>
     </div>
 
-    <!-- VDO Folder -->
+   <!-- VDO Folder -->
     <div class="fcontent" id="folder-vdo" style="display: none; gap: 0.65rem;">
-      <a class="btn alt" href="pdf/vdo/syllabus.pdf" target="_blank" rel="noopener">📄 VDO सिलेबस PDF</a>
+      <!-- Main VDO Menu -->
+      <div id="vdo-main-menu" style="display: grid; gap: 0.75rem;">
+        <a class="btn alt" href="pdf/vdo/syllabus.pdf" target="_blank" rel="noopener" style="padding: 0.8rem 1.2rem; font-size: 1.05rem;">📄 VDO सिलेबस PDF</a>
+        <button type="button" class="btn hl" id="openVdoTests" style="justify-content: space-between; padding: 0.8rem 1.2rem; font-size: 1.05rem;">
+          <span>📁 VDO टेस्ट पेपर फोल्डर (15 टेस्ट)</span>
+          <span>▶</span>
+        </button>
+      </div>
+
+      <!-- VDO Test Sub-Folder (1 to 15 Tests) -->
+      <div id="vdo-test-list" style="display: none; gap: 0.65rem; max-height: 18rem; overflow-y: auto; padding-right: 0.3rem;">
+        <button type="button" class="btn alt" id="backToVdoMain" style="font-size: 0.9rem; padding: 0.4rem 0.9rem; width: fit-content; margin-bottom: 0.25rem;">← पीछे जाएं</button>
+        
+        <a class="btn alt" href="pdf/vdo/test/paper1.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 1</a>
+        <a class="btn alt" href="pdf/vdo/test/paper2.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 2</a>
+        <a class="btn alt" href="pdf/vdo/test/paper3.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 3</a>
+        <a class="btn alt" href="pdf/vdo/test/paper4.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 4</a>
+        <a class="btn alt" href="pdf/vdo/test/paper5.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 5</a>
+        <a class="btn alt" href="pdf/vdo/test/paper6.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 6</a>
+        <a class="btn alt" href="pdf/vdo/test/paper7.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 7</a>
+        <a class="btn alt" href="pdf/vdo/test/paper8.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 8</a>
+        <a class="btn alt" href="pdf/vdo/test/paper9.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 9</a>
+        <a class="btn alt" href="pdf/vdo/test/paper10.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 10</a>
+        <a class="btn alt" href="pdf/vdo/test/paper11.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 11</a>
+        <a class="btn alt" href="pdf/vdo/test/paper12.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 12</a>
+        <a class="btn alt" href="pdf/vdo/test/paper13.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 13</a>
+        <a class="btn alt" href="pdf/vdo/test/paper14.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 14</a>
+        <a class="btn alt" href="pdf/vdo/test/paper15.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 VDO मॉडल टेस्ट पेपर 15</a>
+      </div>
     </div>
 
     <!-- Raj Police Folder -->
     <div class="fcontent" id="folder-rj-police" style="display: none; gap: 0.65rem;">
-      <a class="btn alt" href="pdf/rj-police/syllabus.pdf" target="_blank" rel="noopener">📄 राजस्थान पुलिस सिलेबस PDF</a>
+      <!-- Main Raj Police Menu -->
+      <div id="rj-police-main-menu" style="display: grid; gap: 0.75rem;">
+        <a class="btn alt" href="pdf/rj-police/syllabus.pdf" target="_blank" rel="noopener" style="padding: 0.8rem 1.2rem; font-size: 1.05rem;">📄 राजस्थान पुलिस सिलेबस PDF</a>
+        <button type="button" class="btn hl" id="openRjPoliceTests" style="justify-content: space-between; padding: 0.8rem 1.2rem; font-size: 1.05rem;">
+          <span>📁 राजस्थान पुलिस टेस्ट पेपर फोल्डर (15 टेस्ट)</span>
+          <span>▶</span>
+        </button>
+      </div>
+
+      <!-- Raj Police Test Sub-Folder (1 to 15 Tests) -->
+      <div id="rj-police-test-list" style="display: none; gap: 0.65rem; max-height: 18rem; overflow-y: auto; padding-right: 0.3rem;">
+        <button type="button" class="btn alt" id="backToRjPoliceMain" style="font-size: 0.9rem; padding: 0.4rem 0.9rem; width: fit-content; margin-bottom: 0.25rem;">← पीछे जाएं</button>
+        
+        <a class="btn alt" href="pdf/rj-police/test/paper1.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 1</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper2.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 2</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper3.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 3</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper4.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 4</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper5.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 5</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper6.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 6</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper7.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 7</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper8.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 8</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper9.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 9</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper10.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 10</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper11.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 11</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper12.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 12</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper13.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 13</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper14.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 14</a>
+        <a class="btn alt" href="pdf/rj-police/test/paper15.pdf" target="_blank" rel="noopener" style="padding: 0.7rem 1rem;">📝 पुलिस मॉडल टेस्ट पेपर 15</a>
+      </div>
     </div>
-  </div>
-</div>
 
 <!-- FLOATING WHATSAPP BUTTON -->
 <a class="wa" href="https://walink.me/6s0veo" target="_blank" rel="noopener" aria-label="WhatsApp पर बात करें">
@@ -1113,7 +1167,8 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
   setupToggle("openCetTests", "cet-main-menu", "cet-test-list", "backToCetMain");
   setupToggle("openBstcTests", "bstc-main-menu", "bstc-test-list", "backToBstcMain");
   setupToggle("openReetTests", "reet-main-menu", "reet-test-list", "backToReetMain");
-})();
+setupToggle("openRjPoliceTests", "rj-police-main-menu", "rj-police-test-list", "backToRjPoliceMain");})();
+setupToggle("openVdoTests", "vdo-main-menu", "vdo-test-list", "backToVdoMain");
 </script>
 </body>
 </html>
