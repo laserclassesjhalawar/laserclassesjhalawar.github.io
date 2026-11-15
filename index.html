@@ -808,10 +808,35 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
 
     <!-- CET Folder -->
     <div class="fcontent" id="folder-cet" style="display: none; gap: 0.65rem;">
-      <a class="btn alt" href="pdf/cet/syllabus.pdf" target="_blank" rel="noopener">📄 CET सिलेबस PDF</a>
-      
-      <!-- यह नई लाइन टेस्ट पेपर के लिए जोड़ दें -->
-      <a class="btn alt" href="pdf/cet/test/paper1.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 1</a>
+      <!-- Main CET Menu (Default view inside CET) -->
+      <div id="cet-main-menu" style="display: grid; gap: 0.65rem;">
+        <a class="btn alt" href="pdf/cet/syllabus.pdf" target="_blank" rel="noopener">📄 CET सिलेबस PDF</a>
+        <button type="button" class="btn hl" id="openCetTests" style="justify-content: space-between;">
+          <span>📁 टेस्ट पेपर फोल्डर (15 टेस्ट)</span>
+          <span>▶</span>
+        </button>
+      </div>
+
+      <!-- CET Test Sub-Folder (1 to 15 Tests) -->
+      <div id="cet-test-list" style="display: none; gap: 0.65rem; max-height: 16rem; overflow-y: auto; padding-right: 0.3rem;">
+        <button type="button" class="btn alt" id="backToCetMain" style="font-size: 0.85rem; padding: 0.3rem 0.8rem; width: fit-content; margin-bottom: 0.25rem;">← पीछे जाएं</button>
+        
+        <a class="btn alt" href="pdf/cet/test/paper1.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 1</a>
+        <a class="btn alt" href="pdf/cet/test/paper2.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 2</a>
+        <a class="btn alt" href="pdf/cet/test/paper3.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 3</a>
+        <a class="btn alt" href="pdf/cet/test/paper4.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 4</a>
+        <a class="btn alt" href="pdf/cet/test/paper5.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 5</a>
+        <a class="btn alt" href="pdf/cet/test/paper6.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 6</a>
+        <a class="btn alt" href="pdf/cet/test/paper7.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 7</a>
+        <a class="btn alt" href="pdf/cet/test/paper8.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 8</a>
+        <a class="btn alt" href="pdf/cet/test/paper9.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 9</a>
+        <a class="btn alt" href="pdf/cet/test/paper10.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 10</a>
+        <a class="btn alt" href="pdf/cet/test/paper11.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 11</a>
+        <a class="btn alt" href="pdf/cet/test/paper12.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 12</a>
+        <a class="btn alt" href="pdf/cet/test/paper13.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 13</a>
+        <a class="btn alt" href="pdf/cet/test/paper14.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 14</a>
+        <a class="btn alt" href="pdf/cet/test/paper15.pdf" target="_blank" rel="noopener">📝 CET मॉडल टेस्ट पेपर 15</a>
+      </div>
     </div>
 
     <!-- VDO Folder -->
@@ -1001,6 +1026,26 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
     }, { threshold: 0.5 });
     io.observe(dt);
   });
+})();
+</script>
+  <script>
+/* CET Test Sub-folder toggle logic */
+(function() {
+  var openTestsBtn = document.getElementById("openCetTests");
+  var cetMain = document.getElementById("cet-main-menu");
+  var cetTests = document.getElementById("cet-test-list");
+  var backBtn = document.getElementById("backToCetMain");
+
+  if (openTestsBtn && cetMain && cetTests && backBtn) {
+    openTestsBtn.addEventListener("click", function() {
+      cetMain.style.display = "none";
+      cetTests.style.display = "grid";
+    });
+    backBtn.addEventListener("click", function() {
+      cetTests.style.display = "none";
+      cetMain.style.display = "grid";
+    });
+  }
 })();
 </script>
 </body>
