@@ -145,14 +145,45 @@ header#siteHeader.scrolled { box-shadow: 0 4px 14px rgba(15, 31, 102, 0.08); }
 .attn-close { position: absolute; right: .5rem; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.25); border: none; color: #fff; width: 1.6rem; height: 1.6rem; border-radius: 50%; cursor: pointer; font-size: .85rem; line-height: 1; }
 .attn-close:hover { background: rgba(255,255,255,.4); }
 
-/* ===== Promo box ===== */
+/* ===== Free notes promo card (Expanded & Glowing) ===== */
 .promo { padding: 0; margin: 1.5rem 0 .5rem; }
-.promo-box { background: linear-gradient(135deg, rgba(255,226,120,0.85), rgba(255,210,63,0.6)); border: 2px solid var(--mark); border-radius: 14px; padding: 1rem; text-align: center; box-shadow: 0 6px 18px rgba(15,31,102,0.1); max-width: 62rem; margin: 0 auto; }
-.promo-box .tag { margin-bottom: .4rem; background: var(--ink); color: #fff; font-size: .8rem; padding: .25rem .7rem; }
-.promo-box h3 { font-size: 1.15rem; margin-bottom: .3rem; }
-.promo-box p { color: var(--soft); font-size: .9rem; line-height: 1.5; margin: 0 auto .9rem; max-width: 38rem; }
-.promo-box .btn { font-size: .92rem; padding: .55rem 1.1rem; background: var(--ink); color: #fff; border-color: var(--ink); text-align: center; justify-content: center; animation: none; }
-@media (min-width: 48rem) { .promo-box { padding: 1.1rem 1.25rem; } .promo-box h3 { font-size: 1.25rem; } }
+.promo-box { 
+  background: linear-gradient(135deg, rgba(255,226,120,0.9), rgba(255,210,63,0.7)); 
+  border: 2.5px solid var(--mark); 
+  border-radius: 16px; 
+  padding: 1.5rem 1.25rem; 
+  text-align: center; 
+  box-shadow: 0 8px 24px rgba(15,31,102,0.15); 
+  max-width: 68rem; /* कार्ड की चौड़ाई बढ़ा दी गई है */
+  margin: 0 auto; 
+}
+.promo-box .tag { margin-bottom: .5rem; background: var(--ink); color: #fff; font-size: .85rem; padding: 0.3rem 0.8rem; }
+.promo-box h3 { font-size: 1.35rem; margin-bottom: .4rem; color: var(--ink); }
+.promo-box p { color: var(--soft); font-size: 0.98rem; line-height: 1.6; margin: 0 auto 1.1rem; max-width: 44rem; }
+
+/* लाल चमक (Red Glow) वाला स्पेशल इफ़ेक्ट बटन */
+@keyframes redGlow { 
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232, 52, 78, 0.6); } 
+  50% { box-shadow: 0 0 20px 8px rgba(232, 52, 78, 0.75); } 
+}
+.promo-box .btn.glow-red { 
+  font-size: 1.02rem; 
+  padding: 0.7rem 1.6rem; 
+  background: linear-gradient(180deg, #0f1f66, #07103a); 
+  color: #fff; 
+  border-color: #ffd23f; 
+  text-align: center; 
+  justify-content: center; 
+  animation: redGlow 2s ease-in-out infinite; 
+  font-weight: 700;
+}
+.promo-box .btn.glow-red:hover {
+  background: linear-gradient(180deg, #162a8a, #0f1f66);
+}
+@media (min-width: 48rem) { 
+  .promo-box { padding: 1.75rem 2rem; } 
+  .promo-box h3 { font-size: 1.5rem; } 
+}
 
 /* ===== Hero ===== */
 .hero { position: relative; overflow: hidden; margin-top: .5rem; padding: 2rem 1rem 1.5rem; border-radius: 14px; background-color: var(--ink); background-image: repeating-linear-gradient(to bottom, transparent 0 35px, rgba(255,255,255,.08) 35px 36px); }
@@ -495,15 +526,15 @@ footer { padding: 2.5rem 0 2rem; color: var(--soft); font-size: .95rem; }
       </div>
     </section>
 
-    <!-- FREE NOTES CARD -->
-<section class="promo">
-  <div class="promo-box">
-    <span class="tag">🎓 विद्यार्थियों के लिए विशेष सौगात</span>
-    <h3>फ्री नोट्स, सिलेबस एवं 15 मॉडल टेस्ट पेपर</h3>
-    <p>REET, BSTC, CET, VDO और राजस्थान पुलिस के सभी विषयों के संपूर्ण सिलेबस और 15 फुल-लेंथ मॉडल टेस्ट पेपर यहाँ से बिल्कुल फ्री डाउनलोड करें।</p>
-    <button type="button" class="openNotesBtn btn hl">📂 सभी टेस्ट पेपर नोट्स और सिलेबस देखें</button>
-  </div>
-</section>
+    <!-- FREE NOTES CARD (Expanded & Glowing Red Button) -->
+    <section class="promo">
+      <div class="promo-box">
+        <span class="tag">🎓 विद्यार्थियों के लिए विशेष सौगात</span>
+        <h3>फ्री नोट्स, सिलेबस एवं 15 मॉडल टेस्ट पेपर</h3>
+        <p>REET, BSTC, CET, VDO और राजस्थान पुलिस के सभी विषयों के संपूर्ण सिलेबस और 15 फुल-लेंथ मॉडल टेस्ट पेपर यहाँ से बिल्कुल फ्री डाउनलोड करें।</p>
+        <button type="button" class="openNotesBtn btn glow-red">📂 टेस्ट, नोट्स, सिलेबस के लिए क्लिक करें</button>
+      </div>
+    </section>
 
     <!-- RESULTS -->
     <section id="results">
