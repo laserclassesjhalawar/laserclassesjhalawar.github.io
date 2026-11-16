@@ -321,7 +321,7 @@ details p { padding-top: .5rem; color: var(--soft); }
 .vgrid > * { scroll-snap-align: start; width: 100%; }
 @media (min-width: 48rem) { .vgrid { grid-auto-columns: 14rem; } }
 
-/* ===== Popups with Smooth Zoom & Fade Animation ===== */
+/* ===== Popups with Smooth Zoom & Fade Animation (Slow & Smooth) ===== */
 .vmodal { 
     position: fixed; 
     inset: 0; 
@@ -336,7 +336,7 @@ details p { padding-top: .5rem; color: var(--soft); }
     overscroll-behavior: contain;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 .vmodal:not([hidden]) {
     opacity: 1;
@@ -345,11 +345,17 @@ details p { padding-top: .5rem; color: var(--soft); }
 .vmodal:not([hidden]) .notes-panel, 
 .vmodal:not([hidden]) .vbox, 
 .vmodal:not([hidden]) #ibig {
-    animation: modalPopIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: modalPopIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @keyframes modalPopIn {
-    0% { opacity: 0; transform: scale(0.85) translateY(20px); }
-    100% { opacity: 1; transform: scale(1) translateY(0); }
+    0% { 
+        opacity: 0; 
+        transform: scale(0.8) translateY(30px); 
+    }
+    100% { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+    }
 }
 
 .vbox { width: min(100%, 56rem); aspect-ratio: 16 / 9; }
@@ -629,13 +635,11 @@ footer .about { font-size: .85rem; line-height: 1.6; margin-bottom: .75rem; }
       <h2>हमारी कोचिंग का माहौल</h2>
       <p class="note">क्लासरूम, लाइब्रेरी और रविवार OMR टेस्ट के दौरान की तस्वीरें।</p>
       <div class="gallery">
-        <img class="zoomable" src="images/class3.jpeg" alt="रविवार OMR टेस्ट" width="800" height="600" loading="lazy">
-        <img class="zoomable" src="images/class5.jpeg" alt="टेस्ट सेशन" width="800" height="600" loading="lazy">
         <img class="zoomable" src="images/class1.jpeg" alt="क्लासरूम" width="800" height="600" loading="lazy">
-        <img class="zoomable" src="images/class4.png" alt="कोचिंग कैंपस" width="800" height="600" loading="lazy">
         <img class="zoomable" src="images/class2.jpeg" alt="लाइब्रेरी" width="800" height="600" loading="lazy">
-        <img class="zoomable" src="images/class6.jpeg" alt="टेस्ट सेशन" width="800" height="600" loading="lazy">
-        <img class="zoomable" src="images/class7.jpeg" alt="टेस्ट सेशन" width="800" height="600" loading="lazy">
+        <img class="zoomable" src="images/class3.jpeg" alt="रविवार OMR टेस्ट" width="800" height="600" loading="lazy">
+        <img class="zoomable" src="images/class4.png" alt="कोचिंग कैंपस" width="800" height="600" loading="lazy">
+        <img class="zoomable" src="images/class5.jpeg" alt="टेस्ट सेशन" width="800" height="600" loading="lazy">
       </div>
     </section>
 
