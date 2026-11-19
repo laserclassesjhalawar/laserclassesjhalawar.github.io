@@ -1196,12 +1196,94 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   function link(cls, href, i) {
     var a = el("a", cls);
     a.href = href; a.rel = "noopener";
-    /* Mobile par PDF seedha download hogi (viewer me download button nahi hota), laptop par naye tab me khulegi */
-    if (IS_MOBILE) { a.setAttribute("download", href.split("/").pop()); }
-    else { a.target = "_blank"; }
+    if (IS_MOBILE) {
+      /* Mobile: PDF site ke andar khulegi, upar Download button milega */
+      a.addEventListener("click", function (e) { e.preventDefault(); openPdf(href, a.title || a.textContent); });
+    } else { a.target = "_blank"; }
     a.style.setProperty("--i", i);
     return a;
   }
+
+  /* ---- Mobile PDF viewer: pehle dekho, pasand aaye to Download dabao ---- */
+  var PDFJS_BASE = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
+  var pdfLibPromise = null;
+  function loadPdfJs() {
+    if (window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
+    if (pdfLibPromise) return pdfLibPromise;
+    pdfLibPromise = new Promise(function (res, rej) {
+      var s = document.createElement("script");
+      s.src = PDFJS_BASE + "pdf.min.js";
+      s.onload = function () { window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS_BASE + "pdf.worker.min.js"; res(window.pdfjsLib); };
+      s.onerror = function () { pdfLibPromise = null; rej(new Error("pdfjs load failed")); };
+      document.head.appendChild(s);
+    });
+    return pdfLibPromise;
+  }
+  var pv = null;
+  function buildViewer() {
+    var st = document.createElement("style");
+    st.textContent =
+      "#pdfv{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;background:#3a3d46}" +
+      "#pdfv[hidden]{display:none}" +
+      "#pdfv .pv-bar{display:flex;align-items:center;gap:.5rem;padding:.6rem .75rem;background:#0a1450;color:#fff}" +
+      "#pdfv .pv-x{flex:none;width:2.4rem;height:2.4rem;border:0;border-radius:50%;background:#fff;color:#0a1450;font-size:1.1rem;cursor:pointer}" +
+      "#pdfv .pv-t{flex:1;min-width:0;font:600 .9rem/1.3 system-ui,sans-serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}" +
+      "#pdfv .pv-dl{flex:none;display:inline-flex;align-items:center;gap:.3rem;padding:.55rem .9rem;border-radius:999px;background:#ffc83d;color:#0a1450;font:800 .9rem system-ui,sans-serif;text-decoration:none}" +
+      "#pdfv .pv-body{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;padding:.5rem}" +
+      "#pdfv canvas{display:block;width:100%;height:auto;margin:0 auto .5rem;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.4)}" +
+      "#pdfv .pv-msg{color:#fff;text-align:center;padding:2rem 1rem;font:600 1rem/1.6 system-ui,sans-serif}";
+    document.head.appendChild(st);
+    var v = el("div"); v.id = "pdfv"; v.hidden = true; v.setAttribute("role", "dialog"); v.setAttribute("aria-modal", "true");
+    var bar = el("div", "pv-bar");
+    var x = el("button", "pv-x", "✕"); x.type = "button"; x.setAttribute("aria-label", "बंद करें");
+    var t = el("div", "pv-t");
+    var dl = el("a", "pv-dl", "⬇ Download");
+    var body = el("div", "pv-body");
+    bar.appendChild(x); bar.appendChild(t); bar.appendChild(dl);
+    v.appendChild(bar); v.appendChild(body);
+    document.body.appendChild(v);
+    x.addEventListener("click", closePdf);
+    pv = { root: v, title: t, dl: dl, body: body, token: 0 };
+  }
+  function closePdf() { if (!pv) return; pv.token++; pv.root.hidden = true; pv.body.innerHTML = ""; document.documentElement.style.overflow = ""; }
+  function openPdf(href, title) {
+    if (!pv) buildViewer();
+    var tok = ++pv.token;
+    var file = href.split("/").pop();
+    pv.title.textContent = title || file;
+    pv.dl.href = href; pv.dl.setAttribute("download", file);
+    pv.body.innerHTML = ""; pv.body.scrollTop = 0;
+    pv.body.appendChild(el("div", "pv-msg", "⏳ PDF खुल रही है..."));
+    pv.root.hidden = false;
+    document.documentElement.style.overflow = "hidden";
+    function fail() {
+      if (tok !== pv.token) return;
+      pv.body.innerHTML = "";
+      pv.body.appendChild(el("div", "pv-msg", "PDF यहाँ नहीं खुल पाई। ऊपर Download बटन दबाकर डाउनलोड करें।"));
+    }
+    loadPdfJs().then(function (lib) { return lib.getDocument(href).promise; }).then(function (doc) {
+      if (tok !== pv.token) return;
+      pv.body.innerHTML = "";
+      var scale = Math.min(window.devicePixelRatio || 1, 2) * (pv.body.clientWidth / 600) ;
+      var chain = Promise.resolve();
+      for (var n = 1; n <= doc.numPages; n++) (function (n) {
+        chain = chain.then(function () {
+          if (tok !== pv.token) return;
+          return doc.getPage(n).then(function (page) {
+            if (tok !== pv.token) return;
+            var base = page.getViewport({ scale: 1 });
+            var vp = page.getViewport({ scale: (pv.body.clientWidth - 16) * Math.min(window.devicePixelRatio || 1, 2) / base.width });
+            var c = document.createElement("canvas");
+            c.width = vp.width; c.height = vp.height;
+            pv.body.appendChild(c);
+            return page.render({ canvasContext: c.getContext("2d"), viewport: vp }).promise;
+          });
+        });
+      })(n);
+      return chain;
+    }).catch(fail);
+  }
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && pv && !pv.root.hidden) closePdf(); });
 
   function show(idx, lv) {
     var c = COURSES[idx];
@@ -1235,6 +1317,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     var list = el("div", "np-list");
     d.syl.forEach(function (x, k) {
       var a = link("np-row", x[1], k);
+      a.title = x[0];
       a.appendChild(el("span", "np-pdf", "PDF"));
       a.appendChild(el("span", "t", x[0]));
       a.appendChild(el("span", "np-go", "⬇"));
@@ -1243,7 +1326,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     body.appendChild(list);
 
     body.appendChild(el("div", "np-label", "📝 " + title + " मॉडल टेस्ट पेपर (15)"));
-    body.appendChild(el("div", "np-hint", IS_MOBILE ? "👇 नंबर पर टैप करें, टेस्ट पेपर PDF डाउनलोड हो जाएगा" : "👇 नंबर पर टैप करें, टेस्ट पेपर PDF खुल जाएगा"));
+    body.appendChild(el("div", "np-hint", IS_MOBILE ? "👇 नंबर पर टैप करें, टेस्ट पेपर PDF खुल जाएगा, पसंद आए तो डाउनलोड करें" : "👇 नंबर पर टैप करें, टेस्ट पेपर PDF खुल जाएगा"));
     var grid = el("div", "np-grid");
     for (var n = 1; n <= 15; n++) {
       var a = link("np-chip", d.tests + "paper" + n + ".pdf", n + 1);
