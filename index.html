@@ -1164,6 +1164,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   var panel = modal.querySelector(".notes-panel");
   var tabsBox = document.getElementById("npTabs"), body = document.getElementById("npBody");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var IS_MOBILE = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
   var INTRO_MS = 2000; /* animation ka time (milliseconds). 2000 = 2 second */
 
   /* Naya course/PDF jodna ho to sirf yahan badlo */
@@ -1194,7 +1195,10 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   }
   function link(cls, href, i) {
     var a = el("a", cls);
-    a.href = href; a.target = "_blank"; a.rel = "noopener";
+    a.href = href; a.rel = "noopener";
+    /* Mobile par PDF seedha download hogi (viewer me download button nahi hota), laptop par naye tab me khulegi */
+    if (IS_MOBILE) { a.setAttribute("download", href.split("/").pop()); }
+    else { a.target = "_blank"; }
     a.style.setProperty("--i", i);
     return a;
   }
@@ -1239,7 +1243,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     body.appendChild(list);
 
     body.appendChild(el("div", "np-label", "📝 " + title + " मॉडल टेस्ट पेपर (15)"));
-    body.appendChild(el("div", "np-hint", "👇 नंबर पर टैप करें, टेस्ट पेपर PDF खुल जाएगा"));
+    body.appendChild(el("div", "np-hint", IS_MOBILE ? "👇 नंबर पर टैप करें, टेस्ट पेपर PDF डाउनलोड हो जाएगा" : "👇 नंबर पर टैप करें, टेस्ट पेपर PDF खुल जाएगा"));
     var grid = el("div", "np-grid");
     for (var n = 1; n <= 15; n++) {
       var a = link("np-chip", d.tests + "paper" + n + ".pdf", n + 1);
