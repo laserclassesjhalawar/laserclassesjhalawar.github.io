@@ -299,7 +299,7 @@ img { display: block; max-width: 100%; height: auto; background: var(--rule); ob
 }
 .review-card:hover { transform: translateY(-4px); }
 /* Review likhne ka system */
-.rv-add { display: inline-flex; align-items: center; gap: .4rem; margin-top: .6rem; padding: .65rem 1.2rem; border: 0; border-radius: 999px; background: var(--accent); color: #fff; font: 700 .95rem var(--head); cursor: pointer; box-shadow: var(--sh); }
+.rv-add { display: inline-flex; align-items: center; margin-left: .35rem; padding: .3rem .8rem; border: 0; border-radius: 999px; background: var(--accent); color: #fff; font: 700 1rem var(--body); cursor: pointer; box-shadow: var(--sh); white-space: nowrap; }
 .rv-add[hidden] { display: none; }
 .review-card.rc-dyn strong::after { content: none; }
 .review-card span.rc-stars { display: block; color: #f59f00; font-size: .85rem; letter-spacing: .08em; margin-bottom: .25rem; }
@@ -936,6 +936,7 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
       <p class="note">
         हमारे Google पेज पर जाकर और रिव्यू पढ़ें —
         <a href="https://maps.app.goo.gl/fHx7DEpm4M8mp63F8" target="_blank" rel="noopener" class="rating-chip">⭐ Google रेटिंग देखें</a>
+        <button type="button" class="rv-add" id="rvOpen" hidden>✍️ रिव्यू लिखें</button>
       </p>
       <div class="review-grid two-row">
         <div class="review-card"><p>“Laser Classes me padhai ka tarika bahut clear hai. Teachers har doubt patiently solve karte hain, aur weekly OMR test se exam ka real feel mil jata hai.”</p><strong>— Rakesh Lodha</strong><span>BSTC बैच</span></div>
@@ -947,7 +948,6 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
         <div class="review-card"><p>“Teachers का experience saaf dikhta है padhane me, mushkil topic भी aasan lagne lagta है. Printed notes से revision में बहुत time bachta है.”</p><strong>— Aayushi Verma</strong><span>BSTC बैच</span></div>
         <div class="review-card"><p>“Yaha ka mahaul bahut positive है, Sunday test के बाद result discuss karte hain to apni kami pata chal jati है. Fees भी genuine hai.”</p><strong>— Muskan Sharma</strong><span>VDO बैच</span></div>
       </div>
-      <button type="button" class="rv-add" id="rvOpen" hidden>✍️ अपना रिव्यू लिखें</button>
     </section>
 
     <!-- YOUTUBE: main video -->
@@ -1497,10 +1497,10 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
    Config khali ho to "रिव्यू लिखें" button apne aap chhupa rahega aur site normal chalegi. */
 (function () {
   var FIREBASE_CONFIG = {
-    apiKey: "",
-    authDomain: "",
-    projectId: "",
-    appId: ""
+    apiKey: "AIzaSyC4fqFmn65B3YnokGAmZ-8Z-D6o-iQflcw",
+    authDomain: "laser-classes.firebaseapp.com",
+    projectId: "laser-classes",
+    appId: "1:493919135060:web:1e61ca0665920f428a54c1"
   };
   var AUTO_APPROVE = true;   /* true = review turant dikhe | false = pehle aap Firebase me approve karein */
   var COOLDOWN_MS = 24 * 60 * 60 * 1000; /* ek phone se 1 din me 1 review */
