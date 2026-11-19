@@ -298,6 +298,30 @@ img { display: block; max-width: 100%; height: auto; background: var(--rule); ob
   box-shadow: 0 1px 1px rgba(255,255,255,.6) inset, 0 6px 16px rgba(15,31,102,.1);
 }
 .review-card:hover { transform: translateY(-4px); }
+/* Review likhne ka system */
+.rv-add { display: inline-flex; align-items: center; gap: .4rem; margin-top: .6rem; padding: .65rem 1.2rem; border: 0; border-radius: 999px; background: var(--accent); color: #fff; font: 700 .95rem var(--head); cursor: pointer; box-shadow: var(--sh); }
+.rv-add[hidden] { display: none; }
+.review-card.rc-dyn strong::after { content: none; }
+.review-card span.rc-stars { display: block; color: #f59f00; font-size: .85rem; letter-spacing: .08em; margin-bottom: .25rem; }
+#rvModal { position: fixed; inset: 0; z-index: 150; display: grid; place-items: center; padding: 1rem; background: rgba(5,10,40,.6); overflow-y: auto; }
+#rvModal[hidden] { display: none; }
+.rv-box { position: relative; width: min(100%, 26rem); background: var(--paper); color: var(--ink); border-radius: 18px; padding: 1.2rem; box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+.rv-box h3 { margin-bottom: .2rem; }
+.rv-box label { display: block; font: 600 .85rem var(--head); margin: .7rem 0 .25rem; }
+.rv-box input[type=text], .rv-box select, .rv-box textarea { width: 100%; padding: .6rem .7rem; border: 1.5px solid var(--rule); border-radius: 10px; background: #fff; color: var(--ink); font: 500 1rem var(--body); }
+.rv-box textarea { min-height: 6.5rem; resize: vertical; }
+.rv-box input:focus, .rv-box select:focus, .rv-box textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+.rv-x { position: absolute; top: .5rem; right: .5rem; width: 2.2rem; height: 2.2rem; border: 0; border-radius: 50%; background: #fff; color: var(--ink); font-size: 1.1rem; cursor: pointer; }
+.rv-stars { display: flex; gap: .2rem; }
+.rv-stars button { border: 0; background: none; font-size: 1.9rem; line-height: 1; color: #d6d3c9; cursor: pointer; padding: 0 .1rem; }
+.rv-stars button.on { color: #f59f00; }
+.rv-count { text-align: right; font-size: .75rem; color: var(--soft); }
+.rv-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.rv-send { width: 100%; margin-top: .9rem; padding: .75rem; border: 0; border-radius: 12px; background: var(--accent); color: #fff; font: 800 1rem var(--head); cursor: pointer; }
+.rv-send:disabled { opacity: .6; cursor: wait; }
+.rv-msg { margin-top: .6rem; font: 600 .9rem/1.5 var(--body); text-align: center; }
+.rv-msg.err { color: #c51d38; } .rv-msg.ok { color: #15803d; }
+
 .review-card p { margin-bottom: .5rem; font-style: italic; font-size: .82rem; line-height: 1.55; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; line-clamp: 6; overflow: hidden; }
 .review-card strong { display: block; font: 600 .85rem/1.4 var(--head); }
 .review-card span { color: var(--soft); font-size: .75rem; }
@@ -367,9 +391,11 @@ details p { padding-top: .5rem; color: var(--soft); }
 .np-kicker { display: inline-block; background: var(--mark); color: var(--ink); font-weight: 700; font-size: .75rem; padding: .1rem .65rem; border-radius: 999px; margin-bottom: .4rem; }
 .np-head h3 { color: #fff; font-size: 1.3rem; }
 .np-head p { color: rgba(255,255,255,.85); font-size: .9rem; line-height: 1.45; }
-.np-tabs { flex: none; display: flex; gap: .5rem; overflow-x: auto; padding: .75rem 1rem; background: #fff; border-bottom: 1px solid var(--rule); scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-.np-tabs::-webkit-scrollbar { display: none; }
-.np-tab { flex: none; cursor: pointer; border: 2px solid var(--tc); background: #fff; color: var(--tc); font: 700 .95rem var(--body); padding: .4rem 1rem; border-radius: 999px; transition: background .15s ease, color .15s ease; }
+.np-tabs { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: .4rem; padding: .65rem .75rem; background: #fff; border-bottom: 1px solid var(--rule); }
+.np-tab { cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .1rem; min-width: 0; border: 2px solid var(--tc); background: #fff; color: var(--tc); font: 700 .72rem/1.2 var(--body); padding: .35rem .15rem; border-radius: 12px; text-align: center; transition: background .15s ease, color .15s ease; }
+.np-tab .np-ti { font-size: 1.15rem; line-height: 1; }
+.np-tab .np-tn { max-width: 100%; overflow-wrap: anywhere; }
+@media (min-width: 42rem) { .np-tab { font-size: .85rem; padding: .45rem .3rem; } }
 .np-tab[aria-selected="true"] { background: var(--tc); color: #fff; }
 .np-body { flex: 1; overflow-y: auto; padding: 1rem; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 .np-label { display: flex; align-items: center; gap: .4rem; font: 700 1rem/1.4 var(--head); margin: .2rem 0 .6rem; }
@@ -921,6 +947,7 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
         <div class="review-card"><p>“Teachers का experience saaf dikhta है padhane me, mushkil topic भी aasan lagne lagta है. Printed notes से revision में बहुत time bachta है.”</p><strong>— Aayushi Verma</strong><span>BSTC बैच</span></div>
         <div class="review-card"><p>“Yaha ka mahaul bahut positive है, Sunday test के बाद result discuss karte hain to apni kami pata chal jati है. Fees भी genuine hai.”</p><strong>— Muskan Sharma</strong><span>VDO बैच</span></div>
       </div>
+      <button type="button" class="rv-add" id="rvOpen" hidden>✍️ अपना रिव्यू लिखें</button>
     </section>
 
     <!-- YOUTUBE: main video -->
@@ -1339,7 +1366,8 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   }
 
   COURSES.forEach(function (c, i) {
-    var t = el("button", "np-tab", c.i + " " + c.name);
+    var t = el("button", "np-tab");
+    t.appendChild(el("span", "np-ti", c.i)); t.appendChild(el("span", "np-tn", c.name));
     t.type = "button"; t.setAttribute("role", "tab");
     t.style.setProperty("--tc", c.c);
     t.style.setProperty("--i", i);
@@ -1435,6 +1463,128 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   });
   modal.addEventListener("click", function (e) { if (e.target === modal || e.target.classList.contains("vclose")) modal.hidden = true; });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") modal.hidden = true; });
+})();
+</script>
+
+<div id="rvModal" hidden role="dialog" aria-modal="true" aria-labelledby="rvTitle">
+  <div class="rv-box">
+    <button type="button" class="rv-x" id="rvClose" aria-label="बंद करें">✕</button>
+    <h3 id="rvTitle">अपना रिव्यू लिखें</h3>
+    <p class="note">आपका अनुभव दूसरे विद्यार्थियों की मदद करेगा।</p>
+    <div id="rvForm">
+      <label for="rvName">आपका नाम</label>
+      <input type="text" id="rvName" maxlength="40" autocomplete="name" placeholder="जैसे: रमेश कुमार">
+      <label for="rvCourse">आप कौन सा बैच कर रहे हैं?</label>
+      <select id="rvCourse">
+        <option>REET</option><option>BSTC</option><option>CET</option><option>VDO</option>
+        <option>राजस्थान पुलिस</option><option>LDC</option><option>PTET</option><option>4th Grade</option><option>पटवारी</option><option>अन्य</option>
+      </select>
+      <label>रेटिंग</label>
+      <div class="rv-stars" id="rvStars" role="radiogroup" aria-label="रेटिंग"></div>
+      <label for="rvText">आपका रिव्यू</label>
+      <textarea id="rvText" maxlength="300" placeholder="कोचिंग में आपको क्या अच्छा लगा?"></textarea>
+      <div class="rv-count"><span id="rvCnt">0</span>/300</div>
+      <div class="rv-hp" aria-hidden="true"><label>Website <input type="text" id="rvHp" tabindex="-1" autocomplete="off"></label></div>
+      <button type="button" class="rv-send" id="rvSend">रिव्यू भेजें</button>
+      <div class="rv-msg" id="rvMsg" role="status"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== Student reviews (Firebase Firestore) =====
+   Setup: README jaisa - Firebase project banao, neeche config bharo.
+   Config khali ho to "रिव्यू लिखें" button apne aap chhupa rahega aur site normal chalegi. */
+(function () {
+  var FIREBASE_CONFIG = {
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    appId: ""
+  };
+  var AUTO_APPROVE = true;   /* true = review turant dikhe | false = pehle aap Firebase me approve karein */
+  var COOLDOWN_MS = 24 * 60 * 60 * 1000; /* ek phone se 1 din me 1 review */
+
+  var section = document.getElementById("reviews");
+  var grid = section && section.querySelector(".review-grid");
+  var openBtn = document.getElementById("rvOpen");
+  if (!grid || !openBtn || !FIREBASE_CONFIG.projectId) return;
+
+  var modal = document.getElementById("rvModal"), msg = document.getElementById("rvMsg");
+  var nameI = document.getElementById("rvName"), courseI = document.getElementById("rvCourse"), textI = document.getElementById("rvText");
+  var hp = document.getElementById("rvHp"), send = document.getElementById("rvSend"), cnt = document.getElementById("rvCnt");
+  var starsBox = document.getElementById("rvStars"), rating = 5, db = null, fs = null;
+
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text) e.textContent = text; return e; }
+  function stars(n) { return "★★★★★".slice(0, n) + "☆☆☆☆☆".slice(0, 5 - n); }
+
+  function card(d) {
+    var c = el("div", "review-card rc-dyn");
+    c.appendChild(el("span", "rc-stars", stars(d.rating || 5)));
+    c.appendChild(el("p", "", "“" + d.text + "”"));
+    c.appendChild(el("strong", "", "— " + d.name));
+    c.appendChild(el("span", "", d.course + (d.course === "अन्य" ? "" : " बैच")));
+    return c;
+  }
+
+  for (var i = 1; i <= 5; i++) (function (n) {
+    var b = el("button", "", "★"); b.type = "button";
+    b.setAttribute("role", "radio"); b.setAttribute("aria-label", n + " स्टार");
+    b.addEventListener("click", function () { rating = n; paint(); });
+    starsBox.appendChild(b);
+  })(i);
+  function paint() { Array.prototype.forEach.call(starsBox.children, function (b, k) { b.className = k < rating ? "on" : ""; b.setAttribute("aria-checked", k < rating ? "true" : "false"); }); }
+  paint();
+
+  textI.addEventListener("input", function () { cnt.textContent = textI.value.length; });
+  function setMsg(t, cls) { msg.textContent = t; msg.className = "rv-msg " + (cls || ""); }
+  function openM() { setMsg(""); modal.hidden = false; document.documentElement.style.overflow = "hidden"; setTimeout(function () { nameI.focus(); }, 50); }
+  function closeM() { modal.hidden = true; document.documentElement.style.overflow = ""; openBtn.focus(); }
+  openBtn.addEventListener("click", openM);
+  document.getElementById("rvClose").addEventListener("click", closeM);
+  modal.addEventListener("click", function (e) { if (e.target === modal) closeM(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.hidden) closeM(); });
+
+  function lastTime() { try { return parseInt(localStorage.getItem("lc_rv_t"), 10) || 0; } catch (e) { return 0; } }
+  function markTime() { try { localStorage.setItem("lc_rv_t", String(Date.now())); } catch (e) {} }
+
+  send.addEventListener("click", function () {
+    if (hp.value) return; /* bot */
+    var name = nameI.value.trim(), text = textI.value.trim();
+    if (name.length < 2) return setMsg("कृपया अपना नाम लिखें।", "err");
+    if (text.length < 15) return setMsg("रिव्यू कम से कम 15 अक्षर का लिखें।", "err");
+    if (Date.now() - lastTime() < COOLDOWN_MS) return setMsg("आप आज पहले ही रिव्यू दे चुके हैं। धन्यवाद!", "err");
+    send.disabled = true; setMsg("भेजा जा रहा है...");
+    var data = { name: name, course: courseI.value, text: text, rating: rating, approved: AUTO_APPROVE, createdAt: fs.serverTimestamp() };
+    fs.addDoc(fs.collection(db, "reviews"), data).then(function () {
+      markTime();
+      if (AUTO_APPROVE) { grid.insertBefore(card(data), grid.firstChild); grid.scrollTo({ left: 0 }); }
+      setMsg(AUTO_APPROVE ? "धन्यवाद! आपका रिव्यू जुड़ गया ✅" : "धन्यवाद! जाँच के बाद आपका रिव्यू दिखेगा ✅", "ok");
+      nameI.value = ""; textI.value = ""; cnt.textContent = "0";
+      setTimeout(closeM, 1800);
+    }).catch(function () { setMsg("रिव्यू नहीं जा पाया, कृपया थोड़ी देर बाद कोशिश करें।", "err"); })
+      .then(function () { send.disabled = false; });
+  });
+
+  var started = false;
+  function start() {
+    if (started) return; started = true;
+    var V = "https://www.gstatic.com/firebasejs/10.12.2/";
+    Promise.all([import(V + "firebase-app.js"), import(V + "firebase-firestore.js")]).then(function (m) {
+      fs = m[1];
+      db = fs.getFirestore(m[0].initializeApp(FIREBASE_CONFIG));
+      openBtn.hidden = false;
+      return fs.getDocs(fs.query(fs.collection(db, "reviews"), fs.where("approved", "==", true), fs.limit(40)));
+    }).then(function (snap) {
+      var list = [];
+      snap.forEach(function (d) { list.push(d.data()); });
+      list.sort(function (a, b) { return (b.createdAt ? b.createdAt.seconds : 0) - (a.createdAt ? a.createdAt.seconds : 0); });
+      list.reverse().forEach(function (d) { grid.insertBefore(card(d), grid.firstChild); });
+    }).catch(function () { /* net/Firebase dikkat: purane reviews dikhte rahenge */ });
+  }
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (en, ob) { if (en[0].isIntersecting) { ob.disconnect(); start(); } }, { rootMargin: "400px" }).observe(section);
+  } else { start(); }
 })();
 </script>
 </body>
