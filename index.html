@@ -381,6 +381,9 @@ details p { padding-top: .5rem; color: var(--soft); }
 .np-pdf { flex: none; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 10px; background: var(--cc); color: #fff; font: 800 .7rem var(--head); }
 .np-row .t { flex: 1; min-width: 0; overflow-wrap: anywhere; }
 .np-go { flex: none; color: var(--cc); font-size: 1.1rem; font-weight: 800; }
+.np-levels { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: 1.1rem; }
+.np-level { cursor: pointer; border: 2px solid var(--cc); background: #fff; color: var(--cc); font: 700 .95rem/1.3 var(--body); padding: .55rem .5rem; border-radius: 14px; transition: background .15s ease, color .15s ease; }
+.np-level[aria-pressed="true"] { background: var(--cc); color: #fff; }
 .np-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .5rem; padding-bottom: .5rem; }
 .np-chip { display: grid; place-items: center; aspect-ratio: 1; text-decoration: none; background: #fff; border: 2px solid var(--cc); border-radius: 50%; color: var(--cc); font: 800 1rem var(--head); transition: background .15s ease, color .15s ease, transform .15s ease; }
 .np-chip:hover, .np-chip:active { background: var(--cc); color: #fff; transform: scale(1.06); }
@@ -808,10 +811,10 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
       <div class="promo-box">
         <span class="tag">🎓 विद्यार्थियों के लिए विशेष सौगात</span>
         <h3>🎁 फ्री स्टडी मटेरियल</h3>
-        <p class="promo-sub">REET, BSTC, CET, VDO और राजस्थान पुलिस के संपूर्ण सिलेबस और 15 फुल-लेंथ मॉडल टेस्ट पेपर — बिल्कुल फ्री डाउनलोड करें।</p>
+        <p class="promo-sub">REET, BSTC, CET (12+ व Graduation), VDO, पुलिस, LDC, PTET, 4th Grade और पटवारी के संपूर्ण सिलेबस और हर कोर्स के 15 फुल-लेंथ मॉडल टेस्ट पेपर — बिल्कुल फ्री डाउनलोड करें।</p>
         <div class="promo-stats">
-          <div><b>8</b><span>सिलेबस</span></div>
-          <div><b>75</b><span>टेस्ट पेपर</span></div>
+          <div><b>13</b><span>सिलेबस</span></div>
+          <div><b>150</b><span>टेस्ट पेपर</span></div>
           <div><b>100%</b><span>फ्री</span></div>
         </div>
         <p class="promo-pick">👇 अपना कोर्स चुनें</p>
@@ -821,6 +824,10 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
           <button type="button" class="pc openNotesBtn" data-course="2" style="--c:#d9480f">📋 CET</button>
           <button type="button" class="pc openNotesBtn" data-course="3" style="--c:#7e22ce">🏛️ VDO</button>
           <button type="button" class="pc openNotesBtn" data-course="4" style="--c:#c51d38">🛡️ Raj. Police</button>
+          <button type="button" class="pc openNotesBtn" data-course="5" style="--c:#0e7490">🗂️ LDC</button>
+          <button type="button" class="pc openNotesBtn" data-course="6" style="--c:#b45309">🏫 PTET</button>
+          <button type="button" class="pc openNotesBtn" data-course="7" style="--c:#be185d">📝 4th Grade</button>
+          <button type="button" class="pc openNotesBtn" data-course="8" style="--c:#4d7c0f">📜 पटवारी</button>
         </div>
         <button type="button" class="openNotesBtn btn glow-red">📥 अभी फ्री डाउनलोड करें</button>
         <p class="promo-steps">1️⃣ कोर्स चुनें &nbsp;→&nbsp; 2️⃣ PDF डाउनलोड करें</p>
@@ -1167,9 +1174,16 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
       ["REET Level 1st Mains Syllabus", "pdf/reet/level1-mains-syllabus.pdf"],
       ["REET Level 1st Pre Syllabus", "pdf/reet/level1-pre-syllabus.pdf"] ] },
     { name: "BSTC", i: "🎓", c: "#15803d", tests: "pdf/bstc/test/", syl: [["BSTC सिलेबस", "pdf/bstc/syllabus.pdf"]] },
-    { name: "CET", i: "📋", c: "#d9480f", tests: "pdf/cet/test/", syl: [["CET सिलेबस", "pdf/cet/syllabus.pdf"]] },
+    /* CET: 2 level. Har level ka apna syllabus aur apne 15 test */
+    { name: "CET", i: "📋", c: "#d9480f", levels: [
+      { n: "12+ Level", tests: "pdf/cet/12th/test/", syl: [["CET 12+ Level सिलेबस", "pdf/cet/12th/syllabus.pdf"]] },
+      { n: "Graduation Level", tests: "pdf/cet/graduation/test/", syl: [["CET Graduation Level सिलेबस", "pdf/cet/graduation/syllabus.pdf"]] } ] },
     { name: "VDO", i: "🏛️", c: "#7e22ce", tests: "pdf/vdo/test/", syl: [["VDO सिलेबस", "pdf/vdo/syllabus.pdf"]] },
-    { name: "Raj. Police", i: "🛡️", c: "#c51d38", tests: "pdf/rj-police/test/", syl: [["राजस्थान पुलिस सिलेबस", "pdf/rj-police/syllabus.pdf"]] }
+    { name: "Raj. Police", i: "🛡️", c: "#c51d38", tests: "pdf/rj-police/test/", syl: [["राजस्थान पुलिस सिलेबस", "pdf/rj-police/syllabus.pdf"]] },
+    { name: "LDC", i: "🗂️", c: "#0e7490", tests: "pdf/ldc/test/", syl: [["राजस्थान LDC सिलेबस", "pdf/ldc/syllabus.pdf"]] },
+    { name: "PTET", i: "🏫", c: "#b45309", tests: "pdf/ptet/test/", syl: [["राजस्थान PTET सिलेबस", "pdf/ptet/syllabus.pdf"]] },
+    { name: "4th Grade", i: "📝", c: "#be185d", tests: "pdf/4th-grade/test/", syl: [["राजस्थान 4th Grade सिलेबस", "pdf/4th-grade/syllabus.pdf"]] },
+    { name: "पटवारी", i: "📜", c: "#4d7c0f", tests: "pdf/patwari/test/", syl: [["राजस्थान पटवारी सिलेबस", "pdf/patwari/syllabus.pdf"]] }
   ];
 
   function el(tag, cls, text) {
@@ -1185,21 +1199,37 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     return a;
   }
 
-  function show(idx) {
+  function show(idx, lv) {
     var c = COURSES[idx];
+    lv = lv || 0;
+    var d = c.levels ? c.levels[lv] : c;               /* is level ka syllabus + tests */
+    var title = c.levels ? c.name + " " + d.n : c.name;
     panel.style.setProperty("--cc", c.c);
     var w = document.getElementById("npWa");
     if (w) {
-      w.href = window.LC_WA("नमस्ते सर, मुझे " + c.name + " की जानकारी और फ्री डेमो क्लास चाहिए।");
-      w.textContent = "💬 " + c.name + " की जानकारी WhatsApp पर पाएं";
+      w.href = window.LC_WA("नमस्ते सर, मुझे " + title + " की जानकारी और फ्री डेमो क्लास चाहिए।");
+      w.textContent = "💬 " + title + " की जानकारी WhatsApp पर पाएं";
     }
     Array.prototype.forEach.call(tabsBox.children, function (t, k) { t.setAttribute("aria-selected", k === idx ? "true" : "false"); });
     body.innerHTML = "";
     body.scrollTop = 0;
 
-    body.appendChild(el("div", "np-label", "📄 " + c.name + " सिलेबस"));
+    if (c.levels) {
+      body.appendChild(el("div", "np-label", "🎯 अपना लेवल चुनें"));
+      var lvBox = el("div", "np-levels");
+      c.levels.forEach(function (x, k) {
+        var b = el("button", "np-level", x.n);
+        b.type = "button";
+        b.setAttribute("aria-pressed", k === lv ? "true" : "false");
+        b.addEventListener("click", function () { show(idx, k); });
+        lvBox.appendChild(b);
+      });
+      body.appendChild(lvBox);
+    }
+
+    body.appendChild(el("div", "np-label", "📄 " + title + " सिलेबस"));
     var list = el("div", "np-list");
-    c.syl.forEach(function (x, k) {
+    d.syl.forEach(function (x, k) {
       var a = link("np-row", x[1], k);
       a.appendChild(el("span", "np-pdf", "PDF"));
       a.appendChild(el("span", "t", x[0]));
@@ -1208,14 +1238,14 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     });
     body.appendChild(list);
 
-    body.appendChild(el("div", "np-label", "📝 " + c.name + " मॉडल टेस्ट पेपर (15)"));
+    body.appendChild(el("div", "np-label", "📝 " + title + " मॉडल टेस्ट पेपर (15)"));
     body.appendChild(el("div", "np-hint", "👇 नंबर पर टैप करें, टेस्ट पेपर PDF खुल जाएगा"));
     var grid = el("div", "np-grid");
     for (var n = 1; n <= 15; n++) {
-      var a = link("np-chip", c.tests + "paper" + n + ".pdf", n + 1);
+      var a = link("np-chip", d.tests + "paper" + n + ".pdf", n + 1);
       a.textContent = n;
-      a.title = c.name + " मॉडल टेस्ट पेपर " + n;
-      a.setAttribute("aria-label", c.name + " मॉडल टेस्ट पेपर " + n);
+      a.title = title + " मॉडल टेस्ट पेपर " + n;
+      a.setAttribute("aria-label", title + " मॉडल टेस्ट पेपर " + n);
       grid.appendChild(a);
     }
     body.appendChild(grid);
@@ -1294,7 +1324,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 (function () {
   var modal = document.getElementById("waModal");
   if (!modal) return;
-  var EXAMS = ["REET", "BSTC / PTET", "CET", "पटवारी / SI / VDO", "राजस्थान पुलिस", "4th Grade", "RAS"];
+  var EXAMS = ["REET", "BSTC / PTET", "CET", "पटवारी / SI / VDO", "राजस्थान पुलिस", "4th Grade", "LDC", "RAS"];
   var nameEl = document.getElementById("waName"), chips = document.getElementById("waChips"), err = document.getElementById("waErr");
   var picked = "";
   EXAMS.forEach(function (x) {
