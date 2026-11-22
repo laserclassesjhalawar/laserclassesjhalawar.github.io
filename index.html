@@ -261,7 +261,8 @@ img { display: block; max-width: 100%; height: auto; background: var(--rule); ob
 .people figcaption { padding-top: .5rem; line-height: 1.4; }
 .people figure { position: relative; transition: transform .2s ease; }
 .people figure:hover { transform: translateY(-5px); }
-.badge-selected { position: absolute; top: .4rem; left: .4rem; z-index: 2; background: #16a34a; color: #fff; font-size: .72rem; font-weight: 700; padding: .15rem .5rem; border-radius: 999px; box-shadow: 0 2px 6px rgba(0,0,0,.25); }
+.badge-selected { display: inline-block; margin-bottom: .35rem; background: #16a34a; color: #fff; font-size: .72rem; font-weight: 700; padding: .15rem .5rem; border-radius: 999px; box-shadow: 0 2px 6px rgba(0,0,0,.25); }
+.people .badge-selected { color: #fff; font-size: .72rem; }
 .people strong { display: block; font: 600 1rem/1.4 var(--head); }
 .people span { color: var(--soft); font-size: .85rem; }
 .gallery > * { width: 13rem; }
@@ -803,11 +804,11 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
       <h2>हमारे चयनित होनहार विद्यार्थी</h2>
       <p class="note">BSTC एवं प्रतियोगी परीक्षाओं में Laser Classes के चमकते सितारे:</p>
       <div class="people">
-        <figure><span class="badge-selected">✓ चयनित</span><img src="images/student1.jpeg" alt="रवीना लोधा" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>रवीना लोधा</strong><span>BSTC 2026 · निर्मल कॉलेज झालावाड़</span></figcaption></figure>
-        <figure><span class="badge-selected">✓ चयनित</span><img src="images/student2.png" alt="लोकेश भील" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>लोकेश भील</strong><span>BSTC 2026 · विद्या भारती कॉलेज सीकर</span></figcaption></figure>
-        <figure><span class="badge-selected">✓ चयनित</span><img src="images/student3.jpeg" alt="आशीष वर्मा " width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>आशीष वर्मा</strong><span>BSTC 2026 · निर्मल कॉलेज झालावाड़</span></figcaption></figure>
-        <figure><span class="badge-selected">✓ चयनित</span><img src="images/student4.jpeg" alt="नितेश मेघवाल" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>नितेश मेघवाल</strong><span>BSTC 2026 · दर्शन कॉलेज झालावाड़</span></figcaption></figure>
-        <figure><span class="badge-selected">✓ चयनित</span><img src="images/student2.png" alt="अर्जुन प्रजापति" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>अर्जुन प्रजापति</strong><span>BSTC 2026 · लोकमान्य तिलक उदयपुर</span></figcaption></figure>
+        <figure><img src="images/student1.jpeg" alt="रवीना लोधा" width="400" height="500" loading="lazy" decoding="async"><figcaption><span class="badge-selected">✓ चयनित</span><strong>रवीना लोधा</strong><span>BSTC 2026 · निर्मल कॉलेज झालावाड़</span></figcaption></figure>
+        <figure><img src="images/student2.png" alt="लोकेश भील" width="400" height="500" loading="lazy" decoding="async"><figcaption><span class="badge-selected">✓ चयनित</span><strong>लोकेश भील</strong><span>BSTC 2026 · विद्या भारती कॉलेज सीकर</span></figcaption></figure>
+        <figure><img src="images/student3.jpeg" alt="नितेश मेघवाल" width="400" height="500" loading="lazy" decoding="async"><figcaption><span class="badge-selected">✓ चयनित</span><strong>नितेश मेघवाल</strong><span>BSTC 2026 · निर्मल कॉलेज झालावाड़</span></figcaption></figure>
+        <figure><img src="images/student4.jpeg" alt="आशीष वर्मा" width="400" height="500" loading="lazy" decoding="async"><figcaption><span class="badge-selected">✓ चयनित</span><strong>आशीष वर्मा</strong><span>BSTC 2026 · दर्शन कॉलेज झालावाड़</span></figcaption></figure>
+        <figure><img src="images/student2.png" alt="अर्जुन प्रजापति" width="400" height="500" loading="lazy" decoding="async"><figcaption><span class="badge-selected">✓ चयनित</span><strong>अर्जुन प्रजापति</strong><span>BSTC 2026 · लोकमान्य तिलक उदयपुर</span></figcaption></figure>
       </div>
     </section>
 
