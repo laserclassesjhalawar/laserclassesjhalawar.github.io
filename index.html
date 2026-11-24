@@ -52,7 +52,7 @@
   --soft: #3d4a7a;
   --mark: #ffd23f;
   --accent: #e85d04;
-  --head: "Baloo 2", "Noto Sans Devanagari", system-ui, sans-serif;
+  --head: "Poppins", "Hind", "Noto Sans Devanagari", system-ui, sans-serif;
   --body: "Hind", "Noto Sans Devanagari", system-ui, sans-serif;
 }
 
@@ -650,6 +650,39 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
 .cb-wa { position: relative; }
 .cb-wa::after { content: "फ्री डेमो"; position: absolute; top: .25rem; right: .6rem; background: #e8344e; color: #fff; font: 700 .62rem/1 var(--body); padding: .2rem .4rem; border-radius: 999px; animation: badgeBlink 1.4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .wa::after, .cb-wa::after { animation: none; } }
+
+/* ===== MOBILE: seamless cards (sections stay as before) ===== */
+@media (max-width: 47.99rem) {
+  .people, .gallery {
+    scrollbar-width: none;
+  }
+  .people::-webkit-scrollbar, .gallery::-webkit-scrollbar { display: none; }
+  .people > * { width: 44vw; }
+  .people.two-row { grid-auto-columns: 44vw; }
+  .people figure { background: transparent; border: 0; box-shadow: none; }
+  .people figure:hover { transform: none; }
+  .contact .buttons { grid-template-columns: 1fr 1fr; gap: .6rem; }
+  .contact .buttons .btn { width: 100%; }
+}
+
+/* ===== Latest updates ===== */
+.updates { margin-top: 2.2rem; }
+.upd-list { list-style: none; display: grid; gap: .6rem; }
+.upd-list li {
+  background: #fff; border: 1px solid var(--rule); border-left: 5px solid var(--accent);
+  border-radius: 14px; padding: .75rem 1rem; box-shadow: var(--sh);
+}
+.upd-tag {
+  display: inline-block; margin-right: .4rem; padding: .1rem .6rem; border-radius: 999px;
+  background: var(--accent); color: #fff; font: 700 .8rem/1.6 var(--body);
+}
+/* ===== MOBILE: contact + footer blue boxes flush, no light border ===== */
+@media (max-width: 47.99rem) {
+  #contact, footer {
+    margin-left: -1rem; margin-right: -1rem;
+    border-radius: 0;
+  }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -821,6 +854,16 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
       <span class="tag">📢 New Batch Alert</span>
       <h3>BSTC, CET एवं REET के नए बैच प्रारंभ!</h3>
       <p>सुबह और शाम दोनों पारियों में नए बैच संचालित हैं। सीटें सीमित हैं, अपनी सुविधानुसार समय और डेमो क्लास की जानकारी के लिए सीधे ऑफ़िस पधारें या हमारे नंबर पर संपर्क करें।</p>
+    </section>
+
+    <!-- LATEST UPDATES -->
+    <section id="updates" class="updates">
+      <h2>ताज़ा अपडेट्स</h2>
+      <ul class="upd-list">
+        <li><span class="upd-tag">नया बैच</span> BSTC, CET एवं REET के नए बैच प्रारंभ, डेमो क्लास के लिए संपर्क करें।</li>
+        <li><span class="upd-tag">फ्री डेमो</span> नए छात्रों के लिए 3 दिन की फ्री डेमो क्लास उपलब्ध।</li>
+        <li><span class="upd-tag">हर रविवार</span> OMR टेस्ट, रिजल्ट और विश्लेषण के साथ।</li>
+      </ul>
     </section>
 
     <!-- COURSES -->
@@ -1010,7 +1053,7 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
   <footer>
     <p class="about">Laser Classes Jhalawar (Laser Coaching Jhalawar), झालावाड़ (राजस्थान) की बेस्ट कोचिंग में से एक है। यहाँ REET, BSTC, CET, पटवारी, VDO, राजस्थान पुलिस और RAS फाउंडेशन बैच की कोचिंग उपलब्ध है। मनीष सर और हरिओम सर जैसे अनुभवी शिक्षकों के साथ 3 दिन की फ्री डेमो क्लास और हर रविवार OMR टेस्ट। झालावाड़ में Best Coaching खोज रहे विद्यार्थियों के लिए Laser Classes सही विकल्प है।</p>
     <p>© 2026 Laser Classes, Jhalawar। सर्वाधिकार सुरक्षित।</p>
-    <p class="about">Technical &amp; Management: Bhupendra Sir · <a href="https://www.instagram.com/navvbhupendra" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.3rem;"><svg width="16" height="16" aria-hidden="true"><use href="#i-ig"/></svg>@navvbhupendra</a></p>
+    <p class="about">Technical Support by Bhupendra Sir · <a href="https://www.instagram.com/navvbhupendra" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.3rem;"><svg width="16" height="16" aria-hidden="true"><use href="#i-ig"/></svg>@navvbhupendra</a></p>
   </footer>
 </div>
 
@@ -1507,7 +1550,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     projectId: "laser-classes",
     appId: "1:493919135060:web:1e61ca0665920f428a54c1"
   };
-  var AUTO_APPROVE = true;   /* true = review turant dikhe | false = pehle aap Firebase me approve karein */
+  var AUTO_APPROVE = false;   /* true = review turant dikhe | false = pehle aap Firebase me approve karein */
   var COOLDOWN_MS = 24 * 60 * 60 * 1000; /* ek phone se 1 din me 1 review */
 
   var section = document.getElementById("reviews");
