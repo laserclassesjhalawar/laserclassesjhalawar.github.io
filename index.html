@@ -683,6 +683,145 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
     border-radius: 0;
   }
 }
+
+/* ===== "हमें ही क्यों चुनें" : colorful 2-per-row on mobile ===== */
+ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+.why li:nth-child(4n+1) { --wc: #e85d04; }
+.why li:nth-child(4n+2) { --wc: #1d4ed8; }
+.why li:nth-child(4n+3) { --wc: #15803d; }
+.why li:nth-child(4n+4) { --wc: #c51d38; }
+.why li { border-top: 3px solid var(--wc, #1d4ed8); background: #fff; }
+.why .why-ic { background: color-mix(in srgb, var(--wc, #1d4ed8) 14%, #fff); border-color: transparent; }
+@media (max-width: 47.99rem) {
+  ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
+  .why li { display: flex; flex-direction: column; align-items: flex-start; padding: .8rem .7rem .85rem; min-height: 0; font-size: .9rem; line-height: 1.45; }
+  .why .why-ic { position: static; transform: none; margin-bottom: .45rem; width: 2.3rem; height: 2.3rem; font-size: 1.2rem; }
+}
+
+/* ===== Floating "फ्री नोट्स" button: above the WhatsApp bar, new colour ===== */
+@media (max-width: 47.99rem) {
+  .fab-notes { bottom: calc(6.4rem + env(safe-area-inset-bottom)); right: .9rem; background: linear-gradient(135deg, #ff8a1f, #e85d04); border-color: #fff; box-shadow: 0 6px 16px rgba(232,93,4,.4); }
+}
+
+/* ===== Free study material card: navy + gold, animated ===== */
+.promo-box {
+  background: linear-gradient(120deg, #0b1452, #1b2a8a, #3b1d8f, #0b1452);
+  background-size: 300% 300%;
+  animation: promoShine 9s ease infinite;
+  border: 3px solid #ffd23f;
+  box-shadow: 0 14px 34px rgba(11,20,82,.45), 0 0 0 6px rgba(255,210,63,.15);
+  color: #e8edff;
+}
+.promo-box .tag { background: linear-gradient(90deg, #ffd23f, #ffb703); color: #1b1400; font-weight: 800; }
+.promo-box h3 {
+  background: linear-gradient(90deg, #ffd23f, #ffffff 60%, #ffd23f);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.promo-sub { color: #dfe6ff; }
+.promo-stats div { background: rgba(255,255,255,.12); border: 1px solid rgba(255,210,63,.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.promo-stats b { color: #ffd23f; }
+.promo-stats span { color: #dfe6ff; }
+.promo-pick { color: #ffffff; }
+.promo-steps { color: #cfd8ff; }
+.pc { border: 2px solid rgba(255,255,255,.85); box-shadow: 0 5px 14px rgba(0,0,0,.35); }
+.promo-box .btn.glow-red {
+  background: linear-gradient(180deg, #ffe066, #ffb703);
+  color: #1b1400; border: 2px solid #fff;
+  animation: goldPulse 1.8s infinite ease-in-out;
+}
+.promo-box .btn.glow-red:hover { background: linear-gradient(180deg, #fff09a, #ffc31f); }
+@keyframes promoShine { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes goldPulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,210,63,.75); }
+  70% { transform: scale(1.04); box-shadow: 0 0 0 14px rgba(255,210,63,0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,210,63,0); }
+}
+
+/* ===== Intro animation: purple + gold instead of blue ===== */
+.intro {
+  background: radial-gradient(circle at 50% 40%, #7c3aed, #3b1d8f 55%, #1a0b47 90%);
+}
+.intro-folder { filter: drop-shadow(0 0 18px rgba(255,210,63,.7)); }
+.intro-text { color: #ffd23f; }
+.intro-bar { background: rgba(255,255,255,.18); }
+.intro-bar i { background: linear-gradient(90deg, #ffd23f, #ff6ec7); }
+.sp { color: #ffd23f; }
+
+/* ===== Free study card v2: multi-colour, compact ===== */
+.promo-box {
+  background: linear-gradient(120deg, #ff7a18, #f72585 35%, #7b2ff7 70%, #00b4d8);
+  background-size: 300% 300%;
+  animation: promoShine 10s ease infinite;
+  border: 3px solid #fff;
+  box-shadow: 0 14px 30px rgba(247,37,133,.35), 0 0 0 5px rgba(255,255,255,.25);
+  color: #fff;
+}
+.promo-box .tag { background: #fff; color: #7b2ff7; font-weight: 800; }
+.promo-box h3 { background: none; -webkit-text-fill-color: #fff; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.25); }
+.promo-sub { color: #fff; }
+.promo-stats div { background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.7); }
+.promo-stats b { color: #fff; }
+.promo-stats span { color: #fff; }
+.promo-pick { color: #fff; }
+.pc { background: #fff; color: var(--c); border: 2px solid var(--c); font-weight: 800; }
+.promo-box .btn.glow-red { background: #fff; color: #f72585; border: 2px solid #fff; animation: goldPulse 1.8s infinite ease-in-out; }
+.promo-box .btn.glow-red:hover { background: #fff5fa; }
+.promo-steps { color: #fff; }
+.promo-more { margin: 0 auto .9rem; max-width: 34rem; }
+.promo-more summary {
+  list-style: none; cursor: pointer; display: inline-block; padding: .35rem .95rem;
+  border-radius: 999px; background: rgba(255,255,255,.25); color: #fff; font-weight: 700; font-size: .9rem;
+}
+.promo-more summary::-webkit-details-marker { display: none; }
+.promo-more[open] summary { margin-bottom: .5rem; }
+.promo-more .promo-sub { font-size: .9rem; }
+
+@media (max-width: 47.99rem) {
+  .promo-box { padding: 1rem .8rem !important; }
+  .promo-box h3 { font-size: 1.35rem; margin-bottom: .2rem; }
+  .promo-stats { margin-bottom: .8rem; }
+  .promo-stats b { font-size: 1.2rem; }
+  .promo-courses { gap: .4rem; margin-bottom: .8rem; }
+  .pc { font-size: .8rem; padding: .3rem .7rem; }
+  .promo-box .btn.glow-red { font-size: .95rem; padding: .6rem 1.2rem; }
+  .promo-steps { margin-top: .6rem; font-size: .8rem; }
+}
+
+/* ===== Free study card: fix global FAQ "details" styles leaking in ===== */
+.promo-box details.promo-more {
+  background: transparent; border: 0; border-radius: 0; box-shadow: none;
+  padding: 0; margin: 0 auto .9rem; max-width: 34rem; text-align: center;
+}
+.promo-box details.promo-more[open] { background: transparent; box-shadow: none; }
+.promo-box details.promo-more summary {
+  display: inline-block; font: 700 .9rem/1.4 var(--body); color: #fff;
+  padding: .35rem .95rem; border-radius: 999px; background: rgba(255,255,255,.25);
+  cursor: pointer; list-style: none;
+}
+.promo-box details.promo-more summary::-webkit-details-marker { display: none; }
+.promo-box details.promo-more .promo-sub { color: #fff; padding-top: .6rem; font-size: .9rem; margin: 0; }
+
+/* ===== Lighter free-study card ===== */
+.promo-box {
+  background: linear-gradient(120deg, #ffe3c2, #ffd1dc 35%, #e2d4ff 70%, #cbeeff);
+  background-size: 300% 300%;
+  border: 3px solid #fff;
+  box-shadow: 0 12px 26px rgba(123,47,247,.18), 0 0 0 5px rgba(255,255,255,.6);
+  color: #3b1d5e;
+}
+.promo-box .tag { background: #3b1d8f; color: #fff; }
+.promo-box h3 { background: none; -webkit-text-fill-color: #3b1d8f; color: #3b1d8f; text-shadow: none; }
+.promo-sub, .promo-stats span, .promo-pick, .promo-steps { color: #3b1d5e; }
+.promo-stats div { background: rgba(255,255,255,.75); border: 1px solid rgba(123,47,247,.35); }
+.promo-stats b { color: #f72585; }
+.promo-box .btn.glow-red { color: #f72585; border: 2px solid #f72585; }
+.promo-box details.promo-more summary { background: rgba(59,29,143,.12); color: #3b1d8f; }
+.promo-box details.promo-more .promo-sub { color: #3b1d5e; }
+
+/* ===== YouTube "लेटेस्ट फ्री सेशन" : no white/cream panel behind ===== */
+#videos {
+  background: none; border-radius: 0; padding-left: 0; padding-right: 0; box-shadow: none; border: 0;
+}
 </style>
 <script type="application/ld+json">
 {
@@ -856,15 +995,6 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
       <p>सुबह और शाम दोनों पारियों में नए बैच संचालित हैं। सीटें सीमित हैं, अपनी सुविधानुसार समय और डेमो क्लास की जानकारी के लिए सीधे ऑफ़िस पधारें या हमारे नंबर पर संपर्क करें।</p>
     </section>
 
-    <!-- LATEST UPDATES -->
-    <section id="updates" class="updates">
-      <h2>ताज़ा अपडेट्स</h2>
-      <ul class="upd-list">
-        <li><span class="upd-tag">नया बैच</span> BSTC, CET एवं REET के नए बैच प्रारंभ, डेमो क्लास के लिए संपर्क करें।</li>
-        <li><span class="upd-tag">फ्री डेमो</span> नए छात्रों के लिए 3 दिन की फ्री डेमो क्लास उपलब्ध।</li>
-        <li><span class="upd-tag">हर रविवार</span> OMR टेस्ट, रिजल्ट और विश्लेषण के साथ।</li>
-      </ul>
-    </section>
 
     <!-- COURSES -->
     <section id="courses">
@@ -883,7 +1013,10 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
       <div class="promo-box">
         <span class="tag">🎓 विद्यार्थियों के लिए विशेष सौगात</span>
         <h3>🎁 फ्री स्टडी मटेरियल</h3>
-        <p class="promo-sub">REET, BSTC, CET (12+ व Graduation), VDO, पुलिस, LDC, PTET, 4th Grade और पटवारी के संपूर्ण सिलेबस और हर कोर्स के 15 फुल-लेंथ मॉडल टेस्ट पेपर — बिल्कुल फ्री डाउनलोड करें।</p>
+        <details class="promo-more">
+          <summary>📖 पूरी जानकारी देखें</summary>
+          <p class="promo-sub">REET, BSTC, CET (12+ व Graduation), VDO, पुलिस, LDC, PTET, 4th Grade और पटवारी के संपूर्ण सिलेबस और हर कोर्स के 15 फुल-लेंथ मॉडल टेस्ट पेपर — बिल्कुल फ्री डाउनलोड करें।</p>
+        </details>
         <div class="promo-stats">
           <div><b>13</b><span>सिलेबस</span></div>
           <div><b>150</b><span>टेस्ट पेपर</span></div>
@@ -1246,11 +1379,14 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 
   /* Naya course/PDF jodna ho to sirf yahan badlo */
   var COURSES = [
-    { name: "REET", i: "📚", c: "#1d4ed8", tests: "pdf/reet/test/", syl: [
-      ["REET Level 2 Mains Syllabus", "pdf/reet/level2-mains-syllabus.pdf"],
-      ["REET Level 2 Pre Syllabus", "pdf/reet/level2-pre-syllabus.pdf"],
-      ["REET Level 1st Mains Syllabus", "pdf/reet/level1-mains-syllabus.pdf"],
-      ["REET Level 1st Pre Syllabus", "pdf/reet/level1-pre-syllabus.pdf"] ] },
+    /* REET: Level 1 aur Level 2 alag, dono ke apne syllabus; model papers (15) dono mein same */
+    { name: "REET", i: "📚", c: "#1d4ed8", levels: [
+      { n: "REET Level 1", tests: "pdf/reet/test/", syl: [
+        ["REET Level 1st Mains Syllabus", "pdf/reet/level1-mains-syllabus.pdf"],
+        ["REET Level 1st Pre Syllabus", "pdf/reet/level1-pre-syllabus.pdf"] ] },
+      { n: "REET Level 2", tests: "pdf/reet/test/", syl: [
+        ["REET Level 2 Mains Syllabus", "pdf/reet/level2-mains-syllabus.pdf"],
+        ["REET Level 2 Pre Syllabus", "pdf/reet/level2-pre-syllabus.pdf"] ] } ] },
     { name: "BSTC", i: "🎓", c: "#15803d", tests: "pdf/bstc/test/", syl: [["BSTC सिलेबस", "pdf/bstc/syllabus.pdf"]] },
     /* CET: 2 level. Har level ka apna syllabus aur apne 15 test */
     { name: "CET", i: "📋", c: "#d9480f", levels: [
