@@ -100,19 +100,8 @@ a { color: inherit; }
 
 h1, h2, h3 { font-family: var(--head); line-height: 1.35; color: var(--ink); overflow-wrap: break-word; }
 
-h2 {
-  display: inline-flex; align-items: center; max-width: 100%;
-  font-size: 1.35rem; font-weight: 800; margin-bottom: 1.2rem;
-  padding: .45rem 1rem; border-radius: 999px;
-  background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.18));
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  backdrop-filter: blur(14px) saturate(160%);
-  border: 1px solid rgba(255,255,255,.55);
-  box-shadow: 0 1px 1px rgba(255,255,255,.6) inset, 0 -6px 10px rgba(0,0,0,.06) inset, 0 6px 16px rgba(15,31,102,.14);
-}
-@media (min-width: 48rem) { h2 { font-size: 1.7rem; padding: .55rem 1.1rem; } }
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  h2, .tag, .logo, nav a { background: #fff; box-shadow: none; }
+  .tag, .logo, nav a { background: #fff; box-shadow: none; }
 }
 section { padding: 2.5rem 0 1rem; }
 @media (min-width: 48rem) { section { padding: 3rem 0 1rem; } }
@@ -169,10 +158,6 @@ header#siteHeader.scrolled { box-shadow: 0 4px 14px rgba(15, 31, 102, 0.08); }
 .btn.alt { color: var(--ink); background: linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.08)); }
 .btn.hl { color: var(--ink); background: linear-gradient(180deg, rgba(255,226,120,.75), rgba(255,210,63,.45)); border-color: rgba(255,255,255,.65); }
 .btn:hover { box-shadow: 0 1px 1px rgba(255,255,255,.7) inset, 0 -6px 10px rgba(0,0,0,.08) inset, 0 10px 22px rgba(15,31,102,.26); }
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .btn { background: var(--ink); color: #fff; }
-  .btn.alt { background: transparent; color: var(--ink); }
-}
 .ic { width: 1.35rem; height: 1.35rem; flex: none; }
 
 /* ===== Attention banner ===== */
@@ -189,35 +174,7 @@ header#siteHeader.scrolled { box-shadow: 0 4px 14px rgba(15, 31, 102, 0.08); }
 .attn-close { position: absolute; right: .5rem; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.25); border: none; color: #fff; width: 1.6rem; height: 1.6rem; border-radius: 50%; cursor: pointer; font-size: .85rem; line-height: 1; }
 .attn-close:hover { background: rgba(255,255,255,.4); }
 
-/* ===== Free notes promo card ===== */
-.promo { padding: 0; margin: 1.5rem 0 .5rem; }
-.promo-box { background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 50%, #ffdf7e 100%); border: 3px solid #ff9800; border-radius: 18px; padding: 1.4rem 1rem; text-align: center; box-shadow: 0 12px 30px rgba(255,152,0,.35), 0 4px 10px rgba(0,0,0,.08); }
-.promo-box .tag { margin-bottom: .6rem; background: #0f1f66; color: #fff; font-size: .85rem; padding: .3rem .9rem; border-radius: 999px; }
-.promo-box h3 { font-size: 1.6rem; margin-bottom: .3rem; color: #b71c1c; font-weight: 800; }
-.promo-sub { color: #3d4a7a; font-size: .98rem; line-height: 1.5; margin: 0 auto 1rem; max-width: 34rem; }
-.promo-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; max-width: 26rem; margin: 0 auto 1.1rem; }
-.promo-stats div { background: rgba(255,255,255,.75); border: 1px solid rgba(255,152,0,.5); border-radius: 12px; padding: .5rem .2rem; }
-.promo-stats b { display: block; font: 800 1.5rem/1.2 var(--head); color: var(--accent); }
-.promo-stats span { font-size: .8rem; color: var(--soft); font-weight: 600; }
-.promo-pick { font-weight: 700; margin-bottom: .6rem; }
-.promo-courses { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-bottom: 1.2rem; }
-.pc { cursor: pointer; border: 0; color: #fff; background: var(--c); font: 700 .95rem var(--body); padding: .5rem 1rem; border-radius: 999px; box-shadow: 0 4px 10px rgba(0,0,0,.2); transition: transform .15s ease; }
-.pc:hover { transform: translateY(-2px); }
-.pc:active { transform: scale(.95); }
-.promo-steps { margin-top: .9rem; font-size: .88rem; color: var(--soft); font-weight: 600; }
-
-@keyframes redGlowPulse {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232,52,78,.7); }
-    70% { transform: scale(1.04); box-shadow: 0 0 0 14px rgba(232,52,78,0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(232,52,78,0); }
-}
-.promo-box .btn.glow-red { font-size: 1.1rem; padding: .8rem 1.8rem; background: linear-gradient(180deg, #e8344e, #c51d38); color: #fff; border: 2px solid #ffd23f; text-align: center; justify-content: center; border-radius: 50px; animation: redGlowPulse 1.8s infinite ease-in-out; font-weight: 700; cursor: pointer; }
-.promo-box .btn.glow-red:hover { background: linear-gradient(180deg, #f53d5a, #d8223f); }
-@media (min-width: 48rem) { .promo-box { padding: 2rem 2.25rem; } .promo-box h3 { font-size: 1.9rem; } }
-
 /* ===== Hero ===== */
-.hero { position: relative; overflow: hidden; margin-top: .5rem; padding: 2rem 1rem 1.5rem; border-radius: 14px; background-color: var(--ink); background-image: repeating-linear-gradient(to bottom, transparent 0 35px, rgba(255,255,255,.08) 35px 36px); }
-@media (min-width: 48rem) { .hero { padding: 3rem 1.25rem 2.5rem; } }
 .hero h1 { color: #fff; font-size: clamp(1.75rem, 7vw, 3.4rem); font-weight: 800; max-width: 20ch; }
 .hero p { display: block; margin: 1rem 0 1.5rem; color: #dbe4ff; max-width: 36rem; }
 .tag {
@@ -542,13 +499,13 @@ nav a:hover { background: var(--ink); color: #fff; border-color: var(--ink); box
 .btn.alt { background: #fff; }
 
 /* Section headings: pill hata kar gold underline */
-h2 { display: block; background: none; border: 0; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; border-radius: 0; padding: 0 0 .75rem; font-size: 1.55rem; position: relative; margin-bottom: 1.1rem; }
+h2 { display: block; max-width: 100%; position: relative; font-size: 1.55rem; font-weight: 800; padding: 0 0 .75rem; margin-bottom: 1.1rem; }
 h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 3.2rem; height: .28rem; border-radius: 9px; background: linear-gradient(90deg, var(--mark), var(--accent)); }
 @media (min-width: 48rem) { h2 { font-size: 2rem; padding: 0 0 .85rem; } }
 .tag { background: #fff3cd; border: 1px solid #ffe08a; color: #7a4b00; box-shadow: none; -webkit-backdrop-filter: none; backdrop-filter: none; border-radius: 999px; }
 
 /* Hero */
-.hero { margin-top: .75rem; border-radius: 26px; padding: 2.2rem 1.25rem 2.2rem; background: radial-gradient(520px 320px at 92% 0%, rgba(255,200,61,.3), transparent 60%), radial-gradient(620px 420px at 0% 100%, rgba(75,90,255,.4), transparent 60%), linear-gradient(135deg, #0a1450, #16267c 60%, #1f3bb3); box-shadow: 0 22px 44px rgba(10,20,80,.3); }
+.hero { position: relative; overflow: hidden; margin-top: .75rem; border-radius: 26px; padding: 1.3rem 1.1rem 1.4rem; background: radial-gradient(520px 320px at 92% 0%, rgba(255,200,61,.3), transparent 60%), radial-gradient(620px 420px at 0% 100%, rgba(75,90,255,.4), transparent 60%), linear-gradient(135deg, #0a1450, #16267c 60%, #1f3bb3); box-shadow: 0 22px 44px rgba(10,20,80,.3); }
 .hero h1 { font-weight: 800; font-size: clamp(1.9rem, 7.2vw, 3.5rem); line-height: 1.3; max-width: 22ch; }
 .hero p { color: #d5defc; }
 .hero .tag { background: rgba(255,255,255,.14); color: #fff; border: 1px solid rgba(255,255,255,.3); }
@@ -632,11 +589,9 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
 .hero-stats span { display: block; font-size: .62rem; line-height: 1.25; color: #e8edff; }
 @media (min-width: 48rem) { .hero-stats b { font-size: 1.15rem; } .hero-stats span { font-size: .78rem; } .hero-stats div { padding: .45rem .3rem; } }
 /* hero ko chhota karo */
-.hero { padding: 1.3rem 1.1rem 1.4rem; }
 .hero .tag { margin-bottom: .6rem; font-size: .82rem; padding: .3rem .8rem; }
 .hero h1 { font-size: clamp(1.5rem, 6vw, 2.8rem); line-height: 1.3; }
 .hero p { margin: .6rem 0 .9rem; font-size: .95rem; line-height: 1.6; }
-.hero-wave { display: none; }
 @media (min-width: 48rem) { .hero { padding: 2rem 1.5rem 2rem; } }
 
 /* ===== NEW: results year tabs + counter ===== */
@@ -736,40 +691,6 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
   .fab-notes { bottom: calc(6.4rem + env(safe-area-inset-bottom)); right: .9rem; background: linear-gradient(135deg, #ff8a1f, #e85d04); border-color: #fff; box-shadow: 0 6px 16px rgba(232,93,4,.4); }
 }
 
-/* ===== Free study material card: navy + gold, animated ===== */
-.promo-box {
-  background: linear-gradient(120deg, #0b1452, #1b2a8a, #3b1d8f, #0b1452);
-  background-size: 300% 300%;
-  animation: promoShine 9s ease infinite;
-  border: 3px solid #ffd23f;
-  box-shadow: 0 14px 34px rgba(11,20,82,.45), 0 0 0 6px rgba(255,210,63,.15);
-  color: #e8edff;
-}
-.promo-box .tag { background: linear-gradient(90deg, #ffd23f, #ffb703); color: #1b1400; font-weight: 800; }
-.promo-box h3 {
-  background: linear-gradient(90deg, #ffd23f, #ffffff 60%, #ffd23f);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-.promo-sub { color: #dfe6ff; }
-.promo-stats div { background: rgba(255,255,255,.12); border: 1px solid rgba(255,210,63,.55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
-.promo-stats b { color: #ffd23f; }
-.promo-stats span { color: #dfe6ff; }
-.promo-pick { color: #ffffff; }
-.promo-steps { color: #cfd8ff; }
-.pc { border: 2px solid rgba(255,255,255,.85); box-shadow: 0 5px 14px rgba(0,0,0,.35); }
-.promo-box .btn.glow-red {
-  background: linear-gradient(180deg, #ffe066, #ffb703);
-  color: #1b1400; border: 2px solid #fff;
-  animation: goldPulse 1.8s infinite ease-in-out;
-}
-.promo-box .btn.glow-red:hover { background: linear-gradient(180deg, #fff09a, #ffc31f); }
-@keyframes promoShine { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
-@keyframes goldPulse {
-  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,210,63,.75); }
-  70% { transform: scale(1.04); box-shadow: 0 0 0 14px rgba(255,210,63,0); }
-  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,210,63,0); }
-}
-
 /* ===== Intro animation: purple + gold instead of blue ===== */
 .intro {
   background: radial-gradient(circle at 50% 40%, #7c3aed, #3b1d8f 55%, #1a0b47 90%);
@@ -780,37 +701,33 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 .intro-bar i { background: linear-gradient(90deg, #ffd23f, #ff6ec7); }
 .sp { color: #ffd23f; }
 
-/* ===== Free study card v2: multi-colour, compact ===== */
-.promo-box {
-  background: linear-gradient(120deg, #ff7a18, #f72585 35%, #7b2ff7 70%, #00b4d8);
-  background-size: 300% 300%;
-  animation: promoShine 10s ease infinite;
-  border: 3px solid #fff;
-  box-shadow: 0 14px 30px rgba(247,37,133,.35), 0 0 0 5px rgba(255,255,255,.25);
-  color: #fff;
-}
-.promo-box .tag { background: #fff; color: #7b2ff7; font-weight: 800; }
-.promo-box h3 { background: none; -webkit-text-fill-color: #fff; color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,.25); }
-.promo-sub { color: #fff; }
-.promo-stats div { background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.7); }
-.promo-stats b { color: #fff; }
-.promo-stats span { color: #fff; }
-.promo-pick { color: #fff; }
-.pc { background: #fff; color: var(--c); border: 2px solid var(--c); font-weight: 800; }
-.promo-box .btn.glow-red { background: #fff; color: #f72585; border: 2px solid #fff; animation: goldPulse 1.8s infinite ease-in-out; }
+/* ===== Free study card (final) ===== */
+.promo { padding: 0; margin: 1.5rem 0 .5rem; }
+.promo-box { background: linear-gradient(120deg, #ffe3c2, #ffd1dc 35%, #e2d4ff 70%, #cbeeff); background-size: 300% 300%; animation: promoShine 10s ease infinite; border: 3px solid #fff; border-radius: 18px; padding: 1.4rem 1rem; text-align: center; color: #3b1d5e; box-shadow: 0 12px 26px rgba(123,47,247,.18), 0 0 0 5px rgba(255,255,255,.6); }
+.promo-box .tag { margin-bottom: .6rem; background: #3b1d8f; color: #fff; font-size: .85rem; font-weight: 800; padding: .3rem .9rem; border-radius: 999px; }
+.promo-box h3 { font-size: 1.6rem; margin-bottom: .3rem; font-weight: 800; color: #3b1d8f; }
+.promo-sub { color: #3b1d5e; font-size: .98rem; line-height: 1.5; margin: 0 auto 1rem; max-width: 34rem; }
+.promo-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; max-width: 26rem; margin: 0 auto 1.1rem; }
+.promo-stats div { background: rgba(255,255,255,.75); border: 1px solid rgba(123,47,247,.35); border-radius: 12px; padding: .5rem .2rem; }
+.promo-stats b { display: block; font: 800 1.5rem/1.2 var(--head); color: #f72585; }
+.promo-stats span { font-size: .8rem; color: #3b1d5e; font-weight: 600; }
+.promo-pick { font-weight: 700; margin-bottom: .6rem; color: #3b1d5e; }
+.promo-courses { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem; margin-bottom: 1.2rem; }
+.pc { cursor: pointer; background: #fff; color: var(--c); border: 2px solid var(--c); font: 800 .95rem var(--body); padding: .5rem 1rem; border-radius: 999px; box-shadow: 0 5px 14px rgba(0,0,0,.35); transition: transform .15s ease; }
+.pc:hover { transform: translateY(-2px); }
+.pc:active { transform: scale(.95); }
+.promo-steps { margin-top: .9rem; font-size: .88rem; color: #3b1d5e; font-weight: 600; }
+.promo-box .btn.glow-red { font-size: 1.1rem; font-weight: 700; padding: .8rem 1.8rem; background: #fff; color: #f72585; border: 2px solid #f72585; justify-content: center; text-align: center; border-radius: 50px; cursor: pointer; animation: goldPulse 1.8s infinite ease-in-out; }
 .promo-box .btn.glow-red:hover { background: #fff5fa; }
-.promo-steps { color: #fff; }
-.promo-more { margin: 0 auto .9rem; max-width: 34rem; }
-.promo-more summary {
-  list-style: none; cursor: pointer; display: inline-block; padding: .35rem .95rem;
-  border-radius: 999px; background: rgba(255,255,255,.25); color: #fff; font-weight: 700; font-size: .9rem;
-}
-.promo-more summary::-webkit-details-marker { display: none; }
-.promo-more[open] summary { margin-bottom: .5rem; }
-.promo-more .promo-sub { font-size: .9rem; }
-
+.promo-box details.promo-more { background: transparent; border: 0; border-radius: 0; box-shadow: none; padding: 0; margin: 0 auto .9rem; max-width: 34rem; text-align: center; }
+.promo-box details.promo-more summary { display: inline-block; font: 700 .9rem/1.4 var(--body); color: #3b1d8f; padding: .35rem .95rem; border-radius: 999px; background: rgba(59,29,143,.12); cursor: pointer; list-style: none; }
+.promo-box details.promo-more summary::-webkit-details-marker { display: none; }
+.promo-box details.promo-more .promo-sub { padding-top: .6rem; font-size: .9rem; margin: 0; }
+@keyframes promoShine { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+@keyframes goldPulse { 0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(247,37,133,.5); } 70% { transform: scale(1.04); box-shadow: 0 0 0 14px rgba(247,37,133,0); } 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(247,37,133,0); } }
+@media (min-width: 48rem) { .promo-box { padding: 2rem 2.25rem; } .promo-box h3 { font-size: 1.9rem; } }
 @media (max-width: 47.99rem) {
-  .promo-box { padding: 1rem .8rem !important; }
+  .promo-box { padding: 1rem .8rem; }
   .promo-box h3 { font-size: 1.35rem; margin-bottom: .2rem; }
   .promo-stats { margin-bottom: .8rem; }
   .promo-stats b { font-size: 1.2rem; }
@@ -819,37 +736,6 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
   .promo-box .btn.glow-red { font-size: .95rem; padding: .6rem 1.2rem; }
   .promo-steps { margin-top: .6rem; font-size: .8rem; }
 }
-
-/* ===== Free study card: fix global FAQ "details" styles leaking in ===== */
-.promo-box details.promo-more {
-  background: transparent; border: 0; border-radius: 0; box-shadow: none;
-  padding: 0; margin: 0 auto .9rem; max-width: 34rem; text-align: center;
-}
-.promo-box details.promo-more[open] { background: transparent; box-shadow: none; }
-.promo-box details.promo-more summary {
-  display: inline-block; font: 700 .9rem/1.4 var(--body); color: #fff;
-  padding: .35rem .95rem; border-radius: 999px; background: rgba(255,255,255,.25);
-  cursor: pointer; list-style: none;
-}
-.promo-box details.promo-more summary::-webkit-details-marker { display: none; }
-.promo-box details.promo-more .promo-sub { color: #fff; padding-top: .6rem; font-size: .9rem; margin: 0; }
-
-/* ===== Lighter free-study card ===== */
-.promo-box {
-  background: linear-gradient(120deg, #ffe3c2, #ffd1dc 35%, #e2d4ff 70%, #cbeeff);
-  background-size: 300% 300%;
-  border: 3px solid #fff;
-  box-shadow: 0 12px 26px rgba(123,47,247,.18), 0 0 0 5px rgba(255,255,255,.6);
-  color: #3b1d5e;
-}
-.promo-box .tag { background: #3b1d8f; color: #fff; }
-.promo-box h3 { background: none; -webkit-text-fill-color: #3b1d8f; color: #3b1d8f; text-shadow: none; }
-.promo-sub, .promo-stats span, .promo-pick, .promo-steps { color: #3b1d5e; }
-.promo-stats div { background: rgba(255,255,255,.75); border: 1px solid rgba(123,47,247,.35); }
-.promo-stats b { color: #f72585; }
-.promo-box .btn.glow-red { color: #f72585; border: 2px solid #f72585; }
-.promo-box details.promo-more summary { background: rgba(59,29,143,.12); color: #3b1d8f; }
-.promo-box details.promo-more .promo-sub { color: #3b1d5e; }
 
 /* ===== YouTube "लेटेस्ट फ्री सेशन" : no white/cream panel behind ===== */
 #videos {
@@ -865,11 +751,19 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
   "image": "https://laserclassesjhalawar.github.io/images/og-banner.png",
   "logo": "https://laserclassesjhalawar.github.io/favicon.png",
   "areaServed": "झालावाड़, राजस्थान",
-  "founder": { "@type": "Person", "name": "Manish Sir", "alternateName": "Manish Kulariya" },
+  "founder": { "@type": "Person", "name": "मनीष कुलारिया", "alternateName": "Manish Sir" },
   "employee": [
-    { "@type": "Person", "name": "Manish Sir", "jobTitle": "Founder & Hindi Faculty" },
-    { "@type": "Person", "name": "Hariom Sir", "jobTitle": "Art & Culture Faculty" },
-    { "@type": "Person", "name": "Bhupendra Sir", "alternateName": "Bhupendra Kumar Lodha", "jobTitle": "Website, App & Online Systems Administrator", "sameAs": "https://www.instagram.com/navvbhupendra" }
+    { "@type": "Person", "name": "मनीष कुलारिया", "alternateName": "Manish Sir", "jobTitle": "Founder & सामान्य हिन्दी शिक्षक" },
+    { "@type": "Person", "name": "आर. एस. सिसोदिया", "jobTitle": "संविधान एवं राज्यव्यवस्था शिक्षक" },
+    { "@type": "Person", "name": "लोकेश गुर्जर", "jobTitle": "रीज़निंग एवं गणित शिक्षक" },
+    { "@type": "Person", "name": "नविन सुमन", "jobTitle": "राजस्थान इतिहास शिक्षक" },
+    { "@type": "Person", "name": "मनोज मेरोठा", "jobTitle": "राजस्थान भूगोल शिक्षक" },
+    { "@type": "Person", "name": "हरिओम सुमन", "alternateName": "Hariom Sir", "jobTitle": "राजस्थान कला और संस्कृति शिक्षक" },
+    { "@type": "Person", "name": "दुर्गालाल राठोर", "jobTitle": "संस्कृत शिक्षक" },
+    { "@type": "Person", "name": "सुष्मिता मेम", "jobTitle": "भारत का भूगोल शिक्षिका" },
+    { "@type": "Person", "name": "भानूप्रताप सिह", "jobTitle": "कंप्यूटर शिक्षक" },
+    { "@type": "Person", "name": "लखन राठोर", "jobTitle": "विज्ञान शिक्षक" },
+    { "@type": "Person", "name": "Bhupendra Kumar Lodha", "alternateName": "Bhupendra Sir", "jobTitle": "Website, App & Online Systems Administrator", "sameAs": "https://www.instagram.com/navvbhupendra" }
   ],
   "telephone": ["+91-8875472511", "+91-9252120834"],
   "address": {
@@ -997,8 +891,8 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
       <div class="hero-stats">
         <div><b>10+</b><span>अनुभवी शिक्षक</span></div>
         <div><b>3 दिन</b><span>फ्री डेमो</span></div>
-        <div><b>रविवार</b><span>OMR टेस्ट</span></div>
-        <div><b>150</b><span>फ्री टेस्ट</span></div>
+        <div><b>50+</b><span>OMR टेस्ट</span></div>
+        <div><b>150</b><span>फ्री मॉडल पेपर</span></div>
       </div>
       <div class="buttons">
         <a class="btn hl" href="https://play.google.com/store/apps/details?id=com.hkfywo.mrblyu" target="_blank" rel="noopener">
