@@ -1684,7 +1684,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     projectId: "laser-classes",
     appId: "1:493919135060:web:1e61ca0665920f428a54c1"
   };
-  var AUTO_APPROVE = false;   /* true = review turant dikhe | false = pehle aap Firebase me approve karein */
+  var AUTO_APPROVE = true;   /* true = review turant dikhe | false = pehle aap Firebase me approve karein */
   var COOLDOWN_MS = 24 * 60 * 60 * 1000; /* ek phone se 1 din me 1 review */
 
   var section = document.getElementById("reviews");
@@ -1738,7 +1738,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     if (text.length < 15) return setMsg("रिव्यू कम से कम 15 अक्षर का लिखें।", "err");
     if (Date.now() - lastTime() < COOLDOWN_MS) return setMsg("आप आज पहले ही रिव्यू दे चुके हैं। धन्यवाद!", "err");
     send.disabled = true; setMsg("भेजा जा रहा है...");
-    var data = { name: name, course: courseI.value, text: text, rating: rating, approved: AUTO_APPROVE, createdAt: fs.serverTimestamp() };
+    var data = { name: name, course: courseI.value, text: text, rating: rating, approved: true, createdAt: fs.serverTimestamp() };
     fs.addDoc(fs.collection(db, "reviews"), data).then(function () {
       markTime();
       if (AUTO_APPROVE) { grid.insertBefore(card(data), grid.firstChild); grid.scrollTo({ left: 0 }); }
