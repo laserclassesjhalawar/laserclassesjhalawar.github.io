@@ -246,7 +246,7 @@ header#siteHeader.scrolled { box-shadow: 0 4px 14px rgba(15, 31, 102, 0.08); }
 img { display: block; max-width: 100%; height: auto; background: var(--rule); object-fit: cover; border-radius: 4px; }
 .people, .gallery { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .75rem; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
 .people > *, .gallery > * { scroll-snap-align: start; flex: 0 0 auto; }
-.people > * { width: 9rem; }
+.people > * { width: 7rem; }
 .people img { width: 100%; aspect-ratio: 4 / 5; }
 .people figcaption { padding-top: .5rem; line-height: 1.4; }
 .people figure { position: relative; transition: transform .2s ease; }
@@ -255,16 +255,16 @@ img { display: block; max-width: 100%; height: auto; background: var(--rule); ob
 .people .badge-selected { color: #fff; font-size: .72rem; }
 .people strong { display: block; font: 600 1rem/1.4 var(--head); }
 .people span { color: var(--soft); font-size: .85rem; }
-.gallery > * { width: 13rem; }
-.people.two-row { display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: 7.5rem; gap: .7rem; }
+.gallery > * { width: 9.5rem; }
+.people.two-row { display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: 6rem; gap: .5rem; }
 .people.two-row > * { width: 100%; }
 .gallery img { width: 100%; aspect-ratio: 4 / 3; }
 .gallery img.zoomable { cursor: zoom-in; transition: transform .2s ease; }
 .gallery img.zoomable:hover { transform: scale(1.03); }
 @media (min-width: 48rem) {
-  .people > * { width: 11rem; }
-  .people.two-row { grid-auto-columns: 9rem; }
-  .gallery > * { width: 17rem; }
+  .people > * { width: 8.5rem; }
+  .people.two-row { grid-auto-columns: 7rem; }
+  .gallery > * { width: 13rem; }
 }
 
 /* Reviews */
@@ -272,12 +272,12 @@ img { display: block; max-width: 100%; height: auto; background: var(--rule); ob
   padding: .3rem .8rem; border-radius: 999px; background: linear-gradient(180deg, rgba(255,226,120,.78), rgba(255,210,63,.5));
   border: 1px solid rgba(255,255,255,.55); }
 .review-grid.two-row {
-  display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: 14rem;
-  gap: .7rem; margin-top: .5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .75rem; scrollbar-width: thin; -webkit-overflow-scrolling: touch;
+  display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: 9.5rem;
+  gap: .5rem; margin-top: .5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .75rem; scrollbar-width: thin; -webkit-overflow-scrolling: touch;
 }
 .review-grid.two-row > * { scroll-snap-align: start; width: 100%; }
 .review-card {
-  padding: .8rem .85rem; border-radius: 14px; transition: transform .2s ease;
+  padding: .6rem .7rem; border-radius: 14px; transition: transform .2s ease;
   background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.2));
   -webkit-backdrop-filter: blur(12px) saturate(150%); backdrop-filter: blur(12px) saturate(150%);
   border: 1px solid rgba(255,255,255,.5);
@@ -308,15 +308,21 @@ img { display: block; max-width: 100%; height: auto; background: var(--rule); ob
 .rv-msg { margin-top: .6rem; font: 600 .9rem/1.5 var(--body); text-align: center; }
 .rv-msg.err { color: #c51d38; } .rv-msg.ok { color: #15803d; }
 
+/* Admin ka review reply button + reply box */
+.rc-replybtn { display: inline-block; margin-top: .4rem; padding: .2rem .55rem; border: 1px dashed var(--rule); border-radius: 999px; background: transparent; color: var(--soft); font: 600 .68rem var(--body); cursor: pointer; }
+.rc-replybtn:hover { background: #fff3cd; border-color: #ffe08a; color: #7a4b00; }
+.rc-reply { margin-top: .4rem; padding: .4rem .55rem; border-radius: 10px; background: #eef1ff; border-left: 3px solid var(--ink); font-size: .72rem; line-height: 1.5; color: var(--ink); }
+.rc-reply strong { display: inline; font-size: .72rem; }
+
 .review-card p { margin-bottom: .5rem; font-style: italic; font-size: .82rem; line-height: 1.55; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; line-clamp: 6; overflow: hidden; }
 .review-card strong { display: block; font: 600 .85rem/1.4 var(--head); }
 .review-card span { color: var(--soft); font-size: .75rem; }
 @media (min-width: 42rem) {
-  .review-grid.two-row { grid-auto-columns: 16rem; }
-  .review-card { padding: 1.1rem 1.2rem; }
-  .review-card p { font-size: .95rem; line-height: 1.6; }
-  .review-card strong { font-size: .95rem; }
-  .review-card span { font-size: .85rem; }
+  .review-grid.two-row { grid-auto-columns: 12rem; }
+  .review-card { padding: .85rem .9rem; }
+  .review-card p { font-size: .88rem; line-height: 1.55; }
+  .review-card strong { font-size: .88rem; }
+  .review-card span { font-size: .78rem; }
 }
 .note { color: var(--soft); max-width: 38rem; margin-bottom: 1.25rem; }
 
@@ -449,7 +455,7 @@ footer .about { font-size: .85rem; line-height: 1.6; margin-bottom: .75rem; }
 }
 
 /* ===== Floating gol "Free Notes" button ===== */
-.fab-notes { position: fixed; right: 1rem; bottom: 4.9rem; z-index: 15; width: 4.4rem; height: 4.4rem; border-radius: 50%; border: 2px solid var(--mark); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: 0; color: #fff; background: linear-gradient(180deg, #f0405a, #c51d38); box-shadow: 0 6px 16px rgba(0,0,0,.3); animation: fabRing 2s ease-in-out infinite; transition: transform .15s ease; }
+.fab-notes { position: fixed; left: 1rem; bottom: 5.8rem; z-index: 15; width: 4.4rem; height: 4.4rem; border-radius: 50%; border: 2px solid var(--mark); cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: 0; color: #fff; background: linear-gradient(180deg, #f0405a, #c51d38); box-shadow: 0 6px 16px rgba(0,0,0,.3); animation: fabRing 2s ease-in-out infinite; transition: transform .15s ease; }
 .fab-notes:hover { transform: scale(1.06); }
 .fab-notes:active { transform: scale(.94); }
 .fab-ic { font-size: 1.55rem; line-height: 1.1; }
@@ -606,15 +612,15 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
 /* ===== NEW: teachers - ek jaisa gol crop ===== */
 .people.two-row img { aspect-ratio: 1 / 1; border-radius: 50%; object-position: center top; }
 .people.two-row figcaption { text-align: center; }
-.people.two-row figure { padding: .7rem .5rem .7rem; }
+.people.two-row figure { padding: .45rem .3rem .45rem; }
 .people.two-row strong { font-size: .92rem; }
 .people.two-row span { font-size: .78rem; }
 
 /* ===== NEW: gallery arrows ===== */
 .gal-wrap { position: relative; }
-.gal-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 2.5rem; height: 2.5rem; border: 0; border-radius: 50%; cursor: pointer; background: rgba(255,255,255,.92); color: var(--ink); font-size: 1.3rem; font-weight: 800; box-shadow: 0 4px 12px rgba(10,20,80,.25); display: none; }
+.gal-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 3; width: 2.5rem; height: 2.5rem; border: 0; border-radius: 50%; cursor: pointer; background: rgba(255,255,255,.92); color: var(--ink); font-size: 1.3rem; font-weight: 800; box-shadow: 0 4px 12px rgba(10,20,80,.25); display: grid; place-items: center; }
 .gal-arrow.prev { left: -.4rem; } .gal-arrow.next { right: -.4rem; }
-@media (hover: hover) and (min-width: 48rem) { .gal-arrow { display: grid; place-items: center; } }
+@media (max-width: 47.99rem) { .gal-arrow { width: 2.1rem; height: 2.1rem; font-size: 1.1rem; } .gal-arrow.prev { left: .2rem; } .gal-arrow.next { right: .2rem; } }
 
 /* ===== NEW: Why Us icon cards ===== */
 .why li { padding: .9rem .9rem .9rem 4rem; min-height: 4rem; display: flex; align-items: center; }
@@ -632,6 +638,17 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
 #courses, #teachers, #gallery, #videos { background: linear-gradient(135deg, rgba(255,200,61,.14), rgba(27,42,138,.06)); border-radius: 24px; padding-left: 1.1rem; padding-right: 1.1rem; margin-top: 2.2rem; }
 #results, #reviews { background: linear-gradient(135deg, rgba(27,42,138,.07), rgba(255,255,255,0)); border-radius: 24px; padding-left: 1.1rem; padding-right: 1.1rem; margin-top: 2.2rem; }
 
+/* रिव्यू सेक्शन को फुल-स्क्रीन चौड़ाई दें (background edge-to-edge, content उतना ही chaudha rahega) */
+#reviews {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  border-radius: 0;
+  padding-left: max(1rem, calc((100vw - 70rem) / 2 + 1rem));
+  padding-right: max(1rem, calc((100vw - 70rem) / 2 + 1rem));
+}
+
 /* ===== NEW: WhatsApp "फ्री डेमो" attention badge ===== */
 @keyframes badgeBlink { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
 .wa::after { content: "फ्री डेमो"; position: absolute; top: -.7rem; right: -.2rem; background: #e8344e; color: #fff; font: 700 .68rem/1 var(--body); padding: .25rem .5rem; border-radius: 999px; box-shadow: 0 2px 6px rgba(0,0,0,.3); animation: badgeBlink 1.4s ease-in-out infinite; }
@@ -645,8 +662,8 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
     scrollbar-width: none;
   }
   .people::-webkit-scrollbar, .gallery::-webkit-scrollbar { display: none; }
-  .people > * { width: 44vw; }
-  .people.two-row { grid-auto-columns: 44vw; }
+  .people > * { width: 30vw; }
+  .people.two-row { grid-auto-columns: 30vw; }
   .people figure { background: transparent; border: 0; box-shadow: none; }
   .people figure:hover { transform: none; }
   .contact .buttons { grid-template-columns: 1fr 1fr; gap: .6rem; }
@@ -688,7 +705,7 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 
 /* ===== Floating "फ्री नोट्स" button: above the WhatsApp bar, new colour ===== */
 @media (max-width: 47.99rem) {
-  .fab-notes { bottom: calc(6.4rem + env(safe-area-inset-bottom)); right: .9rem; background: linear-gradient(135deg, #ff8a1f, #e85d04); border-color: #fff; box-shadow: 0 6px 16px rgba(232,93,4,.4); }
+  .fab-notes { bottom: calc(7.2rem + env(safe-area-inset-bottom)); left: .9rem; background: linear-gradient(135deg, #ff8a1f, #e85d04); border-color: #fff; box-shadow: 0 6px 16px rgba(232,93,4,.4); }
 }
 
 /* ===== Intro animation: purple + gold instead of blue ===== */
@@ -1640,6 +1657,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 
   function card(d) {
     var c = el("div", "review-card rc-dyn");
+    if (d.id) c.dataset.rvId = d.id;
     c.appendChild(el("span", "rc-stars", stars(d.rating || 5)));
     c.appendChild(el("p", "", "“" + d.text + "”"));
     c.appendChild(el("strong", "", "— " + d.name));
@@ -1697,7 +1715,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
       return fs.getDocs(fs.query(fs.collection(db, "reviews"), fs.where("approved", "==", true), fs.limit(40)));
     }).then(function (snap) {
       var list = [];
-      snap.forEach(function (d) { list.push(d.data()); });
+      snap.forEach(function (d) { var data = d.data(); data.id = d.id; list.push(data); });
       list.sort(function (a, b) { return (b.createdAt ? b.createdAt.seconds : 0) - (a.createdAt ? a.createdAt.seconds : 0); });
       list.reverse().forEach(function (d) { grid.insertBefore(card(d), grid.firstChild); });
     }).catch(function () { /* net/Firebase dikkat: purane reviews dikhte rahenge */ });
@@ -1779,6 +1797,46 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     Array.prototype.forEach.call(rg.querySelectorAll(".review-card"), addAvatar);
     new MutationObserver(function (ms) {
       ms.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, function (n) { if (n.nodeType === 1 && n.classList.contains("review-card")) addAvatar(n); }); });
+    }).observe(rg, { childList: true });
+  }
+
+  /* ===== Admin reply: aap khud bachchon ke review ka jawab de sakte hain =====
+     Niche "7512" ki jagah apna koi bhi 4-6 anko ka PIN rakh lein (sirf aapko pata ho).
+     Abhi ye reply sirf is browser me save hota hai (jis phone/computer se aap reply karte ho),
+     agar sab visitors ko reply dikhana ho to iske liye Firebase me bhi save karna padega — bata dena. */
+  var ADMIN_PIN = "7512";
+  function rvKey(card, idx) { return "lc_rv_reply_" + (card.dataset.rvId || ("static_" + idx)); }
+  function showReply(card, text) {
+    var old = card.querySelector(".rc-reply"); if (old) old.remove();
+    if (!text) return;
+    var box = document.createElement("div"); box.className = "rc-reply";
+    var strong = document.createElement("strong"); strong.textContent = "Laser Classes की ओर से: ";
+    box.appendChild(strong);
+    box.appendChild(document.createTextNode(text));
+    card.appendChild(box);
+  }
+  function addReplyUI(card, idx) {
+    if (!card.classList || !card.classList.contains("review-card") || card.querySelector(".rc-replybtn")) return;
+    var saved = ""; try { saved = localStorage.getItem(rvKey(card, idx)) || ""; } catch (e) {}
+    if (saved) showReply(card, saved);
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "rc-replybtn"; btn.textContent = saved ? "✍️ जवाब बदलें" : "✍️ जवाब दें";
+    btn.addEventListener("click", function () {
+      var pin = window.prompt("Admin PIN डालें:"); if (pin === null) return;
+      if (pin !== ADMIN_PIN) { alert("गलत PIN।"); return; }
+      var cur = ""; try { cur = localStorage.getItem(rvKey(card, idx)) || ""; } catch (e) {}
+      var text = window.prompt("इस विद्यार्थी के रिव्यू का जवाब लिखें:", cur); if (text === null) return;
+      text = text.trim();
+      try { if (text) localStorage.setItem(rvKey(card, idx), text); else localStorage.removeItem(rvKey(card, idx)); } catch (e) {}
+      showReply(card, text);
+      btn.textContent = text ? "✍️ जवाब बदलें" : "✍️ जवाब दें";
+    });
+    card.appendChild(btn);
+  }
+  if (rg) {
+    Array.prototype.forEach.call(rg.querySelectorAll(".review-card"), addReplyUI);
+    new MutationObserver(function (ms) {
+      ms.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, function (n) { if (n.nodeType === 1 && n.classList.contains("review-card")) addReplyUI(n); }); });
     }).observe(rg, { childList: true });
   }
 })();
