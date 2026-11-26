@@ -668,6 +668,33 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
   padding-right: max(1rem, calc((100vw - 70rem) / 2 + 1rem));
 }
 
+/* गैलरी ("हमारी कोचिंग का माहौल") सेक्शन भी फुल-स्क्रीन चौड़ाई — अब ये bीच में chhote card jaisa nahi dikhega */
+#gallery {
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  border-radius: 0;
+  padding-left: max(1rem, calc((100vw - 70rem) / 2 + 1rem));
+  padding-right: max(1rem, calc((100vw - 70rem) / 2 + 1rem));
+}
+
+/* ===== Results (student) cards: chhote aur compact, teachers card par koi asar nahi ===== */
+#results .people > * { width: 5.6rem; }
+#results .people figure { padding: .35rem .35rem .45rem; border-radius: 12px; }
+#results .people figcaption { padding: .3rem .2rem 0; }
+#results .badge-selected { font-size: .56rem; padding: .1rem .4rem; margin-bottom: .2rem; }
+#results .people strong { font-size: .72rem; line-height: 1.3; }
+#results .people span { font-size: .6rem; line-height: 1.35; }
+@media (max-width: 47.99rem) {
+  #results .people > * { width: 22vw; }
+}
+@media (min-width: 48rem) {
+  #results .people > * { width: 7rem; }
+  #results .people strong { font-size: .8rem; }
+  #results .people span { font-size: .68rem; }
+}
+
 /* ===== NEW: WhatsApp "फ्री डेमो" attention badge ===== */
 @keyframes badgeBlink { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
 .wa::after { content: "फ्री डेमो"; position: absolute; top: -.7rem; right: -.2rem; background: #e8344e; color: #fff; font: 700 .68rem/1 var(--body); padding: .25rem .5rem; border-radius: 999px; box-shadow: 0 2px 6px rgba(0,0,0,.3); animation: badgeBlink 1.4s ease-in-out infinite; }
