@@ -1776,13 +1776,12 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 })();
 </script>
 <script>
-/* NEW: results (saal ke tabs + counter), gallery arrows, review avatars */
+/* NEW: results (saal ke tabs + counter), gallery arrows, review avatars + shared admin replies */
 (function () {
-  /* Results: figure par data-year="2025" jaisa likhte hi tabs apne aap ban jayenge */
   var row = document.getElementById("resultsRow"), tabs = document.getElementById("yearTabs"), num = document.getElementById("selNum");
   if (row && num) {
     var figs = Array.prototype.slice.call(row.querySelectorAll("figure"));
-    var total = parseInt(num.getAttribute("data-total"), 10) || figs.length;  /* data-total="150" likhkar apna number bhi de sakte ho */
+    var total = parseInt(num.getAttribute("data-total"), 10) || figs.length;
     var years = [];
     figs.forEach(function (f) { var y = f.getAttribute("data-year"); if (y && years.indexOf(y) < 0) years.push(y); });
     years.sort().reverse();
@@ -1813,7 +1812,6 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     } else { num.textContent = total; }
   }
 
-  /* Gallery arrows */
   var wrap = document.querySelector(".gal-wrap");
   if (wrap) {
     var g = wrap.querySelector(".gallery");
@@ -1825,7 +1823,6 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     wrap.querySelector(".next").addEventListener("click", function () { go(1); });
   }
 
-  /* Review avatars: naam ka pehla akshar (purane aur naye dono reviews par) */
   var COLORS = ["#1d4ed8", "#15803d", "#d9480f", "#7e22ce", "#c51d38", "#0e7490", "#b45309", "#be185d"];
   function addAvatar(card) {
     if (card.querySelector(".rc-who")) return;
@@ -1842,17 +1839,22 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     who.appendChild(av); who.appendChild(txt);
     txt.appendChild(strong); if (sub) txt.appendChild(sub);
   }
-  var rg = document.querySelector(".review-grid");
-  if (rg) {
-    Array.prototype.forEach.call(rg.querySelectorAll(".review-card"), addAvatar);
-    new MutationObserver(function (ms) {
-      ms.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, function (n) { if (n.nodeType === 1 && n.classList.contains("review-card")) addAvatar(n); }); });
-    }).observe(rg, { childList: true });
+
+  var ADMIN_PIN = "7512";
+  var _fbFs = null, _fbDb = null;
+  var _remoteReplies = {}; /* { docId: replyText } */
+
+  function rvKey(card) {
+    if (card.dataset && card.dataset.rvId) return "rv_" + card.dataset.rvId;
+    var strong = card.querySelector("strong");
+    var p = card.querySelector("p");
+    var raw = ((strong ? strong.textContent : "") + "_" + (p ? p.textContent.slice(0, 25) : ""))
+      .replace(/[^a-zA-Z0-9\u0900-\u097F]+/g, "_")
+      .replace(/^_+|_+$/g, "")
+      .slice(0, 60);
+    return "static_" + (raw || "card");
   }
 
-  /* ===== Admin reply: Firebase me save hota hai — sab visitors ko dikhega ===== */
-  var ADMIN_PIN = "7512";
-  function rvKey(card, idx) { return "lc_rv_reply_" + (card.dataset.rvId || ("static_" + idx)); }
   function showReply(card, text) {
     var old = card.querySelector(".rc-reply"); if (old) old.remove();
     if (!text) return;
@@ -1860,71 +1862,100 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     var strong = document.createElement("strong"); strong.textContent = "Laser Classes की ओर से: ";
     box.appendChild(strong);
     box.appendChild(document.createTextNode(text));
-    card.appendChild(box);
+    var btn = card.querySelector(".rc-replybtn");
+    if (btn) card.insertBefore(box, btn); else card.appendChild(box);
   }
 
-  /* Firebase se replies load karo */
+  function applyReplyToCard(card) {
+    var key = rvKey(card);
+    var replyText = Object.prototype.hasOwnProperty.call(_remoteReplies, key) ? _remoteReplies[key] : "";
+    if (!replyText) {
+      try { replyText = localStorage.getItem("lc_rv_reply_" + key) || ""; } catch (e) {}
+    }
+    showReply(card, replyText);
+    var btn = card.querySelector(".rc-replybtn");
+    if (btn) btn.textContent = replyText ? "✍️ जवाब बदलें" : "✍️ जवाब दें";
+  }
+
+  function applyRepliesToAllCards() {
+    document.querySelectorAll(".review-card").forEach(applyReplyToCard);
+  }
+
   function loadRepliesFromFirebase(fsLib, dbRef) {
     if (!fsLib || !dbRef) return;
     try {
-      fsLib.getDocs(fsLib.collection(dbRef, "admin_replies")).then(function(snap) {
-        snap.forEach(function(d) {
+      fsLib.getDocs(fsLib.collection(dbRef, "admin_replies")).then(function (snap) {
+        _remoteReplies = {};
+        snap.forEach(function (d) {
           var data = d.data();
-          if (!data.text) return;
-          var docId = d.id;
-          var allCards = document.querySelectorAll(".review-card");
-          allCards.forEach(function(card, idx) {
-            if (rvKey(card, idx) === docId) { showReply(card, data.text); }
-          });
+          if (data && data.text) _remoteReplies[d.id] = data.text;
         });
-      }).catch(function(){});
-    } catch(e) {}
+        applyRepliesToAllCards();
+      }).catch(function () {});
+    } catch (e) {}
   }
 
-  /* Firebase me reply save karo */
   function saveReplyToFirebase(fsLib, dbRef, key, text) {
     if (!fsLib || !dbRef) return;
     try {
       var ref = fsLib.doc(dbRef, "admin_replies", key);
-      if (text) { fsLib.setDoc(ref, { text: text, updatedAt: new Date().toISOString() }).catch(function(){}); }
-      else { fsLib.deleteDoc(ref).catch(function(){}); }
-    } catch(e) {}
+      if (text) {
+        _remoteReplies[key] = text;
+        fsLib.setDoc(ref, { text: text, updatedAt: new Date().toISOString() }).catch(function () {});
+      } else {
+        delete _remoteReplies[key];
+        fsLib.deleteDoc(ref).catch(function () {});
+      }
+    } catch (e) {}
   }
 
-  var _fbFs = null, _fbDb = null;
-  /* Firebase ready hone ke baad replies load karte hain */
-  var origFirebaseInit = window._lcFirebaseReady;
-  window._lcOnFirebaseReady = function(fsLib, dbRef) {
-    _fbFs = fsLib; _fbDb = dbRef;
+  window._lcOnFirebaseReady = function (fsLib, dbRef) {
+    _fbFs = fsLib;
+    _fbDb = dbRef;
     loadRepliesFromFirebase(fsLib, dbRef);
   };
 
-  function addReplyUI(card, idx) {
+  function addReplyUI(card) {
     if (!card.classList || !card.classList.contains("review-card") || card.querySelector(".rc-replybtn")) return;
-    /* localStorage se bhi load karo (fallback) */
-    var saved = ""; try { saved = localStorage.getItem(rvKey(card, idx)) || ""; } catch (e) {}
-    if (saved) showReply(card, saved);
     var btn = document.createElement("button");
-    btn.type = "button"; btn.className = "rc-replybtn"; btn.textContent = saved ? "✍️ जवाब बदलें" : "✍️ जवाब दें";
+    btn.type = "button"; btn.className = "rc-replybtn"; btn.textContent = "✍️ जवाब दें";
     btn.addEventListener("click", function () {
       var pin = window.prompt("Admin PIN डालें:"); if (pin === null) return;
       if (pin !== ADMIN_PIN) { alert("गलत PIN।"); return; }
-      var cur = card.querySelector(".rc-reply") ? (card.querySelector(".rc-reply").textContent.replace("Laser Classes की ओर से: ", "")) : "";
+      var replyBox = card.querySelector(".rc-reply");
+      var cur = replyBox ? replyBox.textContent.replace(/^Laser Classes की ओर से:\s*/, "") : "";
       var text = window.prompt("इस विद्यार्थी के रिव्यू का जवाब लिखें (सभी visitors को दिखेगा):", cur); if (text === null) return;
       text = text.trim();
-      /* localStorage me bhi rakho (local fallback) */
-      try { if (text) localStorage.setItem(rvKey(card, idx), text); else localStorage.removeItem(rvKey(card, idx)); } catch (e) {}
-      /* Firebase me save karo — sab visitors ko dikhega */
-      saveReplyToFirebase(_fbFs, _fbDb, rvKey(card, idx), text);
-      showReply(card, text);
-      btn.textContent = text ? "✍️ जवाब बदलें" : "✍️ जवाब दें";
+      var key = rvKey(card);
+      try {
+        if (text) localStorage.setItem("lc_rv_reply_" + key, text);
+        else localStorage.removeItem("lc_rv_reply_" + key);
+      } catch (e) {}
+      saveReplyToFirebase(_fbFs, _fbDb, key, text);
+      applyReplyToCard(card);
     });
     card.appendChild(btn);
+    applyReplyToCard(card);
   }
+
+  var rg = document.querySelector(".review-grid");
   if (rg) {
-    Array.prototype.forEach.call(rg.querySelectorAll(".review-card"), addReplyUI);
+    Array.prototype.forEach.call(rg.querySelectorAll(".review-card"), function (c) {
+      addAvatar(c);
+      addReplyUI(c);
+    });
     new MutationObserver(function (ms) {
-      ms.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, function (n) { if (n.nodeType === 1 && n.classList.contains("review-card")) addReplyUI(n); }); });
+      var added = false;
+      ms.forEach(function (m) {
+        Array.prototype.forEach.call(m.addedNodes, function (n) {
+          if (n.nodeType === 1 && n.classList && n.classList.contains("review-card")) {
+            addAvatar(n);
+            addReplyUI(n);
+            added = true;
+          }
+        });
+      });
+      if (added) applyRepliesToAllCards();
     }).observe(rg, { childList: true });
   }
 })();
