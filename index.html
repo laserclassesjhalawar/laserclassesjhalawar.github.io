@@ -273,12 +273,12 @@ img { display: block; max-width: 100%; height: auto; background: var(--rule); ob
   padding: .3rem .8rem; border-radius: 999px; background: linear-gradient(180deg, rgba(255,226,120,.78), rgba(255,210,63,.5));
   border: 1px solid rgba(255,255,255,.55); }
 .review-grid.two-row {
-  display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: 9.5rem;
-  gap: .5rem; margin-top: .5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .75rem; scrollbar-width: thin; -webkit-overflow-scrolling: touch;
+  display: grid; grid-template-rows: repeat(2, auto); grid-auto-flow: column; grid-auto-columns: 8.3rem;
+  gap: .45rem; margin-top: .5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: .75rem; scrollbar-width: thin; -webkit-overflow-scrolling: touch;
 }
 .review-grid.two-row > * { scroll-snap-align: start; width: 100%; }
 .review-card {
-  padding: .6rem .7rem; border-radius: 14px; transition: transform .2s ease;
+  padding: .55rem .6rem; border-radius: 12px; transition: transform .2s ease;
   background: linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.2));
   -webkit-backdrop-filter: blur(12px) saturate(150%); backdrop-filter: blur(12px) saturate(150%);
   border: 1px solid rgba(255,255,255,.5);
@@ -288,8 +288,7 @@ img { display: block; max-width: 100%; height: auto; background: var(--rule); ob
 /* Review likhne ka system */
 .rv-add { display: inline-flex; align-items: center; margin-left: .35rem; padding: .3rem .8rem; border: 0; border-radius: 999px; background: var(--accent); color: #fff; font: 700 1rem var(--body); cursor: pointer; box-shadow: var(--sh); white-space: nowrap; }
 .rv-add[hidden] { display: none; }
-.review-card.rc-dyn strong::after { content: none; }
-.review-card span.rc-stars { display: block; color: #f59f00; font-size: .85rem; letter-spacing: .08em; margin-bottom: .25rem; }
+.review-card span.rc-stars { display: block; color: #f59f00; font-size: .8rem; letter-spacing: .08em; margin-bottom: .25rem; }
 #rvModal { position: fixed; inset: 0; z-index: 150; display: grid; place-items: center; padding: 1rem; background: rgba(5,10,40,.6); overflow-y: auto; }
 #rvModal[hidden] { display: none; }
 .rv-box { position: relative; width: min(100%, 26rem); background: var(--paper); color: var(--ink); border-radius: 18px; padding: 1.2rem; box-shadow: 0 20px 50px rgba(0,0,0,.4); }
@@ -315,13 +314,16 @@ img { display: block; max-width: 100%; height: auto; background: var(--rule); ob
 .rc-reply { margin-top: .4rem; padding: .4rem .55rem; border-radius: 10px; background: #eef1ff; border-left: 3px solid var(--ink); font-size: .72rem; line-height: 1.5; color: var(--ink); }
 .rc-reply strong { display: inline; font-size: .72rem; }
 
-.review-card p { margin-bottom: .5rem; font-style: italic; font-size: .82rem; line-height: 1.55; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; line-clamp: 6; overflow: hidden; }
+.review-card .rc-text { margin-bottom: .3rem; font-style: italic; font-size: .8rem; line-height: 1.5; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; line-clamp: 4; overflow: hidden; }
+.review-card .rc-text.expanded { -webkit-line-clamp: unset; line-clamp: unset; display: block; overflow: visible; }
+.rc-more { display: inline-block; margin: 0 0 .15rem; padding: 0; border: 0; background: none; color: var(--accent); font: 700 .72rem var(--body); text-decoration: underline; cursor: pointer; }
+.rc-more[hidden] { display: none; }
 .review-card strong { display: block; font: 600 .85rem/1.4 var(--head); }
 .review-card span { color: var(--soft); font-size: .75rem; }
 @media (min-width: 42rem) {
-  .review-grid.two-row { grid-auto-columns: 12rem; }
-  .review-card { padding: .85rem .9rem; }
-  .review-card p { font-size: .88rem; line-height: 1.55; }
+  .review-grid.two-row { grid-auto-columns: 11rem; }
+  .review-card { padding: .7rem .75rem; }
+  .review-card .rc-text { font-size: .86rem; line-height: 1.55; }
   .review-card strong { font-size: .88rem; }
   .review-card span { font-size: .78rem; }
 }
@@ -547,9 +549,8 @@ h2::after { content: ""; position: absolute; left: 0; bottom: 0; width: 3.2rem; 
 .people figcaption { padding: .5rem .3rem 0; }
 .badge-selected { top: .9rem; left: .9rem; }
 .gallery img { border-radius: 16px; box-shadow: var(--sh); }
-.review-card { position: relative; background: #fff; border: 1px solid var(--rule); box-shadow: var(--sh); -webkit-backdrop-filter: none; backdrop-filter: none; }
-.review-card::before { content: "“"; position: absolute; right: .8rem; top: -.1rem; font: 800 3rem var(--head); color: #ffe08a; }
-.review-card strong::after { content: " ★★★★★"; color: #f59f00; font-size: .65rem; letter-spacing: .05em; }
+.review-card { position: relative; background: #fff; border: 1px solid var(--rule); border-top: 3px solid var(--rc, var(--accent)); box-shadow: var(--sh); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.review-card::before { content: "“"; position: absolute; right: .55rem; top: -.05rem; font: 800 2.2rem var(--head); color: #ffe08a; }
 
 /* FAQ / video */
 details { background: var(--paper); border: 1px solid var(--rule); border-radius: 14px; padding: .8rem 1rem; margin-bottom: .6rem; }
@@ -631,9 +632,9 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
 .why li:hover { transform: translateY(-3px); box-shadow: var(--sh); }
 
 /* ===== NEW: review avatar ===== */
-.rc-who { display: flex; align-items: center; gap: .6rem; }
+.rc-who { display: flex; align-items: center; gap: .55rem; margin-bottom: .4rem; }
 .rc-who > div { min-width: 0; }
-.rc-av { flex: none; width: 2.3rem; height: 2.3rem; border-radius: 50%; display: grid; place-items: center; color: #fff; font: 800 1rem var(--head); background: var(--av, #1d4ed8); box-shadow: 0 2px 6px rgba(10,20,80,.25); }
+.rc-av { flex: none; width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; color: #fff; font: 800 .88rem var(--head); background: var(--av, #1d4ed8); box-shadow: 0 2px 6px rgba(10,20,80,.25); }
 
 /* ===== NEW: alternate section backgrounds ===== */
 #courses, #gallery, #videos { background: linear-gradient(135deg, rgba(255,200,61,.14), rgba(27,42,138,.06)); border-radius: 24px; padding-left: 1.1rem; padding-right: 1.1rem; margin-top: 2.2rem; }
@@ -1084,14 +1085,54 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
         <button type="button" class="rv-add" id="rvOpen" hidden>✍️ रिव्यू लिखें</button>
       </p>
       <div class="review-grid two-row">
-        <div class="review-card"><p>“Laser Classes me padhai ka tarika bahut clear hai. Teachers har doubt patiently solve karte hain, aur weekly OMR test se exam ka real feel mil jata hai.”</p><strong>— Rakesh Lodha</strong><span>BSTC बैच</span></div>
-        <div class="review-card"><p>“Pehle self-study me bahut confuse hoti thi, yaha aane ke baad syllabus ek dum clear हो गया. Notes bhi updated milte hain, revision aasan ho gaya.”</p><strong>— Yachana Gupta</strong><span>REET बैच</span></div>
-        <div class="review-card"><p>“Sir log motivate bhi karte rehte hain, sirf padhai hi nahi. Fees bhi affordable hai aur result-oriented teaching hai.”</p><strong>— Dev Gurjar</strong><span>पटवारी बैच</span></div>
-        <div class="review-card"><p>“Reasoning aur Maths jo pehle mushkil lagti thi, ab step-by-step samajh aati है. Doubt class me jitni baar pucho, utni baar samjhaya jata hai.”</p><strong>— Mohit Kumar</strong><span>CET बैच</span></div>
-        <div class="review-card"><p>“App me mock test dene se exam ka pressure kam feel hota है. Rajasthan GK के notes bahut helpful hain, sab kuch एक जगह mil jata है.”</p><strong>— Rahul Rathore</strong><span>BSTC बैच</span></div>
-        <div class="review-card"><p>“Pehle batch choti hoti thi to personal attention milta tha, har galti turant pakad ke batate hain. Environment bhi padhai wala hi rehta है.”</p><strong>— Tanmay Gautam</strong><span>4th Grade बैच</span></div>
-        <div class="review-card"><p>“Teachers का experience saaf dikhta है padhane me, mushkil topic भी aasan lagne lagta है. Printed notes से revision में बहुत time bachta है.”</p><strong>— Aayushi Verma</strong><span>BSTC बैच</span></div>
-        <div class="review-card"><p>“Yaha ka mahaul bahut positive है, Sunday test के बाद result discuss karte hain to apni kami pata chal jati है. Fees भी genuine hai.”</p><strong>— Muskan Sharma</strong><span>VDO बैच</span></div>
+        <div class="review-card">
+          <div class="rc-who"><div class="rc-av" aria-hidden="true"></div><div class="rc-info"><strong>Rakesh Lodha</strong><span>BSTC बैच</span></div></div>
+          <span class="rc-stars">★★★★★</span>
+          <p class="rc-text">“Laser Classes me padhai ka tarika bahut clear hai. Teachers har doubt patiently solve karte hain, aur weekly OMR test se exam ka real feel mil jata hai.”</p>
+          <button type="button" class="rc-more" hidden>पूरा पढ़ें ⌄</button>
+        </div>
+        <div class="review-card">
+          <div class="rc-who"><div class="rc-av" aria-hidden="true"></div><div class="rc-info"><strong>Yachana Gupta</strong><span>REET बैच</span></div></div>
+          <span class="rc-stars">★★★★★</span>
+          <p class="rc-text">“Pehle self-study me bahut confuse hoti thi, yaha aane ke baad syllabus ek dum clear हो गया. Notes bhi updated milte hain, revision aasan ho gaya.”</p>
+          <button type="button" class="rc-more" hidden>पूरा पढ़ें ⌄</button>
+        </div>
+        <div class="review-card">
+          <div class="rc-who"><div class="rc-av" aria-hidden="true"></div><div class="rc-info"><strong>Dev Gurjar</strong><span>पटवारी बैच</span></div></div>
+          <span class="rc-stars">★★★★★</span>
+          <p class="rc-text">“Sir log motivate bhi karte rehte hain, sirf padhai hi nahi. Fees bhi affordable hai aur result-oriented teaching hai.”</p>
+          <button type="button" class="rc-more" hidden>पूरा पढ़ें ⌄</button>
+        </div>
+        <div class="review-card">
+          <div class="rc-who"><div class="rc-av" aria-hidden="true"></div><div class="rc-info"><strong>Mohit Kumar</strong><span>CET बैच</span></div></div>
+          <span class="rc-stars">★★★★★</span>
+          <p class="rc-text">“Reasoning aur Maths jo pehle mushkil lagti thi, ab step-by-step samajh aati है. Doubt class me jitni baar pucho, utni baar samjhaya jata hai.”</p>
+          <button type="button" class="rc-more" hidden>पूरा पढ़ें ⌄</button>
+        </div>
+        <div class="review-card">
+          <div class="rc-who"><div class="rc-av" aria-hidden="true"></div><div class="rc-info"><strong>Rahul Rathore</strong><span>BSTC बैच</span></div></div>
+          <span class="rc-stars">★★★★★</span>
+          <p class="rc-text">“App me mock test dene se exam ka pressure kam feel hota है. Rajasthan GK के notes bahut helpful hain, sab kuch एक जगह mil jata है.”</p>
+          <button type="button" class="rc-more" hidden>पूरा पढ़ें ⌄</button>
+        </div>
+        <div class="review-card">
+          <div class="rc-who"><div class="rc-av" aria-hidden="true"></div><div class="rc-info"><strong>Tanmay Gautam</strong><span>4th Grade बैच</span></div></div>
+          <span class="rc-stars">★★★★★</span>
+          <p class="rc-text">“Pehle batch choti hoti thi to personal attention milta tha, har galti turant pakad ke batate hain. Environment bhi padhai wala hi rehta है.”</p>
+          <button type="button" class="rc-more" hidden>पूरा पढ़ें ⌄</button>
+        </div>
+        <div class="review-card">
+          <div class="rc-who"><div class="rc-av" aria-hidden="true"></div><div class="rc-info"><strong>Aayushi Verma</strong><span>BSTC बैच</span></div></div>
+          <span class="rc-stars">★★★★★</span>
+          <p class="rc-text">“Teachers का experience saaf dikhta है padhane me, mushkil topic भी aasan lagne lagta है. Printed notes से revision में बहुत time bachta है.”</p>
+          <button type="button" class="rc-more" hidden>पूरा पढ़ें ⌄</button>
+        </div>
+        <div class="review-card">
+          <div class="rc-who"><div class="rc-av" aria-hidden="true"></div><div class="rc-info"><strong>Muskan Sharma</strong><span>VDO बैच</span></div></div>
+          <span class="rc-stars">★★★★★</span>
+          <p class="rc-text">“Yaha ka mahaul bahut positive है, Sunday test के बाद result discuss karte hain to apni kami pata chal jati है. Fees भी genuine hai.”</p>
+          <button type="button" class="rc-more" hidden>पूरा पढ़ें ⌄</button>
+        </div>
       </div>
     </section>
 
@@ -1706,10 +1747,17 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   function card(d) {
     var c = el("div", "review-card rc-dyn");
     if (d.id) c.dataset.rvId = d.id;
+    var who = el("div", "rc-who");
+    var av = el("div", "rc-av"); av.setAttribute("aria-hidden", "true");
+    var info = el("div", "rc-info");
+    info.appendChild(el("strong", "", d.name));
+    info.appendChild(el("span", "", d.course + (d.course === "अन्य" ? "" : " बैच")));
+    who.appendChild(av); who.appendChild(info);
+    c.appendChild(who);
     c.appendChild(el("span", "rc-stars", stars(d.rating || 5)));
-    c.appendChild(el("p", "", "“" + d.text + "”"));
-    c.appendChild(el("strong", "", "— " + d.name));
-    c.appendChild(el("span", "", d.course + (d.course === "अन्य" ? "" : " बैच")));
+    c.appendChild(el("p", "rc-text", "“" + d.text + "”"));
+    var more = el("button", "rc-more", "पूरा पढ़ें ⌄"); more.type = "button"; more.hidden = true;
+    c.appendChild(more);
     return c;
   }
 
@@ -1776,7 +1824,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 })();
 </script>
 <script>
-/* NEW: results (saal ke tabs + counter), gallery arrows, review avatars + shared admin replies */
+/* NEW: results (saal ke tabs + counter), gallery arrows, review avatars + read-more + shared admin replies */
 (function () {
   var row = document.getElementById("resultsRow"), tabs = document.getElementById("yearTabs"), num = document.getElementById("selNum");
   if (row && num) {
@@ -1824,20 +1872,41 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   }
 
   var COLORS = ["#1d4ed8", "#15803d", "#d9480f", "#7e22ce", "#c51d38", "#0e7490", "#b45309", "#be185d"];
-  function addAvatar(card) {
-    if (card.querySelector(".rc-who")) return;
-    var strong = card.querySelector("strong"); if (!strong) return;
-    var spans = card.querySelectorAll("span:not(.rc-stars)");
-    var sub = spans[spans.length - 1];
-    var name = strong.textContent.replace(/^[\s—-]+/, "").trim();
+
+  /* Avatar: naam ka pehla letter + naam se nikla hua color, review-card ke top border par bhi wahi color */
+  function initAvatar(card) {
+    var who = card.querySelector(".rc-who");
+    if (!who) return;
+    var av = who.querySelector(".rc-av");
+    var strong = who.querySelector("strong");
+    if (!av || !strong || av.textContent) return;
+    var name = strong.textContent.trim();
     var ch = name ? Array.from(name)[0].toUpperCase() : "?";
     var sum = 0; for (var i = 0; i < name.length; i++) sum += name.charCodeAt(i);
-    var av = document.createElement("div"); av.className = "rc-av"; av.textContent = ch; av.style.setProperty("--av", COLORS[sum % COLORS.length]); av.setAttribute("aria-hidden", "true");
-    var who = document.createElement("div"); who.className = "rc-who";
-    var txt = document.createElement("div");
-    card.insertBefore(who, strong);
-    who.appendChild(av); who.appendChild(txt);
-    txt.appendChild(strong); if (sub) txt.appendChild(sub);
+    var color = COLORS[sum % COLORS.length];
+    av.textContent = ch;
+    av.style.setProperty("--av", color);
+    card.style.setProperty("--rc", color);
+  }
+
+  /* Bade review ko 4 line ke baad "पूरा पढ़ें" button se expand karna */
+  function setupReadMore(card) {
+    var p = card.querySelector(".rc-text");
+    var btn = card.querySelector(".rc-more");
+    if (!p || !btn || btn.dataset.ready) return;
+    btn.dataset.ready = "1";
+    function check() {
+      p.classList.remove("expanded");
+      requestAnimationFrame(function () {
+        btn.hidden = p.scrollHeight <= p.clientHeight + 2;
+      });
+    }
+    check();
+    window.addEventListener("resize", check, { passive: true });
+    btn.addEventListener("click", function () {
+      var open = p.classList.toggle("expanded");
+      btn.textContent = open ? "कम दिखाएं ⌃" : "पूरा पढ़ें ⌄";
+    });
   }
 
   var ADMIN_PIN = "7512";
@@ -1847,7 +1916,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   function rvKey(card) {
     if (card.dataset && card.dataset.rvId) return "rv_" + card.dataset.rvId;
     var strong = card.querySelector("strong");
-    var p = card.querySelector("p");
+    var p = card.querySelector(".rc-text");
     var raw = ((strong ? strong.textContent : "") + "_" + (p ? p.textContent.slice(0, 25) : ""))
       .replace(/[^a-zA-Z0-9\u0900-\u097F]+/g, "_")
       .replace(/^_+|_+$/g, "")
@@ -1938,19 +2007,21 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     applyReplyToCard(card);
   }
 
+  function enhanceCard(card) {
+    initAvatar(card);
+    addReplyUI(card);
+    setupReadMore(card);
+  }
+
   var rg = document.querySelector(".review-grid");
   if (rg) {
-    Array.prototype.forEach.call(rg.querySelectorAll(".review-card"), function (c) {
-      addAvatar(c);
-      addReplyUI(c);
-    });
+    Array.prototype.forEach.call(rg.querySelectorAll(".review-card"), enhanceCard);
     new MutationObserver(function (ms) {
       var added = false;
       ms.forEach(function (m) {
         Array.prototype.forEach.call(m.addedNodes, function (n) {
           if (n.nodeType === 1 && n.classList && n.classList.contains("review-card")) {
-            addAvatar(n);
-            addReplyUI(n);
+            enhanceCard(n);
             added = true;
           }
         });
