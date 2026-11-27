@@ -1006,6 +1006,125 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
   .ai-typing i { animation: none; }
 }
 
+
+/* =====================================================================
+   LAPTOP / DESKTOP LAYOUT POLISH (mobile stays untouched)
+   ===================================================================== */
+@media (min-width: 64rem) {
+  body {
+    font-size: 1.08rem;
+  }
+
+  .page {
+    max-width: 78rem;
+    padding: 0 1.75rem;
+  }
+
+  header#siteHeader {
+    padding: .75rem 2rem;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  nav a {
+    font-size: .95rem;
+    padding: .42rem .95rem;
+  }
+
+  .hdr-bot-btn {
+    width: 2.7rem;
+    height: 2.7rem;
+  }
+
+  .hero {
+    padding: 2.35rem 2.25rem 2.35rem;
+    border-radius: 28px;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    max-width: 24ch;
+  }
+
+  .hero p {
+    font-size: 1.05rem;
+    max-width: 44rem;
+  }
+
+  .hero-stats {
+    gap: .65rem;
+    max-width: 42rem;
+  }
+
+  .hero-stats div {
+    padding: .6rem .5rem;
+    border-radius: 14px;
+  }
+
+  .hero-stats b {
+    font-size: 1.3rem;
+  }
+
+  .hero-stats span {
+    font-size: .84rem;
+  }
+
+  .hero .buttons {
+    grid-template-columns: repeat(2, minmax(12rem, 18rem));
+    gap: .85rem;
+  }
+
+  .stats {
+    margin: -1.5rem 2.5rem 0;
+    padding: 1.25rem 1.75rem;
+  }
+
+  #courses, #gallery, #videos, #results, #reviews, #why, #admission, #faq, #contact {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+
+  .course-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .people.two-row {
+    grid-auto-columns: 8.25rem;
+    gap: .75rem 1rem;
+  }
+
+  .gallery > * {
+    width: 16.5rem;
+  }
+
+  .review-grid.two-row {
+    grid-auto-columns: 16.5rem;
+    gap: .75rem;
+  }
+
+  .vgrid {
+    grid-auto-columns: 16.5rem;
+  }
+
+  .map {
+    height: 22rem;
+  }
+
+  .notes-panel {
+    width: min(100%, 48rem);
+    max-height: calc(100dvh - 3rem);
+  }
+
+  .ai-box {
+    right: 1.75rem;
+    top: 4.5rem;
+    width: 26.5rem;
+    height: min(76dvh, 40rem);
+  }
+}
 </style>
 <script type="application/ld+json">
 {
