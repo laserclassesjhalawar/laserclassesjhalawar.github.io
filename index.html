@@ -781,7 +781,9 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 
 /* ===== Floating "फ्री नोट्स" button: above the WhatsApp bar, new colour ===== */
 @media (max-width: 47.99rem) {
-  .fab-notes { bottom: calc(7.2rem + env(safe-area-inset-bottom)); right: .9rem; left: auto; background: linear-gradient(135deg, #ff8a1f, #e85d04); border-color: #fff; box-shadow: 0 6px 16px rgba(232,93,4,.4); }
+  .fab-notes { width: 3.4rem; height: 3.4rem; bottom: calc(4.35rem + env(safe-area-inset-bottom)); right: .85rem; left: auto; background: linear-gradient(135deg, #ff8a1f, #e85d04); border-color: #fff; box-shadow: 0 6px 16px rgba(232,93,4,.4); }
+  .fab-ic { font-size: 1.2rem; }
+  .fab-tx { font-size: .52rem; }
 }
 /* fab visible state */
 .fab-notes.fab-visible { opacity: 1; visibility: visible; }
@@ -844,62 +846,69 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 }
 
 .ai-fab {
-  position: fixed; left: 1rem; bottom: 1rem; z-index: 25;
-  display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: .2rem;
+  position: fixed; right: 1rem; bottom: 10.7rem; z-index: 25;
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: .18rem;
   padding: 0; border: 0; background: transparent; color: #fff;
   cursor: pointer; transition: transform .15s ease;
 }
 .ai-fab:hover { transform: translateY(-2px) scale(1.03); }
 .ai-fab:active { transform: scale(.95); }
 .ai-fab-circle {
-  position: relative; width: 3.75rem; height: 3.75rem; border-radius: 50%;
+  position: relative; width: 3.5rem; height: 3.5rem; border-radius: 50%;
   border: 2.5px solid var(--mark);
   background: linear-gradient(145deg, #0a1450, #1d32a8 65%, #2b47db);
   display: grid; place-items: center;
   animation: aiGlowB 2.4s ease-in-out infinite;
 }
-.ai-fab svg { width: 2.25rem; height: 2.25rem; display: block; }
+.ai-fab svg { width: 2.05rem; height: 2.05rem; display: block; }
 .ai-fab .ai-dot {
-  position: absolute; top: .06rem; right: .06rem;
-  width: .72rem; height: .72rem; border-radius: 50%;
+  position: absolute; top: .04rem; right: .04rem;
+  width: .7rem; height: .7rem; border-radius: 50%;
   background: #25d366; border: 2px solid #fff;
   box-shadow: 0 2px 6px rgba(0,0,0,.28);
 }
 .ai-fab-lbl {
-  display: inline-block; padding: .14rem .62rem; border-radius: 999px;
+  display: inline-block; padding: .12rem .55rem; border-radius: 999px;
   background: #0a1450; color: #ffd45e; border: 1px solid rgba(255,200,61,.7);
-  font: 700 .72rem/1.15 var(--body); letter-spacing: .01em;
+  font: 700 .68rem/1.15 var(--body); letter-spacing: .01em;
   box-shadow: 0 3px 10px rgba(10,20,80,.3);
 }
 @media (max-width: 47.99rem) {
   .ai-fab {
-    bottom: calc(3.75rem + env(safe-area-inset-bottom) + .55rem);
-    left: .8rem;
+    right: .9rem;
+    bottom: calc(8.7rem + env(safe-area-inset-bottom));
   }
-  .ai-fab-circle { width: 3.45rem; height: 3.45rem; }
-  .ai-fab svg { width: 2rem; height: 2rem; }
-  .ai-fab-lbl { font-size: .68rem; padding: .12rem .52rem; }
+  .ai-fab-circle { width: 3.25rem; height: 3.25rem; }
+  .ai-fab svg { width: 1.9rem; height: 1.9rem; }
+  .ai-fab-lbl { font-size: .64rem; padding: .1rem .48rem; }
 }
 
 .ai-hint {
-  position: fixed; right: 1rem; top: 4.15rem; z-index: 26;
-  padding: .45rem .8rem; border-radius: 14px; border-top-right-radius: 4px;
+  position: fixed; right: 5.1rem; bottom: 11.4rem; z-index: 26;
+  padding: .45rem .8rem; border-radius: 14px; border-bottom-right-radius: 4px;
   background: #fff; color: var(--ink); border: 1.5px solid var(--mark);
   font: 700 .8rem/1.3 var(--body); white-space: nowrap;
   box-shadow: 0 10px 24px rgba(10,20,80,.2);
-  opacity: 0; transform: translateY(-6px) scale(.96); pointer-events: none;
+  opacity: 0; transform: translateY(6px) scale(.96); pointer-events: none;
   transition: opacity .3s ease, transform .3s ease;
 }
 .ai-hint.show { opacity: 1; transform: none; }
 .ai-hint::after {
-  content: ""; position: absolute; right: .55rem; top: -.45rem;
-  border-width: 0 6px 6px 6px; border-style: solid;
-  border-color: transparent transparent #fff transparent;
+  content: ""; position: absolute; right: -.45rem; bottom: .35rem;
+  border-width: 6px 0 6px 8px; border-style: solid;
+  border-color: transparent transparent transparent #fff;
+}
+@media (max-width: 47.99rem) {
+  .ai-hint {
+    right: 4.8rem;
+    bottom: calc(9.4rem + env(safe-area-inset-bottom));
+    font-size: .75rem; padding: .38rem .68rem;
+  }
 }
 
 .ai-box {
-  position: fixed; right: 1rem; top: 4.1rem; z-index: 90;
-  width: min(calc(100vw - 2rem), 27.5rem); height: min(78dvh, 38rem);
+  position: fixed; right: 1rem; bottom: 15.6rem; z-index: 90;
+  width: min(calc(100vw - 2rem), 27.5rem); height: min(74dvh, 36rem);
   display: flex; flex-direction: column; overflow: hidden;
   background: var(--paper); color: var(--ink);
   border-radius: 22px; border: 1.5px solid var(--rule);
@@ -909,8 +918,8 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 .ai-box[hidden] { display: none; }
 @media (max-width: 47.99rem) {
   .ai-box {
-    left: .5rem; right: .5rem; top: 4rem; width: auto;
-    height: min(74dvh, 34rem);
+    left: .5rem; right: .5rem; bottom: calc(13.2rem + env(safe-area-inset-bottom));
+    width: auto; height: min(64dvh, 30rem);
   }
 }
 .ai-head {
@@ -1005,7 +1014,6 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
   .ai-fab-circle { animation: none; }
   .ai-typing i { animation: none; }
 }
-
 
 /* =====================================================================
    LAPTOP / DESKTOP LAYOUT POLISH (mobile stays untouched)
@@ -1158,9 +1166,10 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 
   .ai-box {
     right: 1.75rem;
-    top: 4.5rem;
+    top: auto;
+    bottom: 15.8rem;
     width: 26.5rem;
-    height: min(76dvh, 40rem);
+    height: min(68dvh, 36rem);
   }
 }
 </style>
@@ -1281,9 +1290,6 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
     <img src="favicon.png" alt="Laser Classes Jhalawar Logo - Best Coaching in Jhalawar" width="36" height="36">
     <span>Laser Classes</span>
   </a>
-  <button type="button" class="hdr-bot-btn" id="hdrAiBtn" aria-label="Laser Sahayak चैटबॉट खोलें" title="Laser Sahayak">
-    <span class="hdr-bot-ic" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><line x1="20" y1="4" x2="20" y2="9.5" stroke="#ffd45e" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="4" r="2.6" fill="#ff7b29"/><rect x="4" y="15.5" width="3.5" height="7" rx="1.75" fill="#ffd45e"/><rect x="32.5" y="15.5" width="3.5" height="7" rx="1.75" fill="#ffd45e"/><rect x="8.5" y="9.5" width="23" height="19" rx="7" fill="#13268c" stroke="#ffd45e" stroke-width="2"/><rect x="12" y="13.5" width="16" height="9.5" rx="4.5" fill="#060d36"/><circle cx="16.5" cy="18.2" r="2.1" fill="#38bdf8"/><circle cx="23.5" cy="18.2" r="2.1" fill="#38bdf8"/><circle cx="17.1" cy="17.5" r=".7" fill="#fff"/><circle cx="24.1" cy="17.5" r=".7" fill="#fff"/><path d="M16.8 25.2c1 1.1 2.1 1.5 3.2 1.5s2.2-.4 3.2-1.5" stroke="#ffd45e" stroke-width="2" stroke-linecap="round"/><path d="M11 35.5c0-3.2 4-5.2 9-5.2s9 2 9 5.2" fill="#13268c" stroke="#ffd45e" stroke-width="1.8" stroke-linecap="round"/></svg></span>
-  </button>
   <nav aria-label="मेन्यू" id="siteNav">
     <a href="#courses">कोर्स</a>
     <a href="#results">सफलता</a>
@@ -2582,6 +2588,26 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 </script>
 
 <!-- LASER SAHAYAK (AI WEBSITE HELPER) -->
+<button type="button" class="ai-fab" id="aiFab" aria-label="सहायक - Laser Sahayak से पूछें" title="सहायक">
+  <span class="ai-fab-circle">
+    <span class="ai-dot" aria-hidden="true"></span>
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+  <line x1="20" y1="4" x2="20" y2="9.5" stroke="#ffd45e" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="20" cy="4" r="2.6" fill="#ff7b29"/>
+  <rect x="4" y="15.5" width="3.5" height="7" rx="1.75" fill="#ffd45e"/>
+  <rect x="32.5" y="15.5" width="3.5" height="7" rx="1.75" fill="#ffd45e"/>
+  <rect x="8.5" y="9.5" width="23" height="19" rx="7" fill="#13268c" stroke="#ffd45e" stroke-width="2"/>
+  <rect x="12" y="13.5" width="16" height="9.5" rx="4.5" fill="#060d36"/>
+  <circle cx="16.5" cy="18.2" r="2.1" fill="#38bdf8"/>
+  <circle cx="23.5" cy="18.2" r="2.1" fill="#38bdf8"/>
+  <circle cx="17.1" cy="17.5" r=".7" fill="#fff"/>
+  <circle cx="24.1" cy="17.5" r=".7" fill="#fff"/>
+  <path d="M16.8 25.2c1 1.1 2.1 1.5 3.2 1.5s2.2-.4 3.2-1.5" stroke="#ffd45e" stroke-width="2" stroke-linecap="round"/>
+  <path d="M11 35.5c0-3.2 4-5.2 9-5.2s9 2 9 5.2" fill="#13268c" stroke="#ffd45e" stroke-width="1.8" stroke-linecap="round"/>
+</svg>
+  </span>
+  <span class="ai-fab-lbl">🤖 सहायक</span>
+</button>
 <div class="ai-hint" id="aiHint" role="status" aria-live="polite">👋 मैं आपकी क्या सहायता कर सकता हूँ?</div>
 
 <div class="ai-box" id="aiBox" hidden role="dialog" aria-modal="false" aria-label="Laser Sahayak Chat">
@@ -2626,12 +2652,12 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 <script>
 /* ===== Laser Sahayak: Website & Coaching Smart Assistant ===== */
 (function () {
-  var hdrAiBtn = document.getElementById("hdrAiBtn"), box = document.getElementById("aiBox");
+  var fab = document.getElementById("aiFab"), box = document.getElementById("aiBox");
   var hint = document.getElementById("aiHint");
   var closeBtn = document.getElementById("aiClose"), msgs = document.getElementById("aiMsgs");
   var form = document.getElementById("aiForm"), input = document.getElementById("aiInput");
   var chips = document.getElementById("aiChips");
-  if (!hdrAiBtn || !box) return;
+  if (!fab || !box) return;
 
   var MINI_AV_SVG = '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true">' +
     '<line x1="20" y1="4" x2="20" y2="9.5" stroke="#0a1450" stroke-width="2.5" stroke-linecap="round"/>' +
@@ -3275,7 +3301,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     }
   }
 
-  hdrAiBtn.addEventListener("click", function () {
+  fab.addEventListener("click", function () {
     if (box.hidden) openChat(); else box.hidden = true;
   });
   closeBtn.addEventListener("click", function () { box.hidden = true; });
