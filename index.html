@@ -34,7 +34,7 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "Laser Classes Jhalawar",
-  "alternateName": ["Laser Classes", "Laser Classes Jhalawar", "Laser Coaching Jhalawar", "Laser Classes झालावाड़", "Best Coaching in Jhalawar", "laserclassesjhalawar.github.io"],
+  "alternateName": ["Laser Classes", "Laser Coaching Jhalawar", "Laser Classes झालावाड़", "Best Coaching in Jhalawar", "laserclassesjhalawar.github.io"],
   "url": "https://laserclassesjhalawar.github.io/"
 }
 </script>
@@ -71,7 +71,6 @@
   }
 }
 </script>
-<meta name="description" content="Laser Classes Jhalawar (Laser Coaching Jhalawar) झालावाड़ की बेस्ट कोचिंग है। REET, BSTC, CET, पटवारी, राजस्थान पुलिस और VDO की तैयारी। 3 दिन की फ्री डेमो क्लास और हर रविवार OMR टेस्ट।">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Hind:wght@400;500;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
@@ -387,6 +386,9 @@ details p { padding-top: .5rem; color: var(--soft); }
 .np-kicker { display: inline-block; background: var(--mark); color: var(--ink); font-weight: 700; font-size: .75rem; padding: .1rem .65rem; border-radius: 999px; margin-bottom: .4rem; }
 .np-head h3 { color: #fff; font-size: 1.3rem; }
 .np-head p { color: rgba(255,255,255,.85); font-size: .9rem; line-height: 1.45; }
+.np-mode { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: .75rem; }
+.np-mbtn { cursor: pointer; border: 2px solid rgba(255,255,255,.45); background: rgba(255,255,255,.14); color: #fff; font: 700 .88rem/1.3 var(--body); padding: .55rem .4rem; border-radius: 12px; text-align: center; transition: background .15s ease, color .15s ease, border-color .15s ease; }
+.np-mbtn[aria-selected="true"] { background: var(--mark); border-color: var(--mark); color: var(--ink); font-weight: 800; box-shadow: 0 4px 12px rgba(0,0,0,.22); }
 .np-tabs { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: .4rem; padding: .65rem .75rem; background: #fff; border-bottom: 1px solid var(--rule); }
 .np-tab { cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .1rem; min-width: 0; border: 2px solid var(--tc); background: #fff; color: var(--tc); font: 700 .72rem/1.2 var(--body); padding: .35rem .15rem; border-radius: 12px; text-align: center; transition: background .15s ease, color .15s ease; }
 .np-tab .np-ti { font-size: 1.15rem; line-height: 1; }
@@ -668,7 +670,7 @@ footer { background: #060d36; color: #aab4e3; border-radius: 24px 24px 0 0; padd
   padding-right: max(1rem, calc((100vw - 70rem) / 2 + 1rem));
 }
 
-/* गैलरी ("हमारी कोचिंग का माहौल") सेक्शन भी फुल-स्क्रीन चौड़ाई — अब ये bीच में chhote card jaisa nahi dikhega */
+/* गैलरी ("हमारी कोचिंग का माहौल") सेक्शन भी फुल-स्क्रीन चौड़ाई — अब ये बीच में chhote card jaisa nahi dikhega */
 #gallery {
   width: 100vw;
   max-width: 100vw;
@@ -806,6 +808,184 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 #videos {
   background: none; border-radius: 0; padding-left: 0; padding-right: 0; box-shadow: none; border: 0;
 }
+
+/* ===== AI SAHAYAK CHATBOT ===== */
+@keyframes aiGlowB {
+  0%, 100% { box-shadow: 0 8px 22px rgba(10,20,80,.4), 0 0 0 0 rgba(56,189,248,.55); }
+  50% { box-shadow: 0 8px 26px rgba(10,20,80,.48), 0 0 18px 6px rgba(56,189,248,.42); }
+}
+
+.ai-fab {
+  position: fixed; left: 1rem; bottom: 1rem; z-index: 25;
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: .2rem;
+  padding: 0; border: 0; background: transparent; color: #fff;
+  cursor: pointer; transition: transform .15s ease;
+}
+.ai-fab:hover { transform: translateY(-2px) scale(1.03); }
+.ai-fab:active { transform: scale(.95); }
+.ai-fab-circle {
+  position: relative; width: 3.75rem; height: 3.75rem; border-radius: 50%;
+  border: 2.5px solid var(--mark);
+  background: linear-gradient(145deg, #0a1450, #1d32a8 65%, #2b47db);
+  display: grid; place-items: center;
+  animation: aiGlowB 2.4s ease-in-out infinite;
+}
+.ai-fab svg { width: 2.25rem; height: 2.25rem; display: block; }
+.ai-fab .ai-dot {
+  position: absolute; top: .06rem; right: .06rem;
+  width: .72rem; height: .72rem; border-radius: 50%;
+  background: #25d366; border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.28);
+}
+.ai-fab-lbl {
+  display: inline-block; padding: .14rem .62rem; border-radius: 999px;
+  background: #0a1450; color: #ffd45e; border: 1px solid rgba(255,200,61,.7);
+  font: 700 .72rem/1.15 var(--body); letter-spacing: .01em;
+  box-shadow: 0 3px 10px rgba(10,20,80,.3);
+}
+@media (max-width: 47.99rem) {
+  .ai-fab {
+    bottom: calc(3.75rem + env(safe-area-inset-bottom) + .55rem);
+    left: .8rem;
+  }
+  .ai-fab-circle { width: 3.45rem; height: 3.45rem; }
+  .ai-fab svg { width: 2rem; height: 2rem; }
+  .ai-fab-lbl { font-size: .68rem; padding: .12rem .52rem; }
+}
+
+.ai-hint {
+  position: fixed; left: 5.2rem; bottom: 2.25rem; z-index: 26;
+  padding: .48rem .85rem; border-radius: 14px; border-bottom-left-radius: 4px;
+  background: #fff; color: var(--ink); border: 1.5px solid var(--mark);
+  font: 700 .82rem/1.3 var(--body); white-space: nowrap;
+  box-shadow: 0 10px 24px rgba(10,20,80,.22);
+  opacity: 0; transform: translateY(6px) scale(.96); pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+}
+.ai-hint.show { opacity: 1; transform: none; }
+.ai-hint::after {
+  content: ""; position: absolute; left: -.45rem; bottom: .35rem;
+  border-width: 6px 8px 6px 0; border-style: solid;
+  border-color: transparent #fff transparent transparent;
+}
+@media (max-width: 47.99rem) {
+  .ai-hint {
+    left: 4.7rem;
+    bottom: calc(4.85rem + env(safe-area-inset-bottom));
+    font-size: .78rem; padding: .42rem .72rem;
+  }
+}
+
+.ai-box {
+  position: fixed; left: 1rem; bottom: 5.7rem; z-index: 90;
+  width: min(calc(100vw - 2rem), 27.5rem); height: min(82dvh, 39rem);
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--paper); color: var(--ink);
+  border-radius: 22px; border: 1.5px solid var(--rule);
+  box-shadow: 0 24px 60px rgba(10,20,80,.42);
+  animation: popIn .28s cubic-bezier(.2,.9,.3,1) both;
+}
+.ai-box[hidden] { display: none; }
+@media (max-width: 47.99rem) {
+  .ai-box {
+    left: .5rem; right: .5rem; width: auto;
+    bottom: calc(4.3rem + env(safe-area-inset-bottom));
+    height: min(78dvh, 35rem);
+  }
+}
+.ai-head {
+  flex: none; display: flex; align-items: center; justify-content: space-between; gap: .6rem;
+  padding: .8rem .95rem; color: #fff;
+  background: linear-gradient(135deg, #0a1450, #1f3bb3);
+}
+.ai-htitle { display: flex; align-items: center; gap: .6rem; min-width: 0; }
+.ai-avatar {
+  flex: none; width: 2.45rem; height: 2.45rem; border-radius: 50%;
+  display: grid; place-items: center; background: var(--mark); color: var(--ink);
+  box-shadow: 0 2px 8px rgba(0,0,0,.22);
+}
+.ai-avatar svg { width: 1.65rem; height: 1.65rem; display: block; }
+.ai-head strong { display: block; font: 700 1rem/1.25 var(--head); }
+.ai-head span { display: block; font-size: .75rem; color: #dbe4ff; }
+.ai-x { flex: none; width: 2.1rem; height: 2.1rem; border: 0; border-radius: 50%; background: rgba(255,255,255,.18); color: #fff; font-size: 1.05rem; cursor: pointer; }
+.ai-x:hover { background: rgba(255,255,255,.32); }
+
+.ai-msgs {
+  flex: 1; overflow-y: auto; padding: .95rem .85rem; display: flex; flex-direction: column; gap: .65rem;
+  overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+}
+.ai-row { display: flex; align-items: flex-end; gap: .42rem; }
+.ai-row.bot { justify-content: flex-start; }
+.ai-row.usr { justify-content: flex-end; }
+.ai-m-av {
+  flex: none; width: 1.65rem; height: 1.65rem; border-radius: 50%;
+  background: var(--mark); border: 1px solid #e6b800;
+  display: grid; place-items: center; box-shadow: 0 2px 6px rgba(10,20,80,.14);
+}
+.ai-m-av svg { width: 1.15rem; height: 1.15rem; display: block; }
+.ai-m {
+  max-width: 86%; padding: .68rem .88rem; border-radius: 16px;
+  font: 500 .9rem/1.55 var(--body); word-wrap: break-word; white-space: pre-line;
+}
+.ai-row.bot .ai-m { background: #fff; border: 1px solid var(--rule); border-bottom-left-radius: 4px; box-shadow: 0 2px 8px rgba(10,20,80,.06); }
+.ai-row.usr .ai-m { background: var(--ink); color: #fff; border-bottom-right-radius: 4px; }
+.ai-act { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .55rem; }
+.ai-act button, .ai-act a {
+  display: inline-flex; align-items: center; gap: .25rem; text-decoration: none;
+  padding: .36rem .75rem; border-radius: 999px; border: 1.5px solid var(--ink);
+  background: #eef2ff; color: var(--ink); font: 700 .78rem var(--body); cursor: pointer;
+}
+.ai-act button:hover, .ai-act a:hover { background: var(--ink); color: #fff; }
+
+.ai-chips {
+  flex: none; display: flex; gap: .4rem; overflow-x: auto; padding: .5rem .7rem;
+  background: #fff; border-top: 1px solid var(--rule); scrollbar-width: none;
+}
+.ai-chips::-webkit-scrollbar { display: none; }
+.ai-chips button {
+  flex: none; padding: .34rem .72rem; border-radius: 999px; border: 1px solid var(--rule);
+  background: var(--paper); color: var(--ink); font: 600 .78rem var(--body); cursor: pointer; white-space: nowrap;
+}
+.ai-chips button:hover { background: var(--mark); border-color: var(--mark); }
+
+.ai-form {
+  flex: none; display: flex; gap: .45rem; padding: .6rem .7rem;
+  background: #fff; border-top: 1px solid var(--rule);
+}
+.ai-form input {
+  flex: 1; min-width: 0; padding: .58rem .85rem; border-radius: 999px;
+  border: 1.5px solid var(--rule); background: var(--paper); color: var(--ink);
+  font: 500 .92rem var(--body);
+}
+.ai-form input:focus { outline: none; border-color: var(--ink); }
+.ai-form button {
+  flex: none; padding: .58rem 1rem; border-radius: 999px; border: 0;
+  background: var(--accent); color: #fff; font: 700 .88rem var(--body); cursor: pointer;
+}
+
+.ai-typing {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: .32rem;
+  padding: .65rem .9rem; border-radius: 16px; border-bottom-left-radius: 4px;
+  background: #fff; border: 1px solid var(--rule);
+  box-shadow: 0 2px 8px rgba(10,20,80,.06);
+}
+.ai-typing i {
+  display: block; width: .45rem; height: .45rem; border-radius: 50%;
+  background: var(--ink); opacity: .35;
+  animation: aiBounce 1.1s infinite ease-in-out;
+}
+.ai-typing i:nth-child(2) { animation-delay: .18s; }
+.ai-typing i:nth-child(3) { animation-delay: .36s; }
+@keyframes aiBounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: .35; }
+  40% { transform: translateY(-5px); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ai-fab-circle { animation: none; }
+  .ai-typing i { animation: none; }
+}
+
 </style>
 <script type="application/ld+json">
 {
@@ -820,7 +1000,7 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
   "employee": [
     { "@type": "Person", "name": "मनीष कुलारिया", "alternateName": "Manish Sir", "jobTitle": "Founder & सामान्य हिन्दी शिक्षक" },
     { "@type": "Person", "name": "Bhupendra Kumar Lodha", "alternateName": "Bhupendra Sir", "jobTitle": "Website, App & Online Systems Administrator", "sameAs": "https://www.instagram.com/navvbhupendra" },
-    { "@type": "Person", "name": "आर. एस. सिसोदिया", "jobTitle": "संविधान एवं राज्यव्यवस्था शिक्षक" },
+    { "@type": "Person", "name": "आर. एस. सिसोदिया", "jobTitle": "संविधान एवं राजव्यवस्था शिक्षक" },
     { "@type": "Person", "name": "लोकेश गुर्जर", "jobTitle": "रीज़निंग एवं गणित शिक्षक" },
     { "@type": "Person", "name": "नवीन सुमन", "jobTitle": "राजस्थान इतिहास शिक्षक" },
     { "@type": "Person", "name": "मनोज मेरोठा", "jobTitle": "राजस्थान भूगोल शिक्षक" },
@@ -987,7 +1167,6 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
       <p>सुबह और शाम दोनों पारियों में नए बैच संचालित हैं। सीटें सीमित हैं, अपनी सुविधानुसार समय और डेमो क्लास की जानकारी के लिए सीधे ऑफ़िस पधारें या हमारे नंबर पर संपर्क करें।</p>
     </section>
 
-
     <!-- COURSES -->
     <section id="courses">
       <h2>हमारे प्रमुख कोर्स</h2>
@@ -1051,15 +1230,15 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
       <h2>हमारे शिक्षक</h2>
       <div class="people two-row">
         <figure><img src="images/teacher1.jpeg" alt="मनीष कुलारिया" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>मनीष कुलारिया</strong><span>सामान्य हिन्दी</span></figcaption></figure>
-        <figure><img src="images/teacher2.png" alt="आर. एस. सिसोदिया" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>आर. एस. सिसोदिया</strong><span>सविधान एवं राज्यव्यवस्था</span></figcaption></figure>
+        <figure><img src="images/teacher2.png" alt="आर. एस. सिसोदिया" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>आर. एस. सिसोदिया</strong><span>संविधान एवं राजव्यवस्था</span></figcaption></figure>
         <figure><img src="images/teacher3.png" alt="लोकेश गुर्जर" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>लोकेश गुर्जर</strong><span>रीज़निंग एवं गणित</span></figcaption></figure>
-        <figure><img src="images/teacher4.jpeg" alt="नवीन सुमन" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>नविन सुमन</strong><span>राजस्थान इतिहास</span></figcaption></figure>
+        <figure><img src="images/teacher4.jpeg" alt="नवीन सुमन" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>नवीन सुमन</strong><span>राजस्थान इतिहास</span></figcaption></figure>
         <figure><img src="images/teacher10.jpeg" alt="मनोज मेरोठा" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>मनोज मेरोठा</strong><span>राजस्थान भूगोल</span></figcaption></figure>
         <figure><img src="images/teacher6.jpeg" alt="हरिओम सुमन" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>हरिओम सुमन</strong><span>राजस्थान कला और संस्कृति</span></figcaption></figure>
         <figure><img src="images/teacher7.png" alt="दुर्गालाल राठोर" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>दुर्गालाल राठोर</strong><span>संस्कृत</span></figcaption></figure>
-        <figure><img src="images/teacher8.jpeg" alt="सुष्मिता मैम" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>सुष्मिता मेम</strong><span>भारत का भूगोल</span></figcaption></figure>
-        <figure><img src="images/teacher9.png" alt="भानूप्रताप सिंह" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>भानूप्रताप सिह</strong><span>कंप्यूटर</span></figcaption></figure>
-        <figure><img src="images/teacher10.png" alt="लखन राठोर" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>लखन राठोर</strong><span>विज्ञानं</span></figcaption></figure>
+        <figure><img src="images/teacher8.jpeg" alt="सुष्मिता मैम" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>सुष्मिता मैम</strong><span>भारत का भूगोल</span></figcaption></figure>
+        <figure><img src="images/teacher9.png" alt="भानूप्रताप सिंह" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>भानूप्रताप सिंह</strong><span>कंप्यूटर</span></figcaption></figure>
+        <figure><img src="images/teacher10.png" alt="लखन राठोर" width="400" height="500" loading="lazy" decoding="async"><figcaption><strong>लखन राठोर</strong><span>विज्ञान</span></figcaption></figure>
       </div>
     </section>
 
@@ -1173,7 +1352,7 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
       <h2>हमारे लेटेस्ट फ्री सेशन देखें</h2>
       <p class="note">फ्री डेमो क्लास, मैराथन सेशन और परीक्षा की रणनीति के वीडियो।</p>
       <div class="vgrid">
-      <button class="vcard" data-id="oeWIxqofzWc" aria-label="वीडियो चलाएँ"></button>
+        <button class="vcard" data-id="oeWIxqofzWc" aria-label="वीडियो चलाएँ"></button>
         <button class="vcard" data-id="aVXnDNnw-Kw" aria-label="वीडियो चलाएँ"></button>
         <button class="vcard" data-id="kLGIfkYMUT8" aria-label="वीडियो चलाएँ"></button>
         <button class="vcard" data-id="Gj6Y7Es_9Zs" aria-label="वीडियो चलाएँ"></button>
@@ -1184,7 +1363,6 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
         <button class="vcard" data-id="6IfEpKFDT_g" aria-label="वीडियो चलाएँ"></button>
         <button class="vcard" data-id="XRhjnQ1kENQ" aria-label="वीडियो चलाएँ"></button>
         <button class="vcard" data-id="LNJ6CQjElkw" aria-label="वीडियो चलाएँ"></button>
-        
       </div>
     </section>
 
@@ -1215,12 +1393,12 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 
   <footer>
     <p class="about">Laser Classes Jhalawar (Laser Coaching Jhalawar), झालावाड़ (राजस्थान) की बेस्ट कोचिंग में से एक है। यहाँ REET, BSTC, CET, पटवारी, VDO, राजस्थान पुलिस और RAS फाउंडेशन बैच की कोचिंग उपलब्ध है। मनीष सर और हरिओम सर जैसे अनुभवी शिक्षकों के साथ 3 दिन की फ्री डेमो क्लास और हर रविवार OMR टेस्ट। झालावाड़ में Best Coaching खोज रहे विद्यार्थियों के लिए Laser Classes सही विकल्प है।</p>
-<p class="about" style="font-size: clamp(9.5px, 2.5vw, 13px); white-space: nowrap; overflow: hidden;">
-  Website, App &amp; Online Systems Administrator: Bhupendra Sir 
-  <a href="https://www.instagram.com/navvbhupendra" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.2rem;vertical-align:middle;">
-    <svg width="13" height="13" aria-hidden="true"><use href="#i-ig"/></svg>@navvbhupendra
-  </a>
-</p>
+    <p class="about" style="font-size: clamp(9.5px, 2.5vw, 13px); white-space: nowrap; overflow: hidden;">
+      Website, App &amp; Online Systems Administrator: Bhupendra Sir 
+      <a href="https://www.instagram.com/navvbhupendra" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.2rem;vertical-align:middle;">
+        <svg width="13" height="13" aria-hidden="true"><use href="#i-ig"/></svg>@navvbhupendra
+      </a>
+    </p>
     <p>© 2026 Laser Classes, Jhalawar। सर्वाधिकार सुरक्षित।</p>
   </footer>
 </div>
@@ -1255,14 +1433,18 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 </div>
 
 <!-- NOTES & SYLLABUS POPUP -->
-<div id="notesModal" class="vmodal" hidden role="dialog" aria-modal="true" aria-label="फ्री सिलेबस और मॉडल टेस्ट पेपर">
+<div id="notesModal" class="vmodal" hidden role="dialog" aria-modal="true" aria-label="फ्री सिलेबस, मॉडल टेस्ट पेपर और बुक्स">
   <button class="vclose" aria-label="बंद करें">✕</button>
   <div class="notes-panel">
     <div class="np-head">
       <span class="np-grab"></span>
       <span class="np-kicker">🎁 100% फ्री</span>
-      <h3>सिलेबस और टेस्ट पेपर</h3>
-      <p>अपना कोर्स चुनें और PDF डाउनलोड करें</p>
+      <h3>फ्री स्टडी मटेरियल</h3>
+      <p>अपनी श्रेणी चुनें और PDF डाउनलोड करें</p>
+      <div class="np-mode" role="tablist" aria-label="श्रेणी चुनें">
+        <button type="button" class="np-mbtn" id="npModeTest" aria-selected="true">📄 सिलेबस और टेस्ट पेपर</button>
+        <button type="button" class="np-mbtn" id="npModeBook" aria-selected="false">📚 बुक्स / नोट्स</button>
+      </div>
     </div>
     <div class="np-tabs" id="npTabs" role="tablist"></div>
     <div class="np-body" id="npBody"></div>
@@ -1353,14 +1535,10 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   var contact = document.getElementById("contact");
   if (!hero || !contact) return;
 
-  /* fab ko normal flow mein nahi, fixed rakhenge aur sirf opacity/visibility toggle karenge */
   function update() {
     var heroRect = hero.getBoundingClientRect();
     var contactRect = contact.getBoundingClientRect();
-
-    /* Hero pura nikal jaaye (bottom 0 se upar chala jaye) tab show karo */
     var heroGone = heroRect.bottom <= 0;
-    /* Contact section screen pe aa jaaye tab hide karo (contact top <= viewport height) */
     var contactVisible = contactRect.top <= window.innerHeight;
 
     if (heroGone && !contactVisible) {
@@ -1371,7 +1549,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   }
 
   window.addEventListener("scroll", update, { passive: true });
-  update(); /* page load pe bhi check karo */
+  update();
 })();
 
 /* Gallery lightbox */
@@ -1400,7 +1578,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     setInterval(function () {
       if (Date.now() < pausedUntil || !row.firstElementChild) return;
       var r = row.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > window.innerHeight) return; /* screen se bahar ho to mat chalao */
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
       var gap = parseFloat(getComputedStyle(row).columnGap) || 0;
       var step = row.firstElementChild.getBoundingClientRect().width + gap;
       row._auto = true;
@@ -1416,7 +1594,6 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   var modal = document.getElementById("vmodal"), box = modal.querySelector(".vbox");
   function close() { modal.hidden = true; box.innerHTML = ""; }
   function setThumb(c) { c.style.backgroundImage = "url(https://img.youtube.com/vi/" + c.dataset.id + "/hqdefault.jpg)"; }
-  /* thumbnail tabhi load hote hain jab screen ke paas aayein (speed) */
   var thumbObs = "IntersectionObserver" in window ? new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { setThumb(e.target); thumbObs.unobserve(e.target); } });
   }, { rootMargin: "300px" }) : null;
@@ -1431,17 +1608,19 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
 })();
 
-/* Notes popup: intro animation (2 sec) + rangeen tabs + PDF list */
+/* Notes popup: intro animation (2 sec) + 2 main buttons (Syllabus/Test & Books) */
 (function () {
   var modal = document.getElementById("notesModal"), intro = document.getElementById("intro");
   if (!modal) return;
   var panel = modal.querySelector(".notes-panel");
   var tabsBox = document.getElementById("npTabs"), body = document.getElementById("npBody");
+  var btnTest = document.getElementById("npModeTest"), btnBook = document.getElementById("npModeBook");
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var IS_MOBILE = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent) || (window.matchMedia && window.matchMedia("(pointer: coarse)").matches);
-  var INTRO_MS = 2000; /* animation ka time (milliseconds). 2000 = 2 second */
+  var INTRO_MS = 2000;
+  var activeMode = "test"; /* "test" = सिलेबस व टेस्ट | "book" = बुक्स */
 
-  /* Naya course/PDF jodna ho to sirf yahan badlo */
+  /* 1. सिलेबस और मॉडल टेस्ट पेपर की लिस्ट */
   var COURSES = [
     /* REET: Level 1 aur Level 2 alag, dono ke apne syllabus; model papers (15) dono mein same */
     { name: "REET", i: "📚", c: "#1d4ed8", levels: [
@@ -1464,6 +1643,14 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     { name: "पटवारी", i: "📜", c: "#4d7c0f", tests: "pdf/patwari/test/", syl: [["राजस्थान पटवारी सिलेबस", "pdf/patwari/syllabus.pdf"]] }
   ];
 
+  /* 2. बुक्स / प्रिंटेड व PDF नोट्स की लिस्ट — नई बुक जोड़नी हो तो यहीं जोड़ें */
+  var BOOKS = [
+    { title: "राजस्थान सामान्य ज्ञान (इतिहास, कला-संस्कृति व भूगोल) बुक", sub: "लेज़र क्लासेज़ झालावाड़ · अपडेटेड एडिशन", file: "pdf/books/rajasthan-gk-book.pdf", badge: "BOOK" },
+    { title: "सामान्य हिन्दी व्याकरण एवं शिक्षण विधियाँ बुक", sub: "मनीष कुलारिया सर द्वारा संकलित", file: "pdf/books/hindi-book.pdf", badge: "BOOK" },
+    { title: "रीज़निंग एवं गणित प्रैक्टिस बुक", sub: "BSTC, CET, पटवारी व पुलिस के लिए", file: "pdf/books/reasoning-maths-book.pdf", badge: "BOOK" },
+    { title: "पर्यावरण अध्ययन, विज्ञान एवं करंट अफेयर्स बुक", sub: "वन-लाइनर + MCQ प्रश्न संग्रह", file: "pdf/books/science-env-book.pdf", badge: "BOOK" }
+  ];
+
   function el(tag, cls, text) {
     var e = document.createElement(tag);
     if (cls) e.className = cls;
@@ -1474,14 +1661,13 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     var a = el("a", cls);
     a.href = href; a.rel = "noopener";
     if (IS_MOBILE) {
-      /* Mobile: PDF site ke andar khulegi, upar Download button milega */
       a.addEventListener("click", function (e) { e.preventDefault(); openPdf(href, a.title || a.textContent); });
     } else { a.target = "_blank"; }
     a.style.setProperty("--i", i);
     return a;
   }
 
-  /* ---- Mobile PDF viewer: pehle dekho, pasand aaye to Download dabao ---- */
+  /* ---- Mobile PDF viewer ---- */
   var PDFJS_BASE = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/";
   var pdfLibPromise = null;
   function loadPdfJs() {
@@ -1561,10 +1747,53 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   }
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && pv && !pv.root.hidden) closePdf(); });
 
+  var currentIdx = 0;
+
+  function showBooks() {
+    activeMode = "book";
+    if (btnTest) btnTest.setAttribute("aria-selected", "false");
+    if (btnBook) btnBook.setAttribute("aria-selected", "true");
+    tabsBox.style.display = "none";
+    panel.style.setProperty("--cc", "#7e22ce");
+    var w = document.getElementById("npWa");
+    if (w) {
+      w.href = window.LC_WA("नमस्ते सर, मुझे Laser Classes की बुक्स / स्टडी मटेरियल की जानकारी चाहिए।");
+      w.textContent = "💬 बुक्स की जानकारी WhatsApp पर पाएं";
+    }
+    body.innerHTML = "";
+    body.scrollTop = 0;
+
+    body.appendChild(el("div", "np-label", "📚 Laser Classes Jhalawar — बुक्स एवं नोट्स"));
+    body.appendChild(el("div", "np-hint", "👇 अपनी ज़रूरत की बुक PDF खोलें या डाउनलोड करें"));
+    var list = el("div", "np-list");
+    BOOKS.forEach(function (b, k) {
+      var a = link("np-row", b.file, k);
+      a.title = b.title;
+      a.appendChild(el("span", "np-pdf", b.badge || "BOOK"));
+      var wrap = el("span", "t");
+      wrap.appendChild(el("strong", "", b.title));
+      if (b.sub) {
+        var sub = el("span", "", b.sub);
+        sub.style.cssText = "display:block;font-size:.78rem;font-weight:500;color:var(--soft);margin-top:.15rem;";
+        wrap.appendChild(sub);
+      }
+      a.appendChild(wrap);
+      a.appendChild(el("span", "np-go", "⬇"));
+      list.appendChild(a);
+    });
+    body.appendChild(list);
+  }
+
   function show(idx, lv) {
+    activeMode = "test";
+    currentIdx = idx;
+    if (btnTest) btnTest.setAttribute("aria-selected", "true");
+    if (btnBook) btnBook.setAttribute("aria-selected", "false");
+    tabsBox.style.display = "";
+
     var c = COURSES[idx];
     lv = lv || 0;
-    var d = c.levels ? c.levels[lv] : c;               /* is level ka syllabus + tests */
+    var d = c.levels ? c.levels[lv] : c;
     var title = c.levels ? c.name + " " + d.n : c.name;
     panel.style.setProperty("--cc", c.c);
     var w = document.getElementById("npWa");
@@ -1614,6 +1843,9 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     body.appendChild(grid);
   }
 
+  if (btnTest) btnTest.addEventListener("click", function () { show(currentIdx); });
+  if (btnBook) btnBook.addEventListener("click", showBooks);
+
   COURSES.forEach(function (c, i) {
     var t = el("button", "np-tab");
     t.appendChild(el("span", "np-ti", c.i)); t.appendChild(el("span", "np-tn", c.name));
@@ -1637,6 +1869,8 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     if (opening) return;
     var d = parseInt(this && this.dataset ? this.dataset.course : "", 10);
     if (!isNaN(d) && COURSES[d]) show(d);
+    else if (activeMode === "book") showBooks();
+    else show(currentIdx);
     if (reduce || !intro) { modal.hidden = false; return; }
     opening = true;
     intro.hidden = false;
@@ -1741,8 +1975,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 </div>
 
 <script>
-/* ===== Student reviews (Firebase Firestore) =====
-   Config khali ho to "रिव्यू लिखें" button apne aap chhupa rahega aur site normal chalegi. */
+/* ===== Student reviews (Firebase Firestore) ===== */
 (function () {
   var FIREBASE_CONFIG = {
     apiKey: "AIzaSyC4fqFmn65B3YnokGAmZ-8Z-D6o-iQflcw",
@@ -1750,8 +1983,8 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     projectId: "laser-classes",
     appId: "1:493919135060:web:1e61ca0665920f428a54c1"
   };
-  var AUTO_APPROVE = true;   /* true = review turant dikhe | false = pehle aap Firebase me approve karein */
-  var COOLDOWN_MS = 24 * 60 * 60 * 1000; /* ek phone se 1 din me 1 review */
+  var AUTO_APPROVE = true;
+  var COOLDOWN_MS = 24 * 60 * 60 * 1000;
 
   var section = document.getElementById("reviews");
   var grid = section && section.querySelector(".review-grid");
@@ -1806,7 +2039,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   function markTime() { try { localStorage.setItem("lc_rv_t", String(Date.now())); } catch (e) {} }
 
   send.addEventListener("click", function () {
-    if (hp.value) return; /* bot */
+    if (hp.value) return;
     var name = nameI.value.trim(), text = textI.value.trim();
     if (name.length < 2) return setMsg("कृपया अपना नाम लिखें।", "err");
     if (text.length < 15) return setMsg("रिव्यू कम से कम 15 अक्षर का लिखें।", "err");
@@ -1831,7 +2064,6 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
       fs = m[1];
       db = fs.getFirestore(m[0].initializeApp(FIREBASE_CONFIG));
       openBtn.hidden = false;
-      /* Admin replies ke liye callback — sab visitors ko dikhega */
       if (typeof window._lcOnFirebaseReady === "function") { window._lcOnFirebaseReady(fs, db); }
       return fs.getDocs(fs.query(fs.collection(db, "reviews"), fs.where("approved", "==", true), fs.limit(40)));
     }).then(function (snap) {
@@ -1839,7 +2071,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
       snap.forEach(function (d) { var data = d.data(); data.id = d.id; list.push(data); });
       list.sort(function (a, b) { return (b.createdAt ? b.createdAt.seconds : 0) - (a.createdAt ? a.createdAt.seconds : 0); });
       list.reverse().forEach(function (d) { grid.insertBefore(card(d), grid.firstChild); });
-    }).catch(function () { /* net/Firebase dikkat: purane reviews dikhte rahenge */ });
+    }).catch(function () {});
   }
   if ("IntersectionObserver" in window) {
     new IntersectionObserver(function (en, ob) { if (en[0].isIntersecting) { ob.disconnect(); start(); } }, { rootMargin: "400px" }).observe(section);
@@ -1896,7 +2128,6 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 
   var COLORS = ["#1d4ed8", "#15803d", "#d9480f", "#7e22ce", "#c51d38", "#0e7490", "#b45309", "#be185d"];
 
-  /* strong ke andar naam ke sath stars bhi hote hain; yahan sirf naam (text node) nikalte hain */
   function nameOnly(strongEl) {
     var t = "";
     Array.prototype.forEach.call(strongEl.childNodes, function (n) {
@@ -1905,7 +2136,6 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     return t.trim();
   }
 
-  /* Avatar: naam ka pehla letter + naam se nikla hua color, review-card ke top border par bhi wahi color */
   function initAvatar(card) {
     var who = card.querySelector(".rc-who");
     if (!who) return;
@@ -1921,7 +2151,6 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     card.style.setProperty("--rc", color);
   }
 
-  /* Bade review ko 4 line ke baad "पूरा पढ़ें" button se expand karna */
   function setupReadMore(card) {
     var p = card.querySelector(".rc-text");
     var btn = card.querySelector(".rc-more");
@@ -1943,7 +2172,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 
   var ADMIN_PIN = "7512";
   var _fbFs = null, _fbDb = null;
-  var _remoteReplies = {}; /* { docId: replyText } */
+  var _remoteReplies = {};
 
   function rvKey(card) {
     if (card.dataset && card.dataset.rvId) return "rv_" + card.dataset.rvId;
@@ -2063,5 +2292,646 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   }
 })();
 </script>
+
+<!-- LASER SAHAYAK (AI WEBSITE HELPER) -->
+<div class="ai-hint" id="aiHint" role="status" aria-live="polite">👋 कोई सवाल है? पूछिए!</div>
+
+<button type="button" class="ai-fab" id="aiFab" aria-label="सहायक - Laser Sahayak से पूछें" title="सहायक">
+  <span class="ai-fab-circle">
+    <span class="ai-dot" aria-hidden="true"></span>
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+  <line x1="20" y1="4" x2="20" y2="9.5" stroke="#ffd45e" stroke-width="2.4" stroke-linecap="round"/>
+  <circle cx="20" cy="4" r="2.6" fill="#ff7b29"/>
+  <rect x="4" y="15.5" width="3.5" height="7" rx="1.75" fill="#ffd45e"/>
+  <rect x="32.5" y="15.5" width="3.5" height="7" rx="1.75" fill="#ffd45e"/>
+  <rect x="8.5" y="9.5" width="23" height="19" rx="7" fill="#13268c" stroke="#ffd45e" stroke-width="2"/>
+  <rect x="12" y="13.5" width="16" height="9.5" rx="4.5" fill="#060d36"/>
+  <circle cx="16.5" cy="18.2" r="2.1" fill="#38bdf8"/>
+  <circle cx="23.5" cy="18.2" r="2.1" fill="#38bdf8"/>
+  <circle cx="17.1" cy="17.5" r=".7" fill="#fff"/>
+  <circle cx="24.1" cy="17.5" r=".7" fill="#fff"/>
+  <path d="M16.8 25.2c1 1.1 2.1 1.5 3.2 1.5s2.2-.4 3.2-1.5" stroke="#ffd45e" stroke-width="2" stroke-linecap="round"/>
+  <path d="M11 35.5c0-3.2 4-5.2 9-5.2s9 2 9 5.2" fill="#13268c" stroke="#ffd45e" stroke-width="1.8" stroke-linecap="round"/>
+</svg>
+  </span>
+  <span class="ai-fab-lbl">🤖 सहायक</span>
+</button>
+
+<div class="ai-box" id="aiBox" hidden role="dialog" aria-modal="false" aria-label="Laser Sahayak Chat">
+  <div class="ai-head">
+    <div class="ai-htitle">
+      <div class="ai-avatar" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+  <line x1="20" y1="4" x2="20" y2="9.5" stroke="#0a1450" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="20" cy="4" r="2.6" fill="#e8590c"/>
+  <rect x="4" y="15.5" width="3.5" height="7" rx="1.75" fill="#0a1450"/>
+  <rect x="32.5" y="15.5" width="3.5" height="7" rx="1.75" fill="#0a1450"/>
+  <rect x="8.5" y="9.5" width="23" height="19" rx="7" fill="#0a1450"/>
+  <rect x="12" y="13.5" width="16" height="9.5" rx="4.5" fill="#1f3bb3"/>
+  <circle cx="16.5" cy="18.2" r="2.1" fill="#ffd45e"/>
+  <circle cx="23.5" cy="18.2" r="2.1" fill="#ffd45e"/>
+  <path d="M16.8 25.2c1 1.1 2.1 1.5 3.2 1.5s2.2-.4 3.2-1.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <path d="M11 35.5c0-3.2 4-5.2 9-5.2s9 2 9 5.2" fill="#0a1450"/>
+</svg></div>
+      <div>
+        <strong>Laser Sahayak</strong>
+        <span>वेबसाइट गाइड · 24×7 मदद</span>
+      </div>
+    </div>
+    <button type="button" class="ai-x" id="aiClose" aria-label="बंद करें">✕</button>
+  </div>
+  <div class="ai-msgs" id="aiMsgs" aria-live="polite" aria-relevant="additions"></div>
+  <div class="ai-chips" id="aiChips">
+    <button type="button" data-q="WhatsApp कैसे करें?">💬 WhatsApp कैसे करें?</button>
+    <button type="button" data-q="फ्री नोट्स और पेपर कैसे डाउनलोड करें?">📥 नोट्स कैसे डाउनलोड करें?</button>
+    <button type="button" data-q="CET का सिलेबस डाउनलोड लिंक दें">📄 CET सिलेबस</button>
+    <button type="button" data-q="RAS बैच की क्या जानकारी है?">🏛️ RAS बैच</button>
+    <button type="button" data-q="कौन-कौन से कोर्स हैं?">📚 कोर्स लिस्ट</button>
+    <button type="button" data-q="3 दिन की डेमो क्लास कैसे लें?">🎯 डेमो क्लास</button>
+    <button type="button" data-q="रिव्यू कैसे लिखें?">⭐ रिव्यू कैसे लिखें?</button>
+    <button type="button" data-q="कोचिंग का पता और समय क्या है?">📍 पता व समय</button>
+  </div>
+  <form class="ai-form" id="aiForm" autocomplete="off">
+    <input type="text" id="aiInput" placeholder="अपना सवाल यहाँ लिखें...">
+    <button type="submit">भेजें</button>
+  </form>
+</div>
+
+<script>
+/* ===== Laser Sahayak: Website & Coaching Smart Assistant ===== */
+(function () {
+  var fab = document.getElementById("aiFab"), box = document.getElementById("aiBox");
+  var hint = document.getElementById("aiHint");
+  var closeBtn = document.getElementById("aiClose"), msgs = document.getElementById("aiMsgs");
+  var form = document.getElementById("aiForm"), input = document.getElementById("aiInput");
+  var chips = document.getElementById("aiChips");
+  if (!fab || !box) return;
+
+  var MINI_AV_SVG = '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true">' +
+    '<line x1="20" y1="4" x2="20" y2="9.5" stroke="#0a1450" stroke-width="2.5" stroke-linecap="round"/>' +
+    '<circle cx="20" cy="4" r="2.6" fill="#e8590c"/>' +
+    '<rect x="4" y="15.5" width="3.5" height="7" rx="1.75" fill="#0a1450"/>' +
+    '<rect x="32.5" y="15.5" width="3.5" height="7" rx="1.75" fill="#0a1450"/>' +
+    '<rect x="8.5" y="9.5" width="23" height="19" rx="7" fill="#0a1450"/>' +
+    '<rect x="12" y="13.5" width="16" height="9.5" rx="4.5" fill="#1f3bb3"/>' +
+    '<circle cx="16.5" cy="18.2" r="2.1" fill="#ffd45e"/>' +
+    '<circle cx="23.5" cy="18.2" r="2.1" fill="#ffd45e"/>' +
+    '<path d="M16.8 25.2c1 1.1 2.1 1.5 3.2 1.5s2.2-.4 3.2-1.5" stroke="#fff" stroke-width="2" stroke-linecap="round"/>' +
+    '<path d="M11 35.5c0-3.2 4-5.2 9-5.2s9 2 9 5.2" fill="#0a1450"/>' +
+    '</svg>';
+
+  var hintShowTimer = setTimeout(function () {
+    if (hint && box.hidden) hint.classList.add("show");
+  }, 2500);
+  var hintHideTimer = setTimeout(function () {
+    if (hint) hint.classList.remove("show");
+  }, 9000);
+  function hideHint() {
+    clearTimeout(hintShowTimer);
+    clearTimeout(hintHideTimer);
+    if (hint) hint.classList.remove("show");
+  }
+
+  var _logFs = null, _logDb = null;
+  function logQuerySilently(questionText, matchedCategory) {
+    function writeLog(fsLib, dbRef) {
+      try {
+        fsLib.addDoc(fsLib.collection(dbRef, "bot_queries"), {
+          query: questionText.slice(0, 200),
+          category: matchedCategory || "unknown",
+          createdAt: fsLib.serverTimestamp()
+        }).catch(function () {});
+      } catch (e) {}
+    }
+    if (_logFs && _logDb) {
+      writeLog(_logFs, _logDb);
+      return;
+    }
+    if (typeof window._lcOnFirebaseReady === "function") {
+      var prevReady = window._lcOnFirebaseReady;
+      window._lcOnFirebaseReady = function (fsLib, dbRef) {
+        _logFs = fsLib; _logDb = dbRef;
+        prevReady(fsLib, dbRef);
+        writeLog(fsLib, dbRef);
+      };
+    }
+    try {
+      var cfg = {
+        apiKey: "AIzaSyC4fqFmn65B3YnokGAmZ-8Z-D6o-iQflcw",
+        authDomain: "laser-classes.firebaseapp.com",
+        projectId: "laser-classes",
+        appId: "1:493919135060:web:1e61ca0665920f428a54c1"
+      };
+      var V = "https://www.gstatic.com/firebasejs/10.12.2/";
+      Promise.all([import(V + "firebase-app.js"), import(V + "firebase-firestore.js")]).then(function (m) {
+        var fsLib = m[1];
+        var app = m[0].getApps && m[0].getApps().length ? m[0].getApp() : m[0].initializeApp(cfg);
+        var dbRef = fsLib.getFirestore(app);
+        _logFs = fsLib; _logDb = dbRef;
+        writeLog(fsLib, dbRef);
+      }).catch(function () {});
+    } catch (e) {}
+  }
+
+  var KB = [
+    {
+      id: "who_are_you",
+      keys: ["tum kon", "tum kaun", "kon ho", "kaun ho", "naam kya", "tera naam", "apna naam", "who are you", "what is your name", "kya ho tum", "bot ho", "ai ho", "insan ho"],
+      ans: "मैं 'Laser Sahayak' हूँ — Laser Classes Jhalawar का स्मार्ट सहायक! 🤖\nमैं न तो इंसान हूँ और न ही कोई भारी-भरकम रोबोट, बस यहाँ आपकी मदद के लिए हाज़िर हूँ। कोर्स, नोट्स, सिलेबस, डेमो क्लास या पढ़ाई से जुड़ी कोई भी बात पूछिए!",
+      acts: [{ label: "📚 कोर्स देखें", href: "#courses" }, { label: "📂 फ्री नोट्स", fn: "openNotes" }]
+    },
+    {
+      id: "greeting_how_are_you",
+      keys: ["kaise ho", "kese ho", "kesa h", "kaisa h", "kya haal", "haal chaal", "how are you", "thik ho", "theek ho", "badiya ho", "mast ho"],
+      ans: "मैं बिल्कुल बढ़िया हूँ! 😊 उम्मीद है आप भी अच्छे होंगे और अपनी तैयारी कर रहे होंगे या आपकी तैयारी अच्छी चल रही होगी।\nबताइए, आज क्या पढ़ रहे हैं या कोचिंग से जुड़ी क्या जानकारी चाहिए?",
+      acts: [{ label: "📂 फ्री नोट्स", fn: "openNotes" }, { label: "💬 WhatsApp करें", fn: "openWa" }]
+    },
+    {
+      id: "hello",
+      keys: ["hi", "hello", "hey", "hii", "helo", "नमस्ते", "namaste", "namaskar", "प्रणाम", "ram ram", "राम राम", "jai hind", "जय हिन्द", "good morning", "good afternoon", "good evening", "good night"],
+      ans: "नमस्ते! 🙏 मैं Laser Sahayak हूँ।\nआप कोचिंग से जुड़ा कोई भी सवाल पूछ सकते हैं।",
+      acts: [{ label: "📂 फ्री नोट्स", fn: "openNotes" }, { label: "💬 WhatsApp करें", fn: "openWa" }]
+    },
+    {
+      id: "fun_masti",
+      keys: ["maja", "masti", "maje", "mazak", "mzak", "bore", "bor", "boring", "joke", "jokes", "hasao", "हंसाओ", "thak", "thak gaya", "thak gai", "neend", "नींद", "pagal", "bhoot", "chudail", "gf", "bf", "pyar", "love", "shaadi", "shadi"],
+      ans: "😄 हाहा! पढ़ाई के बीच हल्की-फुल्की मस्ती भी ज़रूरी है, वरना दिमाग गर्म हो जाता है!\nलेकिन ध्यान रहे—मस्ती अपनी जगह और सिलेबस अपनी जगह। मन करे तो अभी एक मॉडल पेपर या नोट्स देख लो, दिमाग तरोताज़ा हो जाएगा!",
+      acts: [{ label: "📝 मॉडल टेस्ट पेपर खोलें", fn: "openNotes" }, { label: "🎯 मोटिवेशन लें", href: "#results" }]
+    },
+    {
+      id: "khana_paani_age",
+      keys: ["khana", "खाना", "pani", "पानी", "chai", "चाय", "umra", "umar", "age", "kitne saal", "kaha rehte", "कहाँ रहते", "ghar", "घर"],
+      ans: "☕ मैं तो बिजली और कोड से चलता हूँ, मुझे चाय-खाने की ज़रूरत नहीं पड़ती—हाँ, आपका चाय का कप ज़रूर तैयार रखिए ताकि पढ़ने में नींद न आए! 😄\nमैं Laser Classes Jhalawar की वेबसाइट पर रहता हूँ।",
+      acts: [{ label: "📍 कोचिंग का पता", href: "#contact" }]
+    },
+    {
+      id: "exam_dar_syllabus_tension",
+      keys: ["dar", "डर", "tension", "टेंशन", "yaad nahi", "याद नहीं", "bhool jata", "भूल जाता", "bhool jati", "कैसे याद", "kaise yaad", "syllabus bahut", "टाइम नहीं", "time kam"],
+      ans: "💪 परीक्षा से पहले हल्की घबराहट सबको होती है, यह इस बात का सबूत है कि आप सीरियस हैं!\nरोज़ थोड़ा-थोड़ा पढ़ें, रिवीज़न करते रहें और हर रविवार OMR टेस्ट ज़रूर दें—डर अपने आप गायब हो जाएगा।",
+      acts: [{ label: "📝 रविवार टेस्ट व पेपर", fn: "openNotes" }, { label: "💬 सर से बात करें", fn: "openWa" }]
+    },
+    {
+      id: "motivation_job",
+      keys: ["selection", "pass", "topper", "rank", "नौकरी", "job", "sarkari", "सरकारी", "motivation", "मोटिवेशन", "padhai", "पढ़ाई", "mehnat", "मेहनत", "safalta", "सफलता"],
+      ans: "🔥 सरकारी नौकरी का सपना मेहनत, अनुशासन और सही मार्गदर्शन से पूरा होता है!\nLaser Classes Jhalawar में रोज़ाना क्लास, अपडेटेड नोट्स और हर रविवार OMR टेस्ट के साथ आपकी तैयारी को मजबूत बनाया जाता है।",
+      acts: [{ label: "🎯 डेमो क्लास लें", fn: "openWa" }, { label: "🏆 चयनित विद्यार्थी", href: "#results" }]
+    },
+    {
+      id: "thanks",
+      keys: ["thanks", "thank you", "tnx", "thnx", "dhanyawad", "धन्यवाद", "shukriya", "शुक्रिया", "ok", "okay", "k", "thik hai", "theek hai", "acha", "अच्छा", "badhiya", "बढ़िया", "mast", "मस्त", "super", "nice"],
+      ans: "आपका स्वागत है! 😊 कोई और सवाल हो या नोट्स/सिलेबस चाहिए तो बेझिझक पूछें। ऑल द बेस्ट!",
+      acts: [{ label: "📂 फ्री नोट्स", fn: "openNotes" }]
+    },
+    {
+      id: "ras",
+      keys: ["ras", "आरएएस", "आर.ए.एस", "ras foundation", "ras फाउंडेशन", "rpsc ras"],
+      ans: "🏛️ Laser Classes Jhalawar में RAS (फाउंडेशन बैच) के लिए Prelims + Mains का संपूर्ण मार्गदर्शन उपलब्ध है।\nनए बैच, समय और 3 दिन की फ्री डेमो क्लास की जानकारी के लिए आप सीधे WhatsApp या कॉल कर सकते हैं।",
+      acts: [{ label: "💬 RAS बैच की जानकारी लें", fn: "openWa" }, { label: "📞 कॉल करें", href: "tel:+918875472511" }]
+    },
+    {
+      id: "cet",
+      keys: ["cet", "सीईटी", "सीइटी", "12th", "graduation"],
+      wantsSyllabus: true,
+      courseName: "CET",
+      ans: "📋 CET (12+ Level एवं Graduation Level) के सिलेबस और मॉडल टेस्ट पेपर के सीधे लिंक नीचे दिए गए हैं:",
+      acts: [
+        { label: "📄 CET 12+ Level सिलेबस PDF", href: "pdf/cet/12th/syllabus.pdf", pdf: true },
+        { label: "📄 CET Graduation सिलेबस PDF", href: "pdf/cet/graduation/syllabus.pdf", pdf: true },
+        { label: "📂 CET टेस्ट पेपर खोलें", fn: "openCetNotes" }
+      ]
+    },
+    {
+      id: "reet",
+      keys: ["reet", "रीट", "level 1", "level 2", "लेवल 1", "लेवल 2", "शिक्षक"],
+      wantsSyllabus: true,
+      courseName: "REET",
+      ans: "📚 REET (Level 1 एवं Level 2) के सिलेबस और मॉडल टेस्ट पेपर के सीधे लिंक नीचे दिए गए हैं:",
+      acts: [
+        { label: "📄 REET Level 1 Pre सिलेबस PDF", href: "pdf/reet/level1-pre-syllabus.pdf", pdf: true },
+        { label: "📄 REET Level 1 Mains सिलेबस PDF", href: "pdf/reet/level1-mains-syllabus.pdf", pdf: true },
+        { label: "📄 REET Level 2 Pre सिलेबस PDF", href: "pdf/reet/level2-pre-syllabus.pdf", pdf: true },
+        { label: "📄 REET Level 2 Mains सिलेबस PDF", href: "pdf/reet/level2-mains-syllabus.pdf", pdf: true }
+      ]
+    },
+    {
+      id: "bstc",
+      keys: ["bstc", "बीएसटीसी"],
+      wantsSyllabus: true,
+      courseName: "BSTC",
+      ans: "🎓 BSTC का सिलेबस PDF और मॉडल टेस्ट पेपर यहाँ से डाउनलोड करें:",
+      acts: [
+        { label: "📄 BSTC सिलेबस PDF डाउनलोड करें", href: "pdf/bstc/syllabus.pdf", pdf: true },
+        { label: "📂 BSTC 15 टेस्ट पेपर खोलें", fn: "openBstcNotes" }
+      ]
+    },
+    {
+      id: "vdo",
+      keys: ["vdo", "वीडीओ", "ग्राम विकास"],
+      wantsSyllabus: true,
+      courseName: "VDO",
+      ans: "🏛️ VDO का सिलेबस PDF यहाँ से डाउनलोड करें:",
+      acts: [
+        { label: "📄 VDO सिलेबस PDF डाउनलोड करें", href: "pdf/vdo/syllabus.pdf", pdf: true },
+        { label: "📂 VDO टेस्ट पेपर खोलें", fn: "openVdoNotes" }
+      ]
+    },
+    {
+      id: "police",
+      keys: ["police", "पुलिस", "raj police", "राजस्थान पुलिस"],
+      wantsSyllabus: true,
+      courseName: "Raj. Police",
+      ans: "🛡️ राजस्थान पुलिस का सिलेबस PDF यहाँ से डाउनलोड करें:",
+      acts: [
+        { label: "📄 राजस्थान पुलिस सिलेबस PDF", href: "pdf/rj-police/syllabus.pdf", pdf: true },
+        { label: "📂 पुलिस टेस्ट पेपर खोलें", fn: "openPoliceNotes" }
+      ]
+    },
+    {
+      id: "ldc",
+      keys: ["ldc", "एलडीसी"],
+      wantsSyllabus: true,
+      courseName: "LDC",
+      ans: "🗂️ राजस्थान LDC का सिलेबस PDF यहाँ से डाउनलोड करें:",
+      acts: [
+        { label: "📄 LDC सिलेबस PDF डाउनलोड करें", href: "pdf/ldc/syllabus.pdf", pdf: true },
+        { label: "📂 LDC टेस्ट पेपर खोलें", fn: "openLdcNotes" }
+      ]
+    },
+    {
+      id: "ptet",
+      keys: ["ptet", "पीटीईटी"],
+      wantsSyllabus: true,
+      courseName: "PTET",
+      ans: "🏫 राजस्थान PTET का सिलेबस PDF यहाँ से डाउनलोड करें:",
+      acts: [
+        { label: "📄 PTET सिलेबस PDF डाउनलोड करें", href: "pdf/ptet/syllabus.pdf", pdf: true },
+        { label: "📂 PTET टेस्ट पेपर खोलें", fn: "openPtetNotes" }
+      ]
+    },
+    {
+      id: "4th_grade",
+      keys: ["4th grade", "चतुर्थ श्रेणी", "fourth grade"],
+      wantsSyllabus: true,
+      courseName: "4th Grade",
+      ans: "📝 राजस्थान 4th Grade (चतुर्थ श्रेणी) का सिलेबस PDF यहाँ से डाउनलोड करें:",
+      acts: [
+        { label: "📄 4th Grade सिलेबस PDF", href: "pdf/4th-grade/syllabus.pdf", pdf: true },
+        { label: "📂 4th Grade टेस्ट पेपर खोलें", fn: "open4thNotes" }
+      ]
+    },
+    {
+      id: "patwari",
+      keys: ["patwari", "पटवारी"],
+      wantsSyllabus: true,
+      courseName: "पटवारी",
+      ans: "📜 राजस्थान पटवारी का सिलेबस PDF यहाँ से डाउनलोड करें:",
+      acts: [
+        { label: "📄 पटवारी सिलेबस PDF डाउनलोड करें", href: "pdf/patwari/syllabus.pdf", pdf: true },
+        { label: "📂 पटवारी टेस्ट पेपर खोलें", fn: "openPatwariNotes" }
+      ]
+    },
+    {
+      id: "whatsapp",
+      keys: ["whatsapp", "वाट्सएप", "व्हाट्सएप", "वॉट्सऐप", "message", "मैसेज", "बात", "chat", "sampark", "संपर्क", "contact"],
+      ans: "💬 WhatsApp करने का बहुत आसान तरीका:\n1️⃣ स्क्रीन पर नीचे दाईं तरफ हरे रंग का 'WhatsApp' बटन (जिस पर 'फ्री डेमो' लिखा है) दिख रहा होगा — उस पर क्लिक करें।\n2️⃣ एक छोटा पॉपअप खुलेगा — वहाँ बॉक्स में अपना नाम लिखें।\n3️⃣ नीचे दी गई लिस्ट में से अपनी परीक्षा/कोर्स (जैसे REET, BSTC, CET, पुलिस आदि) चुनें।\n4️⃣ अब 'WhatsApp पर भेजें' बटन दबाएँ — आपका मैसेज अपने आप बनकर सीधे सर के WhatsApp (88754 72511) पर खुल जाएगा!",
+      acts: [{ label: "💬 अभी WhatsApp पॉपअप खोलें", fn: "openWa" }]
+    },
+    {
+      id: "free_books",
+      keys: ["free book", "free books", "फ्री बुक", "फ्री बुक्स", "मुफ्त बुक", "मुफ्त किताब", "फ्री किताब", "book", "books", "बुक", "बुक्स", "किताब", "किताबें", "pustak", "पुस्तक"],
+      ans: "📚 Laser Classes Jhalawar की फ्री बुक्स और स्टडी नोट्स यहाँ से देखें/डाउनलोड करें:\n• राजस्थान सामान्य ज्ञान (इतिहास, कला-संस्कृति व भूगोल) बुक\n• सामान्य हिन्दी व्याकरण एवं शिक्षण विधियाँ बुक\n• रीज़निंग एवं गणित प्रैक्टिस बुक\n• पर्यावरण अध्ययन, विज्ञान एवं करंट अफेयर्स बुक\n\nनीचे '📚 बुक्स / नोट्स खोलें' बटन दबाकर आप सीधे बुक्स वाला सेक्शन खोल सकते हैं, या किसी भी PDF पर क्लिक करके डाउनलोड कर सकते हैं:",
+      acts: [
+        { label: "📚 बुक्स / नोट्स खोलें", fn: "openBooks" },
+        { label: "📄 राजस्थान GK बुक PDF", href: "pdf/books/rajasthan-gk-book.pdf", pdf: true },
+        { label: "📄 हिन्दी बुक PDF", href: "pdf/books/hindi-book.pdf", pdf: true },
+        { label: "📂 पूरा स्टडी मटेरियल", fn: "openNotes" }
+      ]
+    },
+    {
+      id: "notes_syllabus",
+      keys: ["notes", "नोट्स", "नोट", "pdf", "पीडीएफ", "download", "डाउनलोड", "syllabus", "सिलेबस", "model", "मॉडल", "paper", "पेपर", "books", "बुक", "बुक्स", "material", "मटेरियल", "study"],
+      ans: "📥 फ्री नोट्स, सिलेबस और 150 मॉडल टेस्ट पेपर डाउनलोड करने की पूरी प्रक्रिया:\n1️⃣ पेज पर '🎁 फ्री स्टडी मटेरियल' वाले कार्ड पर जाएँ (या स्क्रीन पर दाईं तरफ उछलते हुए गोल नारंगी/लाल '📂 फ्री नोट्स' बटन पर टैप करें)।\n2️⃣ पॉपअप खुलने पर ऊपर 2 बटन दिखेंगे:\n   • बाएँ (Left): '📄 सिलेबस और टेस्ट पेपर' — यहाँ अपना कोर्स (REET, BSTC, CET, VDO, पुलिस आदि) चुनें, सिलेबस PDF और 1 से 15 नंबर तक के मॉडल टेस्ट पेपर खुल जाएँगे।\n   • दाएँ (Right): '📚 बुक्स / नोट्स' — यहाँ क्लिक करके आप कोचिंग की बुक्स PDF देख सकते हैं।\n3️⃣ किसी भी PDF पर टैप करें — मोबाइल में ऊपर '⬇ Download' बटन से सीधे फ़ोन में सेव हो जाएगी (बिल्कुल 100% फ्री)!",
+      acts: [
+        { label: "📄 CET सिलेबस", href: "pdf/cet/12th/syllabus.pdf", pdf: true },
+        { label: "📄 REET सिलेबस", href: "pdf/reet/level1-pre-syllabus.pdf", pdf: true },
+        { label: "📄 BSTC सिलेबस", href: "pdf/bstc/syllabus.pdf", pdf: true },
+        { label: "📂 पूरा फ्री नोट्स पॉपअप", fn: "openNotes" }
+      ]
+    },
+    {
+      id: "courses",
+      keys: ["courses", "कोर्स", "बैच", "batch", "tayari", "तैयारी", "si"],
+      ans: "📚 Laser Classes Jhalawar में इन परीक्षाओं के बैच चलते हैं:\n• BSTC एवं PTET प्रवेश परीक्षा विशेष\n• REET एवं शिक्षक ग्रेड 1, 2, 3\n• CET (12+ व Graduation Level), पटवारी, SI, VDO\n• राजस्थान पुलिस एवं 4th Grade (चतुर्थ श्रेणी)\n• RAS फाउंडेशन बैच (Prelims + Mains)\n\nसुबह और शाम दोनों पारियों में नए बैच उपलब्ध हैं।",
+      acts: [{ label: "📚 कोर्स सेक्शन देखें", href: "#courses" }, { label: "💬 बैच की जानकारी लें", fn: "openWa" }]
+    },
+    {
+      id: "demo_admission",
+      keys: ["demo", "डेमो", "free class", "फ्री क्लास", "trial", "ट्रायल", "admission", "एडमिशन", "प्रवेश", "join", "जॉइन"],
+      ans: "🎯 एडमिशन और 3 दिन की फ्री डेमो क्लास की प्रक्रिया:\n1️⃣ पहले नीचे दिए WhatsApp या कॉल बटन (88754 72511) से संपर्क करें।\n2️⃣ सीधे संस्थान आकर 3 दिन की बिल्कुल फ्री डेमो क्लास लें और पढ़ाने का तरीका परखें।\n3️⃣ संतुष्ट होने पर ऑफ़िस में फीस जमा कर अपना एडमिशन पक्का करें और क्लास, रविवार OMR टेस्ट व मोबाइल ऐप शुरू करें।",
+      acts: [{ label: "📝 एडमिशन स्टेप्स देखें", href: "#admission" }, { label: "💬 डेमो क्लास बुक करें", fn: "openWa" }]
+    },
+    {
+      id: "test_omr",
+      keys: ["test", "टेस्ट", "omr", "sunday", "रविवार", "mock", "मॉक", "series", "सीरीज"],
+      ans: "📝 हर रविवार संस्थान में बिल्कुल परीक्षा जैसे माहौल में OMR शीट पर फुल-लेंथ टेस्ट होता है और क्लास में रिजल्ट का विश्लेषण (Analysis) भी किया जाता है। इसके अलावा मोबाइल ऐप पर ऑनलाइन मॉक टेस्ट और वेबसाइट पर 150 फ्री मॉडल पेपर PDF भी उपलब्ध हैं।",
+      acts: [{ label: "📂 फ्री मॉडल पेपर देखें", fn: "openNotes" }]
+    },
+    {
+      id: "app_online",
+      keys: ["app", "ऐप", "mobile app", "मोबाइल ऐप", "play store", "प्ले स्टोर", "online", "ऑनलाइन", "telegram", "टेलीग्राम", "youtube", "यूट्यूब"],
+      ans: "📱 ऑनलाइन पढ़ाई और अपडेट्स के लिए:\n• हमारा आधिकारिक मोबाइल ऐप Google Play Store पर उपलब्ध है (जहाँ ऑनलाइन मॉक टेस्ट और स्टडी मटेरियल मिलता है)।\n• डेली क्विज़ और PDF अपडेट के लिए हमारा Telegram चैनल (@Laserclasses01) ज्वाइन करें।",
+      acts: [
+        { label: "▶️ Play Store से ऐप लें", href: "https://play.google.com/store/apps/details?id=com.hkfywo.mrblyu", ext: true },
+        { label: "✈️ Telegram ज्वाइन करें", href: "https://t.me/Laserclasses01", ext: true }
+      ]
+    },
+    {
+      id: "reviews",
+      keys: ["review", "रिव्यू", "rating", "रेटिंग", "feedback", "राय", "comment"],
+      ans: "⭐ वेबसाइट पर अपना रिव्यू लिखने का तरीका:\n1️⃣ पेज पर 'विद्यार्थियों की राय' (#reviews) सेक्शन में जाएँ।\n2️⃣ वहाँ नारंगी रंग का '✍️ रिव्यू लिखें' बटन दबाएँ।\n3️⃣ अपना नाम, बैच, स्टार रेटिंग (1 से 5) और अनुभव लिखकर 'रिव्यू भेजें' पर क्लिक करें — आपका रिव्यू तुरंत वेबसाइट पर जुड़ जाएगा!",
+      acts: [{ label: "⭐ रिव्यू सेक्शन पर जाएँ", href: "#reviews" }]
+    },
+    {
+      id: "teachers",
+      keys: ["teachers", "शिक्षक", "सर", "sir", "faculty", "फैकल्टी", "manish", "मनीष", "hariom", "हरिओम", "bhupendra", "भूपेंद्र"],
+      ans: "👨‍🏫 Laser Classes की अनुभवी फैकल्टी टीम:\n• मनीष कुलारिया सर (Founder & सामान्य हिन्दी)\n• आर. एस. सिसोदिया सर (संविधान एवं राजव्यवस्था)\n• लोकेश गुर्जर सर (रीज़निंग एवं गणित)\n• नवीन सुमन सर (राजस्थान इतिहास)\n• मनोज मेरोठा सर (राजस्थान भूगोल)\n• हरिओम सुमन सर (राजस्थान कला और संस्कृति)\n• दुर्गालाल राठोर सर (संस्कृत), सुष्मिता मैम (भारत का भूगोल), भानूप्रताप सिंह सर (कंप्यूटर) और लखन राठोर सर (विज्ञान)।",
+      acts: [{ label: "👨‍🏫 सभी शिक्षक देखें", href: "#teachers" }]
+    },
+    {
+      id: "address_time",
+      keys: ["address", "पता", "location", "लोकेशन", "kahan", "कहाँ", "कहां", "timing", "समय", "कब", "phone", "number", "नंबर", "call", "कॉल", "office", "ऑफ़िस"],
+      ans: "📍 संस्थान का पता और संपर्क जानकारी:\n• पता: यूनियन बैंक के सामने, तांगा अड्डा, मंगलपुरा, झालावाड़ (राजस्थान)\n• फ़ोन नंबर: 88754 72511, 92521 20834\n• ऑफ़िस समय: सुबह 7:00 बजे से शाम 7:00 बजे तक (रविवार: केवल टेस्ट एवं डाउट सत्र)",
+      acts: [{ label: "📞 अभी कॉल करें", href: "tel:+918875472511" }, { label: "📍 संपर्क व मैप देखें", href: "#contact" }]
+    },
+    {
+      id: "fees",
+      keys: ["fees", "फीस", "किस्त", "installment", "पैसा", "charge", "खर्च"],
+      ans: "💰 सभी कोर्सेज़ के लिए बहुत ही उचित और किफ़ायती फीस रखी गई है। आपके चुने हुए कोर्स और बैच की सटीक फीस व डिस्काउंट की जानकारी के लिए कृपया WhatsApp या कॉल पर बात करें।",
+      acts: [{ label: "💬 WhatsApp पर फीस पूछें", fn: "openWa" }, { label: "📞 कॉल करें", href: "tel:+918875472511" }]
+    }
+  ];
+  function addMsg(text, who, acts) {
+    var row = document.createElement("div");
+    row.className = "ai-row " + who;
+
+    if (who === "bot") {
+      var av = document.createElement("div");
+      av.className = "ai-m-av";
+      av.setAttribute("aria-hidden", "true");
+      av.innerHTML = MINI_AV_SVG;
+      row.appendChild(av);
+    }
+
+    var d = document.createElement("div");
+    d.className = "ai-m";
+    d.textContent = text;
+    if (acts && acts.length) {
+      var bar = document.createElement("div");
+      bar.className = "ai-act";
+      acts.forEach(function (a) {
+        var courseMap = {
+          openReetNotes: 0, openBstcNotes: 1, openCetNotes: 2, openVdoNotes: 3,
+          openPoliceNotes: 4, openLdcNotes: 5, openPtetNotes: 6, open4thNotes: 7, openPatwariNotes: 8
+        };
+        if (a.fn) {
+          var b = document.createElement("button");
+          b.type = "button"; b.textContent = a.label;
+          b.addEventListener("click", function () {
+            box.hidden = true;
+            if (a.fn === "openWa") {
+              var wb = document.querySelector(".openWaBtn");
+              if (wb) wb.click();
+            } else if (a.fn === "openBooks") {
+              var nbBooks = document.querySelector(".openNotesBtn");
+              if (nbBooks) nbBooks.click();
+              setTimeout(function () {
+                var bkTab = document.getElementById("npModeBook");
+                if (bkTab) bkTab.click();
+              }, 60);
+            } else if (a.fn === "openNotes") {
+              var nb = document.querySelector(".openNotesBtn");
+              if (nb) nb.click();
+            } else if (Object.prototype.hasOwnProperty.call(courseMap, a.fn)) {
+              var cIdx = courseMap[a.fn];
+              var targetBtn = document.querySelector('.pc.openNotesBtn[data-course="' + cIdx + '"]') || document.querySelector(".openNotesBtn");
+              if (targetBtn) targetBtn.click();
+            }
+          });
+          bar.appendChild(b);
+        } else if (a.href) {
+          var lk = document.createElement("a");
+          lk.href = a.href; lk.textContent = a.label;
+          if (a.pdf) {
+            lk.target = "_blank"; lk.rel = "noopener";
+            lk.setAttribute("download", a.href.split("/").pop());
+          } else if (a.ext) {
+            lk.target = "_blank"; lk.rel = "noopener";
+          } else {
+            lk.addEventListener("click", function () { box.hidden = true; });
+          }
+          bar.appendChild(lk);
+        }
+      });
+      d.appendChild(bar);
+    }
+    row.appendChild(d);
+    msgs.appendChild(row);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  var WORD_MAP = {
+    "not": "notes", "note": "notes", "nots": "notes", "notts": "notes", "notse": "notes", "notsa": "notes", "noot": "notes", "noots": "notes",
+    "bok": "books", "boks": "books", "book": "books", "buk": "books", "buks": "books", "kitab": "books", "kitabe": "books",
+    "pepar": "paper", "pepr": "paper", "papr": "paper", "papers": "paper", "modal": "model",
+    "silbus": "syllabus", "silebus": "syllabus", "sylbus": "syllabus", "sylebus": "syllabus", "sellaybus": "syllabus", "selabus": "syllabus", "syllas": "syllabus", "syllbus": "syllabus",
+    "keha": "where_loc", "kaha": "where_loc", "kahan": "where_loc", "kahaan": "where_loc", "kha": "where_loc", "kidhar": "where_loc", "kdr": "where_loc", "milenge": "where_loc", "milega": "where_loc", "milegi": "where_loc",
+    "watsp": "whatsapp", "watsap": "whatsapp", "whtsapp": "whatsapp", "whatsup": "whatsapp", "wtsap": "whatsapp", "whatsap": "whatsapp", "whasapp": "whatsapp", "msg": "message", "massege": "message", "msj": "message",
+    "kors": "courses", "kourse": "courses", "cors": "courses", "corse": "courses", "course": "courses", "bech": "batch", "bach": "batch",
+    "ret": "reet", "rit": "reet", "riet": "reet",
+    "bstsi": "bstc", "bistc": "bstc", "bst": "bstc",
+    "set": "cet", "sit": "cet", "ceet": "cet",
+    "patwri": "patwari", "patwar": "patwari", "ptwari": "patwari", "patvari": "patwari",
+    "pulis": "police", "polic": "police", "polise": "police", "pulish": "police",
+    "pitet": "ptet", "ptit": "ptet",
+    "dmo": "demo", "demmo": "demo", "klash": "class", "klas": "class", "clas": "class", "classes": "class",
+    "admison": "admission", "admision": "admission", "admisn": "admission", "addmission": "admission",
+    "fee": "fees", "fess": "fees", "fis": "fees", "feess": "fees", "fise": "fees", "paisa": "fees", "paise": "fees", "rupye": "fees", "rupaya": "fees",
+    "techar": "teachers", "techer": "teachers", "teacher": "teachers", "tichar": "teachers", "mastar": "teachers", "master": "teachers",
+    "adrs": "address", "addres": "address", "adres": "address", "pata": "address", "lokeshan": "location", "locaton": "location",
+    "time": "timing", "taim": "timing", "tam": "timing", "tyming": "timing", "samay": "timing",
+    "kon": "kaun", "koun": "kaun", "kese": "kaise", "kaisa": "kaise", "kesa": "kaise", "theek": "thik", "mujh": "mujhe", "mje": "mujhe", "muje": "mujhe",
+    "masti": "maja", "mzak": "mazak", "hasna": "hasao", "hansao": "hasao", "thka": "thak", "thki": "thak", "tnx": "thanks", "thnx": "thanks",
+    "chahiye": "want", "chahie": "want", "chaiye": "want", "chye": "want", "dedo": "want", "do": "want", "dijiye": "want"
+  };
+  function normalizeHindi(str) {
+    var clean = str.toLowerCase()
+      .replace(/[?!.,।|"'`~@#$%^&*()_+=\[\]{};:<>\/-]+/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    clean = clean
+      .replace(/la\s*kar\s*do|la\s*do|de\s*do|bata\s*do|dikha\s*do/g, " want ")
+      .replace(/4th\s*grad[e]?|fourth\s*grad[e]?|chaturth\s*shreni/g, " 4th_grade ");
+    var tokens = clean.split(" ");
+    var mapped = tokens.map(function (t) {
+      return Object.prototype.hasOwnProperty.call(WORD_MAP, t) ? WORD_MAP[t] : t;
+    });
+    return mapped.join(" ");
+  }
+
+  function editDistance(a, b) {
+    if (a === b) return 0;
+    var al = a.length, bl = b.length;
+    if (Math.abs(al - bl) > 2) return 99;
+    var dp = [];
+    for (var i = 0; i <= al; i++) dp[i] = [i];
+    for (var j = 1; j <= bl; j++) dp[0][j] = j;
+    for (var i = 1; i <= al; i++) {
+      for (var j = 1; j <= bl; j++) {
+        var cost = a[i - 1] === b[j - 1] ? 0 : 1;
+        dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
+      }
+    }
+    return dp[al][bl];
+  }
+
+  var unknownStreak = 0;
+  var replyTimer = null;
+
+  function showTyping() {
+    removeTyping();
+    var wrap = document.createElement("div");
+    wrap.className = "ai-row bot";
+    wrap.id = "aiTyping";
+
+    var av = document.createElement("div");
+    av.className = "ai-m-av";
+    av.setAttribute("aria-hidden", "true");
+    av.innerHTML = MINI_AV_SVG;
+
+    var dots = document.createElement("div");
+    dots.className = "ai-typing";
+    dots.setAttribute("aria-label", "Laser Sahayak लिख रहा है...");
+    dots.innerHTML = "<i></i><i></i><i></i>";
+
+    wrap.appendChild(av);
+    wrap.appendChild(dots);
+    msgs.appendChild(wrap);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  function removeTyping() {
+    var old = document.getElementById("aiTyping");
+    if (old) old.remove();
+  }
+
+  function reply(q) {
+    if (replyTimer) clearTimeout(replyTimer);
+    showTyping();
+
+    var raw = q.toLowerCase().trim();
+    var norm = normalizeHindi(raw);
+    var normWords = norm.split(" ").filter(Boolean);
+    var hasWhereLoc = normWords.indexOf("where_loc") !== -1;
+
+    var best = null, bestScore = 0;
+    KB.forEach(function (item) {
+      var score = 0;
+      item.keys.forEach(function (k) {
+        var kl = k.toLowerCase();
+        if (kl.indexOf(" ") !== -1) {
+          if (raw.indexOf(kl) !== -1 || norm.indexOf(kl) !== -1) {
+            score += kl.length + 5;
+          }
+        } else {
+          if (normWords.indexOf(kl) !== -1 || raw.indexOf(kl) !== -1) {
+            score += kl.length + 4;
+          } else if (kl.length >= 4 && /^[a-z]+$/.test(kl)) {
+            for (var w = 0; w < normWords.length; w++) {
+              var nw = normWords[w];
+              if (nw.length >= 4 && /^[a-z]+$/.test(nw)) {
+                var maxDist = kl.length >= 6 ? 2 : 1;
+                if (editDistance(nw, kl) <= maxDist) {
+                  score += kl.length + 2;
+                  break;
+                }
+              }
+            }
+          }
+        }
+      });
+
+      if (hasWhereLoc && item.id === "notes_syllabus" && score > 0) score += 6;
+      if (hasWhereLoc && item.id === "address_time" && score === 0 && normWords.length <= 3) score += 3;
+
+      if (score > bestScore) { bestScore = score; best = item; }
+    });
+
+    var matchedCat = (best && bestScore > 0) ? (best.id || "matched") : "unknown";
+    logQuerySilently(q, matchedCat);
+
+    var delay = 1150 + Math.floor(Math.random() * 350);
+    replyTimer = setTimeout(function () {
+      removeTyping();
+      if (best && bestScore > 0) {
+        unknownStreak = 0;
+        addMsg(best.ans, "bot", best.acts);
+      } else {
+        unknownStreak += 1;
+        if (unknownStreak >= 2) {
+          addMsg(
+            "लगता है आपका सवाल थोड़ा अलग है। आप सीधे सर से WhatsApp पर बात करके अपनी सही जानकारी ले सकते हैं ताकि आपका समय बचे:",
+            "bot",
+            [
+              { label: "💬 WhatsApp पर सीधे बात करें", fn: "openWa" },
+              { label: "📂 फ्री नोट्स खोलें", fn: "openNotes" }
+            ]
+          );
+        } else {
+          addMsg(
+            "कृपया अपना मैसेज सही से या शुद्ध रूप में लिखें ताकि मैं समझ सकूँ 😊 आप कोर्स (REET, BSTC, CET, RAS, पटवारी, पुलिस), नोट्स/सिलेबस डाउनलोड, WhatsApp या डेमो क्लास के बारे में पूछ सकते हैं।",
+            "bot",
+            [
+              { label: "📂 फ्री नोट्स खोलें", fn: "openNotes" },
+              { label: "💬 WhatsApp करें", fn: "openWa" }
+            ]
+          );
+        }
+      }
+    }, delay);
+  }
+
+  var greeted = false;
+  function openChat() {
+    hideHint();
+    box.hidden = false;
+    if (!greeted) {
+      greeted = true;
+      addMsg("नमस्ते! 🙏 मैं Laser Sahayak हूँ।\nआप कोचिंग से जुड़ा कोई भी सवाल पूछ सकते हैं।", "bot");
+    }
+  }
+
+  fab.addEventListener("click", function () {
+    if (box.hidden) openChat(); else box.hidden = true;
+  });
+  closeBtn.addEventListener("click", function () { box.hidden = true; });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !box.hidden) box.hidden = true; });
+
+  chips.addEventListener("click", function (e) {
+    var b = e.target.closest("button"); if (!b) return;
+    var q = b.getAttribute("data-q") || b.textContent;
+    addMsg(q, "usr");
+    reply(q);
+  });
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var q = input.value.trim();
+    if (!q) return;
+    input.value = "";
+    addMsg(q, "usr");
+    reply(q);
+  });
+})();
+</script>
+
 </body>
 </html>
