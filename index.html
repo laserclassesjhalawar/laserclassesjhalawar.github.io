@@ -138,6 +138,28 @@ nav a:active { transform: scale(.96); }
 @media (min-width: 48rem) { nav { order: 0; width: auto; padding: 0; } header { padding: 1rem 1.25rem; } }
 
 header#siteHeader { position: sticky; top: 0; z-index: 25; background: var(--paper); transition: box-shadow .25s ease; }
+.hdr-bot-btn {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 2.55rem; height: 2.55rem; padding: 0; border-radius: 50%;
+  border: 2px solid var(--mark); background: linear-gradient(135deg, #0a1450, #1f3bb3);
+  color: #ffd45e; cursor: pointer;
+  box-shadow: 0 4px 12px rgba(10,20,80,.24); flex: none;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.hdr-bot-btn::after {
+  content: ""; position: absolute; top: -.08rem; right: -.08rem;
+  width: .68rem; height: .68rem; border-radius: 50%;
+  background: #25d366; border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,.3);
+}
+.hdr-bot-btn:hover { transform: translateY(-1px) scale(1.04); box-shadow: 0 6px 16px rgba(10,20,80,.32); }
+.hdr-bot-btn:active { transform: scale(.94); }
+.hdr-bot-ic {
+  width: 100%; height: 100%; border-radius: 50%;
+  display: grid; place-items: center; overflow: hidden;
+}
+.hdr-bot-ic svg { width: 1.65rem; height: 1.65rem; display: block; }
 header#siteHeader.scrolled { box-shadow: 0 4px 14px rgba(15, 31, 102, 0.08); }
 
 /* ===== LIQUID GLASS buttons ===== */
@@ -397,6 +419,15 @@ details p { padding-top: .5rem; color: var(--soft); }
 .np-label { display: flex; align-items: center; gap: .4rem; font: 700 1rem/1.4 var(--head); margin: .2rem 0 .6rem; }
 .np-hint { font-size: .82rem; color: var(--soft); margin: -.3rem 0 .6rem; }
 .np-list { display: grid; gap: .55rem; margin-bottom: 1.2rem; }
+.np-fgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .65rem; margin-bottom: 1rem; }
+.np-fcard { cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; text-align: center; background: #fff; border: 2px solid var(--fc, #7e22ce); border-radius: 16px; padding: .95rem .6rem; color: var(--ink); font-family: var(--body); box-shadow: 0 4px 12px rgba(10,20,80,.07); transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
+.np-fcard:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(10,20,80,.13); background: #faf5ff; }
+.np-fcard:active { transform: scale(.97); }
+.np-fic { font-size: 2rem; line-height: 1.1; }
+.np-fname { font: 800 .98rem/1.3 var(--head); color: var(--ink); }
+.np-fsub { font-size: .74rem; font-weight: 600; color: var(--soft); }
+.np-back { display: inline-flex; align-items: center; gap: .35rem; cursor: pointer; border: 1.5px solid var(--rule); background: #fff; color: var(--ink); font: 700 .84rem/1.2 var(--body); padding: .38rem .8rem; border-radius: 999px; margin-bottom: .75rem; }
+.np-back:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
 .np-row { display: flex; align-items: center; gap: .75rem; text-decoration: none; background: #fff; border: 1px solid var(--rule); border-left: 4px solid var(--cc); border-radius: 14px; padding: .65rem .8rem; font-weight: 600; line-height: 1.35; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
 .np-row:hover { box-shadow: 0 6px 14px rgba(15,31,102,.14); }
 .np-row:active { transform: scale(.98); }
@@ -851,31 +882,24 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 }
 
 .ai-hint {
-  position: fixed; left: 5.2rem; bottom: 2.25rem; z-index: 26;
-  padding: .48rem .85rem; border-radius: 14px; border-bottom-left-radius: 4px;
+  position: fixed; right: 1rem; top: 4.15rem; z-index: 26;
+  padding: .45rem .8rem; border-radius: 14px; border-top-right-radius: 4px;
   background: #fff; color: var(--ink); border: 1.5px solid var(--mark);
-  font: 700 .82rem/1.3 var(--body); white-space: nowrap;
-  box-shadow: 0 10px 24px rgba(10,20,80,.22);
-  opacity: 0; transform: translateY(6px) scale(.96); pointer-events: none;
+  font: 700 .8rem/1.3 var(--body); white-space: nowrap;
+  box-shadow: 0 10px 24px rgba(10,20,80,.2);
+  opacity: 0; transform: translateY(-6px) scale(.96); pointer-events: none;
   transition: opacity .3s ease, transform .3s ease;
 }
 .ai-hint.show { opacity: 1; transform: none; }
 .ai-hint::after {
-  content: ""; position: absolute; left: -.45rem; bottom: .35rem;
-  border-width: 6px 8px 6px 0; border-style: solid;
-  border-color: transparent #fff transparent transparent;
-}
-@media (max-width: 47.99rem) {
-  .ai-hint {
-    left: 4.7rem;
-    bottom: calc(4.85rem + env(safe-area-inset-bottom));
-    font-size: .78rem; padding: .42rem .72rem;
-  }
+  content: ""; position: absolute; right: .55rem; top: -.45rem;
+  border-width: 0 6px 6px 6px; border-style: solid;
+  border-color: transparent transparent #fff transparent;
 }
 
 .ai-box {
-  position: fixed; left: 1rem; bottom: 5.7rem; z-index: 90;
-  width: min(calc(100vw - 2rem), 27.5rem); height: min(82dvh, 39rem);
+  position: fixed; right: 1rem; top: 4.1rem; z-index: 90;
+  width: min(calc(100vw - 2rem), 27.5rem); height: min(78dvh, 38rem);
   display: flex; flex-direction: column; overflow: hidden;
   background: var(--paper); color: var(--ink);
   border-radius: 22px; border: 1.5px solid var(--rule);
@@ -885,9 +909,8 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 .ai-box[hidden] { display: none; }
 @media (max-width: 47.99rem) {
   .ai-box {
-    left: .5rem; right: .5rem; width: auto;
-    bottom: calc(4.3rem + env(safe-area-inset-bottom));
-    height: min(78dvh, 35rem);
+    left: .5rem; right: .5rem; top: 4rem; width: auto;
+    height: min(74dvh, 34rem);
   }
 }
 .ai-head {
@@ -1101,6 +1124,9 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
     <img src="favicon.png" alt="Laser Classes Jhalawar Logo - Best Coaching in Jhalawar" width="36" height="36">
     <span>Laser Classes</span>
   </a>
+  <button type="button" class="hdr-bot-btn" id="hdrAiBtn" aria-label="Laser Sahayak चैटबॉट खोलें" title="Laser Sahayak">
+    <span class="hdr-bot-ic" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none"><line x1="20" y1="4" x2="20" y2="9.5" stroke="#ffd45e" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="4" r="2.6" fill="#ff7b29"/><rect x="4" y="15.5" width="3.5" height="7" rx="1.75" fill="#ffd45e"/><rect x="32.5" y="15.5" width="3.5" height="7" rx="1.75" fill="#ffd45e"/><rect x="8.5" y="9.5" width="23" height="19" rx="7" fill="#13268c" stroke="#ffd45e" stroke-width="2"/><rect x="12" y="13.5" width="16" height="9.5" rx="4.5" fill="#060d36"/><circle cx="16.5" cy="18.2" r="2.1" fill="#38bdf8"/><circle cx="23.5" cy="18.2" r="2.1" fill="#38bdf8"/><circle cx="17.1" cy="17.5" r=".7" fill="#fff"/><circle cx="24.1" cy="17.5" r=".7" fill="#fff"/><path d="M16.8 25.2c1 1.1 2.1 1.5 3.2 1.5s2.2-.4 3.2-1.5" stroke="#ffd45e" stroke-width="2" stroke-linecap="round"/><path d="M11 35.5c0-3.2 4-5.2 9-5.2s9 2 9 5.2" fill="#13268c" stroke="#ffd45e" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+  </button>
   <nav aria-label="मेन्यू" id="siteNav">
     <a href="#courses">कोर्स</a>
     <a href="#results">सफलता</a>
@@ -1637,12 +1663,74 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     { name: "पटवारी", i: "📜", c: "#4d7c0f", tests: "pdf/patwari/test/", syl: [["राजस्थान पटवारी सिलेबस", "pdf/patwari/syllabus.pdf"]] }
   ];
 
-  /* 2. बुक्स / प्रिंटेड व PDF नोट्स की लिस्ट — नई बुक जोड़नी हो तो यहीं जोड़ें */
-  var BOOKS = [
-    { title: "राजस्थान सामान्य ज्ञान (इतिहास, कला-संस्कृति व भूगोल) बुक", sub: "लेज़र क्लासेज़ झालावाड़ · अपडेटेड एडिशन", file: "pdf/books/rajasthan-gk-book.pdf", badge: "BOOK" },
-    { title: "सामान्य हिन्दी व्याकरण एवं शिक्षण विधियाँ बुक", sub: "मनीष कुलारिया सर द्वारा संकलित", file: "pdf/books/hindi-book.pdf", badge: "BOOK" },
-    { title: "रीज़निंग एवं गणित प्रैक्टिस बुक", sub: "BSTC, CET, पटवारी व पुलिस के लिए", file: "pdf/books/reasoning-maths-book.pdf", badge: "BOOK" },
-    { title: "पर्यावरण अध्ययन, विज्ञान एवं करंट अफेयर्स बुक", sub: "वन-लाइनर + MCQ प्रश्न संग्रह", file: "pdf/books/science-env-book.pdf", badge: "BOOK" }
+  /* 2. बुक्स / नोट्स फ़ोल्डर्स (1 रो में 2 फ़ोल्डर) */
+  var BOOK_FOLDERS = [
+    {
+      id: "hindi",
+      name: "हिन्दी",
+      icon: "📕",
+      color: "#c51d38",
+      desc: "सामान्य हिन्दी व व्याकरण",
+      files: [
+        { title: "PDF 1 — सामान्य हिन्दी नोट्स व व्याकरण", sub: "मनीष कुलारिया सर · लेज़र क्लासेज़", file: "pdf/books/hindi/pdf1.pdf" },
+        { title: "PDF 2 — संधि, समास, उपसर्ग-प्रत्यय व पर्यायवाची", sub: "महत्वपूर्ण प्रश्न व अभ्यास", file: "pdf/books/hindi/pdf2.pdf" }
+      ]
+    },
+    {
+      id: "rj_geography",
+      name: "राजस्थान भूगोल",
+      icon: "🗺️",
+      color: "#15803d",
+      desc: "भौतिक प्रदेश, जलवायु व नदियाँ",
+      files: [
+        { title: "PDF 1 — राजस्थान भूगोल मुख्य नोट्स", sub: "अपडेटेड सिलेबस अनुसार", file: "pdf/books/rj-geography/pdf1.pdf" },
+        { title: "PDF 2 — राजस्थान भूगोल प्रैक्टिस व तथ्य", sub: "परीक्षा उपयोगी संग्रह", file: "pdf/books/rj-geography/pdf2.pdf" }
+      ]
+    },
+    {
+      id: "rj_history",
+      name: "राजस्थान इतिहास",
+      icon: "🏰",
+      color: "#d9480f",
+      desc: "सभ्यताएँ, राजवंश व 1857 क्रांति",
+      files: [
+        { title: "PDF 1 — राजस्थान इतिहास मुख्य नोट्स", sub: "सभ्यताएँ, मेवाड़, मारवाड़ व आमेर", file: "pdf/books/rj-history/pdf1.pdf" },
+        { title: "PDF 2 — प्रजामंडल, एकीकरण व महत्वपूर्ण तथ्य", sub: "REET, CET, BSTC व पुलिस के लिए", file: "pdf/books/rj-history/pdf2.pdf" }
+      ]
+    },
+    {
+      id: "rj_culture",
+      name: "राजस्थान कला व संस्कृति",
+      icon: "🎭",
+      color: "#7e22ce",
+      desc: "लोकदेवता, मेले, दुर्ग व संगीत",
+      files: [
+        { title: "PDF 1 — कला व संस्कृति मुख्य नोट्स", sub: "दुर्ग, मंदिर, चित्रकला व लोकगीत", file: "pdf/books/rj-culture/pdf1.pdf" },
+        { title: "PDF 2 — लोकदेवता, संत, मेले व त्यौहार", sub: "वन-लाइनर व रिवीज़न PDF", file: "pdf/books/rj-culture/pdf2.pdf" }
+      ]
+    },
+    {
+      id: "computer",
+      name: "कंप्यूटर",
+      icon: "💻",
+      color: "#0e7490",
+      desc: "बेसिक, MS Office, नेटवर्किंग व सुरक्षा",
+      files: [
+        { title: "PDF 1 — कंप्यूटर सामान्य ज्ञान नोट्स", sub: "हार्डवेयर, सॉफ्टवेयर व मेमोरी", file: "pdf/books/computer/pdf1.pdf" },
+        { title: "PDF 2 — इंटरनेट, शॉर्टकट कीज़ व MCQ", sub: "CET व पटवारी विशेष", file: "pdf/books/computer/pdf2.pdf" }
+      ]
+    },
+    {
+      id: "polity",
+      name: "राजनीति / पॉलिटी",
+      icon: "⚖️",
+      color: "#1d4ed8",
+      desc: "भारतीय संविधान व राजस्थान राजव्यवस्था",
+      files: [
+        { title: "PDF 1 — संविधान व राजव्यवस्था नोट्स", sub: "अनुच्छेद, मौलिक अधिकार व संसद", file: "pdf/books/polity/pdf1.pdf" },
+        { title: "PDF 2 — राज्यपाल, मुख्यमंत्री, पंचायती राज व आयोग", sub: "राजस्थान पॉलिटी विशेष", file: "pdf/books/polity/pdf2.pdf" }
+      ]
+    }
   ];
 
   function el(tag, cls, text) {
@@ -1742,32 +1830,39 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && pv && !pv.root.hidden) closePdf(); });
 
   var currentIdx = 0;
+  var currentFolderIdx = null;
 
-  function showBooks() {
-    activeMode = "book";
-    if (btnTest) btnTest.setAttribute("aria-selected", "false");
-    if (btnBook) btnBook.setAttribute("aria-selected", "true");
-    tabsBox.style.display = "none";
-    panel.style.setProperty("--cc", "#7e22ce");
+  function showFolderFiles(fIdx) {
+    currentFolderIdx = fIdx;
+    var fld = BOOK_FOLDERS[fIdx];
+    if (!fld) { showBooks(); return; }
+    panel.style.setProperty("--cc", fld.color || "#7e22ce");
     var w = document.getElementById("npWa");
     if (w) {
-      w.href = window.LC_WA("नमस्ते सर, मुझे Laser Classes की बुक्स / स्टडी मटेरियल की जानकारी चाहिए।");
-      w.textContent = "💬 बुक्स की जानकारी WhatsApp पर पाएं";
+      w.href = window.LC_WA("नमस्ते सर, मुझे " + fld.name + " के नोट्स / PDF की जानकारी चाहिए।");
+      w.textContent = "💬 " + fld.name + " की जानकारी WhatsApp पर पाएं";
     }
     body.innerHTML = "";
     body.scrollTop = 0;
 
-    body.appendChild(el("div", "np-label", "📚 Laser Classes Jhalawar — बुक्स एवं नोट्स"));
-    body.appendChild(el("div", "np-hint", "👇 अपनी ज़रूरत की बुक PDF खोलें या डाउनलोड करें"));
+    var backBtn = el("button", "np-back", "← सभी फ़ोल्डर देखें");
+    backBtn.type = "button";
+    backBtn.addEventListener("click", showBooks);
+    body.appendChild(backBtn);
+
+    body.appendChild(el("div", "np-label", fld.icon + " " + fld.name + " — PDF फ़ाइलें"));
+    body.appendChild(el("div", "np-hint", "👇 PDF 1 या PDF 2 पर टैप करके खोलें या डाउनलोड करें"));
+
     var list = el("div", "np-list");
-    BOOKS.forEach(function (b, k) {
-      var a = link("np-row", b.file, k);
-      a.title = b.title;
-      a.appendChild(el("span", "np-pdf", b.badge || "BOOK"));
+    fld.files.forEach(function (item, k) {
+      var a = link("np-row", item.file, k);
+      a.title = item.title;
+      a.style.setProperty("--cc", fld.color || "#7e22ce");
+      a.appendChild(el("span", "np-pdf", "PDF " + (k + 1)));
       var wrap = el("span", "t");
-      wrap.appendChild(el("strong", "", b.title));
-      if (b.sub) {
-        var sub = el("span", "", b.sub);
+      wrap.appendChild(el("strong", "", item.title));
+      if (item.sub) {
+        var sub = el("span", "", item.sub);
         sub.style.cssText = "display:block;font-size:.78rem;font-weight:500;color:var(--soft);margin-top:.15rem;";
         wrap.appendChild(sub);
       }
@@ -1776,6 +1871,39 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
       list.appendChild(a);
     });
     body.appendChild(list);
+  }
+
+  function showBooks() {
+    activeMode = "book";
+    currentFolderIdx = null;
+    if (btnTest) btnTest.setAttribute("aria-selected", "false");
+    if (btnBook) btnBook.setAttribute("aria-selected", "true");
+    tabsBox.style.display = "none";
+    panel.style.setProperty("--cc", "#7e22ce");
+    var w = document.getElementById("npWa");
+    if (w) {
+      w.href = window.LC_WA("नमस्ते सर, मुझे Laser Classes की फ्री बुक और नोट्स की जानकारी चाहिए।");
+      w.textContent = "💬 फ्री बुक और नोट्स की जानकारी WhatsApp पर पाएं";
+    }
+    body.innerHTML = "";
+    body.scrollTop = 0;
+
+    body.appendChild(el("div", "np-label", "📂 विषयवार फ़ोल्डर चुनें"));
+    body.appendChild(el("div", "np-hint", "👇 किसी भी फ़ोल्डर पर क्लिक करके PDF 1, PDF 2 देखें"));
+
+    var fgrid = el("div", "np-fgrid");
+    BOOK_FOLDERS.forEach(function (fld, k) {
+      var card = el("button", "np-fcard");
+      card.type = "button";
+      card.style.setProperty("--fc", fld.color);
+      card.style.setProperty("--i", k);
+      card.appendChild(el("span", "np-fic", fld.icon));
+      card.appendChild(el("span", "np-fname", fld.name));
+      card.appendChild(el("span", "np-fsub", fld.desc));
+      card.addEventListener("click", function () { showFolderFiles(k); });
+      fgrid.appendChild(card);
+    });
+    body.appendChild(fgrid);
   }
 
   function show(idx, lv) {
@@ -1836,6 +1964,15 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     }
     body.appendChild(grid);
   }
+
+  window.LC_OPEN_BOOK_FOLDER = function (fIdx) {
+    if (opening) { opening = false; clearTimeout(timer); if (intro) intro.hidden = true; }
+    modal.hidden = false;
+    showBooks();
+    if (typeof fIdx === "number" && BOOK_FOLDERS[fIdx]) {
+      setTimeout(function () { showFolderFiles(fIdx); }, 40);
+    }
+  };
 
   if (btnTest) btnTest.addEventListener("click", function () { show(currentIdx); });
   if (btnBook) btnBook.addEventListener("click", showBooks);
@@ -2288,28 +2425,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 </script>
 
 <!-- LASER SAHAYAK (AI WEBSITE HELPER) -->
-<div class="ai-hint" id="aiHint" role="status" aria-live="polite">👋 कोई सवाल है? पूछिए!</div>
-
-<button type="button" class="ai-fab" id="aiFab" aria-label="सहायक - Laser Sahayak से पूछें" title="सहायक">
-  <span class="ai-fab-circle">
-    <span class="ai-dot" aria-hidden="true"></span>
-    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
-  <line x1="20" y1="4" x2="20" y2="9.5" stroke="#ffd45e" stroke-width="2.4" stroke-linecap="round"/>
-  <circle cx="20" cy="4" r="2.6" fill="#ff7b29"/>
-  <rect x="4" y="15.5" width="3.5" height="7" rx="1.75" fill="#ffd45e"/>
-  <rect x="32.5" y="15.5" width="3.5" height="7" rx="1.75" fill="#ffd45e"/>
-  <rect x="8.5" y="9.5" width="23" height="19" rx="7" fill="#13268c" stroke="#ffd45e" stroke-width="2"/>
-  <rect x="12" y="13.5" width="16" height="9.5" rx="4.5" fill="#060d36"/>
-  <circle cx="16.5" cy="18.2" r="2.1" fill="#38bdf8"/>
-  <circle cx="23.5" cy="18.2" r="2.1" fill="#38bdf8"/>
-  <circle cx="17.1" cy="17.5" r=".7" fill="#fff"/>
-  <circle cx="24.1" cy="17.5" r=".7" fill="#fff"/>
-  <path d="M16.8 25.2c1 1.1 2.1 1.5 3.2 1.5s2.2-.4 3.2-1.5" stroke="#ffd45e" stroke-width="2" stroke-linecap="round"/>
-  <path d="M11 35.5c0-3.2 4-5.2 9-5.2s9 2 9 5.2" fill="#13268c" stroke="#ffd45e" stroke-width="1.8" stroke-linecap="round"/>
-</svg>
-  </span>
-  <span class="ai-fab-lbl">🤖 सहायक</span>
-</button>
+<div class="ai-hint" id="aiHint" role="status" aria-live="polite">👋 मैं आपकी क्या सहायता कर सकता हूँ?</div>
 
 <div class="ai-box" id="aiBox" hidden role="dialog" aria-modal="false" aria-label="Laser Sahayak Chat">
   <div class="ai-head">
@@ -2353,12 +2469,12 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 <script>
 /* ===== Laser Sahayak: Website & Coaching Smart Assistant ===== */
 (function () {
-  var fab = document.getElementById("aiFab"), box = document.getElementById("aiBox");
+  var hdrAiBtn = document.getElementById("hdrAiBtn"), box = document.getElementById("aiBox");
   var hint = document.getElementById("aiHint");
   var closeBtn = document.getElementById("aiClose"), msgs = document.getElementById("aiMsgs");
   var form = document.getElementById("aiForm"), input = document.getElementById("aiInput");
   var chips = document.getElementById("aiChips");
-  if (!fab || !box) return;
+  if (!hdrAiBtn || !box) return;
 
   var MINI_AV_SVG = '<svg viewBox="0 0 40 40" fill="none" aria-hidden="true">' +
     '<line x1="20" y1="4" x2="20" y2="9.5" stroke="#0a1450" stroke-width="2.5" stroke-linecap="round"/>' +
@@ -2427,6 +2543,66 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   }
 
   var KB = [
+    {
+      id: "hindi_pdf",
+      keys: ["हिंदी की पीडीएफ", "हिन्दी की पीडीएफ", "हिंदी पीडीएफ", "हिन्दी पीडीएफ", "hindi pdf", "hindi ki pdf", "हिंदी नोट्स", "हिन्दी नोट्स", "हिंदी बुक", "हिन्दी बुक"],
+      ans: "📕 हिन्दी फ़ोल्डर और PDF डाउनलोड लिंक नीचे दिए गए हैं। यहाँ क्लिक करके हिन्दी की PDF डाउनलोड करो:",
+      acts: [
+        { label: "📂 हिन्दी फ़ोल्डर खोलें", fn: "openBookFolder0" },
+        { label: "⬇ हिन्दी PDF 1 डाउनलोड करें", href: "pdf/books/hindi/pdf1.pdf", pdf: true },
+        { label: "⬇ हिन्दी PDF 2 डाउनलोड करें", href: "pdf/books/hindi/pdf2.pdf", pdf: true }
+      ]
+    },
+    {
+      id: "geography_pdf",
+      keys: ["ज्योग्राफी की पीडीएफ", "ज्योग्राफी पीडीएफ", "भूगोल की पीडीएफ", "भूगोल पीडीएफ", "राजस्थान भूगोल की पीडीएफ", "geography pdf", "bhugol pdf", "भूगोल नोट्स", "ज्योग्राफी नोट्स", "भूगोल बुक", "ज्योग्राफी बुक"],
+      ans: "🗺️ राजस्थान भूगोल (ज्योग्राफी) फ़ोल्डर और PDF डाउनलोड लिंक नीचे दिए गए हैं। यहाँ क्लिक करके भूगोल (ज्योग्राफी) की PDF डाउनलोड करो:",
+      acts: [
+        { label: "📂 राजस्थान भूगोल फ़ोल्डर खोलें", fn: "openBookFolder1" },
+        { label: "⬇ भूगोल PDF 1 डाउनलोड करें", href: "pdf/books/rj-geography/pdf1.pdf", pdf: true },
+        { label: "⬇ भूगोल PDF 2 डाउनलोड करें", href: "pdf/books/rj-geography/pdf2.pdf", pdf: true }
+      ]
+    },
+    {
+      id: "history_pdf",
+      keys: ["इतिहास की पीडीएफ", "इतिहास पीडीएफ", "हिस्ट्री की पीडीएफ", "हिस्ट्री पीडीएफ", "राजस्थान इतिहास की पीडीएफ", "history pdf", "itihas pdf", "इतिहास नोट्स", "हिस्ट्री नोट्स", "इतिहास बुक", "हिस्ट्री बुक"],
+      ans: "🏰 राजस्थान इतिहास (हिस्ट्री) फ़ोल्डर और PDF डाउनलोड लिंक नीचे दिए गए हैं। यहाँ क्लिक करके इतिहास (हिस्ट्री) की PDF डाउनलोड करो:",
+      acts: [
+        { label: "📂 राजस्थान इतिहास फ़ोल्डर खोलें", fn: "openBookFolder2" },
+        { label: "⬇ इतिहास PDF 1 डाउनलोड करें", href: "pdf/books/rj-history/pdf1.pdf", pdf: true },
+        { label: "⬇ इतिहास PDF 2 डाउनलोड करें", href: "pdf/books/rj-history/pdf2.pdf", pdf: true }
+      ]
+    },
+    {
+      id: "culture_pdf",
+      keys: ["कला संस्कृति की पीडीएफ", "कला और संस्कृति की पीडीएफ", "संस्कृति की पीडीएफ", "कल्चर की पीडीएफ", "कल्चर पीडीएफ", "culture pdf", "sanskriti pdf", "संस्कृति नोट्स", "कल्चर नोट्स"],
+      ans: "🎭 राजस्थान कला व संस्कृति (कल्चर) फ़ोल्डर और PDF डाउनलोड लिंक नीचे दिए गए हैं। यहाँ क्लिक करके कला व संस्कृति की PDF डाउनलोड करो:",
+      acts: [
+        { label: "📂 कला व संस्कृति फ़ोल्डर खोलें", fn: "openBookFolder3" },
+        { label: "⬇ संस्कृति PDF 1 डाउनलोड करें", href: "pdf/books/rj-culture/pdf1.pdf", pdf: true },
+        { label: "⬇ संस्कृति PDF 2 डाउनलोड करें", href: "pdf/books/rj-culture/pdf2.pdf", pdf: true }
+      ]
+    },
+    {
+      id: "computer_pdf",
+      keys: ["कंप्यूटर की पीडीएफ", "कंप्यूटर पीडीएफ", "कम्प्यूटर की पीडीएफ", "computer pdf", "कंप्यूटर नोट्स", "कंप्यूटर बुक"],
+      ans: "💻 कंप्यूटर फ़ोल्डर और PDF डाउनलोड लिंक नीचे दिए गए हैं। यहाँ क्लिक करके कंप्यूटर की PDF डाउनलोड करो:",
+      acts: [
+        { label: "📂 कंप्यूटर फ़ोल्डर खोलें", fn: "openBookFolder4" },
+        { label: "⬇ कंप्यूटर PDF 1 डाउनलोड करें", href: "pdf/books/computer/pdf1.pdf", pdf: true },
+        { label: "⬇ कंप्यूटर PDF 2 डाउनलोड करें", href: "pdf/books/computer/pdf2.pdf", pdf: true }
+      ]
+    },
+    {
+      id: "polity_pdf",
+      keys: ["पॉलिटी की पीडीएफ", "पॉलिटी पीडीएफ", "राजनीति की पीडीएफ", "राजनीति पीडीएफ", "संविधान की पीडीएफ", "polity pdf", "पॉलिटी नोट्स", "राजनीति नोट्स"],
+      ans: "⚖️ राजनीति / पॉलिटी फ़ोल्डर और PDF डाउनलोड लिंक नीचे दिए गए हैं। यहाँ क्लिक करके राजनीति / पॉलिटी की PDF डाउनलोड करो:",
+      acts: [
+        { label: "📂 राजनीति / पॉलिटी फ़ोल्डर खोलें", fn: "openBookFolder5" },
+        { label: "⬇ पॉलिटी PDF 1 डाउनलोड करें", href: "pdf/books/polity/pdf1.pdf", pdf: true },
+        { label: "⬇ पॉलिटी PDF 2 डाउनलोड करें", href: "pdf/books/polity/pdf2.pdf", pdf: true }
+      ]
+    },
     {
       id: "who_are_you",
       keys: ["tum kon", "tum kaun", "kon ho", "kaun ho", "naam kya", "tera naam", "apna naam", "who are you", "what is your name", "kya ho tum", "bot ho", "ai ho", "insan ho"],
@@ -2694,13 +2870,21 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
             if (a.fn === "openWa") {
               var wb = document.querySelector(".openWaBtn");
               if (wb) wb.click();
+            } else if (a.fn && a.fn.indexOf("openBookFolder") === 0) {
+              var fNum = parseInt(a.fn.replace("openBookFolder", ""), 10);
+              if (typeof window.LC_OPEN_BOOK_FOLDER === "function") {
+                window.LC_OPEN_BOOK_FOLDER(fNum);
+              } else {
+                var nbF = document.querySelector(".openNotesBtn");
+                if (nbF) nbF.click();
+              }
             } else if (a.fn === "openBooks") {
-              var nbBooks = document.querySelector(".openNotesBtn");
-              if (nbBooks) nbBooks.click();
-              setTimeout(function () {
-                var bkTab = document.getElementById("npModeBook");
-                if (bkTab) bkTab.click();
-              }, 60);
+              if (typeof window.LC_OPEN_BOOK_FOLDER === "function") {
+                window.LC_OPEN_BOOK_FOLDER(null);
+              } else {
+                var nbBooks = document.querySelector(".openNotesBtn");
+                if (nbBooks) nbBooks.click();
+              }
             } else if (a.fn === "openNotes") {
               var nb = document.querySelector(".openNotesBtn");
               if (nb) nb.click();
@@ -2817,9 +3001,40 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     if (old) old.remove();
   }
 
+  function extractUserName(rawText) {
+    var m = rawText.match(/(?:मेरा\s*नाम|mera\s*naam|my\s*name\s*is|naam\s*hai|naam\s*h|मैं|mai|me|mein|i\s*am|im)\s+([\u0900-\u097Fa-zA-Z]+(?:\s+[\u0900-\u097Fa-zA-Z]+)?)/i);
+    if (!m || !m[1]) return "";
+    var candidate = m[1]
+      .replace(/\b(हूँ|हूं|है|हैं|hu|hoon|hai|hain|h|hun|aur|और|bhi|भी|se|से|ka|का|ki|की|ke|के)\b.*$/i, "")
+      .trim();
+    var nonNames = ["kya", "क्या", "kaise", "कैसे", "kaha", "कहाँ", "keha", "theek", "thik", "ठीक", "bore", "bored", "khush", "ready", "taiyar"];
+    if (!candidate || nonNames.indexOf(candidate.toLowerCase()) !== -1) return "";
+    return candidate;
+  }
+
   function reply(q) {
     if (replyTimer) clearTimeout(replyTimer);
     showTyping();
+
+    var detectedName = extractUserName(q);
+    if (detectedName) {
+      logQuerySilently(q, "user_name_welcome");
+      var wDelay = 1000 + Math.floor(Math.random() * 300);
+      replyTimer = setTimeout(function () {
+        removeTyping();
+        unknownStreak = 0;
+        addMsg(
+          "नमस्कार, आपका स्वागत है " + detectedName + "! 🙏 मैं आपकी क्या मदद कर सकता हूँ?",
+          "bot",
+          [
+            { label: "📚 फ्री बुक और नोट्स", fn: "openBooks" },
+            { label: "📄 सिलेबस व टेस्ट पेपर", fn: "openNotes" },
+            { label: "💬 WhatsApp करें", fn: "openWa" }
+          ]
+        );
+      }, wDelay);
+      return;
+    }
 
     var raw = q.toLowerCase().trim();
     var norm = normalizeHindi(raw);
@@ -2903,7 +3118,7 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     }
   }
 
-  fab.addEventListener("click", function () {
+  hdrAiBtn.addEventListener("click", function () {
     if (box.hidden) openChat(); else box.hidden = true;
   });
   closeBtn.addEventListener("click", function () { box.hidden = true; });
