@@ -182,19 +182,47 @@ header#siteHeader.scrolled { box-shadow: 0 4px 14px rgba(15, 31, 102, 0.08); }
 .btn:hover { box-shadow: 0 1px 1px rgba(255,255,255,.7) inset, 0 -6px 10px rgba(0,0,0,.08) inset, 0 10px 22px rgba(15,31,102,.26); }
 .ic { width: 1.35rem; height: 1.35rem; flex: none; }
 
-/* ===== Attention banner ===== */
+/* ===== News Ticker Banner (Current Affairs 501-1000) ===== */
 .attn-banner {
-  display: flex; align-items: center; justify-content: center; gap: .6rem;
-  padding: .55rem 2.4rem .55rem 1rem; margin-bottom: .5rem; border-radius: 10px; position: relative;
-  background: linear-gradient(90deg, var(--margin), var(--accent));
-  color: #fff; font-weight: 700; text-align: center; overflow: hidden;
-  animation: attnPulse 2.4s ease-in-out infinite;
+  display: flex; align-items: center; gap: .55rem;
+  padding: .48rem .75rem .48rem .55rem; margin: .45rem 0 .55rem; border-radius: 12px; position: relative;
+  background: linear-gradient(90deg, #0a1450, #1f3bb3 55%, #0a1450);
+  border: 1.5px solid var(--mark);
+  color: #fff; font-weight: 700; overflow: hidden;
+  box-shadow: 0 6px 18px rgba(10, 20, 80, .2);
 }
-@keyframes attnPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(0,0,0,0); } 50% { box-shadow: 0 0 16px 2px rgba(0,0,0,.15); } }
-.attn-banner span { display: none; font-size: .9rem; line-height: 1.4; }
-.attn-banner span.show { display: inline; }
-.attn-close { position: absolute; right: .5rem; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,.25); border: none; color: #fff; width: 1.6rem; height: 1.6rem; border-radius: 50%; cursor: pointer; font-size: .85rem; line-height: 1; }
-.attn-close:hover { background: rgba(255,255,255,.4); }
+.attn-badge {
+  flex: none; display: inline-flex; align-items: center; gap: .25rem;
+  background: linear-gradient(180deg, #ffe07d, #ffc83d); color: #141b4d;
+  font: 800 .74rem/1.2 var(--body); padding: .24rem .62rem; border-radius: 8px;
+  white-space: nowrap; box-shadow: 0 2px 6px rgba(0,0,0,.22);
+}
+.attn-marquee {
+  flex: 1; min-width: 0; overflow: hidden; white-space: nowrap; position: relative;
+  text-decoration: none; color: #fff;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 3%, #000 97%, transparent);
+}
+.attn-track {
+  display: inline-flex; align-items: center; gap: 2.5rem;
+  width: max-content;
+  animation: newsTicker 19s linear infinite;
+}
+.attn-banner:hover .attn-track,
+.attn-banner:focus-within .attn-track { animation-play-state: paused; }
+.attn-track span {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: .88rem; line-height: 1.35; color: #fff;
+}
+.attn-track b { color: #ffd45e; font-weight: 800; }
+@keyframes newsTicker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .attn-track { animation: none; white-space: normal; }
+  .attn-track span:last-child { display: none; }
+}
 
 /* ===== Hero ===== */
 .hero h1 { color: #fff; font-size: clamp(1.75rem, 7vw, 3.4rem); font-weight: 800; max-width: 20ch; }
@@ -1497,6 +1525,61 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 @media (prefers-reduced-motion: reduce) {
   .ca-spotlight { animation: none; }
 }
+
+/* ===== PART-2 VIP OPENING ANIMATION ===== */
+.ca-opener {
+  position: fixed; inset: 0; z-index: 120;
+  display: grid; place-items: center; padding: 1rem; text-align: center;
+  color: #fff; cursor: pointer;
+  background: radial-gradient(circle at 50% 35%, rgba(232, 89, 12, .35), rgba(22, 38, 124, .92) 55%, rgba(6, 13, 54, .97) 95%);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  animation: fadeBg .25s ease both;
+}
+.ca-opener[hidden] { display: none; }
+.ca-op-card {
+  position: relative; width: min(100%, 22rem);
+  padding: 1.5rem 1.2rem 1.35rem; border-radius: 24px;
+  background: linear-gradient(155deg, #132378, #0a1450);
+  border: 2px solid #ffc83d;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .55), 0 0 28px rgba(255, 200, 61, .28);
+  animation: panelSpringIn .38s cubic-bezier(.16, 1, .3, 1) both;
+}
+.ca-op-badge {
+  display: inline-block; padding: .2rem .75rem; border-radius: 999px;
+  background: linear-gradient(180deg, #ffd866, #ffb703); color: #141b4d;
+  font: 800 .74rem/1.2 var(--body); margin-bottom: .65rem;
+}
+.ca-op-icon {
+  width: 4.2rem; height: 4.2rem; margin: 0 auto .5rem; border-radius: 50%;
+  display: grid; place-items: center; font-size: 2.2rem;
+  background: radial-gradient(circle, rgba(255, 212, 94, .28), rgba(232, 89, 12, .22));
+  border: 2px solid rgba(255, 212, 94, .75);
+  animation: vipPulse 1.5s ease-in-out infinite;
+}
+.ca-op-title {
+  color: #ffd45e; font: 800 1.25rem/1.35 var(--head);
+  margin-bottom: .25rem;
+}
+.ca-op-sub {
+  color: #e2e8ff; font-size: .88rem; line-height: 1.45;
+  margin-bottom: .95rem;
+}
+.ca-op-bar {
+  height: .45rem; border-radius: 999px;
+  background: rgba(255, 255, 255, .16); overflow: hidden;
+}
+.ca-op-bar i {
+  display: block; height: 100%;
+  background: linear-gradient(90deg, #ffd45e, #ff7b29, #ffd45e);
+  transform-origin: left;
+  animation: barFill 1.25s linear both;
+}
+.ca-op-skip {
+  margin-top: .65rem; font-size: .76rem; color: #b7c6ff;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ca-opener, .ca-op-card, .ca-op-icon, .ca-op-bar i { animation: none !important; }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -1630,12 +1713,15 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
 
 <div class="page">
 
-  <!-- ATTENTION BANNER -->
-  <div id="attnBanner" class="attn-banner">
-    <span class="show">📞 आज ही कॉल करें — 3 दिन की फ्री डेमो क्लास!</span>
-    <span>🪑 सीमित सीटें, अभी एडमिशन लें</span>
-    <span>🗓️ नया बैच जल्द शुरू हो रहा है</span>
-    <button class="attn-close" aria-label="बंद करें">✕</button>
+  <!-- NEWS TICKER BANNER -->
+  <div id="attnBanner" class="attn-banner" role="region" aria-label="ताज़ा सूचना">
+    <span class="attn-badge">🔥 ताज़ा अपडेट</span>
+    <a class="attn-marquee" href="#current-affairs-special">
+      <div class="attn-track">
+        <span>📢 राजस्थान करंट अफेयर <b>(प्रश्न 501 से 1000) का नेक्स्ट पार्ट (भाग-2 VIP PDF)</b> अब उपलब्ध है — <b>नीचे जाकर अभी फ्री डाउनलोड करें! 👇</b></span>
+        <span aria-hidden="true">📢 राजस्थान करंट अफेयर <b>(प्रश्न 501 से 1000) का नेक्स्ट पार्ट (भाग-2 VIP PDF)</b> अब उपलब्ध है — <b>नीचे जाकर अभी फ्री डाउनलोड करें! 👇</b></span>
+      </div>
+    </a>
   </div>
 
   <main>
@@ -1735,7 +1821,7 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
         <span class="ca-tag-chip">🎯 परीक्षा रिवीज़न पैक</span>
       </div>
       <div class="ca-grid" style="grid-template-columns: 1fr; max-width: 24rem;">
-        <button type="button" class="ca-btn vip" onclick="if(window.LC_OPEN_BOOK_FOLDER)window.LC_OPEN_BOOK_FOLDER(0)">📂 करंट अफेयर फ़ोल्डर खोलें (भाग-1 व भाग-2)</button>
+        <button type="button" class="ca-btn vip" id="caOpenFolderBtn">📂 करंट अफेयर फ़ोल्डर खोलें (भाग-1 व भाग-2)</button>
       </div>
       <p class="ca-foot-note">🏆 लेज़र क्लासेज़ झालावाड़ · REET, CET, BSTC, पटवारी, VDO व राजस्थान पुलिस विशेष</p>
     </section>
@@ -1963,6 +2049,18 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
   </div>
 </div>
 
+<!-- PART-2 (501-1000) OPENING ANIMATION -->
+<div id="caPart2Opener" class="ca-opener" hidden aria-hidden="true">
+  <div class="ca-op-card">
+    <span class="ca-op-badge">⚡ VIP सिलेक्शन बूस्टर</span>
+    <div class="ca-op-icon">🔥</div>
+    <div class="ca-op-title">भाग-2: प्रश्न 501 से 1000</div>
+    <div class="ca-op-sub">राजस्थान करंट अफेयर PDF तैयार हो रही है...</div>
+    <div class="ca-op-bar"><i></i></div>
+    <div class="ca-op-skip">टैप करके तुरंत खोलें</div>
+  </div>
+</div>
+
 <!-- NOTES & SYLLABUS POPUP -->
 <div id="notesModal" class="vmodal" hidden role="dialog" aria-modal="true" aria-label="फ्री सिलेबस, मॉडल टेस्ट पेपर और बुक्स">
   <button class="vclose" aria-label="बंद करें">✕</button>
@@ -2026,27 +2124,6 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
 })();
 </script>
 <script>
-/* Attention banner */
-(function () {
-  var banner = document.getElementById("attnBanner");
-  if (!banner) return;
-  var today = new Date().toISOString().slice(0, 10);
-  try { if (localStorage.getItem("attnBannerClosed") === today) { banner.remove(); return; } } catch (e) {}
-  var spans = banner.querySelectorAll("span"), i = 0;
-  if (spans.length > 1 && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    setInterval(function () {
-      spans[i].classList.remove("show");
-      i = (i + 1) % spans.length;
-      spans[i].classList.add("show");
-    }, 3500);
-  }
-  var closeBtn = banner.querySelector(".attn-close");
-  if (closeBtn) closeBtn.addEventListener("click", function () {
-    try { localStorage.setItem("attnBannerClosed", today); } catch (e) {}
-    banner.remove();
-  });
-})();
-
 /* Sticky header shadow */
 (function () {
   var header = document.getElementById("siteHeader");
@@ -2134,6 +2211,52 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   });
   modal.addEventListener("click", function (e) { if (e.target === modal || e.target.classList.contains("vclose")) close(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+})();
+
+/* Current Affairs folder (भाग-1 व भाग-2) opening animation on button click */
+(function () {
+  var opener = document.getElementById("caPart2Opener");
+  var folderBtn = document.getElementById("caOpenFolderBtn");
+  if (!opener || !folderBtn) return;
+  var bar = opener.querySelector(".ca-op-bar i");
+  var titleEl = opener.querySelector(".ca-op-title");
+  var subEl = opener.querySelector(".ca-op-sub");
+  var timer = null;
+  var shouldOpenFolder = false;
+
+  if (titleEl) titleEl.textContent = "राजस्थान करंट अफेयर (भाग-1 व भाग-2)";
+  if (subEl) subEl.textContent = "करंट अफेयर फ़ोल्डर खुल रहा है...";
+
+  function finishOpenFolder() {
+    if (timer) { clearTimeout(timer); timer = null; }
+    opener.hidden = true;
+    opener.setAttribute("aria-hidden", "true");
+    if (!shouldOpenFolder) return;
+    shouldOpenFolder = false;
+    if (typeof window.LC_OPEN_BOOK_FOLDER === "function") {
+      window.LC_OPEN_BOOK_FOLDER(0);
+    }
+  }
+
+  folderBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    shouldOpenFolder = true;
+    opener.hidden = false;
+    opener.setAttribute("aria-hidden", "false");
+    if (bar) {
+      bar.style.animation = "none";
+      void bar.offsetWidth;
+      bar.style.animation = "barFill 1.2s linear both";
+    }
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(finishOpenFolder, 1200);
+  });
+
+  opener.addEventListener("click", finishOpenFolder);
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && !opener.hidden) finishOpenFolder();
+  });
 })();
 
 /* Notes popup: intro animation (2 sec) + 2 main buttons (Syllabus/Test & Books) */
