@@ -394,56 +394,251 @@ details p { padding-top: .5rem; color: var(--soft); }
 @keyframes folderPop { 0% { transform: scale(.2) rotate(-15deg); opacity: 0; } 25% { transform: scale(1.15) rotate(6deg); opacity: 1; } 40% { transform: scale(1) rotate(-3deg); } 60%, 100% { transform: scale(1.06) rotate(0); opacity: 1; } }
 @keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(.3) rotate(0); } 50% { opacity: 1; transform: scale(1.2) rotate(30deg); } }
 
-/* --- Popup --- */
-#notesModal:not([hidden]) { animation: fadeBg .3s ease both; }
-@keyframes fadeBg { from { background: rgba(0,0,0,0); } to { background: rgba(0,0,0,.85); } }
-.notes-panel { --cc: #0f1f66; display: flex; flex-direction: column; background: var(--paper); color: var(--ink); width: min(100%, 42rem); max-height: calc(100dvh - 2rem); overflow: hidden; border-radius: 20px; border: 1px solid var(--rule); box-shadow: 0 20px 50px rgba(0,0,0,.4); margin: auto; animation: popIn .45s cubic-bezier(.2,.9,.3,1) both; }
-@keyframes popIn { from { opacity: 0; transform: translateY(40px) scale(.95); } to { opacity: 1; transform: none; } }
-@keyframes sheetUp { from { transform: translateY(100%); } to { transform: none; } }
-@keyframes itemIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
-.np-tab, .np-row, .np-chip { animation: itemIn .4s ease both; animation-delay: calc(var(--i, 0) * 35ms + .15s); }
+/* --- Popup (Modern & Animated) --- */
+#notesModal:not([hidden]) { animation: fadeBg .28s cubic-bezier(.22,1,.36,1) both; }
+@keyframes fadeBg { from { background: rgba(0,0,0,0); backdrop-filter: blur(0px); } to { background: rgba(6,13,54,.84); backdrop-filter: blur(4px); } }
 
-.np-head { flex: none; padding: .55rem .8rem .65rem; text-align: center; color: #fff; background: radial-gradient(120% 140% at 100% 0%, rgba(255,210,63,.3), transparent 55%), linear-gradient(135deg, var(--cc), #0f1f66); transition: background .3s ease; }
-.np-grab { display: none; width: 2.6rem; height: .3rem; border-radius: 999px; background: rgba(255,255,255,.45); margin: -.25rem auto .6rem; }
-.np-kicker { display: inline-block; background: var(--mark); color: var(--ink); font-weight: 800; font-size: .74rem; padding: .12rem .75rem; border-radius: 999px; margin: 0 auto .35rem; }
-.np-mode { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; margin-top: .2rem; max-width: 34rem; margin-left: auto; margin-right: auto; }
-.np-mbtn { cursor: pointer; border: 2px solid rgba(255,255,255,.5); background: rgba(255,255,255,.16); color: #fff; font: 700 .95rem/1.25 var(--body); padding: .52rem .45rem; border-radius: 12px; text-align: center; transition: background .15s ease, color .15s ease, border-color .15s ease; }
-.np-mbtn[aria-selected="true"] { background: var(--mark); border-color: var(--mark); color: var(--ink); font-weight: 800; box-shadow: 0 4px 12px rgba(0,0,0,.22); }
-.np-tabs { flex: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: .4rem; padding: .65rem .75rem; background: #fff; border-bottom: 1px solid var(--rule); }
-.np-tab { cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .1rem; min-width: 0; border: 2px solid var(--tc); background: #fff; color: var(--tc); font: 700 .72rem/1.2 var(--body); padding: .35rem .15rem; border-radius: 12px; text-align: center; transition: background .15s ease, color .15s ease; }
+.notes-panel {
+  --cc: #0f1f66;
+  display: flex; flex-direction: column;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f8ff 100%);
+  color: var(--ink);
+  width: min(100%, 44rem); max-height: calc(100dvh - 2rem);
+  overflow: hidden; border-radius: 24px;
+  border: 1.5px solid rgba(201,214,255,.95);
+  box-shadow: 0 26px 64px rgba(6,13,54,.45), 0 0 0 1px rgba(255,255,255,.6) inset;
+  margin: auto;
+  animation: panelSpringIn .42s cubic-bezier(.16,1,.3,1) both;
+}
+@keyframes panelSpringIn {
+  0% { opacity: 0; transform: translateY(28px) scale(.96); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes sheetUp {
+  0% { opacity: .6; transform: translateY(100%); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes itemIn {
+  0% { opacity: 0; transform: translateY(12px) scale(.97); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes activePop {
+  0% { transform: scale(.96); }
+  60% { transform: scale(1.03); }
+  100% { transform: scale(1); }
+}
+@keyframes vipPulse {
+  0%, 100% { box-shadow: 0 6px 18px rgba(232,89,12,.16), 0 0 0 0 rgba(255,183,3,.32); }
+  50% { box-shadow: 0 10px 24px rgba(232,89,12,.26), 0 0 0 6px rgba(255,183,3,0); }
+}
+
+.np-tab, .np-row, .np-chip, .np-fcard {
+  animation: itemIn .36s cubic-bezier(.22,1,.36,1) both;
+  animation-delay: calc(var(--i, 0) * 28ms + .06s);
+}
+
+.np-head {
+  flex: none; padding: .65rem .9rem .75rem; text-align: center; color: #fff;
+  background: radial-gradient(125% 145% at 100% 0%, rgba(255,210,63,.34), transparent 58%),
+              linear-gradient(135deg, var(--cc), #0a1450 85%);
+  transition: background .35s ease;
+  box-shadow: 0 4px 16px rgba(10,20,80,.18);
+}
+.np-grab {
+  display: none; width: 2.8rem; height: .32rem; border-radius: 999px;
+  background: rgba(255,255,255,.5); margin: -.2rem auto .55rem;
+}
+.np-kicker {
+  display: inline-flex; align-items: center; gap: .3rem;
+  background: linear-gradient(180deg, #ffe07d, #ffc83d); color: #141b4d;
+  font-weight: 800; font-size: .75rem; padding: .16rem .85rem; border-radius: 999px;
+  margin: 0 auto .45rem; box-shadow: 0 3px 10px rgba(0,0,0,.2);
+}
+.np-mode {
+  display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: .15rem;
+  max-width: 36rem; margin-left: auto; margin-right: auto;
+  background: rgba(255,255,255,.12); padding: .28rem; border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.22);
+}
+.np-mbtn {
+  cursor: pointer; border: 0; background: transparent; color: rgba(255,255,255,.9);
+  font: 700 .92rem/1.25 var(--body); padding: .56rem .5rem; border-radius: 12px;
+  text-align: center; transition: background .2s ease, color .2s ease, transform .15s ease, box-shadow .2s ease;
+}
+.np-mbtn:hover { background: rgba(255,255,255,.14); color: #fff; }
+.np-mbtn:active { transform: scale(.97); }
+.np-mbtn[aria-selected="true"] {
+  background: linear-gradient(180deg, #ffe07d, #ffc83d);
+  color: #141b4d; font-weight: 800;
+  box-shadow: 0 4px 14px rgba(0,0,0,.24);
+  animation: activePop .28s cubic-bezier(.22,1,.36,1);
+}
+
+.np-tabs {
+  flex: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: .42rem;
+  padding: .68rem .8rem; background: #fff; border-bottom: 1px solid var(--rule);
+}
+.np-tab {
+  cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .14rem; min-width: 0; border: 1.5px solid color-mix(in srgb, var(--tc) 45%, #fff);
+  background: color-mix(in srgb, var(--tc) 6%, #fff); color: var(--tc);
+  font: 700 .72rem/1.2 var(--body); padding: .4rem .18rem; border-radius: 13px;
+  text-align: center; transition: background .18s ease, color .18s ease, transform .15s ease, box-shadow .18s ease;
+}
+.np-tab:hover { transform: translateY(-2px); border-color: var(--tc); box-shadow: 0 4px 10px rgba(10,20,80,.09); }
+.np-tab:active { transform: scale(.95); }
 .np-tab .np-ti { font-size: 1.15rem; line-height: 1; }
 .np-tab .np-tn { max-width: 100%; overflow-wrap: anywhere; }
-@media (min-width: 42rem) { .np-tab { font-size: .85rem; padding: .45rem .3rem; } }
-.np-tab[aria-selected="true"] { background: var(--tc); color: #fff; }
-.np-body { flex: 1; overflow-y: auto; padding: 1rem; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
-.np-label { display: flex; align-items: center; gap: .4rem; font: 700 1rem/1.4 var(--head); margin: .2rem 0 .6rem; }
-.np-hint { font-size: .82rem; color: var(--soft); margin: -.3rem 0 .6rem; }
-.np-list { display: grid; gap: .55rem; margin-bottom: 1.2rem; }
-.np-fgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .65rem; margin-bottom: 1rem; }
-.np-fcard { cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .35rem; text-align: center; background: #fff; border: 2px solid var(--fc, #7e22ce); border-radius: 16px; padding: .95rem .6rem; color: var(--ink); font-family: var(--body); box-shadow: 0 4px 12px rgba(10,20,80,.07); transition: transform .15s ease, box-shadow .15s ease, background .15s ease; }
-.np-fcard:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(10,20,80,.13); background: #faf5ff; }
-.np-fcard:active { transform: scale(.97); }
-.np-fic { font-size: 2rem; line-height: 1.1; }
+@media (min-width: 42rem) { .np-tab { font-size: .84rem; padding: .48rem .32rem; } }
+.np-tab[aria-selected="true"] {
+  background: var(--tc); border-color: var(--tc); color: #fff;
+  box-shadow: 0 6px 14px color-mix(in srgb, var(--tc) 35%, transparent);
+  animation: activePop .26s cubic-bezier(.22,1,.36,1);
+}
+
+.np-body {
+  flex: 1; overflow-y: auto; padding: 1rem; overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  background: radial-gradient(600px 240px at 50% 0%, rgba(255,200,61,.1), transparent 70%);
+}
+.np-crumb {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .4rem;
+  margin-bottom: .7rem;
+}
+.np-path {
+  font-size: .76rem; font-weight: 700; color: var(--soft);
+  background: #eef2ff; padding: .24rem .65rem; border-radius: 999px;
+}
+.np-label {
+  display: flex; align-items: center; justify-content: space-between; gap: .4rem;
+  font: 700 1rem/1.4 var(--head); margin: .2rem 0 .55rem; color: var(--ink);
+}
+.np-badge-cnt {
+  font: 700 .72rem/1.2 var(--body); background: #fff3cd; color: #7a4b00;
+  border: 1px solid #ffe08a; padding: .18rem .55rem; border-radius: 999px;
+}
+.np-hint { font-size: .82rem; color: var(--soft); margin: -.25rem 0 .65rem; }
+.np-list { display: grid; gap: .58rem; margin-bottom: 1.15rem; }
+
+.np-fgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .7rem; margin-bottom: .9rem; }
+.np-fcard {
+  position: relative; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem;
+  text-align: center;
+  background: linear-gradient(180deg, #ffffff 0%, color-mix(in srgb, var(--fc, #7e22ce) 5%, #fff) 100%);
+  border: 1.5px solid color-mix(in srgb, var(--fc, #7e22ce) 38%, #dce3ff);
+  border-top: 4px solid var(--fc, #7e22ce);
+  border-radius: 18px; padding: .95rem .65rem; color: var(--ink); font-family: var(--body);
+  box-shadow: 0 6px 16px rgba(10,20,80,.07);
+  transition: transform .2s cubic-bezier(.22,1,.36,1), box-shadow .2s ease, border-color .2s ease;
+}
+.np-fcard:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: var(--fc, #7e22ce);
+  box-shadow: 0 12px 24px rgba(10,20,80,.14);
+}
+.np-fcard:active { transform: scale(.96); }
+.np-fcard.is-vip {
+  background: linear-gradient(145deg, #fffbeb 0%, #fff1db 100%);
+  border-color: #ffb703; border-top-color: #e8590c;
+  animation: itemIn .36s cubic-bezier(.22,1,.36,1) both, vipPulse 2.6s ease-in-out infinite;
+}
+.np-fvip-tag {
+  position: absolute; top: .45rem; right: .5rem;
+  background: linear-gradient(135deg, #e8590c, #d9480f); color: #fff;
+  font: 800 .62rem/1 var(--body); padding: .18rem .48rem; border-radius: 999px;
+  letter-spacing: .02em; box-shadow: 0 2px 6px rgba(232,89,12,.3);
+}
+.np-fic {
+  width: 2.8rem; height: 2.8rem; border-radius: 14px;
+  display: grid; place-items: center; font-size: 1.65rem; line-height: 1;
+  background: color-mix(in srgb, var(--fc, #7e22ce) 14%, #fff);
+  transition: transform .2s ease;
+}
+.np-fcard:hover .np-fic { transform: scale(1.1) rotate(-3deg); }
 .np-fname { font: 800 .98rem/1.3 var(--head); color: var(--ink); }
 .np-fsub { font-size: .74rem; font-weight: 600; color: var(--soft); }
-.np-back { display: inline-flex; align-items: center; gap: .35rem; cursor: pointer; border: 1.5px solid var(--rule); background: #fff; color: var(--ink); font: 700 .84rem/1.2 var(--body); padding: .38rem .8rem; border-radius: 999px; margin-bottom: .75rem; }
-.np-back:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
-.np-row { display: flex; align-items: center; gap: .75rem; text-decoration: none; background: #fff; border: 1px solid var(--rule); border-left: 4px solid var(--cc); border-radius: 14px; padding: .65rem .8rem; font-weight: 600; line-height: 1.35; transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
-.np-row:hover { box-shadow: 0 6px 14px rgba(15,31,102,.14); }
+.np-fmeta {
+  margin-top: .15rem; font-size: .68rem; font-weight: 700;
+  color: var(--fc, #7e22ce); background: color-mix(in srgb, var(--fc, #7e22ce) 10%, #fff);
+  padding: .14rem .55rem; border-radius: 999px;
+}
+
+.np-back {
+  display: inline-flex; align-items: center; gap: .35rem; cursor: pointer;
+  border: 1.5px solid var(--rule); background: #fff; color: var(--ink);
+  font: 700 .82rem/1.2 var(--body); padding: .36rem .78rem; border-radius: 999px;
+  box-shadow: 0 2px 6px rgba(10,20,80,.06);
+  transition: background .15s ease, color .15s ease, transform .15s ease;
+}
+.np-back:hover { background: var(--ink); color: #fff; border-color: var(--ink); transform: translateX(-2px); }
+.np-back:active { transform: scale(.96); }
+
+.np-row {
+  display: flex; align-items: center; gap: .75rem; text-decoration: none;
+  background: #fff; border: 1px solid var(--rule); border-left: 4.5px solid var(--cc);
+  border-radius: 15px; padding: .68rem .85rem; font-weight: 600; line-height: 1.35;
+  box-shadow: 0 3px 10px rgba(10,20,80,.05);
+  transition: border-color .18s ease, box-shadow .18s ease, transform .18s cubic-bezier(.22,1,.36,1);
+}
+.np-row:hover { transform: translateX(3px); box-shadow: 0 8px 18px rgba(15,31,102,.13); border-color: color-mix(in srgb, var(--cc) 55%, #c9d6ff); }
 .np-row:active { transform: scale(.98); }
-.np-pdf { flex: none; display: grid; place-items: center; width: 2.4rem; height: 2.4rem; border-radius: 10px; background: var(--cc); color: #fff; font: 800 .7rem var(--head); }
+.np-pdf {
+  flex: none; display: grid; place-items: center; min-width: 2.5rem; height: 2.5rem; padding: 0 .35rem;
+  border-radius: 12px; background: var(--cc); color: #fff; font: 800 .72rem var(--head);
+  box-shadow: 0 3px 8px color-mix(in srgb, var(--cc) 30%, transparent);
+}
 .np-row .t { flex: 1; min-width: 0; overflow-wrap: anywhere; }
-.np-go { flex: none; color: var(--cc); font-size: 1.1rem; font-weight: 800; }
-.np-levels { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-bottom: 1.1rem; }
-.np-level { cursor: pointer; border: 2px solid var(--cc); background: #fff; color: var(--cc); font: 700 .95rem/1.3 var(--body); padding: .55rem .5rem; border-radius: 14px; transition: background .15s ease, color .15s ease; }
-.np-level[aria-pressed="true"] { background: var(--cc); color: #fff; }
-.np-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .5rem; padding-bottom: .5rem; }
-.np-chip { display: grid; place-items: center; aspect-ratio: 1; text-decoration: none; background: #fff; border: 2px solid var(--cc); border-radius: 50%; color: var(--cc); font: 800 1rem var(--head); transition: background .15s ease, color .15s ease, transform .15s ease; }
-.np-chip:hover, .np-chip:active { background: var(--cc); color: #fff; transform: scale(1.06); }
-.np-foot { flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; padding: .7rem 1rem calc(.7rem + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid var(--rule); }
-.np-fb { display: flex; align-items: center; justify-content: center; text-align: center; text-decoration: none; font-weight: 700; font-size: .86rem; line-height: 1.25; padding: .55rem .45rem; border-radius: 12px; color: #fff; }
-.np-fb.wa2 { background: #25d366; color: #073b1c; }
-.np-fb.tg { background: #0088cc; }
+.np-go {
+  flex: none; width: 2rem; height: 2rem; border-radius: 50%;
+  display: grid; place-items: center;
+  background: color-mix(in srgb, var(--cc) 12%, #fff); color: var(--cc);
+  font-size: .95rem; font-weight: 800; transition: transform .18s ease, background .18s ease, color .18s ease;
+}
+.np-row:hover .np-go { background: var(--cc); color: #fff; transform: translateY(1px); }
+
+.np-levels { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; margin-bottom: 1.1rem; }
+.np-level {
+  cursor: pointer; border: 2px solid var(--cc); background: #fff; color: var(--cc);
+  font: 700 .92rem/1.3 var(--body); padding: .56rem .5rem; border-radius: 14px;
+  transition: background .18s ease, color .18s ease, transform .15s ease, box-shadow .18s ease;
+}
+.np-level:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(10,20,80,.1); }
+.np-level:active { transform: scale(.96); }
+.np-level[aria-pressed="true"] {
+  background: var(--cc); color: #fff;
+  box-shadow: 0 6px 14px color-mix(in srgb, var(--cc) 32%, transparent);
+}
+
+.np-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .55rem; padding-bottom: .5rem; }
+.np-chip {
+  display: grid; place-items: center; aspect-ratio: 1; text-decoration: none;
+  background: linear-gradient(180deg, #fff, color-mix(in srgb, var(--cc) 7%, #fff));
+  border: 2px solid var(--cc); border-radius: 16px; color: var(--cc);
+  font: 800 .98rem var(--head); box-shadow: 0 3px 9px rgba(10,20,80,.06);
+  transition: background .18s ease, color .18s ease, transform .18s cubic-bezier(.22,1,.36,1), box-shadow .18s ease;
+}
+.np-chip:hover {
+  background: var(--cc); color: #fff; transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 8px 16px color-mix(in srgb, var(--cc) 34%, transparent);
+}
+.np-chip:active { transform: scale(.94); }
+
+.np-foot {
+  flex: none; display: grid; grid-template-columns: 1fr 1fr; gap: .55rem;
+  padding: .72rem 1rem calc(.72rem + env(safe-area-inset-bottom));
+  background: #fff; border-top: 1px solid var(--rule);
+}
+.np-fb {
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  text-decoration: none; font-weight: 700; font-size: .86rem; line-height: 1.25;
+  padding: .58rem .5rem; border-radius: 13px; color: #fff;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.np-fb:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(10,20,80,.14); }
+.np-fb:active { transform: scale(.97); }
+.np-fb.wa2 { background: linear-gradient(180deg, #2be07a, #20c463); color: #053318; }
+.np-fb.tg { background: linear-gradient(180deg, #0099e6, #0077b6); }
 
 @media (max-width: 47.99rem) {
   #notesModal { padding: 0; place-items: end center; }
@@ -1172,6 +1367,136 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
     height: min(68dvh, 36rem);
   }
 }
+
+/* ===== RAJASTHAN CURRENT AFFAIRS SPECIAL SPOTLIGHT CARD ===== */
+@keyframes caGlow {
+  0%, 100% { box-shadow: 0 14px 32px rgba(10, 20, 80, 0.25), 0 0 0 4px rgba(255, 200, 61, 0.24); }
+  50% { box-shadow: 0 16px 38px rgba(232, 89, 12, 0.28), 0 0 0 7px rgba(255, 200, 61, 0.36); }
+}
+.ca-spotlight {
+  position: relative;
+  margin: 1.5rem 0 0;
+  padding: 1.35rem 1.05rem 1.4rem;
+  border-radius: 24px;
+  color: #fff;
+  text-align: center;
+  overflow: hidden;
+  background: radial-gradient(480px 260px at 92% 8%, rgba(255, 200, 61, 0.34), transparent 62%),
+              radial-gradient(440px 280px at 8% 92%, rgba(232, 89, 12, 0.42), transparent 65%),
+              linear-gradient(135deg, #0a1450 0%, #1a2d96 55%, #0f1f66 100%);
+  border: 2px solid #ffc83d;
+  animation: caGlow 3s ease-in-out infinite;
+}
+.ca-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .4rem;
+  margin-bottom: .65rem;
+}
+.ca-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  padding: .24rem .78rem;
+  border-radius: 999px;
+  font: 800 .78rem/1.3 var(--body);
+  background: #ffc83d;
+  color: #1b1400;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.22);
+}
+.ca-pill.alt {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: none;
+}
+.ca-spotlight h3 {
+  color: #fff;
+  font-size: clamp(1.3rem, 4.8vw, 1.8rem);
+  font-weight: 800;
+  line-height: 1.32;
+  margin-bottom: .35rem;
+}
+.ca-spotlight h3 span {
+  color: #ffd45e;
+}
+.ca-desc {
+  color: #dbe4ff;
+  font-size: .92rem;
+  line-height: 1.55;
+  max-width: 38rem;
+  margin: 0 auto .85rem;
+}
+.ca-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .45rem;
+  margin: 0 auto 1rem;
+  max-width: 36rem;
+}
+.ca-tag-chip {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 212, 94, 0.45);
+  color: #fff3c4;
+  border-radius: 10px;
+  padding: .28rem .68rem;
+  font: 700 .76rem/1.25 var(--body);
+}
+.ca-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .65rem;
+  max-width: 36rem;
+  margin: 0 auto .9rem;
+}
+@media (min-width: 34rem) {
+  .ca-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+.ca-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .45rem;
+  padding: .75rem 1rem;
+  border-radius: 14px;
+  text-decoration: none;
+  font: 800 .95rem/1.3 var(--body);
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.ca-btn:hover {
+  transform: translateY(-2px);
+}
+.ca-btn:active {
+  transform: scale(.97);
+}
+.ca-btn.vip {
+  background: linear-gradient(180deg, #ffd866, #ffb703);
+  color: #1b1400;
+  border-color: #ffe89e;
+  box-shadow: 0 8px 20px rgba(255, 183, 3, 0.38);
+}
+.ca-btn.part1 {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.38);
+}
+.ca-btn.part1:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+.ca-foot-note {
+  font-size: .8rem;
+  color: #ffd45e;
+  font-weight: 600;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ca-spotlight { animation: none; }
+}
 </style>
 <script type="application/ld+json">
 {
@@ -1394,6 +1719,26 @@ ul.why { grid-template-columns: repeat(2, 1fr); gap: .6rem; }
         <button type="button" class="openNotesBtn btn glow-red">📥 अभी फ्री डाउनलोड करें</button>
         <p class="promo-steps">1️⃣ कोर्स चुनें &nbsp;→&nbsp; 2️⃣ PDF डाउनलोड करें</p>
       </div>
+    </section>
+
+    <!-- SPECIAL CURRENT AFFAIRS 501-1000 CARD (BAHAR WALA SECTION) -->
+    <section class="ca-spotlight" id="current-affairs-special" aria-label="राजस्थान करंट अफेयर 1000 प्रश्न महा-सीरीज़">
+      <div class="ca-badge-row">
+        <span class="ca-pill">🔥 राजस्थान करंट अफेयर महा-सीरीज़</span>
+        <span class="ca-pill alt">⚡ 1000 प्रश्न स्पेशल</span>
+      </div>
+      <h3>राजस्थान करंट अफेयर <span>(प्रश्न 501 से 1000)</span> — सिलेक्शन बूस्टर VIP PDF</h3>
+      <p class="ca-desc">शुरुआती 500 प्रश्नों के बाद आने वाले अगले 500 चुनिंदा व अति-महत्वपूर्ण प्रश्न (भाग-2: 501–1000) अब सीधे यहाँ से डाउनलोड करें।</p>
+      <div class="ca-highlights">
+        <span class="ca-tag-chip">✅ भाग-2: 501–1000 VIP प्रश्न</span>
+        <span class="ca-tag-chip">📘 भाग-1: 1–500 प्रश्न</span>
+        <span class="ca-tag-chip">🎯 परीक्षा रिवीज़न पैक</span>
+      </div>
+      <div class="ca-grid">
+        <a class="ca-btn vip" href="pdf/books/current-affairs/rajasthan-ca-501-1000.pdf" target="_blank" rel="noopener" download="rajasthan-ca-501-1000.pdf">⚡ भाग-2 (501–1000) PDF डाउनलोड</a>
+        <button type="button" class="ca-btn part1" onclick="if(window.LC_OPEN_BOOK_FOLDER)window.LC_OPEN_BOOK_FOLDER(0)">📂 करंट अफेयर फ़ोल्डर खोलें</button>
+      </div>
+      <p class="ca-foot-note">🏆 लेज़र क्लासेज़ झालावाड़ · REET, CET, BSTC, पटवारी, VDO व राजस्थान पुलिस विशेष</p>
     </section>
 
     <!-- RESULTS -->
@@ -1829,6 +2174,17 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
   /* 2. बुक्स / नोट्स फ़ोल्डर्स (1 रो में 2 फ़ोल्डर) */
   var BOOK_FOLDERS = [
     {
+      id: "rj_current_affairs",
+      name: "राजस्थान करंट अफेयर",
+      icon: "🔥",
+      color: "#e8590c",
+      desc: "501–1000 VIP पैक व 1–500 प्रश्न",
+      files: [
+        { title: "🔥 भाग-2 (VIP): प्रश्न 501 से 1000 — सिलेक्शन बूस्टर PDF", sub: "500 के बाद के अगले 500 अति-महत्वपूर्ण प्रश्न · लेज़र क्लासेज़ झालावाड़", file: "pdf/books/current-affairs/rajasthan-ca-501-1000.pdf" },
+        { title: "📘 भाग-1: प्रश्न 1 से 500 — राजस्थान करंट अफेयर PDF", sub: "शुरुआती 500 प्रश्नों का संपूर्ण संग्रह", file: "pdf/books/current-affairs/rajasthan-ca-1-500.pdf" }
+      ]
+    },
+    {
       id: "hindi",
       name: "हिन्दी",
       icon: "📕",
@@ -2008,13 +2364,19 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     body.innerHTML = "";
     body.scrollTop = 0;
 
+    var crumb = el("div", "np-crumb");
     var backBtn = el("button", "np-back", "← सभी फ़ोल्डर देखें");
     backBtn.type = "button";
     backBtn.addEventListener("click", showBooks);
-    body.appendChild(backBtn);
+    crumb.appendChild(backBtn);
+    crumb.appendChild(el("span", "np-path", "फ्री बुक और नोट्स › " + fld.name));
+    body.appendChild(crumb);
 
-    body.appendChild(el("div", "np-label", fld.icon + " " + fld.name + " — PDF फ़ाइलें"));
-    body.appendChild(el("div", "np-hint", "👇 PDF 1 या PDF 2 पर टैप करके खोलें या डाउनलोड करें"));
+    var lbl = el("div", "np-label");
+    lbl.appendChild(el("span", "", fld.icon + " " + fld.name + " — PDF फ़ाइलें"));
+    lbl.appendChild(el("span", "np-badge-cnt", fld.files.length + " PDF"));
+    body.appendChild(lbl);
+    body.appendChild(el("div", "np-hint", "👇 PDF खोलने या डाउनलोड करने के लिए किसी भी कार्ड पर टैप करें"));
 
     var list = el("div", "np-list");
     fld.files.forEach(function (item, k) {
@@ -2051,18 +2413,24 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
     body.innerHTML = "";
     body.scrollTop = 0;
 
-    body.appendChild(el("div", "np-label", "📂 विषयवार फ़ोल्डर चुनें"));
-    body.appendChild(el("div", "np-hint", "👇 किसी भी फ़ोल्डर पर क्लिक करके PDF 1, PDF 2 देखें"));
+    var lbl = el("div", "np-label");
+    lbl.appendChild(el("span", "", "📂 विषयवार फ़ोल्डर चुनें"));
+    lbl.appendChild(el("span", "np-badge-cnt", BOOK_FOLDERS.length + " फ़ोल्डर"));
+    body.appendChild(lbl);
+    body.appendChild(el("div", "np-hint", "👇 किसी भी फ़ोल्डर पर क्लिक करके अंदर की PDF फ़ाइलें देखें"));
 
     var fgrid = el("div", "np-fgrid");
     BOOK_FOLDERS.forEach(function (fld, k) {
-      var card = el("button", "np-fcard");
+      var isVip = fld.id === "rj_current_affairs";
+      var card = el("button", isVip ? "np-fcard is-vip" : "np-fcard");
       card.type = "button";
       card.style.setProperty("--fc", fld.color);
       card.style.setProperty("--i", k);
+      if (isVip) card.appendChild(el("span", "np-fvip-tag", "🔥 VIP 501–1000"));
       card.appendChild(el("span", "np-fic", fld.icon));
       card.appendChild(el("span", "np-fname", fld.name));
       card.appendChild(el("span", "np-fsub", fld.desc));
+      card.appendChild(el("span", "np-fmeta", fld.files.length + " PDF उपलब्ध"));
       card.addEventListener("click", function () { showFolderFiles(k); });
       fgrid.appendChild(card);
     });
@@ -2774,6 +3142,16 @@ window.LC_WA = function (msg) { return "https://wa.me/918875472511?text=" + enco
         { label: "📂 कंप्यूटर फ़ोल्डर खोलें", fn: "openBookFolder4" },
         { label: "⬇ कंप्यूटर PDF 1 डाउनलोड करें", href: "pdf/books/computer/pdf1.pdf", pdf: true },
         { label: "⬇ कंप्यूटर PDF 2 डाउनलोड करें", href: "pdf/books/computer/pdf2.pdf", pdf: true }
+      ]
+    },
+    {
+      id: "current_affairs_pdf",
+      keys: ["current affairs", "current affair", "करंट अफेयर", "करंट अफेयर्स", "501", "1000", "500 से 1000", "501 se 1000", "1000 question", "1000 क्वेश्चन", "करंट जीके", "current gk"],
+      ans: "🔥 राजस्थान करंट अफेयर 1000 प्रश्न महा-सीरीज़ (प्रश्न 501 से 1000 VIP पैक और भाग-1) यहाँ उपलब्ध है! नीचे क्लिक करके सीधे PDF डाउनलोड करें:",
+      acts: [
+        { label: "⚡ भाग-2: प्रश्न 501–1000 PDF", href: "pdf/books/current-affairs/rajasthan-ca-501-1000.pdf", pdf: true },
+        { label: "📂 करंट अफेयर फ़ोल्डर खोलें", fn: "openBookFolder0" },
+        { label: "📘 भाग-1: प्रश्न 1–500 PDF", href: "pdf/books/current-affairs/rajasthan-ca-1-500.pdf", pdf: true }
       ]
     },
     {
